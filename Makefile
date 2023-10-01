@@ -8,6 +8,7 @@ RM		= rm -rf
 AR		= ar -rcs
 
 # folders
+LIBFT	= lib
 INC		= include
 OUTPUT	= out
 SRC		= src
@@ -17,6 +18,7 @@ _FLDRS	= $(SRC) $(REQ)
 VPATH	= $(_FLDRS)
 
 # files
+LIB		= $(addprefix $(LIBFT), lib)
 MAIN	= $(addprefix $(SRC)/, minishell.c)
 UTILS	= 
 PARSE	=
@@ -29,7 +31,8 @@ TARGET	= $(addprefix $(OUTPUT)/, $(OBJS))
 all : $(NAME)
 
 $(NAME) : $(OUTPUT) $(TARGET)
-	$(CC) $(CFLAGS) $(MAIN) $(TARGET) -o $(NAME) -I $(INC)
+	Make -C $(LIBFT)
+	$(CC) $(CFLAGS) $(MAIN) $(TARGET) $(LIB) -o $(NAME) -I $(INC)
 
 $(OUTPUT)/%.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -39,9 +42,11 @@ $(OUTPUT) :
 
 
 clean : 
+	Make clean -C $(LIBFT)
 	$(RM) $(OUTPUT)
 
 fclean : 
+	Make fclean -C $(LIBFT)
 	$(RM) $(OUTPUT)
 	$(RM) $(NAME)
 
