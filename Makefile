@@ -3,12 +3,13 @@ NAME	= minishell
 
 # flags
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra -g 
+CFLAGS	= -Wall -Werror -Wextra -g -fsanitize=address -lreadline
 RM		= rm -rf
 AR		= ar -rcs
+VG		= valgrind --leak-check=full -s --show-leak-kinds=all --suppressions=readline_supression
 
 # folders
-LIBFT	= lib
+LIBFT	= libft
 INC		= include
 OUTPUT	= out
 SRC		= src
@@ -18,12 +19,10 @@ _FLDRS	= $(SRC) $(REQ)
 VPATH	= $(_FLDRS)
 
 # files
-LIB		= $(addprefix $(LIBFT), lib)
+LIB		= $(addprefix $(LIBFT)/, lib)
 MAIN	= $(addprefix $(SRC)/, minishell.c)
-UTILS	= 
-PARSE	=
+_FILES	=  #parser utils
 
-_FILES	= $(UTILS) $(PARSE) 
 OBJS	= $(_FILES:%=%.o)
 TARGET	= $(addprefix $(OUTPUT)/, $(OBJS))
 
@@ -31,7 +30,7 @@ TARGET	= $(addprefix $(OUTPUT)/, $(OBJS))
 all : $(NAME)
 
 $(NAME) : $(OUTPUT) $(TARGET)
-	Make -C $(LIBFT)
+	make -C $(LIBFT)
 	$(CC) $(CFLAGS) $(MAIN) $(TARGET) $(LIB) -o $(NAME) -I $(INC)
 
 $(OUTPUT)/%.o : %.c
@@ -42,17 +41,19 @@ $(OUTPUT) :
 
 
 clean : 
-	Make clean -C $(LIBFT)
+	make clean -C $(LIBFT)
 	$(RM) $(OUTPUT)
 
 fclean : 
-	Make fclean -C $(LIBFT)
+	make fclean -C $(LIBFT)
 	$(RM) $(OUTPUT)
 	$(RM) $(NAME)
 
 re : fclean all
 
+leaks :
+	$(VG) --log-file=leaks.log ./minishell
 
 .SILENT :
 
-.PHONY : all, clean, fclean, re
+.PHONY : all, clean, fclean, re, leaks
