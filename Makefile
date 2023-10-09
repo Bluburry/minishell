@@ -13,7 +13,8 @@ LIBFT	= libft
 INC		= include
 OUTPUT	= out
 SRC		= src
-REQ		= $(addprefix $(SRC)/, utils) $(addprefix $(SRC)/, parsing)
+REQ		= $(addprefix $(SRC)/, utils) $(addprefix $(SRC)/, parsing) \
+	$(addprefix $(SRC)/, struct_handling)
 _FLDRS	= $(SRC) $(REQ)
 
 VPATH	= $(_FLDRS)
@@ -21,7 +22,7 @@ VPATH	= $(_FLDRS)
 # files
 LIB		= $(addprefix $(LIBFT)/, lib)
 MAIN	= $(addprefix $(SRC)/, minishell.c)
-_FILES	=  #parser utils
+_FILES	= get_env_vars env_ops #parser utils
 
 OBJS	= $(_FILES:%=%.o)
 TARGET	= $(addprefix $(OUTPUT)/, $(OBJS))

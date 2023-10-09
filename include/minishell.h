@@ -1,14 +1,9 @@
 #ifndef MINISHEL_H
 # define MINISHEL_H
 
+# include "../libft/libft.h"
 # include <term.h>
-# include <stdio.h>
 # include <fcntl.h>
-# include <unistd.h>
-# include <stddef.h>
-# include <string.h>
-# include <stdlib.h>
-# include <stdarg.h>
 # include <signal.h>
 # include <dirent.h>
 # include <curses.h>
@@ -22,16 +17,24 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-typedef struct history
+typedef struct env_var
 {
-	char	*cmd;
-	void	*prev;
+	char	*var;
+	char	*val;
 	void	*next;
-}	t_history;
+}	t_envi;
 
 typedef struct controller
 {
-	t_history *hst;
+	t_envi *env;
 }	t_ctrl;
+
+void	env_delone(t_envi *env);
+void	env_clear(t_envi **env);
+void	env_add_back(t_envi **env, t_envi *new);
+t_envi	*env_last(t_envi *env);
+t_envi	*get_env_var(char **envp);
+t_envi	*env_new(char *var, char *val);
+
 
 #endif
