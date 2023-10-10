@@ -22,7 +22,7 @@ VPATH	= $(_FLDRS)
 # files
 LIB		= $(addprefix $(LIBFT)/, lib)
 MAIN	= $(addprefix $(SRC)/, minishell.c)
-_FILES	= get_env_vars env_ops #parser utils
+_FILES	= #parser utils
 
 OBJS	= $(_FILES:%=%.o)
 TARGET	= $(addprefix $(OUTPUT)/, $(OBJS))
