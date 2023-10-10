@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/10 15:26:28 by jecarval          #+#    #+#             */
+/*   Updated: 2023/10/10 15:49:01 by jecarval         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHEL_H
 # define MINISHEL_H
 
@@ -16,5 +28,7 @@
 # include <sys/resource.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+void	pwd(char **envp);
 
 #endif
