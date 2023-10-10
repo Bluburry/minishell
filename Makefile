@@ -6,7 +6,7 @@
 #    By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/10 15:26:22 by jecarval          #+#    #+#              #
-#    Updated: 2023/10/10 15:26:25 by jecarval         ###   ########.fr        #
+#    Updated: 2023/10/10 17:08:18 by jecarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ VPATH	= $(_FLDRS)
 # files
 LIB		= $(addprefix $(LIBFT)/, lib)
 MAIN	= $(addprefix $(SRC)/, minishell.c)
-_FILES	= #parser utils
+_FILES	=	pwd.c \
+			ft_echo.d
 
 OBJS	= $(_FILES:%=%.o)
 TARGET	= $(addprefix $(OUTPUT)/, $(OBJS))
