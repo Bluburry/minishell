@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 15:27:20 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/10 18:13:49 by jecarval         ###   ########.fr       */
+/*   Created: 2023/10/10 16:04:11 by jecarval          #+#    #+#             */
+/*   Updated: 2023/10/10 16:06:29 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	pwd(char **envp)
+void	pipe(char **argv, char **envp)
 {
-	while (*envp)
-	{
-		if (ft_strnstr(*envp, "PWD=", 4) && *envp[4])
-			break ;
-		envp++;
-	}
-	printf("%s\n", *envp + 4);
+	
 }
-
-/* int main (int argc, char **argv, char **envp)
-{
-	pwd(envp);
-	(void)argc;
-	(void)argv;
-	return (0);
-} */

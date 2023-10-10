@@ -6,7 +6,7 @@
 #    By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/10 15:26:22 by jecarval          #+#    #+#              #
-#    Updated: 2023/10/10 17:25:45 by jecarval         ###   ########.fr        #
+#    Updated: 2023/10/10 18:29:47 by jecarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ LIB		= $(addprefix $(LIBFT)/, lib)
 MAIN	= $(addprefix $(SRC)/, minishell.c)
 _FILES	=	pwd.c \
 			ft_echo.d \
-			env.c
+			env.c \
+			cd.c
 
 OBJS	= $(_FILES:%=%.o)
 TARGET	= $(addprefix $(OUTPUT)/, $(OBJS))

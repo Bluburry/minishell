@@ -1,32 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 15:27:20 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/10 18:13:49 by jecarval         ###   ########.fr       */
+/*   Created: 2023/10/10 17:46:42 by jecarval          #+#    #+#             */
+/*   Updated: 2023/10/10 18:28:26 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	pwd(char **envp)
+void	cd(int argc, char **argv, char **envp)
 {
-	while (*envp)
+	if (argc == 1)
 	{
-		if (ft_strnstr(*envp, "PWD=", 4) && *envp[4])
-			break ;
-		envp++;
+		while (*envp)
+		{
+			if (!ft_strnstr(*envp, "HOME=", 4))
+			{
+				chdir(*envp + 4);
+				return ;
+			}
+			envp++;
+		}
 	}
-	printf("%s\n", *envp + 4);
+	if (argc > 2)
+	{
+		printf("cd: too many arguments\n");
+		return ;
+	}
+	if (argv[1])
+	{
+		if (chdir(argv[1]) != 0)
+			printf("cd: no such file or directory: %s\n", argv[1]);
+	}
 }
-
-/* int main (int argc, char **argv, char **envp)
+/* 
+int main(int argc, char **argv, char **envp)
 {
-	pwd(envp);
-	(void)argc;
-	(void)argv;
+	cd(argc, argv, envp);
 	return (0);
-} */
+}  */
