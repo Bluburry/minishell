@@ -17,24 +17,4 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-typedef struct env_var
-{
-	char	*var;
-	char	*val;
-	void	*next;
-}	t_envi;
-
-typedef struct controller
-{
-	t_envi *env;
-}	t_ctrl;
-
-void	env_delone(t_envi *env);
-void	env_clear(t_envi **env);
-void	env_add_back(t_envi **env, t_envi *new);
-t_envi	*env_last(t_envi *env);
-t_envi	*get_env_var(char **envp);
-t_envi	*env_new(char *var, char *val);
-
-
 #endif
