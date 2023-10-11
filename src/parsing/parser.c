@@ -6,11 +6,13 @@
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:26:35 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/11 15:57:17 by jecarval         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:46:39 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 int	is_token_end(char c)
 {
@@ -20,19 +22,31 @@ int	is_token_end(char c)
 		return (-1);
 	return (0);
 }
-
+void	syntax_error(char c)
+{
+	printf("syntax error near unexpected token `%c'", c);
+	exit (1);
+}
 int	count_strs(char const *str)
 {
 	int	i;
+	int	flag;
 
 	i = 0;
 	while (*str)
 	{
-		if (is_token_end(*str) != 0)
+		flag = is_token_end(*str);
+		if (flag != 0)
 		{
+			if (flag == -1)
+				i++;
 			++i;
 			while (*str && is_token_end(*str) != 0)
+			{
 				str++;
+				if (flag == -1 && *str == '|')
+					syntax_error('|');
+			}
 		}
 		else
 			str++;
@@ -40,33 +54,31 @@ int	count_strs(char const *str)
 	return (i);
 }
 
-char	**token_split(char const *s)
+char	**token_split(char const *str)
 {
-	int		i;
-	int		start;
 	int		end;
-	char	**strs;
+	char	**tokens;
+	char	**ptr;
 
-	if (!s)
+	if (!str)
 		return (0);
-	i = 0;
-	start = 0;
-	strs = malloc((count_strs(s) + 1) * sizeof(char *));
-	if (!strs)
+	tokens = malloc((count_strs(str) + 1) * sizeof(char *));
+	if (!tokens)
 		return (0);
-	while (i < count_strs(s))
+	ptr = tokens;
+	while (*str)
 	{
-		while (is_token_end(s[i]) != 0)
-			start++;
-		end = start;
-		while (s[end] != c && s[end] != 0)
+		while (is_token_end(*str) == 1)
+			str++;
+		end = 0;
+		while (str[end] && is_token_end(str[end]) == 0)
 			end++;
-		strs[i] = ft_substr(s, start, end - start);
-		start = end;
-		i++;
+		if (str[end])
+			*ptr = ft_substr(str, 0, end);
+		str = str + end;
+		ptr++;
 	}
-	strs[i] = 0;
-	return (strs);
+	return (tokens);
 }
 
 void	parser(char *input)
