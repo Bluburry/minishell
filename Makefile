@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: remarque <remarque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/27 03:53:49 by remarque          #+#    #+#              #
-#    Updated: 2023/10/11 15:57:49 by remarque         ###   ########.fr        #
+#    Created: 2023/10/10 15:26:22 by jecarval          #+#    #+#              #
+#    Updated: 2023/10/11 15:29:23 by jecarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 #Basic definitions
-
 NAME		=	minishell
 INCLUDE		=	include
 SRC_DIR		=	src/
@@ -43,7 +42,6 @@ LIB			=	-lreadline
 #Source folders
 # To add a new source folder, you need to add it here, in the source files, in the 
 # SRC_FILES list and in the $(OBJ_FILES): rule
-
 SRC_ROOT_DIR		=	
 PARSING_DIR			=	parsing/
 UTILS_DIR			=	utils/
