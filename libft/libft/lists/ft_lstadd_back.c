@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "../../../include/libft.h"
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
+void	ft_lstadd_back(t_stack **lst, t_stack *node)
 {
 	t_stack	*helper;
 
-	if (!*lst && new)
-		*lst = new;
-	else if (*lst && new)
+	if (!*lst && node)
+		*lst = node;
+	else if (*lst && node)
 	{
 		helper = ft_lstlast(*lst);
-		helper->next = new;
+		helper->next = node;
 	}
 }

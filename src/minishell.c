@@ -1,17 +1,15 @@
-#include "minishell.h"
+#include "../include/minishell.h"
 
 int	main(int argc, char **argv, char **envp)
 {
 	char	*rl;
-	t_envi	*env;
 
 	(void)argc;
 	(void)argv;
-	env = get_env_var(envp);
-	while (env != NULL)
+	while (*envp)
 	{
-		printf("%s=%s\n", env->var, env->val);
-		env->next;
+		printf("%s\n", *envp);
+		envp++;
 	}
 	while (1)
 	{

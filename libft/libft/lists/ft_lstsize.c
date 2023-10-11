@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
-
+#include "../../../include/libft.h"
 int	ft_lstsize(t_stack *lst)
 {
 	int		count;

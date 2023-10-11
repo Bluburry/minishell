@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
-
+#include "../../../include/libft.h"
 int	ft_cmpstr(const char *s1, const char *s2)
 {
 	if (ft_strlen(s1) != ft_strlen(s2))

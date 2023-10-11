@@ -30,8 +30,8 @@ typedef struct s_list
 size_t	ft_strlen(const char *c);
 t_stack	*ft_lstnew(int value);
 t_stack	*ft_lstlast(t_stack *lst);
-void	ft_lstadd_back(t_stack **lst, t_stack *new);
-void	ft_lstadd_front(t_stack **lst, t_stack *new);
+void	ft_lstadd_back(t_stack **lst, t_stack *node);
+void	ft_lstadd_front(t_stack **lst, t_stack *node);
 void	ft_lstdelone(t_stack *lst);
 void	ft_lstclear(t_stack **lst);
 int		ft_atoi(const char *nptr);

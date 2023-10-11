@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
-
+#include "../../../include/libft.h"
 size_t	calc_splits(char const *s, char c)
 {
 	size_t	num;

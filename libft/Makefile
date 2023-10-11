@@ -34,6 +34,7 @@ _LIBFT	= ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha \
 _FILES	= $(_PRINTF) $(_GNL) $(_LIBFT)
 OBJS	= $(_FILES:%=%.o)
 TARGET	= $(addprefix $(OUTPUT)/, $(OBJS))
+#include "../libft.h"
 
 
 all : $(NAME)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../include/libft.h"
 
 char	*append_static(char *static_string, char *append_str)
 {

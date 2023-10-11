@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
-
+#include "../../../include/libft.h"
 void	ft_lstdelone(t_stack *lst)
 {
 	if (lst)

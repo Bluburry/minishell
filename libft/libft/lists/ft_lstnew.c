@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
-
+#include "../../../include/libft.h"
 t_stack	*ft_lstnew(int value)
 {
 	t_stack	*list;
