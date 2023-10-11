@@ -1,7 +1,7 @@
 #ifndef MINISHEL_H
 # define MINISHEL_H
 
-# include "../libft/libft.h"
+# include "libft.h"
 # include <term.h>
 # include <fcntl.h>
 # include <signal.h>
@@ -16,5 +16,8 @@
 # include <sys/resource.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+void	pwd(char **envp);
+void	ft_echo(char **argv);
 
 #endif
