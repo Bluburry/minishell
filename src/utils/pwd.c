@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 15:53:21 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/10 15:53:26 by jecarval         ###   ########.fr       */
+/*   Created: 2023/10/10 15:27:20 by jecarval          #+#    #+#             */
+/*   Updated: 2023/10/10 16:01:22 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../include/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+void pwd(char **envp)
 {
-	char	*rl;
-	t_envi	*env;
+	while(*envp)
+	{
+		if (ft_strnstr(*envp, "PWD=", 4) && *envp[4])
+			break;
+		envp++;
+	}
+	printf("%s\n", *envp + 4);
+}
 
+/* int main (int argc, char **argv, char **envp)
+{
+	pwd(envp);
 	(void)argc;
 	(void)argv;
-	env = get_env_var(envp);
-	while (env != NULL)
-	{
-		printf("%s=%s\n", env->var, env->val);
-		env->next;
-	}
-	while (1)
-	{
-		rl = readline("minishell > ");
-		printf("rl: %s\n", rl);
-	}
 	return (0);
-}
+} */

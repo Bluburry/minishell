@@ -1,34 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 15:53:21 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/10 15:53:26 by jecarval         ###   ########.fr       */
+/*   Created: 2023/10/10 16:24:43 by jecarval          #+#    #+#             */
+/*   Updated: 2023/10/10 17:06:12 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../include/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+void	ft_echo(char **argv)
 {
-	char	*rl;
-	t_envi	*env;
+	int	i;
+	int	n;
 
-	(void)argc;
-	(void)argv;
-	env = get_env_var(envp);
-	while (env != NULL)
+	if (!argv[1])
 	{
-		printf("%s=%s\n", env->var, env->val);
-		env->next;
+		printf("\n");
+		return ;
 	}
-	while (1)
+	n = ft_strncmp(argv[1], "-n", 2);
+	if (n == 0)
+		i = 2;
+	else
+		i = 1;
+	while (argv[i])
 	{
-		rl = readline("minishell > ");
-		printf("rl: %s\n", rl);
+		printf("%s", argv[i++]);
+		if (argv[i])
+			printf(" ");
 	}
-	return (0);
+	if (n != 0)
+		printf("\n");
 }
+
+/* int	main(int argc, char **argv)
+{
+	ft_echo(argv);
+	(void)argc;
+	return (0);
+} */
