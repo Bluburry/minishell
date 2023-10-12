@@ -13,11 +13,11 @@ int	main(int argc, char **argv, char **envp)
 	{
 		printf("%s\n", env->vars[i]);
 	}
-	while (1)
+	/* while (1)
 	{
 		rl = readline("minishell > ");
 		printf("rl: %s\n", rl);
-	}
+	} */
 	clear_env_struct(env);
 	return (0);
 }

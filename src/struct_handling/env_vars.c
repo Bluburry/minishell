@@ -4,8 +4,6 @@
  * @brief counts how many environmental variables there are
  * @param envp char** argument passed to main
  * @return number of environmental variables
- * @bug for some reason returns the actual size + 2, so 
- * the function subtracts 2 before returning
 */
 int	get_env_start_size(char **envp)
 {
@@ -17,9 +15,15 @@ int	get_env_start_size(char **envp)
 		size++;
 		envp++;
 	}
-	return (size - 2);
+	return (size);
 }
 
+/**
+ * @brief populates the vars value of the t_env structure by copying 
+ * all the string found in envp
+ * @param envp environmental variables passed to main
+ * @param env pointer to structure
+*/
 void	populate_env_struct(char **envp, t_env *env)
 {
 	int		i;
