@@ -6,7 +6,7 @@
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:26:28 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/11 15:27:40 by jecarval         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:25:06 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	ft_echo(char **argv);
 void	env(char **envp);
 void	cd(int argc, char **argv, char **envp);
 void	parser(char *input);
+void	waiting_for_input();
 
 #endif

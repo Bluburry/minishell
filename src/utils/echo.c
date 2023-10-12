@@ -6,11 +6,11 @@
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:24:43 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/10 17:06:12 by jecarval         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:51:47 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "minishell.h"
 
 void	ft_echo(char **argv)
 {
