@@ -6,11 +6,11 @@
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:26:35 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/11 15:57:17 by jecarval         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:46:05 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "minishell.h"
 
 int	is_token_end(char c)
 {
@@ -21,59 +21,109 @@ int	is_token_end(char c)
 	return (0);
 }
 
+void	syntax_error(char c)
+{
+	printf("syntax error near unexpected token `%c'\n", c);
+	waiting_for_input();
+}
+
 int	count_strs(char const *str)
 {
 	int	i;
+	int	flag;
 
 	i = 0;
 	while (*str)
 	{
-		if (is_token_end(*str) != 0)
+		flag = is_token_end(*str);
+		if (flag != 0)
 		{
 			++i;
-			while (*str && is_token_end(*str) != 0)
+			if (flag == -1)
+			{
+				i++;
 				str++;
+			}
+			while (*str && is_token_end(*str) != 0)
+			{
+				if (*str == '|' && flag == -1)
+					syntax_error('|');
+				else if (*str == '|')
+				{
+					flag = -1;
+					i++;
+				}
+				str++;
+			}
+			if (is_token_end(*(str - 1)) == 1 && !(*str))
+				i--;
 		}
 		else
 			str++;
 	}
-	return (i);
+	return (++i);
 }
 
-char	**token_split(char const *s)
+char	*create_token(const char *str, size_t len)
 {
-	int		i;
-	int		start;
-	int		end;
-	char	**strs;
+	char			*token;
+	unsigned int	i;
 
-	if (!s)
+	token = malloc((len + 1) * sizeof(char));
+	if (token == 0)
 		return (0);
 	i = 0;
-	start = 0;
-	strs = malloc((count_strs(s) + 1) * sizeof(char *));
-	if (!strs)
-		return (0);
-	while (i < count_strs(s))
+	while (i < len && *str)
 	{
-		while (is_token_end(s[i]) != 0)
-			start++;
-		end = start;
-		while (s[end] != c && s[end] != 0)
-			end++;
-		strs[i] = ft_substr(s, start, end - start);
-		start = end;
+		token[i] = str[i];
 		i++;
 	}
-	strs[i] = 0;
-	return (strs);
+	token[i] = '\0';
+	return (token);
+}
+
+char	**token_split(char const *str)
+{
+	int		end;
+	char	**tokens;
+	char	**ptr;
+
+	tokens = malloc((count_strs(str) + 1) * sizeof(char *));
+	if (!tokens)
+		return (0);
+	ptr = tokens;
+	while (*str)
+	{
+		while (*str && is_token_end(*str) == 1)
+			str++;
+		end = 0;
+		while (str[end] && is_token_end(str[end]) == 0)
+			end++;
+		if (*str == '|')
+			end++;
+		if (end > 0)
+		{
+			*ptr = create_token(str, end);
+			ptr++;
+		}
+		str = str + end;
+	}
+	*ptr = NULL;
+	return (tokens);
 }
 
 void	parser(char *input)
 {
 	char	**tokens;
 
+	if (!input || !(*input))
+		return ;
 	tokens = token_split(input);
-	if (ft_strncmp(tokens[0], "pwd", 4) == 0)
-		pwd(tokens);
+/* 	if (ft_strnstrn(*tokens, "pwd", 4))
+		pwd(envars) */
+	while (*tokens)
+	{
+		printf("%s\n", *tokens);
+		tokens++;
+	}
 }

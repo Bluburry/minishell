@@ -6,21 +6,21 @@
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:27:20 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/11 15:15:24 by jecarval         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:45:12 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "minishell.h"
 
-void	pwd(char **tokens)
+void	pwd(char **envars)
 {
-	while (*tokens)
+	while (*envars)
 	{
-		if (ft_strnstr(*tokens, "PWD=", 4) && *tokens[4])
+		if (ft_strnstr(*envars, "PWD=", 4) && *envars[4])
 			break ;
-		tokens++;
+		envars++;
 	}
-	printf("%s\n", *tokens + 4);
+	printf("%s\n", *envars + 4);
 }
 
 /* int main (int argc, char **argv, char **envp)

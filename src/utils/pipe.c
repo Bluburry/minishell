@@ -6,11 +6,11 @@
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:04:11 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/10 16:06:29 by jecarval         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:51:56 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "minishell.h"
 
 void	pipe(char **argv, char **envp)
 {
