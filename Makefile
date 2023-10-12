@@ -3,10 +3,11 @@ NAME	= minishell
 
 # flags
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra -g -fsanitize=address -lreadline
+CFLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address #-lreadline
 RM		= rm -rf
 AR		= ar -rcs
-VG		= valgrind --leak-check=full -s --show-leak-kinds=all --suppressions=readline_supression
+VG		= valgrind --leak-check=full -s --show-leak-kinds=all \
+	--track-origins=yes --suppressions=readline_supression 
 
 # folders
 LIBFT	= libft
@@ -14,6 +15,7 @@ INC		= include
 OUTPUT	= out
 SRC		= src
 REQ		= $(addprefix $(SRC)/, utils) $(addprefix $(SRC)/, parsing) \
+	$(addprefix $(SRC)/, struct_handling)
 _FLDRS	= $(SRC) $(REQ)
 
 VPATH	= $(_FLDRS)
@@ -21,7 +23,7 @@ VPATH	= $(_FLDRS)
 # files
 LIB		= $(addprefix $(LIBFT)/, lib)
 MAIN	= $(addprefix $(SRC)/, minishell.c)
-_FILES	= #parser utils
+_FILES	= env_vars clear_tenv #parser utils
 
 OBJS	= $(_FILES:%=%.o)
 TARGET	= $(addprefix $(OUTPUT)/, $(OBJS))

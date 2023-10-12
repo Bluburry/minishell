@@ -1,7 +1,7 @@
 #ifndef MINISHEL_H
 # define MINISHEL_H
 
-# include "libft.h"
+# include "structures.h"
 # include <term.h>
 # include <fcntl.h>
 # include <signal.h>
@@ -16,5 +16,8 @@
 # include <sys/resource.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+void	clear_env_struct(t_env *env);
+t_env	*create_env_struct(char **envp);
 
 #endif
