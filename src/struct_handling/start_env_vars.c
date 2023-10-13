@@ -21,25 +21,23 @@ int	get_env_start_size(char **envp)
 /**
  * @brief populates the vars value of the t_env structure by copying 
  * all the string found in envp
- * @param envp environmental variables passed to main
- * @param env pointer to structure
+ * @param mat matrix to copy
+ * @param new_mat destination matrix
+ * @param size size of matrix to copy
 */
-void	populate_env_struct(char **envp, t_env *env)
+void	copy_char_matrix(char **mat, char **new_mat, int size)
 {
 	int		i;
 	size_t	s;
 
 	i = 0;
-	while (*envp)
+	while (i < size)
 	{
-		s = ft_strlen(*envp) + 1;
-		env->vars[i] = (char *) malloc(sizeof(char) * s);
-		ft_memcpy(env->vars[i], *envp, s);
+		s = ft_strlen(mat[i]) + 1;
+		new_mat[i] = (char *) malloc(sizeof(char) * s);
+		ft_memcpy(new_mat[i], mat[i], s);
 		i++;
-		envp++;
 	}
-	/* while (++i < env->capacity)
-		env->vars[i] = NULL; */
 }
 
 /**
@@ -56,6 +54,6 @@ t_env	*create_env_struct(char **envp)
 	env->size = get_env_start_size(envp);
 	env->capacity = env->size + 20;
 	env->vars = (char **) malloc(sizeof(char *) * env->capacity);
-	populate_env_struct(envp, env);
+	copy_char_matrix(envp, env->vars, env->size);
 	return (env);
 }

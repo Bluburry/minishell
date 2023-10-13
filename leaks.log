@@ -1,14 +1,150 @@
-==8773== Memcheck, a memory error detector
-==8773== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==8773== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==8773== Command: ./minishell
-==8773== Parent PID: 8772
-==8773== 
-==8773== 
-==8773== HEAP SUMMARY:
-==8773==     in use at exit: 0 bytes in 0 blocks
-==8773==   total heap usage: 73 allocs, 73 frees, 5,598 bytes allocated
-==8773== 
-==8773== All heap blocks were freed -- no leaks are possible
-==8773== 
-==8773== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==5440== Memcheck, a memory error detector
+==5440== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==5440== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==5440== Command: ./minishell
+==5440== Parent PID: 5439
+==5440== 
+==5440== Invalid write of size 8
+==5440==    at 0x109529: add_new_env_var (alter_env.c:31)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440==  Address 0x4a9b368 is 0 bytes after a block of size 728 alloc'd
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x10936C: create_env_struct (start_env_vars.c:56)
+==5440==    by 0x1091AB: main (minishell.c:10)
+==5440== 
+==5440== Invalid read of size 8
+==5440==    at 0x109543: add_new_env_var (alter_env.c:32)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440==  Address 0x4a9b368 is 0 bytes after a block of size 728 alloc'd
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x10936C: create_env_struct (start_env_vars.c:56)
+==5440==    by 0x1091AB: main (minishell.c:10)
+==5440== 
+==5440== Use of uninitialised value of size 8
+==5440==    at 0x1095EB: ft_strlen (in /home/bluburry/Prog/minishell/minishell)
+==5440==    by 0x109294: copy_char_matrix (start_env_vars.c:36)
+==5440==    by 0x109481: resize_env_struct (alter_env.c:13)
+==5440==    by 0x1094DA: add_new_env_var (alter_env.c:28)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440==  Uninitialised value was created by a heap allocation
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x10936C: create_env_struct (start_env_vars.c:56)
+==5440==    by 0x1091AB: main (minishell.c:10)
+==5440== 
+==5440== Invalid read of size 1
+==5440==    at 0x1095EB: ft_strlen (in /home/bluburry/Prog/minishell/minishell)
+==5440==    by 0x109294: copy_char_matrix (start_env_vars.c:36)
+==5440==    by 0x109481: resize_env_struct (alter_env.c:13)
+==5440==    by 0x1094DA: add_new_env_var (alter_env.c:28)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==5440== 
+==5440== 
+==5440== Process terminating with default action of signal 11 (SIGSEGV)
+==5440==  Access not within mapped region at address 0x0
+==5440==    at 0x1095EB: ft_strlen (in /home/bluburry/Prog/minishell/minishell)
+==5440==    by 0x109294: copy_char_matrix (start_env_vars.c:36)
+==5440==    by 0x109481: resize_env_struct (alter_env.c:13)
+==5440==    by 0x1094DA: add_new_env_var (alter_env.c:28)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440==  If you believe this happened as a result of a stack
+==5440==  overflow in your program's main thread (unlikely but
+==5440==  possible), you can try to increase the size of the
+==5440==  main thread stack using the --main-stacksize= flag.
+==5440==  The main thread stack size used in this run was 8388608.
+==5440== 
+==5440== HEAP SUMMARY:
+==5440==     in use at exit: 10,214 bytes in 165 blocks
+==5440==   total heap usage: 165 allocs, 0 frees, 10,214 bytes allocated
+==5440== 
+==5440== 16 bytes in 1 blocks are still reachable in loss record 1 of 7
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x10932F: create_env_struct (start_env_vars.c:53)
+==5440==    by 0x1091AB: main (minishell.c:10)
+==5440== 
+==5440== 40 bytes in 1 blocks are definitely lost in loss record 2 of 7
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x109528: add_new_env_var (alter_env.c:31)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440== 
+==5440== 728 bytes in 1 blocks are still reachable in loss record 3 of 7
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x10936C: create_env_struct (start_env_vars.c:56)
+==5440==    by 0x1091AB: main (minishell.c:10)
+==5440== 
+==5440== 760 bytes in 19 blocks are still reachable in loss record 4 of 7
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x109528: add_new_env_var (alter_env.c:31)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440== 
+==5440== 888 bytes in 1 blocks are still reachable in loss record 5 of 7
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x109460: resize_env_struct (alter_env.c:12)
+==5440==    by 0x1094DA: add_new_env_var (alter_env.c:28)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440== 
+==5440== 3,891 bytes in 71 blocks are still reachable in loss record 6 of 7
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x1092BD: copy_char_matrix (start_env_vars.c:37)
+==5440==    by 0x109393: create_env_struct (start_env_vars.c:57)
+==5440==    by 0x1091AB: main (minishell.c:10)
+==5440== 
+==5440== 3,891 bytes in 71 blocks are still reachable in loss record 7 of 7
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x1092BD: copy_char_matrix (start_env_vars.c:37)
+==5440==    by 0x109481: resize_env_struct (alter_env.c:13)
+==5440==    by 0x1094DA: add_new_env_var (alter_env.c:28)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440== 
+==5440== LEAK SUMMARY:
+==5440==    definitely lost: 40 bytes in 1 blocks
+==5440==    indirectly lost: 0 bytes in 0 blocks
+==5440==      possibly lost: 0 bytes in 0 blocks
+==5440==    still reachable: 10,174 bytes in 164 blocks
+==5440==         suppressed: 0 bytes in 0 blocks
+==5440== 
+==5440== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
+==5440== 
+==5440== 1 errors in context 1 of 5:
+==5440== Invalid read of size 1
+==5440==    at 0x1095EB: ft_strlen (in /home/bluburry/Prog/minishell/minishell)
+==5440==    by 0x109294: copy_char_matrix (start_env_vars.c:36)
+==5440==    by 0x109481: resize_env_struct (alter_env.c:13)
+==5440==    by 0x1094DA: add_new_env_var (alter_env.c:28)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==5440== 
+==5440== 
+==5440== 1 errors in context 2 of 5:
+==5440== Use of uninitialised value of size 8
+==5440==    at 0x1095EB: ft_strlen (in /home/bluburry/Prog/minishell/minishell)
+==5440==    by 0x109294: copy_char_matrix (start_env_vars.c:36)
+==5440==    by 0x109481: resize_env_struct (alter_env.c:13)
+==5440==    by 0x1094DA: add_new_env_var (alter_env.c:28)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440==  Uninitialised value was created by a heap allocation
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x10936C: create_env_struct (start_env_vars.c:56)
+==5440==    by 0x1091AB: main (minishell.c:10)
+==5440== 
+==5440== 
+==5440== 1 errors in context 3 of 5:
+==5440== Invalid read of size 8
+==5440==    at 0x109543: add_new_env_var (alter_env.c:32)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440==  Address 0x4a9b368 is 0 bytes after a block of size 728 alloc'd
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x10936C: create_env_struct (start_env_vars.c:56)
+==5440==    by 0x1091AB: main (minishell.c:10)
+==5440== 
+==5440== 
+==5440== 1 errors in context 4 of 5:
+==5440== Invalid write of size 8
+==5440==    at 0x109529: add_new_env_var (alter_env.c:31)
+==5440==    by 0x1091CE: main (minishell.c:14)
+==5440==  Address 0x4a9b368 is 0 bytes after a block of size 728 alloc'd
+==5440==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5440==    by 0x10936C: create_env_struct (start_env_vars.c:56)
+==5440==    by 0x1091AB: main (minishell.c:10)
+==5440== 
+==5440== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)

@@ -9,6 +9,11 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	env = create_env_struct(envp);
 	int i = -1;
+	while (++i < 35)
+	{
+		add_new_env_var(env, "test");
+	}
+	i = -1;
 	while (++i < env->size)
 	{
 		printf("%s\n", env->vars[i]);
