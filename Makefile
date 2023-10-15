@@ -3,7 +3,7 @@ NAME	= minishell
 
 # flags
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address #-lreadline
+CFLAGS	= -Wall -Werror -Wextra -g -lreadline #-fsanitize=address 
 RM		= rm -rf
 AR		= ar -rcs
 VG		= valgrind --leak-check=full -s --show-leak-kinds=all \
@@ -23,7 +23,7 @@ VPATH	= $(_FLDRS)
 # files
 LIB		= $(addprefix $(LIBFT)/, lib)
 MAIN	= $(addprefix $(SRC)/, minishell.c)
-_FILES	= start_env_vars clear_env alter_env #parser utils
+_FILES	= start_env_vars clear_env alter_env find_env_var #parser utils
 
 OBJS	= $(_FILES:%=%.o)
 TARGET	= $(addprefix $(OUTPUT)/, $(OBJS))

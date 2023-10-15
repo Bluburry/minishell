@@ -14,6 +14,7 @@ void	clear_chars(char **str, int size)
 	{
 		free(str[i]);
 	}
+	free(str);
 }
 
 /**
@@ -23,6 +24,5 @@ void	clear_chars(char **str, int size)
 void	clear_env_struct(t_env *env)
 {
 	clear_chars(env->vars, env->size);
-	free(env->vars);
 	free(env);
 }
