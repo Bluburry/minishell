@@ -6,7 +6,7 @@
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:26:35 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/15 21:11:26 by jecarval         ###   ########.fr       */
+/*   Updated: 2023/10/15 21:25:01 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,43 +25,6 @@ void	syntax_error(char c)
 {
 	printf("syntax error near unexpected token `%c'\n", c);
 	waiting_for_input();
-}
-
-int	count_strs(char const *str, char c)
-{
-	int	i;
-	int	flag;
-
-	i = 0;
-	while (*str)
-	{
-		flag = is_token_end(*str);
-		if (flag != 0)
-		{
-			++i;
-			if (flag == -1)
-			{
-				i++;
-				str++;
-			}
-			while (*str && is_token_end(*str) != 0)
-			{
-				if (*str == '|' && flag == -1)
-					syntax_error('|');
-				else if (*str == '|')
-				{
-					flag = -1;
-					i++;
-				}
-				str++;
-			}
-			if (is_token_end(*(str - 1)) == 1 && !(*str))
-				i--;
-		}
-		else
-			str++;
-	}
-	return (++i);
 }
 
 char	*create_token(const char *str, size_t len)

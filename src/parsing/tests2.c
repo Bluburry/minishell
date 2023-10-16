@@ -215,108 +215,79 @@ int	count_tokens(char **input, char c)
 {
 	int		len;
 	int		i;
-	int		j;
+	char	*tmp;
 
 	len = 0;
 	i = 0;
 	while (input[i])
 	{
-		j = 0;
-		if (input[i][j] == '\'' || input[i][j] == '\"')
+		tmp = input[i++];
+		if (*tmp == '\'' || *tmp == '\"')
 			len++;
 		else
 		{
-			while (input[i][j])
+			while (*tmp)
 			{
-				j += move_in_str(input[i], c);
+				tmp += move_in_str(tmp, c);
 				len++;
 			}
 		}
-		i++;
 	}
 	return (len);
-}
-
-int	scan_for_char(char **input, char c)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (input[i])
-	{
-		j = 0;
-		if (input[i][j] == '\'' || input[i][j] == '\"')
-			i++;
-		else
-		{
-			while (input[i][j])
-			{
-				if (input[i][j] == c)
-					return (1);
-				j++;
-			}
-		}
-		i++;
-	}
-	return (0);
 }
 
 char	**split_tokens(char **input, char c)
 {
 	int		end;
 	char	**tokens;
-	int		i;
-	int		j;
-	int		t;
+	char	**ptr;
+	char	*str;
 
-	if (scan_for_char(input, c) == 0)
-		return (input);
 	tokens = malloc((count_tokens(input, c) + 1) * sizeof(char *));
 	if (!tokens)
 		return (0);
-	i = 0;
-	t = 0;
-	while (input[i])
+	ptr = tokens;
+	while (*input)
 	{
-		j = 0;
-		if (input[i][0] == '\'' || input[i][0] == '\"')
-			tokens[t++] = input[i++];
+		if (**input == '\'' || **input == '\"')
+		{
+			*ptr = *input;
+			ptr++;
+		}
 		else
 		{
-			end = 0;
-			while (input[i][j])
+			str = *input;
+			while (*str)
 			{
-				if (input[i][j] == c)
-					end++;
+				end = 0;
+				if (*str == c)
+					end = 1;
 				else
 				{
-					while (input[i][end] && input[i][end] != c)
+					while (str[end] && str[end] != c)
 						end++;
 				}
-				tokens[t] = create_token(input[i] + j, end);
-				if (tokens[t][0])
-					t++;
+				*ptr = create_token(str, end);
+				if (**ptr)
+					ptr++;
 				else
-					free(tokens[t]);
-				j += end;
+					free(*ptr);
+				str += end;
 			}
 		}
-		i++;
+		input++;
 	}
-	tokens[t] = NULL;
-	free(input);
-	//free_ptrptr(input); //!algo de errado nao esta certo
+	*ptr = NULL;
 	return (tokens);
 }
 
 void	print_tokens(char **tokens)
 {
-	int	i;
-
-	i = 0;
-	while (tokens[i])
-		printf("%s\n", tokens[i++]);
+	while (*tokens)
+	{
+		printf("%s\n", *tokens);
+		tokens++;
+	}
 }
 
 char	**tokens_init(char *input)
@@ -330,8 +301,8 @@ char	**tokens_init(char *input)
 	input = tmp;
 	ptr = split_quotes(input);
 	tokens = split_tokens(ptr, '|');
-	//tokens = split_tokens(tokens, '<'); //!algo de errado nao esta certo
-	//tokens = split_tokens(tokens, '>'); //!algo de errado nao esta certo
+	free(ptr);
+	//ptr =
 	return (tokens);
 }
 
@@ -349,7 +320,6 @@ void	waiting_for_input(void)
 		printf("trimmed: |%s|\n", tmp);
 		tokens = tokens_init(rl);
 		print_tokens(tokens);
-		//free_ptrptr(tokens); //!algo de errado nao esta certo
 	}
 }
 
