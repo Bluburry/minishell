@@ -1,0 +1,521 @@
+==87688== Memcheck, a memory error detector
+==87688== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==87688== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==87688== Command: ./a.out
+==87688== Parent PID: 69278
+==87688== 
+==87688== Invalid read of size 1
+==87688==    at 0x401A81: count_tokens (tests2.c:239)
+==87688==    by 0x401B1E: split_tokens (tests2.c:260)
+==87688==    by 0x401DED: tokens_init (tests2.c:332)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== Invalid read of size 1
+==87688==    at 0x401A91: count_tokens (tests2.c:239)
+==87688==    by 0x401B1E: split_tokens (tests2.c:260)
+==87688==    by 0x401DED: tokens_init (tests2.c:332)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== Invalid read of size 1
+==87688==    at 0x401B67: split_tokens (tests2.c:266)
+==87688==    by 0x401DED: tokens_init (tests2.c:332)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== Invalid read of size 1
+==87688==    at 0x401B7A: split_tokens (tests2.c:266)
+==87688==    by 0x401DED: tokens_init (tests2.c:332)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== Invalid free() / delete / delete[] / realloc()
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401E0D: tokens_init (tests2.c:333)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== Invalid read of size 1
+==87688==    at 0x483EF46: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x492AD14: __vfprintf_internal (vfprintf-internal.c:1688)
+==87688==    by 0x4913D3E: printf (printf.c:33)
+==87688==    by 0x401D01: print_tokens (tests2.c:302)
+==87688==    by 0x401ED5: waiting_for_input (tests2.c:354)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== Invalid read of size 1
+==87688==    at 0x483EF54: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x492AD14: __vfprintf_internal (vfprintf-internal.c:1688)
+==87688==    by 0x4913D3E: printf (printf.c:33)
+==87688==    by 0x401D01: print_tokens (tests2.c:302)
+==87688==    by 0x401ED5: waiting_for_input (tests2.c:354)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13251 is 1 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== Invalid read of size 1
+==87688==    at 0x494170C: _IO_new_file_xsputn (fileops.c:1219)
+==87688==    by 0x494170C: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==87688==    by 0x49290FB: __vfprintf_internal (vfprintf-internal.c:1688)
+==87688==    by 0x4913D3E: printf (printf.c:33)
+==87688==    by 0x401D01: print_tokens (tests2.c:302)
+==87688==    by 0x401ED5: waiting_for_input (tests2.c:354)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13255 is 5 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== Invalid read of size 1
+==87688==    at 0x48436E0: mempcpy (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4941631: _IO_new_file_xsputn (fileops.c:1236)
+==87688==    by 0x4941631: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==87688==    by 0x49290FB: __vfprintf_internal (vfprintf-internal.c:1688)
+==87688==    by 0x4913D3E: printf (printf.c:33)
+==87688==    by 0x401D01: print_tokens (tests2.c:302)
+==87688==    by 0x401ED5: waiting_for_input (tests2.c:354)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== Invalid read of size 1
+==87688==    at 0x48436EE: mempcpy (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4941631: _IO_new_file_xsputn (fileops.c:1236)
+==87688==    by 0x4941631: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==87688==    by 0x49290FB: __vfprintf_internal (vfprintf-internal.c:1688)
+==87688==    by 0x4913D3E: printf (printf.c:33)
+==87688==    by 0x401D01: print_tokens (tests2.c:302)
+==87688==    by 0x401ED5: waiting_for_input (tests2.c:354)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13252 is 2 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== Invalid free() / delete / delete[] / realloc()
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401EF1: waiting_for_input (tests2.c:355)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== 
+==87688== HEAP SUMMARY:
+==87688==     in use at exit: 200,601 bytes in 215 blocks
+==87688==   total heap usage: 472 allocs, 261 frees, 221,674 bytes allocated
+==87688== 
+==87688== LEAK SUMMARY:
+==87688==    definitely lost: 0 bytes in 0 blocks
+==87688==    indirectly lost: 0 bytes in 0 blocks
+==87688==      possibly lost: 0 bytes in 0 blocks
+==87688==    still reachable: 0 bytes in 0 blocks
+==87688==         suppressed: 200,601 bytes in 215 blocks
+==87688== 
+==87688== ERROR SUMMARY: 56 errors from 11 contexts (suppressed: 1 from 1)
+==87688== 
+==87688== 2 errors in context 1 of 11:
+==87688== Invalid free() / delete / delete[] / realloc()
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401EF1: waiting_for_input (tests2.c:355)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== 
+==87688== 2 errors in context 2 of 11:
+==87688== Invalid read of size 1
+==87688==    at 0x483EF46: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x492AD14: __vfprintf_internal (vfprintf-internal.c:1688)
+==87688==    by 0x4913D3E: printf (printf.c:33)
+==87688==    by 0x401D01: print_tokens (tests2.c:302)
+==87688==    by 0x401ED5: waiting_for_input (tests2.c:354)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== 
+==87688== 2 errors in context 3 of 11:
+==87688== Invalid free() / delete / delete[] / realloc()
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401E0D: tokens_init (tests2.c:333)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== 
+==87688== 2 errors in context 4 of 11:
+==87688== Invalid read of size 1
+==87688==    at 0x401B7A: split_tokens (tests2.c:266)
+==87688==    by 0x401DED: tokens_init (tests2.c:332)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== 
+==87688== 2 errors in context 5 of 11:
+==87688== Invalid read of size 1
+==87688==    at 0x401B67: split_tokens (tests2.c:266)
+==87688==    by 0x401DED: tokens_init (tests2.c:332)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== 
+==87688== 2 errors in context 6 of 11:
+==87688== Invalid read of size 1
+==87688==    at 0x401A91: count_tokens (tests2.c:239)
+==87688==    by 0x401B1E: split_tokens (tests2.c:260)
+==87688==    by 0x401DED: tokens_init (tests2.c:332)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== 
+==87688== 2 errors in context 7 of 11:
+==87688== Invalid read of size 1
+==87688==    at 0x401A81: count_tokens (tests2.c:239)
+==87688==    by 0x401B1E: split_tokens (tests2.c:260)
+==87688==    by 0x401DED: tokens_init (tests2.c:332)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== 
+==87688== 5 errors in context 8 of 11:
+==87688== Invalid read of size 1
+==87688==    at 0x48436EE: mempcpy (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4941631: _IO_new_file_xsputn (fileops.c:1236)
+==87688==    by 0x4941631: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==87688==    by 0x49290FB: __vfprintf_internal (vfprintf-internal.c:1688)
+==87688==    by 0x4913D3E: printf (printf.c:33)
+==87688==    by 0x401D01: print_tokens (tests2.c:302)
+==87688==    by 0x401ED5: waiting_for_input (tests2.c:354)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13252 is 2 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== 
+==87688== 9 errors in context 9 of 11:
+==87688== Invalid read of size 1
+==87688==    at 0x48436E0: mempcpy (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4941631: _IO_new_file_xsputn (fileops.c:1236)
+==87688==    by 0x4941631: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==87688==    by 0x49290FB: __vfprintf_internal (vfprintf-internal.c:1688)
+==87688==    by 0x4913D3E: printf (printf.c:33)
+==87688==    by 0x401D01: print_tokens (tests2.c:302)
+==87688==    by 0x401ED5: waiting_for_input (tests2.c:354)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13250 is 0 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== 
+==87688== 14 errors in context 10 of 11:
+==87688== Invalid read of size 1
+==87688==    at 0x494170C: _IO_new_file_xsputn (fileops.c:1219)
+==87688==    by 0x494170C: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==87688==    by 0x49290FB: __vfprintf_internal (vfprintf-internal.c:1688)
+==87688==    by 0x4913D3E: printf (printf.c:33)
+==87688==    by 0x401D01: print_tokens (tests2.c:302)
+==87688==    by 0x401ED5: waiting_for_input (tests2.c:354)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13255 is 5 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+==87688== 
+==87688== 14 errors in context 11 of 11:
+==87688== Invalid read of size 1
+==87688==    at 0x483EF54: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x492AD14: __vfprintf_internal (vfprintf-internal.c:1688)
+==87688==    by 0x4913D3E: printf (printf.c:33)
+==87688==    by 0x401D01: print_tokens (tests2.c:302)
+==87688==    by 0x401ED5: waiting_for_input (tests2.c:354)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Address 0x4b13251 is 1 bytes inside a block of size 7 free'd
+==87688==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x401D58: clear_chars (tests2.c:314)
+==87688==    by 0x401DDF: tokens_init (tests2.c:330)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688==  Block was alloc'd at
+==87688==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==87688==    by 0x4013A4: ft_strtrim (tests2.c:84)
+==87688==    by 0x4015CB: create_token (tests2.c:123)
+==87688==    by 0x4018DE: split_quotes (tests2.c:188)
+==87688==    by 0x401DA4: tokens_init (tests2.c:327)
+==87688==    by 0x401EC8: waiting_for_input (tests2.c:353)
+==87688==    by 0x401F1E: main (tests2.c:364)
+==87688== 
+--87688-- 
+--87688-- used_suppression:     58 leak readline readline_supression:10 suppressed: 200,601 bytes in 215 blocks
+==87688== 
+==87688== ERROR SUMMARY: 56 errors from 11 contexts (suppressed: 1 from 1)
