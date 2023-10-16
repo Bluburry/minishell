@@ -1,6 +1,19 @@
-#ifndef MINISHEL_H
-# define MINISHEL_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/10 15:26:28 by jecarval          #+#    #+#             */
+/*   Updated: 2023/10/12 17:25:06 by jecarval         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#ifndef MINISHELL_H
+# define MINISHELL_H
+
+# include "libft.h"
 # include "structures.h"
 # include <term.h>
 # include <fcntl.h>
@@ -27,5 +40,11 @@ void	clear_chars(char **str, int size);
 void	add_new_env_var(t_env *env, const char *new);
 void	copy_char_matrix(char **mat, char **new_mat, int size);
 t_env	*create_env_struct(char **envp);
+void	pwd(char **envp);
+void	ft_echo(char **argv);
+void	env(char **envp);
+void	cd(int argc, char **argv, char **envp);
+void	parser(char *input);
+void	waiting_for_input();
 
 #endif

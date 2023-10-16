@@ -1,8 +1,19 @@
-#include "../include/minishell.h"
+#include "minishell.h"
+
+void	waiting_for_input()
+{
+	char	*rl;
+
+	while (1)
+	{
+		rl = readline("minishell > ");
+		printf("rl: %s\n", rl);
+		parser(rl);
+	}
+}
 
 int	main(int argc, char **argv, char **envp)
 {
-	/* char	*rl; */
 	t_env	*env;
 
 	(void)argc;
@@ -16,11 +27,7 @@ int	main(int argc, char **argv, char **envp)
 	printf("\n\nSearch: %s\n", get_env_var(env, "LANG"));
 	printf("\n\nSearch: %s\n", get_env_var(env, "PWD"));
 	printf("\n\nSearch: %s\n", get_env_var(env, "LS_COLORS"));
-	/* while (1)
-	{
-		rl = readline("minishell > ");
-		//printf("rl: %s\n", rl);
-	} */
-	clear_env_struct(env);
+	waiting_for_input();
+  clear_env_struct(env);
 	return (0);
 }
