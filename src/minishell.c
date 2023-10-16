@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 15:53:21 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/15 13:34:18 by jecarval         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 void	waiting_for_input()
@@ -26,17 +14,20 @@ void	waiting_for_input()
 
 int	main(int argc, char **argv, char **envp)
 {
-/* 	t_envi	*env; */
+	t_env	*env;
 
 	(void)argc;
 	(void)argv;
-	(void)envp;
-/* 	env = get_env_var(envp);
-	while (env != NULL)
+	env = create_env_struct(envp);
+	int i = -1;
+	while (++i < env->size)
 	{
-		printf("%s=%s\n", env->var, env->val);
-		env->next;
-	} */
+		printf("%s\n", env->vars[i]);
+	}
+	printf("\n\nSearch: %s\n", get_env_var(env, "LANG"));
+	printf("\n\nSearch: %s\n", get_env_var(env, "PWD"));
+	printf("\n\nSearch: %s\n", get_env_var(env, "LS_COLORS"));
 	waiting_for_input();
+  clear_env_struct(env);
 	return (0);
 }

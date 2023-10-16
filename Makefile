@@ -116,3 +116,4 @@ leaks: ./minishell
 #	gcc -nostartfiles -shared -o libft.so $(OBJS)
 
 .PHONY:	all clean fclean re debug rebug compile leaks
+
