@@ -6,7 +6,7 @@
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:26:35 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/15 21:25:01 by jecarval         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:49:57 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,43 @@ void	syntax_error(char c)
 	waiting_for_input();
 }
 
+int	count_strs(char const *str)
+{
+	int	i;
+	int	flag;
+
+	i = 0;
+	while (*str)
+	{
+		flag = is_token_end(*str);
+		if (flag != 0)
+		{
+			++i;
+			if (flag == -1)
+			{
+				i++;
+				str++;
+			}
+			while (*str && is_token_end(*str) != 0)
+			{
+				if (*str == '|' && flag == -1)
+					syntax_error('|');
+				else if (*str == '|')
+				{
+					flag = -1;
+					i++;
+				}
+				str++;
+			}
+			if (is_token_end(*(str - 1)) == 1 && !(*str))
+				i--;
+		}
+		else
+			str++;
+	}
+	return (++i);
+}
+
 char	*create_token(const char *str, size_t len)
 {
 	char			*token;
@@ -45,31 +82,45 @@ char	*create_token(const char *str, size_t len)
 	return (token);
 }
 
-char	**token_split(char *input, t_input *in)
+char	**token_split(char const *str)
 {
+	int		end;
 	char	**tokens;
 	char	**ptr;
-	char	*tmp;
-	int		len;
 
-	tmp = ft_strtrim(input, " \a\b\t\n\v\f\r");
-	input = tmp;
-	len = 0;
-	if (in->d_quote > 1 || in->s_quote > 1)
-		split_quotes(input);
+	tokens = malloc((count_strs(str) + 1) * sizeof(char *));
+	if (!tokens)
+		return (0);
+	ptr = tokens;
+	while (*str)
+	{
+		while (*str && is_token_end(*str) == 1)
+			str++;
+		end = 0;
+		while (str[end] && is_token_end(str[end]) == 0)
+			end++;
+		if (*str == '|')
+			end++;
+		if (end > 0)
+		{
+			*ptr = create_token(str, end);
+			ptr++;
+		}
+		str = str + end;
+	}
+	*ptr = NULL;
 	return (tokens);
 }
 
 void	parser(char *input)
 {
 	char	**tokens;
-	t_input	in;
 
 	if (!input || !(*input))
 		return ;
-	in = (t_input){0};
-	scan_input(input, &in);
-	tokens = token_split(input, &in);
+	tokens = token_split(input);
+/* 	if (ft_strnstrn(*tokens, "pwd", 4))
+		pwd(envars) */
 	while (*tokens)
 	{
 		printf("%s\n", *tokens);

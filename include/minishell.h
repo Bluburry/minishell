@@ -6,7 +6,7 @@
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:26:28 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/12 17:25:06 by jecarval         ###   ########.fr       */
+/*   Updated: 2023/10/15 21:09:22 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,18 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+typedef struct s_input
+{
+	int	s_quote;
+	int	d_quote;
+	int	s_red_in;
+	int	s_red_out;
+	int	d_red_in;
+	int	d_red_out;
+	int	dollar;
+	int	pipe;
+}	t_input;
+
 int		get_env_start_size(char **envp);
 int		ft_strchrstr(const char *str, char c, const char *str_find);
 char	*str_after_char(char *str, char c);
@@ -46,5 +58,9 @@ void	env(char **envp);
 void	cd(int argc, char **argv, char **envp);
 void	parser(char *input);
 void	waiting_for_input();
+void	syntax_error(char c);
+int		is_token_end(char c);
+char	**split_quotes(char *input);
+void	scan_input(char *input, t_input *in);
 
 #endif
