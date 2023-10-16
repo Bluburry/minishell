@@ -1,2 +1,5 @@
 *.o
 minishell
+lib
+.vscode
+.vscode/*
