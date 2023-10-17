@@ -262,7 +262,7 @@ int	scan_for_char(char **input, char c)
 	return (0);
 }
 
-char	**split_tokens(char **input, char c)
+char	**split_char_tokens(char **input, char c)
 {
 	int		end;
 	char	**tokens;
@@ -329,9 +329,9 @@ char	**tokens_init(char *input)
 	free(input);
 	input = tmp;
 	ptr = split_quotes(input);
-	tokens = split_tokens(ptr, '|');
-	//tokens = split_tokens(tokens, '<'); //!algo de errado nao esta certo
-	//tokens = split_tokens(tokens, '>'); //!algo de errado nao esta certo
+	tokens = split_char_tokens(ptr, '|');
+	//tokens = split_char_tokens(tokens, '<'); //!algo de errado nao esta certo
+	//tokens = split_char_tokens(tokens, '>'); //!algo de errado nao esta certo
 	return (tokens);
 }
 

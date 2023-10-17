@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   split_quote_tokens.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 21:07:50 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/15 21:08:57 by jecarval         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 int	count_tokens_quotes(char *input)
@@ -30,7 +18,6 @@ int	count_tokens_quotes(char *input)
 	while (*input && *input != c)
 		input++;
 	if (*input && *(input + 1))
-
 		len += count_tokens_quotes(++input);
 	len++;
 	return (len);
@@ -56,16 +43,16 @@ int	quotes_end(char *input)
 	return (end);
 }
 
-char	**split_quotes(char *input)
+char	**split_quotes_tokens(char *input)
 {
-	char	**q_tokens;
+	char	**tokens;
 	char	**ptr;
 	int		end;
 
-	q_tokens = malloc((count_tokens_quotes(input) + 1) * sizeof(char *));
-	if (!q_tokens)
+	tokens = malloc((count_tokens_quotes(input) + 1) * sizeof(char *));
+	if (!tokens)
 		return (NULL);
-	ptr = q_tokens;
+	ptr = tokens;
 	while (*input)
 	{
 		end = 0;
@@ -73,10 +60,13 @@ char	**split_quotes(char *input)
 		if (end != 0)
 		{
 			*ptr = create_token(input, end);
-			ptr++;
+			if (**ptr)
+				ptr++;
+			else
+				free(*ptr);
 		}
 		input += end;
 	}
 	*ptr = NULL;
-	return (q_tokens);
+	return (tokens);
 }

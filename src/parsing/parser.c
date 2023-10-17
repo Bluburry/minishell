@@ -1,23 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 15:26:35 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/15 21:25:01 by jecarval         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 int	is_token_end(char c)
 {
 	if ((c >= '\t' && c <= '\r') || c == ' ')
 		return (1);
-	else if (c == '|')
-		return (-1);
+/* 	else if (c == '|')
+		return (-1); */
 	return (0);
 }
 
@@ -30,49 +18,76 @@ void	syntax_error(char c)
 char	*create_token(const char *str, size_t len)
 {
 	char			*token;
+	char			*tmp;
 	unsigned int	i;
 
-	token = malloc((len + 1) * sizeof(char));
-	if (token == 0)
+	tmp = malloc((len + 1) * sizeof(char));
+	if (tmp == 0)
 		return (0);
 	i = 0;
-	while (i < len && *str)
+	while (i < len && str[i])
 	{
-		token[i] = str[i];
+		tmp[i] = str[i];
 		i++;
 	}
-	token[i] = '\0';
+	tmp[i] = '\0';
+	token = ft_strtrim(tmp, " \a\b\t\n\v\f\r");
+	//free(tmp); //!!causing double free
 	return (token);
 }
 
-char	**token_split(char *input, t_input *in)
+void	print_tokens(char **tokens)
 {
-	char	**tokens;
-	char	**ptr;
-	char	*tmp;
-	int		len;
-
-	tmp = ft_strtrim(input, " \a\b\t\n\v\f\r");
-	input = tmp;
-	len = 0;
-	if (in->d_quote > 1 || in->s_quote > 1)
-		split_quotes(input);
-	return (tokens);
-}
-
-void	parser(char *input)
-{
-	char	**tokens;
-	t_input	in;
-
-	if (!input || !(*input))
-		return ;
-	in = (t_input){0};
-	scan_input(input, &in);
-	tokens = token_split(input, &in);
 	while (*tokens)
 	{
 		printf("%s\n", *tokens);
 		tokens++;
 	}
 }
+
+char	**tokens_init(char *input)
+{
+	char	**tokens;
+	char	**ptr;
+	char	*tmp;
+	char	**ptr2;
+	char	**ptr3;
+
+	tmp = ft_strtrim(input, " \a\b\t\n\v\f\r");
+	free(input);
+	ptr = split_quotes_tokens(tmp);
+	printf("\n\n--quotes--\n");
+	print_tokens(ptr);
+	ptr2 = split_space_tokens(ptr);
+	printf("\n\n--spaces--\n");
+	print_tokens(ptr2);
+	ptr3 = split_inout_tokens(ptr2);
+	printf("\n\n--inout--\n");
+	print_tokens(ptr3);
+	tokens = split_char_tokens(ptr3, '|');
+	printf("\n\n--char--\n");
+	print_tokens(tokens);
+	printf("\n\n--returned--\n");
+	//free(ptr);
+	//ptr =
+	return (tokens);
+}
+
+void	parser(char *input)
+{
+	char	**tokens;
+
+	if (!input || !(*input))
+		return ;
+	tokens = tokens_init(input);
+	while (*tokens)
+	{
+		printf("%s\n", *tokens);
+		tokens++;
+	}
+	//!!! call funtion that executes instructions HERE
+	//free(input); //!! causing double free
+}
+
+
+//   hsdfg kfg ikdf|fdsf | 648"dfhgkdjgdf'g"                  dfgdrgdh>>dg <gdf << |> ''      

@@ -14,18 +14,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-typedef struct s_input
-{
-	int	s_quote;
-	int	d_quote;
-	int	s_red_in;
-	int	s_red_out;
-	int	d_red_in;
-	int	d_red_out;
-	int	dollar;
-	int	pipe;
-}	t_input;
-
+/* 
 size_t	ft_strlen(const char *s)
 {
 	int	i;
@@ -79,18 +68,45 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	str[i] = '\0';
 	return (str);
+} */
+/* void	waiting_for_input(void);
+
+void	syntax_error(char c)
+{
+	printf("syntax error near unexpected token `%c'\n", c);
+	waiting_for_input();
+} */
+
+char	*ft_strstr(const char *big, const char *little)
+{
+	size_t	i;
+	size_t	j;
+
+	if (!(*little))
+		return ((char *)big);
+	i = 0;
+	while (big[i])
+	{
+		j = 0;
+		while (little[j] && big[i + j] && big[i + j] == little[j])
+			j++;
+		if (!(little[j]))
+			return ((char *)&big[i]);
+		i++;
+	}
+	return (0);
 }
 
-int	is_token_end(char c)
+/* int	is_token_end(char c)
 {
 	if ((c >= '\t' && c <= '\r') || c == ' ')
 		return (1);
 	else if (c == '|')
 		return (-1);
 	return (0);
-}
+} */
 
-char	*create_token(const char *str, size_t len)
+/* char	*create_token(const char *str, size_t len)
 {
 	char			*token;
 	char			*tmp;
@@ -109,9 +125,9 @@ char	*create_token(const char *str, size_t len)
 	token = ft_strtrim(tmp, " \a\b\t\n\v\f\r");
 	free(tmp);
 	return (token);
-}
+} */
 
-int	count_tokens_quotes(char *input)
+/* int	count_tokens_quotes(char *input)
 {
 	int		len;
 	char	c;
@@ -129,13 +145,12 @@ int	count_tokens_quotes(char *input)
 	while (*input && *input != c)
 		input++;
 	if (*input && *(input + 1))
-
 		len += count_tokens_quotes(++input);
 	len++;
 	return (len);
-}
+} */
 
-int	quotes_end(char *input)
+/* int	quotes_end(char *input)
 {
 	int	end;
 
@@ -153,18 +168,18 @@ int	quotes_end(char *input)
 			end++;
 	}
 	return (end);
-}
-
+} */
+/* 
 char	**split_quotes(char *input)
 {
-	char	**q_tokens;
+	char	**tokens;
 	char	**ptr;
 	int		end;
 
-	q_tokens = malloc((count_tokens_quotes(input) + 1) * sizeof(char *));
-	if (!q_tokens)
+	tokens = malloc((count_tokens_quotes(input) + 1) * sizeof(char *));
+	if (!tokens)
 		return (NULL);
-	ptr = q_tokens;
+	ptr = tokens;
 	while (*input)
 	{
 		end = 0;
@@ -180,9 +195,9 @@ char	**split_quotes(char *input)
 		input += end;
 	}
 	*ptr = NULL;
-	return (q_tokens);
-}
- 
+	return (tokens);
+} */
+
 int	count_strings(char **strs)
 {
 	int	i;
@@ -196,22 +211,19 @@ int	count_strings(char **strs)
 	return (i);
 }
 
-int	move_in_str(char *str, char c)
+/* int	move_in_str(char *str, char c)
 {
 	int	i;
 
 	i = 0;
+	while (str[i] && str[i] != c)
+		i++;
 	if (str[i] == c)
 		i++;
-	else
-	{
-		while (str[i] && str[i] != c)
-			i++;
-	}
 	return (i);
 }
 
-int	count_tokens(char **input, char c)
+int	count_char_tokens(char **input, char c)
 {
 	int		len;
 	int		i;
@@ -234,16 +246,100 @@ int	count_tokens(char **input, char c)
 		}
 	}
 	return (len);
-}
+} */
 
-char	**split_tokens(char **input, char c)
+/* int	count_inouts(char *str, char c)
+{
+	int	len;
+
+	len = 0;
+	while (*str)
+	{
+		str += move_in_str(str, c);
+		if (*str == c && *(str + 1) == c)
+			syntax_error(c);
+		if (*(str - 1) == c)
+			len++;
+		if (*(str - 1) == c && *str == c)
+			str++;	
+	}
+	return (len);
+} */
+
+/* int	count_inout_tokens(char **input)
+{
+	int		len;
+	int		i;
+	char	*tmp;
+
+	len = 0;
+	i = 0;
+	while (input[i])
+	{
+		tmp = input[i++];
+		if (*tmp == '\'' || *tmp == '\"')
+			len++;
+		else
+			len += count_inouts(tmp, '<') + count_inouts(tmp, '>');
+	}
+	return (len);
+} */
+
+/* char	**split_inout(char **input)
 {
 	int		end;
 	char	**tokens;
 	char	**ptr;
 	char	*str;
 
-	tokens = malloc((count_tokens(input, c) + 1) * sizeof(char *));
+	tokens = malloc((count_inout_tokens(input) + 1) * sizeof(char *));
+	if (!tokens)
+		return (0);
+	ptr = tokens;
+	while (*input)
+	{
+		if (**input == '\'' || **input == '\"')
+		{
+			*ptr = *input;
+			ptr++;
+		}
+		else
+		{
+			str = *input;
+			while (*str)
+			{
+				end = 0;
+				if ((*str == '<' && *(str + 1) == '<') || (*str == '>' && *(str + 1) == '>'))
+					end = 2;
+				else if (*str == '<' || *str == '>')
+					end = 1;
+				else
+				{
+					while (str[end] && str[end] != '<' && str[end] != '>')
+						end++;
+				}
+				*ptr = create_token(str, end);
+				if (**ptr)
+					ptr++;
+				else
+					free(*ptr);
+				str += end;
+			}
+		}
+		input++;
+	}
+	*ptr = NULL;
+	return (tokens);
+} */
+
+/* char	**split_char_tokens(char **input, char c)
+{
+	int		end;
+	char	**tokens;
+	char	**ptr;
+	char	*str;
+
+	tokens = malloc((count_char_tokens(input, c) + 1) * sizeof(char *));
 	if (!tokens)
 		return (0);
 	ptr = tokens;
@@ -279,33 +375,119 @@ char	**split_tokens(char **input, char c)
 	}
 	*ptr = NULL;
 	return (tokens);
-}
+} */
 
-void	print_tokens(char **tokens)
+/* void	print_tokens(char **tokens)
 {
 	while (*tokens)
 	{
 		printf("%s\n", *tokens);
 		tokens++;
 	}
-}
+} */
 
-char	**tokens_init(char *input)
+/* int	count_words_line(char *str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if ((str[i] < '\a' || str[i] > '\r') && str[i] != ' ')
+		{
+			j++;
+			while (str[i] && (str[i] < '\a' || str[i] > '\r') && str[i] != ' ')
+				i++;
+		}
+		else
+			i++;
+	}
+	return (j);
+} */
+/* 
+int	count_words_total(char **input)
+{
+	int		len;
+	int		i;
+	char	*tmp;
+
+	len = 0;
+	i = 0;
+	while (input[i])
+	{
+		tmp = input[i++];
+		if (*tmp == '\'' || *tmp == '\"')
+			len++;
+		else
+			len += count_words_line(tmp);
+	}
+	return (len);
+} */
+
+/* char	**split_spaces(char **input)
+{
+	int		end;
+	char	**tokens;
+	char	**ptr;
+	char	*str;
+
+	tokens = malloc((count_words_total(input) + 1) * sizeof(char *));
+	if (!tokens)
+		return (0);
+	ptr = tokens;
+	while (*input)
+	{
+		if (**input == '\'' || **input == '\"')
+		{
+			*ptr = *input;
+			ptr++;
+		}
+		else
+		{
+			str = *input;
+			while (*str)
+			{
+				end = 0;
+				while (str[end] && ((str[end] > '\a' & str[end] < '\r') || str[end] == ' '))
+					end++;
+				while (str[end] && (str[end] < '\a' || str[end] > '\r') && str[end] != ' ')
+					end++;
+				*ptr = create_token(str, end);
+				if (**ptr)
+					ptr++;
+				else
+					free(*ptr);
+				str += end;
+			}
+		}
+		input++;
+	}
+	*ptr = NULL;
+	return (tokens);
+} */
+
+/* char	**tokens_init(char *input)
 {
 	char	**tokens;
 	char	**ptr;
 	char	*tmp;
+	char	**ptr2;
+	char	**ptr3;
 
 	tmp = ft_strtrim(input, " \a\b\t\n\v\f\r");
 	free(input);
-	input = tmp;
+	input = tmp; //!! where is free tmp?
 	ptr = split_quotes(input);
-	tokens = split_tokens(ptr, '|');
-	free(ptr);
+	ptr2 = split_spaces(ptr);
+	ptr3 = split_inout(ptr2);
+	tokens = split_char_tokens(ptr3, '|');
+	//free(ptr);
 	//ptr =
 	return (tokens);
-}
-
+} */
+/* 
 void	waiting_for_input(void)
 {
 	char	*rl;
@@ -330,4 +512,4 @@ int	main(int argc, char **argv, char **envp)
 	(void)envp;
 	waiting_for_input();
 	return (0);
-}
+} */
