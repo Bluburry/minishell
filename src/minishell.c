@@ -8,6 +8,8 @@ void	waiting_for_input()
 	{
 		rl = readline("minishell > ");
 		printf("rl: %s\n", rl);
+		if (ft_strncmp(rl, "exit", 4))
+			break ;
 		parser(rl);
 	}
 }
@@ -24,10 +26,19 @@ int	main(int argc, char **argv, char **envp)
 	{
 		printf("%s\n", env->vars[i]);
 	}
+	add_new_env_var(env, "TEST=24");
 	printf("\n\nSearch: %s\n", get_env_var(env, "LANG"));
 	printf("\n\nSearch: %s\n", get_env_var(env, "PWD"));
 	printf("\n\nSearch: %s\n", get_env_var(env, "LS_COLORS"));
-	waiting_for_input();
-  clear_env_struct(env);
+	printf("\n\nSearch: %s\n", get_env_var(env, "TEST"));
+	add_new_env_var(env, "TEST=42");
+	printf("\n\nSearch: %s\n", get_env_var(env, "TEST"));
+	i = -1;
+	while (++i < env->size)
+	{
+		printf("%s\n", env->vars[i]);
+	}
+	//waiting_for_input();
+	clear_env_struct(env);
 	return (0);
 }

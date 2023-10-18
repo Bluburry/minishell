@@ -32,19 +32,21 @@
 
 int		get_env_start_size(char **envp);
 int		ft_strchrstr(const char *str, char c, const char *str_find);
+int		env_already_exists(t_env *env, const char *new);
 char	*str_after_char(char *str, char c);
 char	*get_env_var(t_env *env, const char *str);
+void	pwd(char **envp);
+void	env(char **envp);
+void	waiting_for_input();
+void	parser(char *input);
+void	ft_echo(char **argv);
 void	clear_env_struct(t_env *env);
 void	resize_env_struct(t_env *env);
 void	clear_chars(char **str, int size);
+void	cd(int argc, char **argv, char **envp);
+void	alter_env_var(t_env *env, const char *new, int i);
 void	add_new_env_var(t_env *env, const char *new);
 void	copy_char_matrix(char **mat, char **new_mat, int size);
 t_env	*create_env_struct(char **envp);
-void	pwd(char **envp);
-void	ft_echo(char **argv);
-void	env(char **envp);
-void	cd(int argc, char **argv, char **envp);
-void	parser(char *input);
-void	waiting_for_input();
 
 #endif

@@ -46,6 +46,7 @@ LIB			=	-lreadline -L. -lft
 SRC_ROOT_DIR		=	
 PARSING_DIR			=	parsing/
 UTILS_DIR			=	utils/
+ENV_STRUC			=	struct_handling/
 
 
 #Source files
@@ -53,10 +54,11 @@ UTILS_DIR			=	utils/
 SRC_ROOT	=	minishell
 PARSING		=	parser
 UTILS		=	echo pwd utils
+ENV_VAR		=	alter_env clear_env find_env_var start_env_vars
 
 
 SRC_FILES	=	$(addprefix $(SRC_ROOT_DIR),$(SRC_ROOT)) $(addprefix $(PARSING_DIR),$(PARSING))\
-				$(addprefix $(UTILS_DIR),$(UTILS)) 
+				$(addprefix $(UTILS_DIR),$(UTILS)) $(addprefix $(ENV_STRUC),$(ENV_VAR))
 
 SRCS 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -83,6 +85,7 @@ $(OBJ_FILES):
 	@mkdir -p $(OBJ_DIR)$(SRC_ROOT_DIR)
 	@mkdir -p $(OBJ_DIR)$(PARSING_DIR)
 	@mkdir -p $(OBJ_DIR)$(UTILS_DIR)
+	@mkdir -p $(OBJ_DIR)$(ENV_STRUC)
 
 clean:
 	@$(RM) -r $(OBJ_DIR)

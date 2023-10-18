@@ -24,11 +24,18 @@
 		{
 			"type": "cppdbg",
 			"request": "launch",
-			"name": "function test home",
+			"name": "function test 42",
 			"program": "/nfs/homes/tpinto-e/common_core/minishell/src/parsing/a.out",
 			"args": [],
 			"cwd": "/nfs/homes/tpinto-e/common_core/minishell/src/parsing",
-			
+		},
+		{
+			"type": "cppdbg",
+			"request": "launch",
+			"name": "function test home",
+			"program": "/home/bluburry/Prog/minishell/src/parsing/a.out",
+			"args": [],
+			"cwd": "/home/bluburry/Prog/minishell/src/parsing",
 		},
 	]
 }

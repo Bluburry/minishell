@@ -250,6 +250,35 @@ int	count_tokens(char **input, char c)
 	return (len);
 }
 
+char	*ft_strchr(const char *s, int c)
+{
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen(s) + 1;
+	while (i < len)
+	{
+		if (s[i] == (char)c)
+			return ((char *) &s[i]);
+		i++;
+	}
+	return (0);
+}
+
+//! NEW FUNCTION
+// CHECKS IF THE SPLITTER C EXISTS IN THE STRING ARRAY
+int	check_for_splitter(char **input, char c)
+{
+	while (*input)
+	{
+		if (ft_strchr(*input, c))
+			return (1);
+		input++;
+	}
+	return (0);
+}
+
 char	**split_tokens(char **input, char c)
 {
 	int		end;
@@ -257,6 +286,8 @@ char	**split_tokens(char **input, char c)
 	char	**ptr;
 	char	*str;
 
+	if (!check_for_splitter(input, c))
+		return NULL;
 	tokens = malloc((count_tokens(input, c) + 1) * sizeof(char *));
 	if (!tokens)
 		return (0);
@@ -323,25 +354,38 @@ char	**tokens_init(char *input)
 	char	*tmp;
 
 	tmp = ft_strtrim(input, " \a\b\t\n\v\f\r");
-	free(input);
+	//free(input);
 	ptr = split_quotes(tmp);
 	free(tmp);
 	tokens = split_tokens(ptr, '|');
-	clear_chars(ptr, count_strings(ptr));
-	//free(ptr);
+	if (tokens)
+		clear_chars(ptr, count_strings(ptr));
+	else
+		tokens = ptr;
 	ptr = split_tokens(tokens, '<');
-	clear_chars(tokens, count_strings(tokens));
+	if (ptr)
+		clear_chars(tokens, count_strings(tokens));
+	else
+		ptr = tokens;
 	//free(tokens);
 	return (ptr);
 }
 
 void	waiting_for_input(void)
 {
-	char	*rl;
+	char	*rl = "asd ! ad| ecj \"asd\" < asda";
 	char	*tmp;
 	char	**tokens;
 
-	while (1)
+	//printf("rl: |%s|\n", rl);
+	tmp = ft_strtrim(rl, " \a\b\t\n\v\f\r");
+	printf("trimmed: |%s|\n", tmp);
+	free(tmp);
+	tokens = tokens_init(rl);
+	print_tokens(tokens);
+	clear_chars(tokens, count_strings(tokens));
+
+	/* while (1)
 	{
 		rl = readline("minishell > ");
 		if (!ft_strncmp(rl, "exit", ft_strlen("exit")))
@@ -352,8 +396,8 @@ void	waiting_for_input(void)
 		free(tmp);
 		tokens = tokens_init(rl);
 		print_tokens(tokens);
-		clear_chars(tokens, count_strings(tokens));
-	}
+		//clear_chars(tokens, count_strings(tokens));
+	} */
 }
 
 int	main(int argc, char **argv, char **envp)
