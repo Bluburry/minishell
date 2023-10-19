@@ -13,7 +13,7 @@ int	count_inouts(char *str, char c)
 		if (*(str - 1) == c)
 			len++;
 		if (*(str - 1) == c && *str == c)
-			str++;	
+			str++;
 	}
 	return (len);
 }
@@ -26,11 +26,15 @@ int	count_inout_tokens(char **input)
 	int		rtn;
 
 	len = 0;
-	i = 0;
-	while (input[i])
+	i = -1;
+	while (input[++i])
 	{
-		tmp = input[i++];
-		if (*tmp == '\'' || *tmp == '\"')
+		tmp = input[i];
+		printf("ai %s\n", input[i]);
+//
+/* 		printf("caralho %s\n", tmp);
+		printf("imdex: %d\n", i); */
+		if (tmp[0] == '\'' || tmp[0] == '\"')
 			len++;
 		else
 		{
@@ -38,8 +42,7 @@ int	count_inout_tokens(char **input)
 				len++;
 			if((rtn = count_inouts(tmp, '<') + count_inouts(tmp, '>')))
 			{
-
-				if(tmp[ft_strlen(input[i]) - 1] != '<' && tmp[ft_strlen(input[i]) - 1] != '>')
+				if (tmp[ft_strlen(tmp) - 1] != '<' && tmp[ft_strlen(tmp) - 1] != '>')
 					len++;
 				len += rtn;
 			}
@@ -63,7 +66,7 @@ char	**split_inout_tokens(char **input)
 	{
 		if (**input == '\'' || **input == '\"')
 		{
-			*ptr = *input;
+			*ptr = ft_strdup(*input);
 			ptr++;
 		}
 		else

@@ -18,7 +18,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-void	waiting_for_input();
+void	waiting_for_input(void);
 
 //Environment variables functions
 int		get_env_start_size(char **envp);

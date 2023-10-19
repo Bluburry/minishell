@@ -300,7 +300,7 @@ int	count_char_tokens(char **input, char c)
 	{
 		if (**input == '\'' || **input == '\"')
 		{
-			*ptr = *input;
+			*ptr = ft_strdup(*input);
 			ptr++;
 		}
 		else
@@ -347,7 +347,7 @@ int	count_char_tokens(char **input, char c)
 	{
 		if (**input == '\'' || **input == '\"')
 		{
-			*ptr = *input;
+			*ptr = ft_strdup(*input);
 			ptr++;
 		}
 		else
@@ -441,7 +441,7 @@ int	count_words_total(char **input)
 	{
 		if (**input == '\'' || **input == '\"')
 		{
-			*ptr = *input;
+			*ptr = ft_strdup(*input);
 			ptr++;
 		}
 		else

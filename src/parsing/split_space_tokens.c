@@ -55,7 +55,7 @@ char	**split_space_tokens(char **input)
 	{
 		if (**input == '\'' || **input == '\"')
 		{
-			*ptr = *input;
+			*ptr = ft_strdup(*input);
 			ptr++;
 		}
 		else

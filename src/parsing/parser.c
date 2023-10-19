@@ -32,10 +32,20 @@ char	*create_token(const char *str, size_t len)
 	}
 	tmp[i] = '\0';
 	token = ft_strtrim(tmp, " \a\b\t\n\v\f\r");
-	//free(tmp); //!!causing double free
+	free(tmp); //!!causing double free
 	return (token);
 }
 
+void	cleaner(char **ptr)
+{	
+	int	i;
+
+	i = 0;
+	while (ptr[i])
+		free(ptr[i++]);
+	free(ptr);
+}
+/* 
 void	print_tokens(char **tokens)
 {
 	while (*tokens)
@@ -43,7 +53,7 @@ void	print_tokens(char **tokens)
 		printf("%s\n", *tokens);
 		tokens++;
 	}
-}
+} */
 
 char	**tokens_init(char *input)
 {
@@ -51,22 +61,26 @@ char	**tokens_init(char *input)
 	char	**ptr;
 	char	*tmp;
 	char	**ptr2;
-	char	**ptr3;
 
 	tmp = ft_strtrim(input, " \a\b\t\n\v\f\r");
 	free(input);
 	ptr = split_quotes_tokens(tmp);
+	free(tmp);
 	printf("\n\n--quotes--\n");
-	print_tokens(ptr);
+	//print_tokens(ptr);
 	ptr2 = split_space_tokens(ptr);
+	cleaner(ptr);
+	//free (ptr);
 	printf("\n\n--spaces--\n");
-	print_tokens(ptr2);
-	ptr3 = split_inout_tokens(ptr2);
+	//print_tokens(ptr2);
+	ptr = split_inout_tokens(ptr2);
+	cleaner(ptr2);
 	printf("\n\n--inout--\n");
-	print_tokens(ptr3);
-	tokens = split_char_tokens(ptr3, '|');
+//	print_tokens(ptr);
+	tokens = split_char_tokens(ptr, '|');
+	cleaner(ptr);
 	printf("\n\n--char--\n");
-	print_tokens(tokens);
+//	print_tokens(tokens);
 	printf("\n\n--returned--\n");
 	//free(ptr);
 	//ptr =
@@ -80,11 +94,7 @@ void	parser(char *input)
 	if (!input || !(*input))
 		return ;
 	tokens = tokens_init(input);
-	while (*tokens)
-	{
-		printf("%s\n", *tokens);
-		tokens++;
-	}
+	cleaner(tokens);
 	//!!! call funtion that executes instructions HERE
 	//free(input); //!! causing double free
 }
