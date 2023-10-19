@@ -54,7 +54,7 @@ ENV_STRUC			=	struct_handling/
 SRC_ROOT	=	minishell
 PARSING		=	parser
 UTILS		=	echo pwd utils
-ENV_VAR		=	alter_env clear_env find_env_var start_env_vars
+ENV_VAR		=	alter_env clear_env find_env_var start_env_vars print_env
 
 
 SRC_FILES	=	$(addprefix $(SRC_ROOT_DIR),$(SRC_ROOT)) $(addprefix $(PARSING_DIR),$(PARSING))\

@@ -1,6 +1,26 @@
 #include "../../include/minishell.h"
 
 /**
+ * @brief removes an environmental variable from the strucutre
+ * @param env structure
+ * @param var variable to remove
+*/
+void	unset_env_var(t_env *env, char *var)
+{
+	int		i;
+	char	**temp_var;
+
+	i = index_of_str(env, var);
+	if (i >= env->size)
+		return ;
+	temp_var = env->vars;
+	env->vars = (char **) malloc(sizeof(char *) * env->capacity);
+	copy_char_matrix(temp_var, env->vars, env->size, i);
+	clear_chars(temp_var, env->size);
+	env->size--;
+}
+
+/**
  * @brief frees an array of strings with a given size
  * @param str array of strings to free
  * @param size size of array

@@ -56,7 +56,7 @@ void	resize_env_struct(t_env *env)
 	env->capacity += 20;
 	new_vars = (char **) malloc(sizeof(char *) * env->capacity);
 	env->vars = new_vars;
-	copy_char_matrix(old_vars, env->vars, env->size);
+	copy_char_matrix(old_vars, env->vars, env->size, -1);
 	clear_chars(old_vars, env->size);
 }
 

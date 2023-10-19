@@ -31,8 +31,9 @@
 # include <readline/history.h>
 
 int		get_env_start_size(char **envp);
-int		ft_strchrstr(const char *str, char c, const char *str_find);
+int		index_of_str(t_env *env, const char *str);
 int		env_already_exists(t_env *env, const char *new);
+int		ft_strchrstr(const char *str, char c, const char *str_find);
 char	*str_after_char(char *str, char c);
 char	*get_env_var(t_env *env, const char *str);
 void	pwd(char **envp);
@@ -43,10 +44,11 @@ void	ft_echo(char **argv);
 void	clear_env_struct(t_env *env);
 void	resize_env_struct(t_env *env);
 void	clear_chars(char **str, int size);
+void	unset_env_var(t_env *env, char *var);
 void	cd(int argc, char **argv, char **envp);
-void	alter_env_var(t_env *env, const char *new, int i);
 void	add_new_env_var(t_env *env, const char *new);
-void	copy_char_matrix(char **mat, char **new_mat, int size);
+void	alter_env_var(t_env *env, const char *new, int i);
+void	copy_char_matrix(char **mat, char **new_mat, int size, int skip);
 t_env	*create_env_struct(char **envp);
 
 #endif

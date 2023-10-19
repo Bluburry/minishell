@@ -22,17 +22,18 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	env = create_env_struct(envp);
 	int i = -1;
+	add_new_env_var(env, "TEST=24");
 	while (++i < env->size)
 	{
 		printf("%s\n", env->vars[i]);
 	}
-	add_new_env_var(env, "TEST=24");
 	printf("\n\nSearch: %s\n", get_env_var(env, "LANG"));
 	printf("\n\nSearch: %s\n", get_env_var(env, "PWD"));
 	printf("\n\nSearch: %s\n", get_env_var(env, "LS_COLORS"));
 	printf("\n\nSearch: %s\n", get_env_var(env, "TEST"));
 	add_new_env_var(env, "TEST=42");
 	printf("\n\nSearch: %s\n", get_env_var(env, "TEST"));
+	unset_env_var(env, "TEST");
 	i = -1;
 	while (++i < env->size)
 	{
