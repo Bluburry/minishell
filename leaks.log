@@ -1,14 +1,61 @@
-==9342== Memcheck, a memory error detector
-==9342== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==9342== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==9342== Command: ./minishell
-==9342== Parent PID: 9332
-==9342== 
-==9342== 
-==9342== HEAP SUMMARY:
-==9342==     in use at exit: 0 bytes in 0 blocks
-==9342==   total heap usage: 146 allocs, 146 frees, 10,228 bytes allocated
-==9342== 
-==9342== All heap blocks were freed -- no leaks are possible
-==9342== 
-==9342== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==74224== Memcheck, a memory error detector
+==74224== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==74224== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==74224== Command: ./minishell
+==74224== Parent PID: 74214
+==74224== 
+==74224== Invalid write of size 1
+==74224==    at 0x10A35A: memcpy_export (print_export.c:52)
+==74224==    by 0x10A4E8: copy_char_matrix_ordered (print_export.c:78)
+==74224==    by 0x10A546: export_string (print_export.c:87)
+==74224==    by 0x10945B: main (minishell.c:46)
+==74224==  Address 0x4b27ef3 is 0 bytes after a block of size 67 alloc'd
+==74224==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==74224==    by 0x10A46F: copy_char_matrix_ordered (print_export.c:76)
+==74224==    by 0x10A546: export_string (print_export.c:87)
+==74224==    by 0x10945B: main (minishell.c:46)
+==74224== 
+==74224== Invalid read of size 1
+==74224==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==74224==    by 0x4944E67: puts (ioputs.c:35)
+==74224==    by 0x109487: main (minishell.c:50)
+==74224==  Address 0x4b27ef3 is 0 bytes after a block of size 67 alloc'd
+==74224==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==74224==    by 0x10A46F: copy_char_matrix_ordered (print_export.c:76)
+==74224==    by 0x10A546: export_string (print_export.c:87)
+==74224==    by 0x10945B: main (minishell.c:46)
+==74224== 
+==74224== 
+==74224== HEAP SUMMARY:
+==74224==     in use at exit: 0 bytes in 0 blocks
+==74224==   total heap usage: 300 allocs, 300 frees, 18,487 bytes allocated
+==74224== 
+==74224== All heap blocks were freed -- no leaks are possible
+==74224== 
+==74224== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==74224== 
+==74224== 1 errors in context 1 of 2:
+==74224== Invalid read of size 1
+==74224==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==74224==    by 0x4944E67: puts (ioputs.c:35)
+==74224==    by 0x109487: main (minishell.c:50)
+==74224==  Address 0x4b27ef3 is 0 bytes after a block of size 67 alloc'd
+==74224==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==74224==    by 0x10A46F: copy_char_matrix_ordered (print_export.c:76)
+==74224==    by 0x10A546: export_string (print_export.c:87)
+==74224==    by 0x10945B: main (minishell.c:46)
+==74224== 
+==74224== 
+==74224== 1 errors in context 2 of 2:
+==74224== Invalid write of size 1
+==74224==    at 0x10A35A: memcpy_export (print_export.c:52)
+==74224==    by 0x10A4E8: copy_char_matrix_ordered (print_export.c:78)
+==74224==    by 0x10A546: export_string (print_export.c:87)
+==74224==    by 0x10945B: main (minishell.c:46)
+==74224==  Address 0x4b27ef3 is 0 bytes after a block of size 67 alloc'd
+==74224==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==74224==    by 0x10A46F: copy_char_matrix_ordered (print_export.c:76)
+==74224==    by 0x10A546: export_string (print_export.c:87)
+==74224==    by 0x10945B: main (minishell.c:46)
+==74224== 
+==74224== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

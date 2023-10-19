@@ -21,8 +21,8 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	env = create_env_struct(envp);
-	int i = -1;
 	add_new_env_var(env, "TEST=24");
+	int i = -1;
 	while (++i < env->size)
 	{
 		printf("%s\n", env->vars[i]);
@@ -34,11 +34,23 @@ int	main(int argc, char **argv, char **envp)
 	add_new_env_var(env, "TEST=42");
 	printf("\n\nSearch: %s\n", get_env_var(env, "TEST"));
 	unset_env_var(env, "TEST");
+	char **test = env_string(env);
+	printf("\n\ntest env_string:\n");
 	i = -1;
 	while (++i < env->size)
 	{
-		printf("%s\n", env->vars[i]);
+		printf("%s\n", test[i]);
 	}
+	clear_chars(test, env->size);
+	printf("\n\ntest export_string:\n");
+	test = export_string(env);
+	i = -1;
+	while (++i < env->size)
+	{
+		printf("%s\n", test[i]);
+	}
+	clear_chars(test, env->size);
+
 	//waiting_for_input();
 	clear_env_struct(env);
 	return (0);

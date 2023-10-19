@@ -32,8 +32,13 @@
 
 int		get_env_start_size(char **envp);
 int		index_of_str(t_env *env, const char *str);
+int		str_cmp(const char *str1, const char *str2);
+int		ordered_index(char **strs, int size, int prev);
 int		env_already_exists(t_env *env, const char *new);
 int		ft_strchrstr(const char *str, char c, const char *str_find);
+double	total_size(char **mat, int size);
+char	**env_string(t_env *env);
+char	**export_string(t_env *env);
 char	*str_after_char(char *str, char c);
 char	*get_env_var(t_env *env, const char *str);
 void	pwd(char **envp);
@@ -48,6 +53,8 @@ void	unset_env_var(t_env *env, char *var);
 void	cd(int argc, char **argv, char **envp);
 void	add_new_env_var(t_env *env, const char *new);
 void	alter_env_var(t_env *env, const char *new, int i);
+void	concatenate_matrix(char *str, char **mat, int size);
+void	copy_char_matrix_ordered(char **mat, char **new_mat, int size);
 void	copy_char_matrix(char **mat, char **new_mat, int size, int skip);
 t_env	*create_env_struct(char **envp);
 
