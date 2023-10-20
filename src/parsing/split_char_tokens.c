@@ -12,6 +12,19 @@ int	move_in_str(char *str, char c)
 	return (i);
 }
 
+int	find_char(char *str, char c)
+{
+	int	i;
+	int	counter;
+
+	i = -1;
+	counter = 0;
+	while(str[++i])
+		if (str[i] == c)
+			counter++;
+	return (counter);
+}
+
 int	count_char_tokens(char **input, char c)
 {
 	int		len;
@@ -19,18 +32,25 @@ int	count_char_tokens(char **input, char c)
 	char	*tmp;
 
 	len = 0;
-	i = 0;
-	while (input[i])
+	i = -1;
+	while (input[++i])
 	{
-		tmp = input[i++];
-		if (*tmp == '\'' || *tmp == '\"')
+		tmp = input[i];
+		if (tmp[0] == '\'' || tmp[0] == '\"')
 			len++;
 		else
 		{
+			len += find_char(tmp, c);
+			if (*tmp == c)
+				tmp++;
 			while (*tmp)
 			{
-				tmp += move_in_str(tmp, c);
-				len++;
+				while (*tmp && *tmp != c)
+					tmp++;
+				if (*(tmp - 1) != c)
+					len++;
+				if (*tmp)
+					tmp++;
 			}
 		}
 	}
@@ -52,7 +72,7 @@ char	**split_char_tokens(char **input, char c)
 	{
 		if (**input == '\'' || **input == '\"')
 		{
-			*ptr = *input;
+			*ptr = ft_strdup(*input);
 			ptr++;
 		}
 		else
