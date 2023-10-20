@@ -12,7 +12,8 @@ int	count_words_line(char *str)
 		if ((str[i] < '\a' || str[i] > '\r') && str[i] != ' ')
 		{
 			j++;
-			while (str[i] && (str[i] < '\a' || str[i] > '\r') && str[i] != ' ')
+			while (str[i] && (str[i] < '\a' || str[i] > '\r')
+				&& str[i] != ' ')
 				i++;
 		}
 		else
@@ -40,12 +41,48 @@ int	count_words_total(char **input)
 	return (len);
 }
 
+char	**check_for_quotes(char *input, char **ptr, int *flag)
+{
+	if (*input == '\'' || *input == '\"')
+	{
+		*ptr = ft_strdup(input);
+		printf("%s\n", *ptr);
+		ptr++;
+		*flag = 1;
+	}
+	return (ptr);
+}
+
+char	**idk(char *input, char **ptr)
+{
+	char	*str;
+	int		end;
+
+	str = input;
+	while (*str)
+	{
+		end = 0;
+		while (str[end] && ((str[end] > '\a' && str[end] < '\r')
+				|| str[end] == ' '))
+			end++;
+		while (str[end] && (str[end] < '\a' || str[end] > '\r')
+			&& str[end] != ' ')
+			end++;
+		*ptr = create_token(str, end);
+		if (**ptr)
+			ptr++;
+		else
+			free(*ptr);
+		str += end;
+	}
+	return (ptr);
+}
+
 char	**split_space_tokens(char **input)
 {
-	int		end;
 	char	**tokens;
 	char	**ptr;
-	char	*str;
+	int		flag;
 
 	tokens = malloc((count_words_total(input) + 1) * sizeof(char *));
 	if (!tokens)
@@ -53,29 +90,10 @@ char	**split_space_tokens(char **input)
 	ptr = tokens;
 	while (*input)
 	{
-		if (**input == '\'' || **input == '\"')
-		{
-			*ptr = ft_strdup(*input);
-			ptr++;
-		}
-		else
-		{
-			str = *input;
-			while (*str)
-			{
-				end = 0;
-				while (str[end] && ((str[end] > '\a' && str[end] < '\r') || str[end] == ' '))
-					end++;
-				while (str[end] && (str[end] < '\a' || str[end] > '\r') && str[end] != ' ')
-					end++;
-				*ptr = create_token(str, end);
-				if (**ptr)
-					ptr++;
-				else
-					free(*ptr);
-				str += end;
-			}
-		}
+		flag = 0;
+		ptr = check_for_quotes(*input, ptr, &flag);
+		if (flag == 0)
+			ptr = idk(*input, ptr);
 		input++;
 	}
 	*ptr = NULL;

@@ -6,7 +6,7 @@
 #    By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/10 15:26:22 by jecarval          #+#    #+#              #
-#    Updated: 2023/10/17 22:17:34 by jecarval         ###   ########.fr        #
+#    Updated: 2023/10/20 14:47:54 by jecarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ UTILS_DIR			=	utils/
 #Source files
 
 SRC_ROOT	=	minishell
-PARSING		=	parser split_quote_tokens split_char_tokens split_inout_tokens split_space_tokens
+PARSING		=	parser parser_utils split_tokens split_quote_tokens split_char_tokens split_inout_tokens split_space_tokens
 UTILS		=	echo pwd utils
 
 

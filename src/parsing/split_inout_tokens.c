@@ -30,33 +30,57 @@ int	count_inout_tokens(char **input)
 	while (input[++i])
 	{
 		tmp = input[i];
-		printf("ai %s\n", input[i]);
-//
-/* 		printf("caralho %s\n", tmp);
-		printf("imdex: %d\n", i); */
-		if (tmp[0] == '\'' || tmp[0] == '\"')
+		if (*tmp == '\'' || *tmp == '\"')
 			len++;
 		else
 		{
 			if (*tmp != '<' && *tmp != '>')
 				len++;
-			if((rtn = count_inouts(tmp, '<') + count_inouts(tmp, '>')))
-			{
-				if (tmp[ft_strlen(tmp) - 1] != '<' && tmp[ft_strlen(tmp) - 1] != '>')
+			rtn = count_inouts(tmp, '<') + count_inouts(tmp, '>');
+			if (rtn)
+				if (tmp[ft_strlen(tmp) - 1] != '<'
+					&& tmp[ft_strlen(tmp) - 1] != '>')
 					len++;
-				len += rtn;
-			}
+			len += rtn;
 		}
 	}
 	return (len);
 }
 
-char	**split_inout_tokens(char **input)
+char	**test(char *input, char **ptr)
 {
 	int		end;
+	char	*str;
+
+	str = input;
+	while (*str)
+	{
+		end = 0;
+		if ((*str == '<' && *(str + 1) == '<')
+			|| (*str == '>' && *(str + 1) == '>'))
+			end = 2;
+		else if (*str == '<' || *str == '>')
+			end = 1;
+		else
+		{
+			while (str[end] && str[end] != '<' && str[end] != '>')
+				end++;
+		}
+		*ptr = create_token(str, end);
+		if (**ptr)
+			ptr++;
+		else
+			free(*ptr);
+		str += end;
+	}
+	return (ptr);
+}
+
+char	**split_inout_tokens(char **input)
+{
 	char	**tokens;
 	char	**ptr;
-	char	*str;
+	int		flag;
 
 	tokens = malloc((count_inout_tokens(input) + 1) * sizeof(char *));
 	if (!tokens)
@@ -64,34 +88,10 @@ char	**split_inout_tokens(char **input)
 	ptr = tokens;
 	while (*input)
 	{
-		if (**input == '\'' || **input == '\"')
-		{
-			*ptr = ft_strdup(*input);
-			ptr++;
-		}
-		else
-		{
-			str = *input;
-			while (*str)
-			{
-				end = 0;
-				if ((*str == '<' && *(str + 1) == '<') || (*str == '>' && *(str + 1) == '>'))
-					end = 2;
-				else if (*str == '<' || *str == '>')
-					end = 1;
-				else
-				{
-					while (str[end] && str[end] != '<' && str[end] != '>')
-						end++;
-				}
-				*ptr = create_token(str, end);
-				if (**ptr)
-					ptr++;
-				else
-					free(*ptr);
-				str += end;
-			}
-		}
+		flag = 0;
+		ptr = check_for_quotes(*input, ptr, &flag);
+		if (flag == 0)
+			ptr = test(*input, ptr);
 		input++;
 	}
 	*ptr = NULL;
