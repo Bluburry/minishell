@@ -46,7 +46,6 @@ char	**check_for_quotes(char *input, char **ptr, int *flag)
 	if (*input == '\'' || *input == '\"')
 	{
 		*ptr = ft_strdup(input);
-		printf("%s\n", *ptr);
 		ptr++;
 		*flag = 1;
 	}

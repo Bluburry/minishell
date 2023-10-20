@@ -22,21 +22,18 @@ int	move_in_str(char *str, char c)
 char	*create_token(const char *str, size_t len)
 {
 	char			*token;
-	char			*tmp;
 	unsigned int	i;
 
-	tmp = malloc((len + 1) * sizeof(char));
-	if (tmp == 0)
+	token = malloc((len + 1) * sizeof(char));
+	if (token == 0)
 		return (0);
 	i = 0;
 	while (i < len && str[i])
 	{
-		tmp[i] = str[i];
+		token[i] = str[i];
 		i++;
 	}
-	tmp[i] = '\0';
-	token = ft_strtrim(tmp, " \a\b\t\n\v\f\r");
-	free(tmp);
+	token[i] = '\0';
 	return (token);
 }
 
@@ -55,11 +52,14 @@ char	**tokens_init(char *input)
 	free(tmp);
 	if (flag)
 		waiting_for_input(); // !! change for error message
-	ptr2 = split_space_tokens(ptr);
+	//ptr2 = split_space_tokens(ptr);
+	ptr2 = split_char_tokens(ptr, ' ');
 	dcp_cleaner(ptr);
 	ptr = split_inout_tokens(ptr2);
 	dcp_cleaner(ptr2);
-	tokens = split_char_tokens(ptr, '|');
+	ptr2 = split_char_tokens(ptr, '|');
 	dcp_cleaner(ptr);
+	tokens = final_tokens_cleanup(ptr2);
+	dcp_cleaner(ptr2);
 	return (tokens);
 }

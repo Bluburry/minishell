@@ -95,3 +95,7 @@ char	**split_quotes_tokens(char *input, int *flag)
 				ptr++;
 			else
 				free(*ptr); */
+
+/* potato	wooo! aie< "dasdadad342"           4234 	oo */
+
+

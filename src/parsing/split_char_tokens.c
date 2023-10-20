@@ -35,7 +35,7 @@ int	count_char_tokens(char **input, char c)
 	while (input[++i])
 	{
 		tmp = input[i];
-		if (tmp[0] == '\'' || tmp[0] == '\"')
+		if (*tmp == '\'' || *tmp == '\"')
 			len++;
 		else
 		{

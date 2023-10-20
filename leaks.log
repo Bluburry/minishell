@@ -1,36 +1,33 @@
-==335176== Memcheck, a memory error detector
-==335176== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==335176== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==335176== Command: ./minishell
-==335176== Parent PID: 289823
-==335176== 
-==335176== 
-==335176== Process terminating with default action of signal 2 (SIGINT)
-==335176==    at 0x48F53DB: kill (syscall-template.S:78)
-==335176==    by 0x488F7A2: ??? (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
-==335176==    by 0x4891C8E: rl_getc (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
-==335176==    by 0x4892502: rl_read_key (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
-==335176==    by 0x4877C81: readline_internal_char (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
-==335176==    by 0x48784EC: readline (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
-==335176==    by 0x401176: waiting_for_input (minishell.c:9)
-==335176==    by 0x4014DB: tokens_init (split_tokens.c:57)
-==335176==    by 0x401201: parser (parser.c:11)
-==335176==    by 0x401198: waiting_for_input (minishell.c:11)
-==335176==    by 0x4011BE: main (minishell.c:31)
-==335176== 
-==335176== HEAP SUMMARY:
-==335176==     in use at exit: 200,596 bytes in 214 blocks
-==335176==   total heap usage: 432 allocs, 218 frees, 221,146 bytes allocated
-==335176== 
-==335176== LEAK SUMMARY:
-==335176==    definitely lost: 0 bytes in 0 blocks
-==335176==    indirectly lost: 0 bytes in 0 blocks
-==335176==      possibly lost: 0 bytes in 0 blocks
-==335176==    still reachable: 0 bytes in 0 blocks
-==335176==         suppressed: 200,596 bytes in 214 blocks
-==335176== 
-==335176== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---335176-- 
---335176-- used_suppression:     57 leak readline readline_supression:10 suppressed: 200,596 bytes in 214 blocks
-==335176== 
-==335176== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==351532== Memcheck, a memory error detector
+==351532== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==351532== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==351532== Command: ./minishell
+==351532== Parent PID: 289823
+==351532== 
+==351532== 
+==351532== Process terminating with default action of signal 2 (SIGINT)
+==351532==    at 0x48F53DB: kill (syscall-template.S:78)
+==351532==    by 0x488F7A2: ??? (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==351532==    by 0x4891C8E: rl_getc (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==351532==    by 0x4892502: rl_read_key (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==351532==    by 0x4877C81: readline_internal_char (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==351532==    by 0x48784EC: readline (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==351532==    by 0x401176: waiting_for_input (minishell.c:9)
+==351532==    by 0x4011BE: main (minishell.c:31)
+==351532== 
+==351532== HEAP SUMMARY:
+==351532==     in use at exit: 200,447 bytes in 212 blocks
+==351532==   total heap usage: 505 allocs, 293 frees, 222,116 bytes allocated
+==351532== 
+==351532== LEAK SUMMARY:
+==351532==    definitely lost: 0 bytes in 0 blocks
+==351532==    indirectly lost: 0 bytes in 0 blocks
+==351532==      possibly lost: 0 bytes in 0 blocks
+==351532==    still reachable: 0 bytes in 0 blocks
+==351532==         suppressed: 200,447 bytes in 212 blocks
+==351532== 
+==351532== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--351532-- 
+--351532-- used_suppression:     55 leak readline readline_supression:10 suppressed: 200,447 bytes in 212 blocks
+==351532== 
+==351532== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

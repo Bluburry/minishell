@@ -52,6 +52,7 @@ char	**split_quotes_tokens(char *input, int *flag);
 char	**split_inout_tokens(char **input);
 char	**split_space_tokens(char **input);
 char	**split_char_tokens(char **input, char c);
+char	**final_tokens_cleanup(char **input);
 char	**check_for_quotes(char *input, char **ptr, int *flag);
 int		is_token_end(char c);
 int		move_in_str(char *str, char c);
