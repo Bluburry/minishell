@@ -19,15 +19,20 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	env = create_env_struct(envp);
-	int i = -1;
-	while (++i < env->size)
-	{
-		printf("%s\n", env->vars[i]);
-	}
-	printf("\n\nSearch: %s\n", get_env_var(env, "LANG"));
-	printf("\n\nSearch: %s\n", get_env_var(env, "PWD"));
-	printf("\n\nSearch: %s\n", get_env_var(env, "LS_COLORS"));
+
+//	int	i = -1;
+//	while (++i < env->size)
+//	{
+//		printf("%s\n", env->vars[i]);
+//	}
+	//printf("\n\nSearch: %s\n", get_env_var(env, "LANG"));
+	//printf("\n\nSearch: %s\n", get_env_var(env, "PWD"));
+	//printf("\n\nSearch: %s\n", get_env_var(env, "LS_COLORS"));
+	//var_to_value("$s");
+	//var_to_value("$USERNAME $DISPLAY", env);
+	//var_to_value("$USERNAME", env);
+	var_to_value("$USERNAME $DISPLAY", env);
 	waiting_for_input();
-  clear_env_struct(env);
+	clear_env_struct(env);
 	return (0);
 }

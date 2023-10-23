@@ -6,7 +6,7 @@
 /*   By: ade-barr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 12:21:50 by ade-barr          #+#    #+#             */
-/*   Updated: 2023/10/12 12:55:14 by ade-barr         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:53:02 by ade-barr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	find_quote(char *str, char c)
 
 	i = -1;
 	while (str[++i])
-		if (str[i] == '\"' || str[i] == '\'')
+		if (str[i] == c)
 			return (i);
 	return (-1);
 }

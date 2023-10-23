@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+         #
+#    By: ade-barr <ade-barr@student.42porto.co      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/10 15:26:22 by jecarval          #+#    #+#              #
-#    Updated: 2023/10/12 16:03:08 by jecarval         ###   ########.fr        #
+#    Created: 2023/10/17 12:47:28 by ade-barr          #+#    #+#              #
+#    Updated: 2023/10/17 12:47:30 by ade-barr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,18 +45,21 @@ LIB			=	-lreadline -L. -lft
 # SRC_FILES list and in the $(OBJ_FILES): rule
 SRC_ROOT_DIR		=	
 PARSING_DIR			=	parsing/
+STRUCT_HANDLING_DIR		=	struct_handling/
 UTILS_DIR			=	utils/
 
 
 #Source files
 
 SRC_ROOT	=	minishell
-PARSING		=	parser
+PARSING		=	parser find_quote var_to_value
+STRUCT_HANDLING	=	alter_env clear_env find_env_var start_env_vars
 UTILS		=	echo pwd utils
 
 
 SRC_FILES	=	$(addprefix $(SRC_ROOT_DIR),$(SRC_ROOT)) $(addprefix $(PARSING_DIR),$(PARSING))\
-				$(addprefix $(UTILS_DIR),$(UTILS)) 
+				$(addprefix $(UTILS_DIR),$(UTILS))\
+				$(addprefix $(STRUCT_HANDLING_DIR),$(STRUCT_HANDLING))
 
 SRCS 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -82,6 +85,7 @@ $(OBJ_FILES):
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)$(SRC_ROOT_DIR)
 	@mkdir -p $(OBJ_DIR)$(PARSING_DIR)
+	@mkdir -p $(OBJ_DIR)$(STRUCT_HANDLING_DIR)
 	@mkdir -p $(OBJ_DIR)$(UTILS_DIR)
 
 clean:
