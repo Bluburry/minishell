@@ -1,13 +1,6 @@
 #include "minishell.h"
 
-int	is_space(char c)
-{
-	if (c == ' ' || (c > 6 && c < 14))
-		return (1);
-	return (0);
-}
-
-int	count_final_tokens(char **input)
+int	count_space_tokens(char **input)
 {
 	int		len;
 	int		i;
@@ -34,13 +27,13 @@ int	count_final_tokens(char **input)
 	return (len);
 }
 
-char	**final_tokens_cleanup(char **input)
+char	**space_tokens_cleanup(char **input)
 {
 	char	**tokens;
 	char	**ptr;
 	int		flag;
 
-	tokens = malloc((count_final_tokens(input) + 1) * sizeof(char *));
+	tokens = malloc((count_space_tokens(input) + 1) * sizeof(char *));
 	if (!tokens)
 		return (0);
 	ptr = tokens;

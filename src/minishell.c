@@ -8,7 +8,7 @@ void	waiting_for_input()
 	{
 		rl = readline("minishell > ");
 		printf("rl: %s\n", rl);
-		parser(rl);
+		lexer(rl);
 	}
 }
 

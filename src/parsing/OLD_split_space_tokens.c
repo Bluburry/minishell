@@ -41,17 +41,6 @@ int	count_words_total(char **input)
 	return (len);
 }
 
-char	**check_for_quotes(char *input, char **ptr, int *flag)
-{
-	if (*input == '\'' || *input == '\"')
-	{
-		*ptr = ft_strdup(input);
-		ptr++;
-		*flag = 1;
-	}
-	return (ptr);
-}
-
 char	**idk(char *input, char **ptr)
 {
 	char	*str;

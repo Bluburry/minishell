@@ -8,7 +8,7 @@ int	count_tokens_quotes(char *input)
 	len = 0;
 	while (*input && *input != '\'' && *input != '\"')
 	{
-		if (is_token_end(*input) <= 0 && len != 1)
+		if (len != 1)
 			len = 1;
 		input++;
 	}
@@ -43,7 +43,7 @@ int	quotes_end(char *input)
 	return (end);
 }
 
-int	check_if_valid(char **ptr, char **tokens)
+char	check_if_valid(char **ptr, char **tokens)
 {
 	char	*str;
 	char	c;
@@ -57,13 +57,13 @@ int	check_if_valid(char **ptr, char **tokens)
 			free(*ptr);
 			*ptr = NULL;
 			dcp_cleaner(tokens);
-			return (1);
+			return (*str);
 		}
 	}
-	return (0);
+	return ('\0');
 }
 
-char	**split_quotes_tokens(char *input, int *flag)
+char	**split_quotes_tokens(char *input, char *flag)
 {
 	char	**tokens;
 	char	**ptr;
@@ -81,7 +81,7 @@ char	**split_quotes_tokens(char *input, int *flag)
 		{
 			*ptr = create_token(input, end);
 			*flag = check_if_valid(ptr, tokens);
-			if (*flag)
+			if (*flag != '\0')
 				return (NULL);
 			ptr++;
 		}
@@ -97,5 +97,3 @@ char	**split_quotes_tokens(char *input, int *flag)
 				free(*ptr); */
 
 /* potato	wooo! aie< "dasdadad342"           4234 	oo */
-
-

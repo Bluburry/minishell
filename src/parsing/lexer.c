@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	parser(char *input)
+void	lexer(char *input)
 {
 	char	**tokens;
 	int		i;
@@ -9,8 +9,9 @@ void	parser(char *input)
 	if (!input || !(*input))
 		return ;
 	tokens = tokens_init(input);
+	printf("\n\ntokens:\n\n");
 	while (tokens[++i])
-		printf("^%s^\n", tokens[i]);
+		printf("%s\n", tokens[i]);
 	dcp_cleaner(tokens);
-	//!!! call funtion that executes instructions HERE
+	//!!! return tokens here
 }

@@ -94,5 +94,7 @@ char	**split_char_tokens(char **input, char c)
 		input++;
 	}
 	*ptr = NULL;
-	return (tokens);
+	ptr = space_tokens_cleanup(tokens);
+	dcp_cleaner(tokens);
+	return (ptr);
 }

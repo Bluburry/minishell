@@ -37,29 +37,48 @@ char	*create_token(const char *str, size_t len)
 	return (token);
 }
 
+void	remove_quotes_from_tokens(char **input)
+{
+	char	c;
+	char	*tmp;
+
+	while (*input)
+	{
+		if (**input == '\'' || **input == '\"')
+		{
+			tmp = ft_strdup(*input);
+			c = **input;
+			free(*input);
+			*input = ft_strtrim(tmp, &c);
+			free(tmp);
+		}
+		input++;
+	}
+}
+
 char	**tokens_init(char *input)
 {
-	char	**tokens;
 	char	**ptr;
 	char	*tmp;
 	char	**ptr2;
-	int		flag;
+	char	flag;
 
 	tmp = ft_strtrim(input, " \a\b\t\n\v\f\r");
 	free(input);
-	flag = 0;
+	flag = '\0';
 	ptr = split_quotes_tokens(tmp, &flag);
 	free(tmp);
 	if (flag)
-		waiting_for_input(); // !! change for error message
-	//ptr2 = split_space_tokens(ptr);
+		syntax_error(2, &flag);
+	//!! expand variables here
 	ptr2 = split_char_tokens(ptr, ' ');
 	dcp_cleaner(ptr);
 	ptr = split_inout_tokens(ptr2);
 	dcp_cleaner(ptr2);
 	ptr2 = split_char_tokens(ptr, '|');
 	dcp_cleaner(ptr);
-	tokens = final_tokens_cleanup(ptr2);
+	remove_quotes_from_tokens(ptr2);
+	ptr = merge_tokens_cleanup(ptr2);
 	dcp_cleaner(ptr2);
-	return (tokens);
+	return (ptr);
 }
