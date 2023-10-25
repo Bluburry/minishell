@@ -1,18 +1,4 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: remarque <remarque@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/10 15:26:22 by jecarval          #+#    #+#              #
-#    Updated: 2023/10/25 12:22:23 by remarque         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-
 #Colors
-
 DEF_COLOR = \033[0;39m
 GRAY = \033[0;90m
 RED = \033[0;91m
@@ -42,15 +28,15 @@ LIB			=	-lreadline -L. -lft
 
 #Source folders
 # To add a new source folder, add it to DIRS
-DIRS	=	parsing utils lexer
+DIRS	=	parsing utils lexer struct_handling
 P_DIRS	=	$(addprefix $(SRC_DIR), $(DIRS))
 vpath %.c src $(P_DIRS)
 
 #Source files
 # To add a new source file, add it to SRCS
-
-SRCS	=	minishell parser split_quote_tokens split_char_tokens\
-			split_inout_tokens split_space_tokens echo pwd utils
+SRCS	=	minishell lexer lexer_utils split_tokens split_quote_tokens split_char_tokens \
+			split_inout_tokens merge_tokens_cleanup space_tokens_cleanup var_to_value \
+			expand_var_tokens echo pwd utils alter_env clear_env find_env_var start_env_vars
 OBJS 	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS)))
 
 OBJ_FILES	=	.cache_exists

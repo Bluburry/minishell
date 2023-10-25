@@ -19,7 +19,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-void	waiting_for_input(void);
+void	waiting_for_input(t_env *env);
 
 //Environment variables functions
 int		get_env_start_size(char **envp);
@@ -41,15 +41,25 @@ void	ft_pwd(char **envp);
 void	ft_env(char **envp);
 
 
-//Parser functions
-void	parser(char *input);
-void	syntax_error(char c);
-int		move_in_str(char *str, char c);
-int		is_token_end(char c);
+//Lexer functions
+void	lexer(char *input, t_env *env);
+void	syntax_error(int type, char c, t_env *env);
+void	dcp_cleaner(char **ptr);
+int		is_space(char c);
+
+//Lexer functions//Tokens
+char	**tokens_init(char *input, t_env *env);
 char	*create_token(const char *str, size_t len);
-char	**split_quotes_tokens(char *input);
-char	**split_inout_tokens(char **input);
+char	**split_quotes_tokens(char *input, char *flag);
+char	**split_inout_tokens(char **input, t_env *env);
 char	**split_space_tokens(char **input);
 char	**split_char_tokens(char **input, char c);
+char	**expand_var_tokens(char **input, t_env *env);
+char	*var_to_value(char *str, t_env *env);
+char	**space_tokens_cleanup(char **input);
+char	**merge_tokens_cleanup(char **input);
+char	**check_for_quotes(char *input, char **ptr, int *flag);
+int		is_token_end(char c);
+int		move_in_str(char *str, char c);
 
 #endif
