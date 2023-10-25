@@ -81,6 +81,7 @@ void	copy_char_matrix_ordered(char **mat, char **new_mat, int size)
 		i = ordered_index(mat, size, i);
 		s = ft_strlen(mat[i]);
 		z = EXTRA_SIZE_EXPORT + s + 1;
+		// se tiver = entrar aqui, ou seja verificar se nao tem '='
 		if (var_to_print(mat[i]))
 			z += 2;
 		new_mat[j] = (char *) malloc(sizeof(char) * (z));
