@@ -56,7 +56,7 @@ void	remove_quotes_from_tokens(char **input)
 	}
 }
 
-char	**tokens_init(char *input)
+char	**tokens_init(char *input, t_env *env)
 {
 	char	**ptr;
 	char	*tmp;
@@ -69,16 +69,17 @@ char	**tokens_init(char *input)
 	ptr = split_quotes_tokens(tmp, &flag);
 	free(tmp);
 	if (flag)
-		syntax_error(2, &flag);
-	//!! expand variables here
-	ptr2 = split_char_tokens(ptr, ' ');
+		syntax_error(2, flag);
+	ptr2 = expand_var_tokens(ptr, env);
 	dcp_cleaner(ptr);
-	ptr = split_inout_tokens(ptr2);
+	ptr = split_char_tokens(ptr2, ' ');
 	dcp_cleaner(ptr2);
-	ptr2 = split_char_tokens(ptr, '|');
+	ptr2 = split_inout_tokens(ptr);
 	dcp_cleaner(ptr);
-	remove_quotes_from_tokens(ptr2);
-	ptr = merge_tokens_cleanup(ptr2);
+	ptr = split_char_tokens(ptr2, '|');
 	dcp_cleaner(ptr2);
-	return (ptr);
+	remove_quotes_from_tokens(ptr);
+	ptr2 = merge_tokens_cleanup(ptr);
+	dcp_cleaner(ptr);
+	return (ptr2);
 }

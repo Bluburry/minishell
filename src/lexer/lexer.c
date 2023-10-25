@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	lexer(char *input)
+void	lexer(char *input, t_env *env)
 {
 	char	**tokens;
 	int		i;
@@ -8,7 +8,7 @@ void	lexer(char *input)
 	i = -1;
 	if (!input || !(*input))
 		return ;
-	tokens = tokens_init(input);
+	tokens = tokens_init(input, env);
 	printf("\n\ntokens:\n\n");
 	while (tokens[++i])
 		printf("%s\n", tokens[i]);

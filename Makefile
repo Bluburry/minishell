@@ -6,7 +6,7 @@
 #    By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/10 15:26:22 by jecarval          #+#    #+#              #
-#    Updated: 2023/10/24 12:59:32 by jecarval         ###   ########.fr        #
+#    Updated: 2023/10/25 12:44:42 by jecarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,18 +46,21 @@ LIB			=	-lreadline -L. -lft
 SRC_ROOT_DIR		=	
 PARSING_DIR			=	parsing/
 UTILS_DIR			=	utils/
+LEXER_DIR			=	lexer/
 
 
 #Source files
 
 SRC_ROOT	=	minishell
-PARSING		=	lexer lexer_utils split_tokens split_quote_tokens split_char_tokens \
-				split_inout_tokens merge_tokens_cleanup space_tokens_cleanup
+PARSING		=	
 UTILS		=	echo pwd utils
+LEXER		=	lexer lexer_utils split_tokens split_quote_tokens split_char_tokens \
+				split_inout_tokens merge_tokens_cleanup space_tokens_cleanup var_to_value \
+				expand_var_tokens
 
 
 SRC_FILES	=	$(addprefix $(SRC_ROOT_DIR),$(SRC_ROOT)) $(addprefix $(PARSING_DIR),$(PARSING))\
-				$(addprefix $(UTILS_DIR),$(UTILS)) 
+				$(addprefix $(UTILS_DIR),$(UTILS)) $(addprefix $(LEXER_DIR),$(LEXER)) 
 
 SRCS 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -84,6 +87,7 @@ $(OBJ_FILES):
 	@mkdir -p $(OBJ_DIR)$(SRC_ROOT_DIR)
 	@mkdir -p $(OBJ_DIR)$(PARSING_DIR)
 	@mkdir -p $(OBJ_DIR)$(UTILS_DIR)
+	@mkdir -p $(OBJ_DIR)$(LEXER_DIR)
 
 clean:
 	@$(RM) -r $(OBJ_DIR)

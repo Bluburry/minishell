@@ -9,7 +9,7 @@ int	count_inouts(char *str, char c)
 	{
 		str += move_in_str(str, c);
 		if (*str == c && *(str + 1) == c)
-			syntax_error(1, &c);
+			syntax_error(1, c);
 		if (*(str - 1) == c)
 			len++;
 		if (*(str - 1) == c && *str == c)

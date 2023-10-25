@@ -48,6 +48,8 @@ char	check_if_valid(char **ptr, char **tokens)
 	char	*str;
 	char	c;
 
+	if (!(*ptr))
+		return ('\0');
 	str = *ptr;
 	if (*str == '\'' || *str == '\"')
 	{
@@ -57,7 +59,7 @@ char	check_if_valid(char **ptr, char **tokens)
 			free(*ptr);
 			*ptr = NULL;
 			dcp_cleaner(tokens);
-			return (*str);
+			return (c);
 		}
 	}
 	return ('\0');
@@ -82,7 +84,7 @@ char	**split_quotes_tokens(char *input, char *flag)
 			*ptr = create_token(input, end);
 			*flag = check_if_valid(ptr, tokens);
 			if (*flag != '\0')
-				return (NULL);
+				return (tokens);
 			ptr++;
 		}
 		input += end;
