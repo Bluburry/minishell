@@ -3,6 +3,7 @@
 
 # include "libft.h"
 # include "structures.h"
+# include <stdint.h>
 # include <term.h>
 # include <fcntl.h>
 # include <signal.h>

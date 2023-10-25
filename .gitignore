@@ -3,3 +3,4 @@ minishell
 lib
 .vscode
 .vscode/*
+**/.cache/
