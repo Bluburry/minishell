@@ -1,4 +1,4 @@
-#include "../../include/minishell.h"
+#include "minishell.h"
 
 /**
  * @brief return what is left of the string after fiding the char passed as parameter
