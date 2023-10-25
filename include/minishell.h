@@ -6,7 +6,7 @@
 /*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:26:28 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/19 19:46:21 by ade-barr         ###   ########.fr       */
+/*   Updated: 2023/10/25 05:41:00 by ade-barr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		get_env_start_size(char **envp);
 int		ft_strchrstr(const char *str, char c, const char *str_find);
 char	*str_after_char(char *str, char c);
 char	*get_env_var(t_env *env, const char *str);
-void	var_to_value(char *str, t_env *env);
+char	*var_to_value(char *str, t_env *env);
 void	clear_env_struct(t_env *env);
 void	resize_env_struct(t_env *env);
 void	clear_chars(char **str, int size);

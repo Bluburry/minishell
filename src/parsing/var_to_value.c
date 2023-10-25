@@ -6,7 +6,7 @@
 /*   By: ade-barr <ade-barr@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:01 by ade-barr          #+#    #+#             */
-/*   Updated: 2023/10/23 18:03:29 by ade-barr         ###   ########.fr       */
+/*   Updated: 2023/10/25 05:40:24 by ade-barr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,14 @@ static char	*store_word(char *str)
 	return (word);
 }
 
-void	var_to_value(char *str, t_env *env)
+char	*var_to_value(char *str, t_env *env)
 {
 	int	i;
 	char	*word;
 	char	*temp;
 
 	i = -1;
-	temp = calloc(sizeof(char), ft_strlen(str));
-	ft_strlcpy(temp, str, ft_strlen(str) + 1);
+	temp = calloc(sizeof(char), 1);
 	while (str[++i])
 	{
 		
@@ -57,20 +56,19 @@ void	var_to_value(char *str, t_env *env)
 			else if (ft_isalpha(str[i + 1]))
 			{
 				word = store_word(str + i + 1); //saves into 'word' whatever comes after '$'
-				ft_printf("str before '%s'\n", str);
-				str += ft_strlen(word) + 1;
-				//ft_printf("word after store is '%s'\n", word);
+				i += ft_strlen(word);
 				word = get_env_var(env, word); //searches for a env called 'word' and then replaces it with its value
-				//ft_printf("word after get_env is '%s'\n", word);
-				ft_printf("str after '%s'\n", str);
+				temp = ft_strjoin(temp, word);
 			}
 
 			else
 			{
 				ft_printf("\n\nsyntax_error\n\n");
-				return ;
+				return (NULL);
 			}
 		}
+		else
+			temp = ft_strjoin(temp, ft_substr(str, i, 1));
 	}
-	ft_printf("this is the temp content = '%s'\n", temp);
+	return (temp);
 }
