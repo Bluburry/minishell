@@ -1,61 +1,124 @@
-==74224== Memcheck, a memory error detector
-==74224== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==74224== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==74224== Command: ./minishell
-==74224== Parent PID: 74214
-==74224== 
-==74224== Invalid write of size 1
-==74224==    at 0x10A35A: memcpy_export (print_export.c:52)
-==74224==    by 0x10A4E8: copy_char_matrix_ordered (print_export.c:78)
-==74224==    by 0x10A546: export_string (print_export.c:87)
-==74224==    by 0x10945B: main (minishell.c:46)
-==74224==  Address 0x4b27ef3 is 0 bytes after a block of size 67 alloc'd
-==74224==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==74224==    by 0x10A46F: copy_char_matrix_ordered (print_export.c:76)
-==74224==    by 0x10A546: export_string (print_export.c:87)
-==74224==    by 0x10945B: main (minishell.c:46)
-==74224== 
-==74224== Invalid read of size 1
-==74224==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==74224==    by 0x4944E67: puts (ioputs.c:35)
-==74224==    by 0x109487: main (minishell.c:50)
-==74224==  Address 0x4b27ef3 is 0 bytes after a block of size 67 alloc'd
-==74224==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==74224==    by 0x10A46F: copy_char_matrix_ordered (print_export.c:76)
-==74224==    by 0x10A546: export_string (print_export.c:87)
-==74224==    by 0x10945B: main (minishell.c:46)
-==74224== 
-==74224== 
-==74224== HEAP SUMMARY:
-==74224==     in use at exit: 0 bytes in 0 blocks
-==74224==   total heap usage: 300 allocs, 300 frees, 18,487 bytes allocated
-==74224== 
-==74224== All heap blocks were freed -- no leaks are possible
-==74224== 
-==74224== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
-==74224== 
-==74224== 1 errors in context 1 of 2:
-==74224== Invalid read of size 1
-==74224==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==74224==    by 0x4944E67: puts (ioputs.c:35)
-==74224==    by 0x109487: main (minishell.c:50)
-==74224==  Address 0x4b27ef3 is 0 bytes after a block of size 67 alloc'd
-==74224==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==74224==    by 0x10A46F: copy_char_matrix_ordered (print_export.c:76)
-==74224==    by 0x10A546: export_string (print_export.c:87)
-==74224==    by 0x10945B: main (minishell.c:46)
-==74224== 
-==74224== 
-==74224== 1 errors in context 2 of 2:
-==74224== Invalid write of size 1
-==74224==    at 0x10A35A: memcpy_export (print_export.c:52)
-==74224==    by 0x10A4E8: copy_char_matrix_ordered (print_export.c:78)
-==74224==    by 0x10A546: export_string (print_export.c:87)
-==74224==    by 0x10945B: main (minishell.c:46)
-==74224==  Address 0x4b27ef3 is 0 bytes after a block of size 67 alloc'd
-==74224==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==74224==    by 0x10A46F: copy_char_matrix_ordered (print_export.c:76)
-==74224==    by 0x10A546: export_string (print_export.c:87)
-==74224==    by 0x10945B: main (minishell.c:46)
-==74224== 
-==74224== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==98709== Memcheck, a memory error detector
+==98709== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==98709== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==98709== Command: ./minishell
+==98709== Parent PID: 98699
+==98709== 
+==98709== Invalid write of size 1
+==98709==    at 0x4029FE: copy_char_matrix_ordered (print_export.c:89)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709==  Address 0x4add541 is 0 bytes after a block of size 33 alloc'd
+==98709==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x402997: copy_char_matrix_ordered (print_export.c:86)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709== 
+==98709== Invalid read of size 1
+==98709==    at 0x402898: memcpy_export (print_export.c:59)
+==98709==    by 0x4029ED: copy_char_matrix_ordered (print_export.c:88)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709==  Address 0x4ad93eb is 0 bytes after a block of size 11 alloc'd
+==98709==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x4022AF: copy_char_matrix (start_env_vars.c:46)
+==98709==    by 0x401EE4: unset_env_var (clear_env.c:18)
+==98709==    by 0x40141D: main (minishell.c:43)
+==98709== 
+==98709== Invalid write of size 1
+==98709==    at 0x4028CA: memcpy_export (print_export.c:62)
+==98709==    by 0x4029ED: copy_char_matrix_ordered (print_export.c:88)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709==  Address 0x4ade746 is 0 bytes after a block of size 22 alloc'd
+==98709==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x402997: copy_char_matrix_ordered (print_export.c:86)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709== 
+==98709== Conditional jump or move depends on uninitialised value(s)
+==98709==    at 0x483EF58: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x492AD14: __vfprintf_internal (vfprintf-internal.c:1688)
+==98709==    by 0x4913D3E: printf (printf.c:33)
+==98709==    by 0x401509: main (minishell.c:59)
+==98709== 
+==98709== Invalid read of size 1
+==98709==    at 0x483EF54: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x492AD14: __vfprintf_internal (vfprintf-internal.c:1688)
+==98709==    by 0x4913D3E: printf (printf.c:33)
+==98709==    by 0x401509: main (minishell.c:59)
+==98709==  Address 0x4ade746 is 0 bytes after a block of size 22 alloc'd
+==98709==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x402997: copy_char_matrix_ordered (print_export.c:86)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709== 
+==98709== 
+==98709== HEAP SUMMARY:
+==98709==     in use at exit: 0 bytes in 0 blocks
+==98709==   total heap usage: 275 allocs, 275 frees, 19,319 bytes allocated
+==98709== 
+==98709== All heap blocks were freed -- no leaks are possible
+==98709== 
+==98709== Use --track-origins=yes to see where uninitialised values come from
+==98709== ERROR SUMMARY: 142 errors from 5 contexts (suppressed: 0 from 0)
+==98709== 
+==98709== 3 errors in context 1 of 5:
+==98709== Invalid read of size 1
+==98709==    at 0x483EF54: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x492AD14: __vfprintf_internal (vfprintf-internal.c:1688)
+==98709==    by 0x4913D3E: printf (printf.c:33)
+==98709==    by 0x401509: main (minishell.c:59)
+==98709==  Address 0x4ade746 is 0 bytes after a block of size 22 alloc'd
+==98709==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x402997: copy_char_matrix_ordered (print_export.c:86)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709== 
+==98709== 
+==98709== 3 errors in context 2 of 5:
+==98709== Invalid write of size 1
+==98709==    at 0x4028CA: memcpy_export (print_export.c:62)
+==98709==    by 0x4029ED: copy_char_matrix_ordered (print_export.c:88)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709==  Address 0x4ade746 is 0 bytes after a block of size 22 alloc'd
+==98709==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x402997: copy_char_matrix_ordered (print_export.c:86)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709== 
+==98709== 
+==98709== 3 errors in context 3 of 5:
+==98709== Invalid read of size 1
+==98709==    at 0x402898: memcpy_export (print_export.c:59)
+==98709==    by 0x4029ED: copy_char_matrix_ordered (print_export.c:88)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709==  Address 0x4ad93eb is 0 bytes after a block of size 11 alloc'd
+==98709==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x4022AF: copy_char_matrix (start_env_vars.c:46)
+==98709==    by 0x401EE4: unset_env_var (clear_env.c:18)
+==98709==    by 0x40141D: main (minishell.c:43)
+==98709== 
+==98709== 
+==98709== 65 errors in context 4 of 5:
+==98709== Conditional jump or move depends on uninitialised value(s)
+==98709==    at 0x483EF58: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x492AD14: __vfprintf_internal (vfprintf-internal.c:1688)
+==98709==    by 0x4913D3E: printf (printf.c:33)
+==98709==    by 0x401509: main (minishell.c:59)
+==98709== 
+==98709== 
+==98709== 68 errors in context 5 of 5:
+==98709== Invalid write of size 1
+==98709==    at 0x4029FE: copy_char_matrix_ordered (print_export.c:89)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709==  Address 0x4add541 is 0 bytes after a block of size 33 alloc'd
+==98709==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98709==    by 0x402997: copy_char_matrix_ordered (print_export.c:86)
+==98709==    by 0x402A47: export_string (print_export.c:98)
+==98709==    by 0x4014CB: main (minishell.c:55)
+==98709== 
+==98709== ERROR SUMMARY: 142 errors from 5 contexts (suppressed: 0 from 0)

@@ -1,19 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 15:26:28 by jecarval          #+#    #+#             */
-/*   Updated: 2023/10/12 17:25:06 by jecarval         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
 # include "libft.h"
+# include "macros.h"
 # include "structures.h"
 # include <term.h>
 # include <fcntl.h>
@@ -30,7 +19,9 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+int		var_to_print(char *str);
 int		get_env_start_size(char **envp);
+int		num_invalid_env_vars(t_env *env);
 int		index_of_str(t_env *env, const char *str);
 int		str_cmp(const char *str1, const char *str2);
 int		ordered_index(char **strs, int size, int prev);

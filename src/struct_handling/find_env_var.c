@@ -1,4 +1,4 @@
-#include "../../include/minishell.h"
+#include "minishell.h"
 
 /**
  * @brief return what is left of the string after fiding the char passed as parameter
@@ -72,5 +72,7 @@ char	*get_env_var(t_env *env, const char *str)
 	if (i >= env->size)
 		return (NULL);
 	ret = str_after_char(env->vars[i], '=');
+	if (!*ret)
+		return (NULL);
 	return (ret);
 }

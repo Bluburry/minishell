@@ -1,4 +1,6 @@
-#include "../../include/minishell.h"
+#include "libft.h"
+#include "macros.h"
+#include "minishell.h"
 
 int	str_cmp(const char *str1, const char *str2)
 {
@@ -23,7 +25,9 @@ int	ordered_index(char **strs, int size, int prev)
 	int		i;
 
 	index = 0;
-	i = -1;
+	i = 0;
+	while (prev != size && str_cmp(strs[index], strs[prev]) < 0)
+		index++;
 	while (++i < size)
 	{
 		if (i == index || i == prev)
@@ -39,43 +43,50 @@ void	memcpy_export(char *dest, char *src, int n)
 {
 	int	i;
 	int	j;
+	int	c;
 
-	if (dest == src || n == 0)
-		return ;
 	i = 0;
 	j = 0;
+	c = 0;
 	while (i < n)
 	{
-		if (i == n - 1)
-		{
-			dest[j++] = '"';
-			dest[j++] = src[i++];
-			break ;
-		}
 		dest[j++] = src[i++];
-		if (src[i - 1] == '=')
-			dest[j++] = '"';
+		if (src[i - 1] == '=' && c == 0 && src[i])
+		{
+			dest[j++] = 34;
+			c++;
+		}
+		else if (src[i - 1] == '=' && c == 0 && !src[i+1])
+		{
+			dest[j++] = 34;
+			dest[j++] = 34;
+			return;
+		}
 	}
-
+	if (c == 1)
+		dest[j] = 34;
 }
 
 void	copy_char_matrix_ordered(char **mat, char **new_mat, int size)
 {
 	int		i;
 	int		j;
+	int		z;
 	size_t	s;
-	size_t	z;
 
 	j = -1;
 	i = size;
-	z = ft_strlen("declare -x ");
 	while (++j < size)
 	{
 		i = ordered_index(mat, size, i);
-		s = ft_strlen(mat[i]) + 1;
-		new_mat[j] = (char *) malloc(sizeof(char) * (s + z + 2));
-		ft_memcpy(new_mat[j], "declare -x ", z);
-		memcpy_export(new_mat[j]+z, mat[i], s);
+		s = ft_strlen(mat[i]);
+		z = EXTRA_SIZE_EXPORT + s + 1;
+		if (var_to_print(mat[i]))
+			z += 2;
+		new_mat[j] = (char *) malloc(sizeof(char) * (z));
+		ft_memcpy(new_mat[j], "declare -x ", EXTRA_SIZE_EXPORT);
+		memcpy_export(new_mat[j]+EXTRA_SIZE_EXPORT, mat[i], s);
+		new_mat[j][z] = 0;
 	}
 }
 
