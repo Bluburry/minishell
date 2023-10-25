@@ -1,18 +1,4 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/10 15:26:22 by jecarval          #+#    #+#              #
-#    Updated: 2023/10/25 12:44:42 by jecarval         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-
 #Colors
-
 DEF_COLOR = \033[0;39m
 GRAY = \033[0;90m
 RED = \033[0;91m
@@ -41,29 +27,18 @@ LIB			=	-lreadline -L. -lft
 # If you put them before, it won't compile
 
 #Source folders
-# To add a new source folder, you need to add it here, in the source files, in the 
-# SRC_FILES list and in the $(OBJ_FILES): rule
-SRC_ROOT_DIR		=	
-PARSING_DIR			=	parsing/
-UTILS_DIR			=	utils/
-LEXER_DIR			=	lexer/
-
+# To add a new source folder, add it to DIRS
+DIRS	=	parsing utils lexer
+P_DIRS	=	$(addprefix $(SRC_DIR), $(DIRS))
+vpath %.c src $(P_DIRS)
 
 #Source files
-
-SRC_ROOT	=	minishell
-PARSING		=	
-UTILS		=	echo pwd utils
-LEXER		=	lexer lexer_utils split_tokens split_quote_tokens split_char_tokens \
+# To add a new source file, add it to SRCS
+SRCS	=	minishell lexer lexer_utils split_tokens split_quote_tokens split_char_tokens \
 				split_inout_tokens merge_tokens_cleanup space_tokens_cleanup var_to_value \
-				expand_var_tokens
+				expand_var_tokens echo pwd utils
+OBJS 	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS)))
 
-
-SRC_FILES	=	$(addprefix $(SRC_ROOT_DIR),$(SRC_ROOT)) $(addprefix $(PARSING_DIR),$(PARSING))\
-				$(addprefix $(UTILS_DIR),$(UTILS)) $(addprefix $(LEXER_DIR),$(LEXER)) 
-
-SRCS 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 OBJ_FILES	=	.cache_exists
 
 all:	$(NAME)
@@ -78,16 +53,12 @@ libft.a:
 	@make $(DEBUG) -C $(LIBFT)
 	@cp libft/libft.a .
 
-$(OBJ_DIR)%.o:	$(SRC_DIR)%.c | $(OBJ_FILES)
+$(OBJ_DIR)%.o:	%.c | $(OBJ_FILES)
 	@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_FILES):
 	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(OBJ_DIR)$(SRC_ROOT_DIR)
-	@mkdir -p $(OBJ_DIR)$(PARSING_DIR)
-	@mkdir -p $(OBJ_DIR)$(UTILS_DIR)
-	@mkdir -p $(OBJ_DIR)$(LEXER_DIR)
 
 clean:
 	@$(RM) -r $(OBJ_DIR)
