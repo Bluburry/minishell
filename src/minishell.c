@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	waiting_for_input()
+void	waiting_for_input(t_env *env)
 {
 	char	*rl;
 
@@ -8,7 +8,7 @@ void	waiting_for_input()
 	{
 		rl = readline("minishell > ");
 		printf("rl: %s\n", rl);
-		parser(rl);
+		lexer(rl, env);
 	}
 }
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv, char **envp)
 /* 	printf("\n\nSearch: %s\n", get_env_var(env, "LANG"));
 	printf("\n\nSearch: %s\n", get_env_var(env, "PWD"));
 	printf("\n\nSearch: %s\n", get_env_var(env, "LS_COLORS")); */
-	waiting_for_input();
+	waiting_for_input(env);
 	//clear_env_struct(env);
 	return (0);
 }

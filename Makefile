@@ -1,18 +1,4 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: remarque <remarque@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/10 15:26:22 by jecarval          #+#    #+#              #
-#    Updated: 2023/10/25 12:25:22 by remarque         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-
 #Colors
-
 DEF_COLOR = \033[0;39m
 GRAY = \033[0;90m
 RED = \033[0;91m
@@ -48,9 +34,9 @@ vpath %.c src $(P_DIRS)
 
 #Source files
 # To add a new source file, add it to SRCS
-
-SRCS	=	minishell parser split_quote_tokens split_char_tokens\
-			split_inout_tokens split_space_tokens echo pwd utils
+SRCS	=	minishell lexer lexer_utils split_tokens split_quote_tokens split_char_tokens \
+				split_inout_tokens merge_tokens_cleanup space_tokens_cleanup var_to_value \
+				expand_var_tokens echo pwd utils
 OBJS 	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS)))
 
 OBJ_FILES	=	.cache_exists
