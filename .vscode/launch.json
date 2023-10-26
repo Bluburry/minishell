@@ -4,7 +4,6 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
-
 		{
 		"type": "cppdbg",
 		"request": "launch",
@@ -17,25 +16,17 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"name": "test home",
-			"program": "/homes/tpinto-e/common_core/minishell/minishell",
+			"program": "/home/jess/minishell/minishell",
 			"args": [],
-			"cwd": "/homes/tpinto-e/common_core/minishell",
-		},
-		{
-			"type": "cppdbg",
-			"request": "launch",
-			"name": "function test 42",
-			"program": "/nfs/homes/tpinto-e/common_core/minishell/src/parsing/a.out",
-			"args": [],
-			"cwd": "/nfs/homes/tpinto-e/common_core/minishell/src/parsing",
+			"cwd": "/home/jess/minishell",
 		},
 		{
 			"type": "cppdbg",
 			"request": "launch",
 			"name": "function test home",
-			"program": "/home/bluburry/Prog/minishell/src/parsing/a.out",
+			"program": "/home/jess/minishell/src/parsing/a.out",
 			"args": [],
-			"cwd": "/home/bluburry/Prog/minishell/src/parsing",
+			"cwd": "/home/jess/minishell/src/parsing",
 		},
 	]
 }

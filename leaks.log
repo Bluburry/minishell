@@ -1,14 +1,308 @@
-==43031== Memcheck, a memory error detector
-==43031== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==43031== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==43031== Command: ./minishell
-==43031== Parent PID: 43021
-==43031== 
-==43031== 
-==43031== HEAP SUMMARY:
-==43031==     in use at exit: 0 bytes in 0 blocks
-==43031==   total heap usage: 309 allocs, 309 frees, 21,674 bytes allocated
-==43031== 
-==43031== All heap blocks were freed -- no leaks are possible
-==43031== 
-==43031== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==19046== Memcheck, a memory error detector
+==19046== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==19046== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==19046== Command: ./minishell
+==19046== Parent PID: 7374
+==19046== 
+==19046== Invalid read of size 1
+==19046==    at 0x402ADB: store_word (var_to_value.c:26)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046==  Address 0x4b158dd is 0 bytes after a block of size 13 alloc'd
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x4015C0: create_token (split_tokens.c:27)
+==19046==    by 0x401BB2: split_quotes_tokens (split_quote_tokens.c:84)
+==19046==    by 0x401740: tokens_init (split_tokens.c:69)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== Invalid read of size 1
+==19046==    at 0x402B42: store_word (var_to_value.c:32)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046==  Address 0x4b158dd is 0 bytes after a block of size 13 alloc'd
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x4015C0: create_token (split_tokens.c:27)
+==19046==    by 0x401BB2: split_quotes_tokens (split_quote_tokens.c:84)
+==19046==    by 0x401740: tokens_init (split_tokens.c:69)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== Invalid write of size 1
+==19046==    at 0x402B4D: store_word (var_to_value.c:32)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046==  Address 0x4b1617a is 0 bytes after a block of size 74 alloc'd
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x402B1C: store_word (var_to_value.c:29)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== Invalid write of size 1
+==19046==    at 0x402B5D: store_word (var_to_value.c:33)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046==  Address 0x4b1617b is 1 bytes after a block of size 74 alloc'd
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x402B1C: store_word (var_to_value.c:29)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== Invalid read of size 1
+==19046==    at 0x4033FE: ft_strjoin (ft_strjoin.c:33)
+==19046==    by 0x402A46: var_to_value (var_to_value.c:61)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==19046== 
+==19046== 
+==19046== Process terminating with default action of signal 11 (SIGSEGV)
+==19046==  Access not within mapped region at address 0x0
+==19046==    at 0x4033FE: ft_strjoin (ft_strjoin.c:33)
+==19046==    by 0x402A46: var_to_value (var_to_value.c:61)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046==  If you believe this happened as a result of a stack
+==19046==  overflow in your program's main thread (unlikely but
+==19046==  possible), you can try to increase the size of the
+==19046==  main thread stack using the --main-stacksize= flag.
+==19046==  The main thread stack size used in this run was 8388608.
+==19046== 
+==19046== HEAP SUMMARY:
+==19046==     in use at exit: 205,319 bytes in 306 blocks
+==19046==   total heap usage: 531 allocs, 225 frees, 226,137 bytes allocated
+==19046== 
+==19046== 2 bytes in 2 blocks are definitely lost in loss record 1 of 69
+==19046==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x402943: var_to_value (var_to_value.c:44)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 5 bytes in 1 blocks are still reachable in loss record 2 of 69
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x403385: ft_strjoin (ft_strjoin.c:21)
+==19046==    by 0x402A46: var_to_value (var_to_value.c:61)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 16 bytes in 1 blocks are still reachable in loss record 10 of 69
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x4032E5: create_env_struct (start_env_vars.c:53)
+==19046==    by 0x4011F2: main (minishell.c:21)
+==19046== 
+==19046== 16 bytes in 3 blocks are still reachable in loss record 12 of 69
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x403385: ft_strjoin (ft_strjoin.c:21)
+==19046==    by 0x402AA1: var_to_value (var_to_value.c:71)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 20 bytes in 10 blocks are definitely lost in loss record 15 of 69
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x403A1D: ft_substr (ft_substr.c:25)
+==19046==    by 0x402A95: var_to_value (var_to_value.c:71)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 25 bytes in 7 blocks are definitely lost in loss record 16 of 69
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x403385: ft_strjoin (ft_strjoin.c:21)
+==19046==    by 0x402AA1: var_to_value (var_to_value.c:71)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 40 bytes in 1 blocks are still reachable in loss record 18 of 69
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x401B57: split_quotes_tokens (split_quote_tokens.c:74)
+==19046==    by 0x401740: tokens_init (split_tokens.c:69)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 40 bytes in 1 blocks are still reachable in loss record 19 of 69
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x402BD7: expand_var_tokens (expand_var_tokens.c:19)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 58 bytes in 4 blocks are still reachable in loss record 23 of 69
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x4015C0: create_token (split_tokens.c:27)
+==19046==    by 0x401BB2: split_quotes_tokens (split_quote_tokens.c:84)
+==19046==    by 0x401740: tokens_init (split_tokens.c:69)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 74 bytes in 1 blocks are definitely lost in loss record 24 of 69
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x402B1C: store_word (var_to_value.c:29)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 640 bytes in 1 blocks are still reachable in loss record 33 of 69
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x40331D: create_env_struct (start_env_vars.c:56)
+==19046==    by 0x4011F2: main (minishell.c:21)
+==19046== 
+==19046== 3,787 bytes in 60 blocks are still reachable in loss record 45 of 69
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x40328B: copy_char_matrix (start_env_vars.c:37)
+==19046==    by 0x40333E: create_env_struct (start_env_vars.c:57)
+==19046==    by 0x4011F2: main (minishell.c:21)
+==19046== 
+==19046== LEAK SUMMARY:
+==19046==    definitely lost: 121 bytes in 20 blocks
+==19046==    indirectly lost: 0 bytes in 0 blocks
+==19046==      possibly lost: 0 bytes in 0 blocks
+==19046==    still reachable: 4,602 bytes in 72 blocks
+==19046==         suppressed: 200,596 bytes in 214 blocks
+==19046== 
+==19046== ERROR SUMMARY: 141 errors from 9 contexts (suppressed: 0 from 0)
+==19046== 
+==19046== 1 errors in context 1 of 9:
+==19046== Invalid read of size 1
+==19046==    at 0x4033FE: ft_strjoin (ft_strjoin.c:33)
+==19046==    by 0x402A46: var_to_value (var_to_value.c:61)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==19046== 
+==19046== 
+==19046== 1 errors in context 2 of 9:
+==19046== Invalid write of size 1
+==19046==    at 0x402B5D: store_word (var_to_value.c:33)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046==  Address 0x4b1617b is 1 bytes after a block of size 74 alloc'd
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x402B1C: store_word (var_to_value.c:29)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 
+==19046== 1 errors in context 3 of 9:
+==19046== Invalid write of size 1
+==19046==    at 0x402B4D: store_word (var_to_value.c:32)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046==  Address 0x4b1617a is 0 bytes after a block of size 74 alloc'd
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x402B1C: store_word (var_to_value.c:29)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 
+==19046== 67 errors in context 4 of 9:
+==19046== Invalid read of size 1
+==19046==    at 0x402B42: store_word (var_to_value.c:32)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046==  Address 0x4b158dd is 0 bytes after a block of size 13 alloc'd
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x4015C0: create_token (split_tokens.c:27)
+==19046==    by 0x401BB2: split_quotes_tokens (split_quote_tokens.c:84)
+==19046==    by 0x401740: tokens_init (split_tokens.c:69)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+==19046== 
+==19046== 67 errors in context 5 of 9:
+==19046== Invalid read of size 1
+==19046==    at 0x402ADB: store_word (var_to_value.c:26)
+==19046==    by 0x402A0E: var_to_value (var_to_value.c:58)
+==19046==    by 0x402C4E: expand_var_tokens (expand_var_tokens.c:29)
+==19046==    by 0x401778: tokens_init (split_tokens.c:73)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046==  Address 0x4b158dd is 0 bytes after a block of size 13 alloc'd
+==19046==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19046==    by 0x4015C0: create_token (split_tokens.c:27)
+==19046==    by 0x401BB2: split_quotes_tokens (split_quote_tokens.c:84)
+==19046==    by 0x401740: tokens_init (split_tokens.c:69)
+==19046==    by 0x401260: lexer (lexer.c:11)
+==19046==    by 0x4011C0: waiting_for_input (minishell.c:11)
+==19046==    by 0x4011FF: main (minishell.c:30)
+==19046== 
+--19046-- 
+--19046-- used_suppression:     57 leak readline readline_supression:10 suppressed: 200,596 bytes in 214 blocks
+==19046== 
+==19046== ERROR SUMMARY: 141 errors from 9 contexts (suppressed: 0 from 0)

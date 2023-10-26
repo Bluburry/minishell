@@ -1,18 +1,4 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jecarval <jecarval@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/10 15:26:22 by jecarval          #+#    #+#              #
-#    Updated: 2023/10/12 16:03:08 by jecarval         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-
 #Colors
-
 DEF_COLOR = \033[0;39m
 GRAY = \033[0;90m
 RED = \033[0;91m
@@ -40,28 +26,19 @@ LIB			=	-lreadline -L. -lft
 # Libs are always after objects in the compilation
 # If you put them before, it won't compile
 
-#Source folders
-# To add a new source folder, you need to add it here, in the source files, in the 
-# SRC_FILES list and in the $(OBJ_FILES): rule
-SRC_ROOT_DIR		=	
-PARSING_DIR			=	parsing/
-UTILS_DIR			=	utils/
-ENV_STRUC			=	struct_handling/
-
+# To add a new source folder, add it to DIRS
+DIRS	=	parsing utils lexer struct_handling
+P_DIRS	=	$(addprefix $(SRC_DIR), $(DIRS))
+vpath %.c src $(P_DIRS)
 
 #Source files
+# To add a new source file, add it to SRCS
+SRCS	=	minishell lexer lexer_utils split_tokens split_quote_tokens split_char_tokens \
+			split_inout_tokens merge_tokens_cleanup space_tokens_cleanup var_to_value \
+			expand_var_tokens echo pwd utils alter_env clear_env find_env_var start_env_vars \
+      print_env print_export
+OBJS 	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS)))
 
-SRC_ROOT	=	minishell
-PARSING		=	parser
-UTILS		=	echo pwd utils
-ENV_VAR		=	alter_env clear_env find_env_var start_env_vars print_env print_export
-
-
-SRC_FILES	=	$(addprefix $(SRC_ROOT_DIR),$(SRC_ROOT)) $(addprefix $(PARSING_DIR),$(PARSING))\
-				$(addprefix $(UTILS_DIR),$(UTILS)) $(addprefix $(ENV_STRUC),$(ENV_VAR))
-
-SRCS 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 OBJ_FILES	=	.cache_exists
 
 all:	$(NAME)
@@ -76,16 +53,12 @@ libft.a:
 	@make $(DEBUG) -C $(LIBFT)
 	@cp libft/libft.a .
 
-$(OBJ_DIR)%.o:	$(SRC_DIR)%.c | $(OBJ_FILES)
+$(OBJ_DIR)%.o:	%.c | $(OBJ_FILES)
 	@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_FILES):
 	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(OBJ_DIR)$(SRC_ROOT_DIR)
-	@mkdir -p $(OBJ_DIR)$(PARSING_DIR)
-	@mkdir -p $(OBJ_DIR)$(UTILS_DIR)
-	@mkdir -p $(OBJ_DIR)$(ENV_STRUC)
 
 clean:
 	@$(RM) -r $(OBJ_DIR)
