@@ -6,7 +6,7 @@
 /*   By: ade-barr <ade-barr@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:01 by ade-barr          #+#    #+#             */
-/*   Updated: 2023/10/25 05:40:24 by ade-barr         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:24:22 by ade-barr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,26 @@ char	*var_to_value(char *str, t_env *env)
 	char	*temp;
 
 	i = -1;
-	temp = calloc(sizeof(char), 1);
+	temp = ft_calloc(sizeof(char), 1);
 	while (str[++i])
 	{
-		
 		if (str[i] == '$')
 		{
+			ft_printf("str[i] = '%s'\n", str + i);
 			if (str[i + 1] == '?') 
 				ft_printf("exit status\n");
 
 			else if (ft_isdigit(str[i + 1]))
 				ft_printf("\n\nsyntax_error_number\n\n"); //syntax_error('$');
-
 			else if (ft_isalpha(str[i + 1]))
 			{
 				word = store_word(str + i + 1); //saves into 'word' whatever comes after '$'
 				i += ft_strlen(word);
 				word = get_env_var(env, word); //searches for a env called 'word' and then replaces it with its value
-				temp = ft_strjoin(temp, word);
+				if (word)
+					temp = ft_strjoin(temp, word);
+				free(word);
 			}
-
 			else
 			{
 				ft_printf("\n\nsyntax_error\n\n");

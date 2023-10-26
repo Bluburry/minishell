@@ -31,7 +31,7 @@ int	main(int argc, char **argv, char **envp)
 	//var_to_value("$s");
 	//var_to_value("$USERNAME $DISPLAY", env);
 	//var_to_value("$USERNAME", env);
-	ft_printf("\n%s\n\n", var_to_value("is this working yet? $USERNAME test $DISPLAY are you doctor?", env));
+	ft_printf("\n%s\n\n", var_to_value("teste 'wow$batata' $abacaxi guaxinim$tomte$azeite '''", env));
 	waiting_for_input();
 	clear_env_struct(env);
 	return (0);
