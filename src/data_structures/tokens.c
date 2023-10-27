@@ -6,11 +6,12 @@
 /*   By: remarque <remarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 13:40:31 by remarque          #+#    #+#             */
-/*   Updated: 2023/10/25 17:11:13 by remarque         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:16:27 by remarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <fcntl.h>
 
 // an enum that decides wether the token is a name or an operator
 typedef enum e_etok
@@ -115,3 +116,30 @@ void	clean_ast(t_ast *ast)
 void insert_into_ast();
 
 void remove_from_ast();
+
+void	pipeline(int prevfd, char *path, char *argv[], char *env[])
+{
+	int	fd[2];
+	int	pid;
+
+	if (pipe(fd) == -1)
+		return ;
+	pid = fork();
+	if (pid == 0)
+	{
+		close(fd[0]);
+		dup2(fd[1], 1);
+		close(fd[1]);
+		if (prevfd != -1)
+		{
+			dup2(prevfd, 0);
+			close(prevfd);
+		}
+		execve(path, argv, env);
+	}
+	else
+	{
+		close(fd[1]);
+		prevfd = fd[0];
+	}
+}
