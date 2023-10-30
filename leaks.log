@@ -1,0 +1,49 @@
+==1030936== Memcheck, a memory error detector
+==1030936== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1030936== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==1030936== Command: ./minishell
+==1030936== Parent PID: 1015369
+==1030936== 
+==1030936== 
+==1030936== Process terminating with default action of signal 1 (SIGHUP)
+==1030936==    at 0x48F53DB: kill (syscall-template.S:78)
+==1030936==    by 0x488F7A2: ??? (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==1030936==    by 0x48924AD: rl_read_key (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==1030936==    by 0x4877C81: readline_internal_char (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==1030936==    by 0x48784EC: readline (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
+==1030936==    by 0x4011CA: waiting_for_input (minishell.c:12)
+==1030936==    by 0x401278: main (minishell.c:71)
+==1030936== 
+==1030936== HEAP SUMMARY:
+==1030936==     in use at exit: 209,291 bytes in 291 blocks
+==1030936==   total heap usage: 522 allocs, 231 frees, 229,907 bytes allocated
+==1030936== 
+==1030936== 16 bytes in 1 blocks are still reachable in loss record 8 of 63
+==1030936==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1030936==    by 0x4037B5: create_env_struct (start_env_vars.c:63)
+==1030936==    by 0x40126B: main (minishell.c:32)
+==1030936== 
+==1030936== 624 bytes in 1 blocks are still reachable in loss record 26 of 63
+==1030936==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1030936==    by 0x4037ED: create_env_struct (start_env_vars.c:66)
+==1030936==    by 0x40126B: main (minishell.c:32)
+==1030936== 
+==1030936== 3,751 bytes in 58 blocks are still reachable in loss record 38 of 63
+==1030936==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1030936==    by 0x40374F: copy_char_matrix (start_env_vars.c:46)
+==1030936==    by 0x403813: create_env_struct (start_env_vars.c:67)
+==1030936==    by 0x40126B: main (minishell.c:32)
+==1030936== 
+==1030936== LEAK SUMMARY:
+==1030936==    definitely lost: 0 bytes in 0 blocks
+==1030936==    indirectly lost: 0 bytes in 0 blocks
+==1030936==      possibly lost: 0 bytes in 0 blocks
+==1030936==    still reachable: 4,391 bytes in 60 blocks
+==1030936==         suppressed: 204,900 bytes in 231 blocks
+==1030936== 
+==1030936== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--1030936-- 
+--1030936-- used_suppression:     57 leak readline readline_supression:10 suppressed: 200,596 bytes in 214 blocks
+--1030936-- used_suppression:      3 leak add_history readline_supression:16 suppressed: 4,304 bytes in 17 blocks
+==1030936== 
+==1030936== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

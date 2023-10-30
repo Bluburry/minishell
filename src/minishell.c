@@ -1,4 +1,7 @@
 #include "minishell.h"
+#include <signal.h>
+
+struct sigaction	sa;
 
 void	waiting_for_input(t_env *env)
 {
@@ -15,10 +18,17 @@ void	waiting_for_input(t_env *env)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_env		*env;
+	t_env	*env;
 
 	(void)argc;
 	(void)argv;
+	ft_bzero(&sa, sizeof(sa));
+	sa.sa_sigaction = sig_handler;
+	sa.sa_flags = SA_SIGINFO;
+	//sigaddset(&sa.sa_mask, SIGQUIT);
+	//sigemptyset(&sa.sa_mask);
+	sigaction(SIGQUIT, &sa, NULL);
+	//sigaction(SIGUSR2, &sa, NULL);
 	env = create_env_struct(envp);
 	/* add_new_env_var(env, "TEST=24");
 	add_new_env_var(env, "TEST2");
