@@ -21,7 +21,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	env = create_env_struct(envp);
-	/* add_new_env_var(env, "TEST=24");
+	add_new_env_var(env, "TEST=24");
 	add_new_env_var(env, "TEST2");
 	add_new_env_var(env, "TEST3=");
 	unset_env_var(env, "TEST");
@@ -58,9 +58,9 @@ int	main(int argc, char **argv, char **envp)
 	{
 		printf("%s\n", test[i]);
 	}
-	clear_chars(test, env->size); */
+	clear_chars(test, env->size);
 
-	waiting_for_input(env);
+	//waiting_for_input(env);
 	clear_env_struct(env);
 	return (0);
 }
