@@ -9,12 +9,13 @@ void	waiting_for_input(t_env *env)
 		rl = readline("minishell > ");
 		printf("rl: %s\n", rl);
 		lexer(rl, env);
+		add_history(rl);
 	}
 }
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_env	*env;
+	t_env		*env;
 
 	(void)argc;
 	(void)argv;
@@ -57,8 +58,8 @@ int	main(int argc, char **argv, char **envp)
 		printf("%s\n", test[i]);
 	}
 	clear_chars(test, env->size); */
-
 	waiting_for_input(env);
 	clear_env_struct(env);
+	rl_clear_history();
 	return (0);
 }
