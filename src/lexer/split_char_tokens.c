@@ -49,7 +49,7 @@ int	count_char_tokens(char **input, char c)
 	return (len);
 }
 
-char	**doing(char *input, char **ptr, char c)
+char	**tokenize_char(char *input, char **ptr, char c)
 {
 	char	*str;
 	int		end;
@@ -90,7 +90,7 @@ char	**split_char_tokens(char **input, char c)
 		flag = 0;
 		ptr = check_for_quotes(*input, ptr, &flag);
 		if (flag == 0)
-			ptr = doing(*input, ptr, c);
+			ptr = tokenize_char(*input, ptr, c);
 		input++;
 	}
 	*ptr = NULL;

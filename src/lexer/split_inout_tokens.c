@@ -47,7 +47,7 @@ int	count_inout_tokens(char **input, t_env *env)
 	return (len);
 }
 
-char	**test(char *input, char **ptr)
+char	**tokenize_inout(char *input, char **ptr)
 {
 	int		end;
 	char	*str;
@@ -91,7 +91,7 @@ char	**split_inout_tokens(char **input, t_env *env)
 		flag = 0;
 		ptr = check_for_quotes(*input, ptr, &flag);
 		if (flag == 0)
-			ptr = test(*input, ptr);
+			ptr = tokenize_inout(*input, ptr);
 		input++;
 	}
 	*ptr = NULL;
