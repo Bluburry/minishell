@@ -14,7 +14,6 @@ char	**expand_var_tokens(char **input, t_env *env)
 {
 	char	**tokens;
 	char	**ptr;
-	int		flag;
 
 	tokens = malloc((count_tokens(input) + 1) * sizeof(char *));
 	if (!tokens)
@@ -22,7 +21,6 @@ char	**expand_var_tokens(char **input, t_env *env)
 	ptr = tokens;
 	while (*input)
 	{
-		flag = 0;
 		if (**input == '\'')
 			*ptr = ft_strdup(*input);
 		else 

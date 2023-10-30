@@ -1,4 +1,4 @@
-#include "../../include/minishell.h"
+#include "minishell.h"
 
 /**
  * @brief return what is left of the string after fiding the char passed as parameter
@@ -37,10 +37,30 @@ int	ft_strchrstr(const char *str, char c, const char *str_find)
 }
 
 /**
+ * @brief find an environmental variable in the structure, 
+ * return its index
+ * @param env structure
+ * @param str variable to find
+*/
+int	index_of_str(t_env *env, const char *str)
+{
+	int	i;
+
+	i = -1;
+	while (++i < env->size)
+	{
+		if (ft_strchrstr(env->vars[i], '=', str))
+			break ;
+	}
+	return (i);
+}
+
+/**
  * @brief iterates throught the strucutre to try and find an environmental 
  * variable matching the str passed as parameter
  * @param env structure
  * @param str string to find
+ * @param skip index to skip, leave as -1 if not needed
  * @return pointer to string after '=', NULL str was not found
 */
 char	*get_env_var(t_env *env, const char *str)
@@ -48,15 +68,11 @@ char	*get_env_var(t_env *env, const char *str)
 	int		i;
 	char	*ret;
 
-	ret = NULL;
-	i = -1;
-	while (++i < env->size)
-	{
-		if (ft_strchrstr(env->vars[i], '=', str))
-			break ;
-	}
+	i = index_of_str(env, str);
 	if (i >= env->size)
 		return (NULL);
 	ret = str_after_char(env->vars[i], '=');
+	if (!*ret)
+		return (NULL);
 	return (ret);
 }
