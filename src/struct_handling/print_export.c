@@ -26,7 +26,7 @@ int	ordered_index(char **strs, int size, int prev)
 
 	index = 0;
 	i = 0;
-	while (prev != size && str_cmp(strs[index], strs[prev]) < 0)
+	while (prev != size && str_cmp(strs[index], strs[prev]) <= 0)
 		index++;
 	while (++i < size)
 	{
@@ -51,20 +51,19 @@ void	memcpy_export(char *dest, char *src, int n)
 	while (i < n)
 	{
 		dest[j++] = src[i++];
-		if (src[i - 1] == '=' && c == 0 && src[i])
+		if (src[i - 1] == '=' && c == 0)
 		{
-			dest[j++] = 34;
+			dest[j++] = '"';
 			c++;
-		}
-		else if (src[i - 1] == '=' && c == 0 && !src[i+1])
-		{
-			dest[j++] = 34;
-			dest[j++] = 34;
-			return;
 		}
 	}
 	if (c == 1)
-		dest[j] = 34;
+	{
+		dest[j] = '"';
+		dest[++j] = '\0';
+	}
+	else
+		dest[j] = '\0';
 }
 
 void	copy_char_matrix_ordered(char **mat, char **new_mat, int size)
@@ -81,13 +80,11 @@ void	copy_char_matrix_ordered(char **mat, char **new_mat, int size)
 		i = ordered_index(mat, size, i);
 		s = ft_strlen(mat[i]);
 		z = EXTRA_SIZE_EXPORT + s + 1;
-		// se tiver = entrar aqui, ou seja verificar se nao tem '='
-		if (var_to_print(mat[i]))
+		if (ft_strrchr(mat[i], '='))
 			z += 2;
 		new_mat[j] = (char *) malloc(sizeof(char) * (z));
 		ft_memcpy(new_mat[j], "declare -x ", EXTRA_SIZE_EXPORT);
 		memcpy_export(new_mat[j]+EXTRA_SIZE_EXPORT, mat[i], s);
-		new_mat[j][z] = 0;
 	}
 }
 
