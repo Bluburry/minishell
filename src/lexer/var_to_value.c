@@ -6,7 +6,7 @@
 /*   By: ade-barr <ade-barr@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:01 by ade-barr          #+#    #+#             */
-/*   Updated: 2023/10/25 05:40:24 by ade-barr         ###   ########.fr       */
+/*   Updated: 2023/10/30 01:29:14 by ade-barr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,27 @@ static char	*store_word(char *str)
 	i--;
 	word = malloc(sizeof(char) * i);
 	j = -1;
-	while (++j <= i)
+	while (str[++j] && j <= i)
 		word[j] = str[j];
-	word[j] = '\0';
+	word[++j] = '\0';
+	return (word);
+}
+
+static char	*store_special(char *str)
+{
+	int	i;
+	int	j;
+	char	*word;
+
+	i = 0;
+	while (str[i] != '"')
+		i++;
+	i--;
+	word = malloc(sizeof(char) * i);
+	j = -1;
+	while (str[++j] && j <= i)
+		word[j] = str[j];
+	word[++j] = '\0';
 	return (word);
 }
 
@@ -41,7 +59,7 @@ char	*var_to_value(char *str, t_env *env)
 	char	*temp;
 
 	i = -1;
-	temp = calloc(sizeof(char), 1);
+	temp = ft_calloc(sizeof(char), 1);
 	while (str[++i])
 	{
 		
@@ -58,14 +76,20 @@ char	*var_to_value(char *str, t_env *env)
 				word = store_word(str + i + 1); //saves into 'word' whatever comes after '$'
 				i += ft_strlen(word);
 				word = get_env_var(env, word); //searches for a env called 'word' and then replaces it with its value
-				temp = ft_strjoin(temp, word);
+				if (word)
+					temp = ft_strjoin(temp, word);
 			}
-
 			else
 			{
 				ft_printf("\n\nsyntax_error\n\n");
 				return (NULL);
 			}
+		}
+		else if (str[i] == '"' && str[i + 1] != '"')
+		{
+			word = store_special(str + i + 1); //saves into 'word' whatever comes after '$'
+			i += ft_strlen(word);
+			temp = ft_strjoin(temp, word);
 		}
 		else
 			temp = ft_strjoin(temp, ft_substr(str, i, 1));

@@ -8,8 +8,6 @@ void	waiting_for_input(t_env *env)
 	{
 		rl = readline("minishell > ");
 		printf("rl: %s\n", rl);
-		if (ft_strncmp(rl, "exit", 4))
-			break ;
 		lexer(rl, env);
 	}
 }
