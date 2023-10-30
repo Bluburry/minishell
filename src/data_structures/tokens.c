@@ -6,12 +6,12 @@
 /*   By: remarque <remarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 13:40:31 by remarque          #+#    #+#             */
-/*   Updated: 2023/10/27 18:16:27 by remarque         ###   ########.fr       */
+/*   Updated: 2023/10/30 17:28:20 by remarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <fcntl.h>
+#include <stdint.h>
 
 // an enum that decides wether the token is a name or an operator
 typedef enum e_etok
@@ -117,29 +117,103 @@ void insert_into_ast();
 
 void remove_from_ast();
 
-void	pipeline(int prevfd, char *path, char *argv[], char *env[])
-{
-	int	fd[2];
-	int	pid;
+//my AST needs to be able to tell if a pipe chain is in the start, middle or end
 
-	if (pipe(fd) == -1)
-		return ;
+typedef struct s_pipe
+{
+	int		prevfd;
+	int		ret_status;
+	// char	*path;
+	// char	**argv;
+	// char	*env[];
+}	t_pipe;
+
+typedef struct s_singleton
+{
+	int		in;
+	int		ret_status;
+	bool	start;
+	bool	end;
+	char	*path;
+	char	**argv;
+	char	*env[];
+}	t_singleton;
+
+int	inner_pipe(int in, int out, char *path, char *argv[], char *env[])
+{
+	int	pid;
+	int	status;
+
+	status = 0;
 	pid = fork();
 	if (pid == 0)
 	{
-		close(fd[0]);
-		dup2(fd[1], 1);
-		close(fd[1]);
-		if (prevfd != -1)
-		{
-			dup2(prevfd, 0);
-			close(prevfd);
-		}
+		dup2(out, STDOUT_FILENO);
+		close(out);
+		dup2(in, STDIN_FILENO);
+		close(in);
 		execve(path, argv, env);
 	}
 	else
 	{
-		close(fd[1]);
-		prevfd = fd[0];
+		close(out);
+		waitpid(pid, &status, 0);
+	}
+	return (WEXITSTATUS(status));
+}
+
+// flag is 0 means its in the middle
+// flag as 1 means its in the start
+// flag as 2 means its in the end
+t_pipe	mid_pipe(uint32_t flag, int prevfd, char *path, char *argv[], char *env[])
+{
+	int	fd[2];
+	int	in;
+	int	out;
+
+	if (flag == 2)
+	{
+		in = prevfd;
+		out = STDOUT_FILENO;
+	}
+	else
+		if (pipe(fd) == -1)
+			return ((t_pipe){-1, -1});
+	if (flag == 1)
+	{
+		in = STDIN_FILENO;
+		out = fd[1];
+	}
+	else
+	{
+		in = prevfd;
+		out = fd[1];
+	}
+	return ((t_pipe){fd[0],inner_pipe(in, out, path, argv, env)});
+}//fd[0] is always returned as prevfd
+
+//maybe i need some sort of singleton to track the state of prevfd across uses
+//less maybe and more definitely
+//this singleton would need to be created at the start of parsing, and would
+//survive until the end of it
+//basically, it's a big blob of state
+void outer_pipe(t_singleton *s)
+{
+	t_pipe	pipe;
+	int		flag;
+
+	if (s->start)
+		flag = 1;
+	else if (s->end)
+		flag = 2;
+	else
+		flag = 0;
+	pipe = mid_pipe(flag, s->in, s->path, s->argv, s->env);
+	s->in = pipe.prevfd;
+	s->ret_status = pipe.ret_status;
+	if (s->end)
+	{
+		close(s->in);
+		s->in = -1;
 	}
 }
