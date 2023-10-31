@@ -6,10 +6,11 @@
 /*   By: remarque <remarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 13:40:31 by remarque          #+#    #+#             */
-/*   Updated: 2023/10/30 17:28:20 by remarque         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:40:28 by remarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "minishell.h"
 #include <stdint.h>
 
@@ -31,14 +32,13 @@ typedef struct s_tok
 {
 	t_etok		type;
 	char		*path;
-	char		*arglist[];
+	char		**arglist;
 }	t_tok;
 
 // dynamically allocated list of tokens
 typedef struct s_ast
 {
 	t_tok		*tokens;
-	uint32_t	size;
 	uint32_t	cap;
 }	t_ast;
 
@@ -66,14 +66,14 @@ void	*ft_reallocation(void *ptr, size_t ptrsize, size_t size)
 }
 
 // Creates the abstract syntax tree used to organise the tokens
-t_ast	*create_ast(t_tok *tokens, uint32_t cap, uint32_t size)
+t_ast	*create_ast(t_tok *tokens, uint32_t cap)
 {
 	t_ast	*ast;
 
 	ast = malloc(sizeof(t_ast));
 	if (ast == NULL)
 		return (NULL);
-	*ast = (t_ast){0, size, cap};
+	*ast = (t_ast){0, cap};
 	if (tokens == NULL)
 	{
 		ast->tokens = malloc(sizeof(t_tok) * cap);
@@ -89,14 +89,15 @@ void	clean_token_contents(t_tok *token)
 {
 	uint32_t	i;
 
-	free(token->path);
+	token->type = none;
 	i = 0;
-	while (token->arglist[i] != NULL)
-	{
-		free(token->arglist[i]);
-		i++;
-	}
+	if (token->arglist != NULL)
+		while (token->arglist[i])
+			free(token->arglist[i++]);
 	free(token->arglist);
+	token->arglist = NULL;
+	free(token->path);
+	token->path = NULL;
 }
 
 void	clean_ast(t_ast *ast)
@@ -107,15 +108,28 @@ void	clean_ast(t_ast *ast)
 	{
 		i = 0;
 		while (i < ast->cap)
-			clean_token_contents(&ast->tokens[i]);
+			clean_token_contents(&ast->tokens[i++]);
 		free(ast->tokens);
 	}
 	free(ast);
 }
 
-void insert_into_ast();
+void	insert_node(t_ast *ast, t_tok tok, uint32_t i)
+{
+	if (i >= ast->cap)
+		ast = ft_reallocation(ast, ast->cap, ast->cap * 2);
+	ast->tokens[i] = tok;
+}
 
-void remove_from_ast();
+void remove_node(t_ast *ast, uint32_t i)
+{
+	clean_token_contents(&ast->tokens[i]);
+}
+
+t_tok	*token_from_string(char *str)
+{
+	if (ft_strncmp(const char *s1, const char *s2, size_t n))
+}
 
 //my AST needs to be able to tell if a pipe chain is in the start, middle or end
 
