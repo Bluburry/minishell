@@ -61,20 +61,47 @@ void	resize_env_struct(t_env *env)
 }
 
 /**
+ * @brief checks if a new env var is valid, 
+ * it must start with a letter, and can only contain 
+ * numbers and letters
+ */
+int	check_valid_var(const char *str)
+{
+	if (!str || !*str || 
+		!((*str >= 65 && *str <= 90) ||
+		(*str >= 97 && *str <= 122)))
+		return (0);
+	while (*str && *str != '=')
+	{
+		if (!((*str >= 65 && *str <= 90) ||
+			(*str >= 97 && *str <= 122) ||
+			(*str >= 48 && *str <= 57)))
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
+/**
  * @brief adds a new environmental variable to the structure, 
  * resizing if necessary
  * @param new new string to add
 */
-void	add_new_env_var(t_env *env, const char *new)
+int	add_new_env_var(t_env *env, const char *new)
 {
 	size_t	s;
 	int		i;
 
+	if (!check_valid_var(new))
+	{
+		printf("\nexport: \'%s\': not a valid identifier\n", new);
+		return (0);
+	}
 	i = env_already_exists(env, new);
 	if (i >= 0)
 	{
 		alter_env_var(env, new, i);
-		return ;
+		return (1);
 	}
 	if (env->size == env->capacity)
 		resize_env_struct(env);
@@ -82,4 +109,5 @@ void	add_new_env_var(t_env *env, const char *new)
 	env->vars[env->size] = (char *) malloc(sizeof(char *) * s);
 	ft_memcpy(env->vars[env->size], new, s);
 	env->size++;
+	return (1);
 }
