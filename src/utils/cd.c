@@ -33,11 +33,38 @@ void	change_pwd(t_env *env, const char *path)
 char	*calc_pwd(t_env *env, const char *path)
 {
 	char	*str;
+	char	*path_new;
 	char	*path_old;
 	size_t	s;
 
-	//if(*path == '.' && *(path + 1) == '.')
+	if (*path == '.' && *(path + 1) == '.')
+	{
+		// work out how to go back the pwd and then append
+		// probably alter old path to represent only what i need
+	}
 	s = ft_strlen(path_old) + ft_strlen(path) + 2;
+	if (*path == '.' && *(path + 1) == '/')
+	str = ft_strjoin
+
+	return (str);
+}
+
+char	*rollback(char *pwd, char *path)
+{
+	int	i;
+	int	j;
+
+	i = ft_strlen(pwd) - 1;
+	j = 0;
+	while (*(pwd + i) && *(path + j) && *(path + j) == '.')
+	{
+		j += 3;
+		while (i >= 0 && *(pwd + i) != '/')
+			i--;
+		i--;
+	}
+	// this should give me both the index of where 
+	// to stop copying pwd, and to start copying path
 }
 
 void	cd(t_env *env, const char *path)
