@@ -1,20 +1,28 @@
 #include "minishell.h"
 #include <signal.h>
 
-struct sigaction	sa;
-
 void	waiting_for_input(t_env *env)
 {
 	char	*rl;
+	int		id;
 
 	while (1)
 	{
-		rl = readline("minishell > ");
-		printf("rl: %s\n", rl);
-		lexer(rl, env);
-		add_history(rl);
+		id = fork();
+		if (id == 0)
+		{	
+			init_child_signals();
+			rl = readline("minishell > ");
+			printf("rl: %s\n", rl);
+			lexer(rl, env);
+			add_history(rl);
+		}
+		else 
+			wait(NULL);
 	}
 }
+
+
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -22,13 +30,8 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	ft_bzero(&sa, sizeof(sa));
-	sa.sa_sigaction = sig_handler;
-	sa.sa_flags = SA_SIGINFO;
-	//sigaddset(&sa.sa_mask, SIGQUIT);
-	//sigemptyset(&sa.sa_mask);
-	sigaction(SIGQUIT, &sa, NULL);
-	//sigaction(SIGUSR2, &sa, NULL);
+	r_sig = 0;
+	init_signals();
 	env = create_env_struct(envp);
 	/* add_new_env_var(env, "TEST=24");
 	add_new_env_var(env, "TEST2");

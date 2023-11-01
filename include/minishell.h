@@ -19,6 +19,9 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+
+extern int	r_sig;
+
 void	waiting_for_input(t_env *env);
 
 //Environment variables functions
@@ -49,6 +52,10 @@ t_env	*create_env_struct(char **envp);
 
 //Signal functions
 void	sig_handler(int sig, siginfo_t *info, void *ucontent);
+void	init_signals(void);
+void	init_child_signals(void);
+void	sig_handler_child(int sig, siginfo_t *info, void *ucontent);
+
 
 //Instructions execution functions
 void	ft_cd(int argc, char **argv, char **envp);
