@@ -1,28 +1,36 @@
 #include "minishell.h"
+#include <readline/rltypedefs.h>
 #include <signal.h>
+#include <unistd.h>
 
 void	waiting_for_input(t_env *env)
 {
 	char	*rl;
 	int		id;
+	int		fd[2];
+	int		len;
 
+	pipe(fd);
 	while (1)
 	{
 		id = fork();
 		if (id == 0)
-		{	
-			init_child_signals();
-			rl = readline("minishell > ");
+		{
+			rl = readline("minishell -> ");
+			len = strlen(rl) + 1;
+			write(fd[1], &len, sizeof(int));
+			write(fd[1], rl, len);
 			printf("rl: %s\n", rl);
 			lexer(rl, env);
-			add_history(rl);
+			exit (0);
 		}
-		else 
-			wait(NULL);
+		waitpid(id, NULL, 0);
+		read(fd[0], &len, sizeof(int));
+		rl = malloc(len * sizeof(char));
+		read(fd[0], rl, len * sizeof(int));
+		add_history(rl);
 	}
 }
-
-
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -31,6 +39,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	r_sig = 0;
+	printf("father pid: %d\n", getpid());
 	init_signals();
 	env = create_env_struct(envp);
 	/* add_new_env_var(env, "TEST=24");
