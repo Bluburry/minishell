@@ -6,7 +6,7 @@
 /*   By: remarque <remarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 13:40:31 by remarque          #+#    #+#             */
-/*   Updated: 2023/10/31 15:40:28 by remarque         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:55:19 by remarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,19 @@ typedef enum e_etok
 {
 	none,
 	exec,
+	name,
 	r_pipe,
 	r_out,
 	r_in,
 	r_append,
 	r_heredoc,
+	echo_b,
+	cd_b,
+	pwd_b,
+	export_b,
+	unset_b,
+	env_b,
+	exit_b, 
 }	t_etok;
 
 // a token read by the parser, with the optional path and list of arguments
@@ -126,12 +134,39 @@ void remove_node(t_ast *ast, uint32_t i)
 	clean_token_contents(&ast->tokens[i]);
 }
 
-t_tok	*token_from_string(char *str)
+void	go_through_string_list(t_ast *ast, char **list)
 {
-	if (ft_strncmp(const char *s1, const char *s2, size_t n))
+	uint32_t	i;
+
+	i = 0;
+	while (list[i])
+	{
+		if (ft_strncmp(list[i], "exit", 4))
+			insert_node(ast, (t_tok){exit_b, NULL, NULL}, 0);
+		i++;
+	}
 }
 
-//my AST needs to be able to tell if a pipe chain is in the start, middle or end
+#define CAP 64
+void	fill_ast(char **list)
+{
+	t_ast	*ast;
+
+	ast = create_ast(NULL, CAP);
+	if (ast == NULL)
+		return ;
+	go_through_string_list(ast, list);
+
+}
+
+// ok, in order to create tokens from the strings, I need to go through the 
+// list and check for stuff
+t_tok	token_from_string(char *str)
+{
+	if (ft_strncmp("exit", str, 5))
+		return ((t_tok){exit_b, NULL, NULL});
+	return ((t_tok){none, NULL, NULL});
+}
 
 typedef struct s_pipe
 {
