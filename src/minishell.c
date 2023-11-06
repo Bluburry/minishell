@@ -8,7 +8,7 @@ void	waiting_for_input(t_env *env)
 	{
 		rl = readline("minishell > ");
 		printf("rl: %s\n", rl);
-		if (ft_strncmp(rl, "exit", 4))
+		if (!ft_strncmp(rl, "exit", 4))
 			break ;
 		lexer(rl, env);
 	}
@@ -21,7 +21,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	env = create_env_struct(envp);
-	add_new_env_var(env, "TEST=24");
+	/* add_new_env_var(env, "TEST=24");
 	add_new_env_var(env, "TEST2");
 	add_new_env_var(env, "TEST3=");
 	unset_env_var(env, "TEST");
@@ -58,8 +58,15 @@ int	main(int argc, char **argv, char **envp)
 	{
 		printf("%s\n", test[i]);
 	}
-	clear_chars(test, env->size);
-
+	clear_chars(test, env->size); */
+	cd(env, "include");
+	//cd(env, "../");
+	//cd(env, "./include");
+	//cd(env, "../include");
+	cd(env, "../../minishell");
+	//cd(env, "");
+	/* cd(env, "/home/");
+	cd(env, "~/") */
 	//waiting_for_input(env);
 	clear_env_struct(env);
 	return (0);

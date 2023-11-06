@@ -32,7 +32,7 @@ int	  	env_already_exists(t_env *env, const char *new);
 int		ft_strchrstr(const char *str, char c, const char *str_find);
 int  	add_new_env_var(t_env *env, const char *new);
 double	total_size(char **mat, int size);
-char	  **env_string(t_env *env);
+char	**env_string(t_env *env);
 char  	**export_string(t_env *env);
 char  	*str_after_char(char *str, char c);
 char  	*get_env_var(t_env *env, const char *str);
@@ -78,5 +78,10 @@ char	**merge_tokens_cleanup(char **input);
 char	**check_for_quotes(char *input, char **ptr, int *flag);
 int		is_token_end(char c);
 int		move_in_str(char *str, char c);
+
+// Change directory functions
+void	cd(t_env *env, const char *path);
+void	change_pwd(t_env *env, const char *path);
+char	*relative_path(t_env *env, const char *path);
 
 #endif
