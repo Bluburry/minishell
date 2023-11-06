@@ -1,10 +1,11 @@
 #include "minishell.h"
+#include <readline/readline.h>
 #include <signal.h>
 #include <unistd.h>
 
 int	r_sig;
 
-void	init_child_signals(void)
+/* void	init_child_signals(void)
 {
 	struct sigaction	sa;
 
@@ -12,7 +13,7 @@ void	init_child_signals(void)
 	sa.sa_sigaction = sig_handler;
 	sa.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &sa, NULL);
-}
+} */
 
 void	init_signals(void)
 {
@@ -32,16 +33,17 @@ void	sig_handler(int sig, siginfo_t *info, void *ucontent)
 {
 	(void)ucontent;
 	(void)info;
-	if (sig == SIGINT && info->si_pid != 0)
+	//printf("weeeeeeee\n");
+	if (sig == SIGINT)
 	{
-		//r_sig = sig;
-		//printf("sig pid: %d\n", info->si_pid);
-		write(1, "\n", 1);
-		kill (info->si_pid, SIGTERM);
+		printf("\n");
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
 	}
 }
 
-void	sig_handler_child(int sig, siginfo_t *info, void *ucontent)
+/* void	sig_handler_child(int sig, siginfo_t *info, void *ucontent)
 {
 	(void)ucontent;
 	(void)info;
@@ -49,4 +51,4 @@ void	sig_handler_child(int sig, siginfo_t *info, void *ucontent)
 	{
 		return;
 	}
-}
+} */

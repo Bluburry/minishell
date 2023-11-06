@@ -1,283 +1,59 @@
-==419142== Memcheck, a memory error detector
-==419142== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==419142== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==419142== Command: ./minishell
-==419142== Parent PID: 419066
-==419142== 
-==419149== 
-==419149== HEAP SUMMARY:
-==419149==     in use at exit: 205,074 bytes in 285 blocks
-==419149==   total heap usage: 510 allocs, 225 frees, 225,656 bytes allocated
-==419149== 
-==419149== 1 bytes in 1 blocks are definitely lost in loss record 1 of 64
-==419149==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419149==    by 0x4049DD: ft_calloc (ft_calloc.c:19)
-==419149==    by 0x402AA3: var_to_value (var_to_value.c:62)
-==419149==    by 0x402F27: expand_var_tokens (expand_var_tokens.c:27)
-==419149==    by 0x4018CF: tokens_init (split_tokens.c:73)
-==419149==    by 0x4013C0: lexer (lexer.c:11)
-==419149==    by 0x4012AC: waiting_for_input (minishell.c:24)
-==419149==    by 0x401367: main (minishell.c:83)
-==419149== 
-==419149== 8 bytes in 4 blocks are definitely lost in loss record 5 of 64
-==419149==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419149==    by 0x40482D: ft_substr (ft_substr.c:25)
-==419149==    by 0x402C73: var_to_value (var_to_value.c:95)
-==419149==    by 0x402F27: expand_var_tokens (expand_var_tokens.c:27)
-==419149==    by 0x4018CF: tokens_init (split_tokens.c:73)
-==419149==    by 0x4013C0: lexer (lexer.c:11)
-==419149==    by 0x4012AC: waiting_for_input (minishell.c:24)
-==419149==    by 0x401367: main (minishell.c:83)
-==419149== 
-==419149== 9 bytes in 3 blocks are definitely lost in loss record 6 of 64
-==419149==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419149==    by 0x404115: ft_strjoin (ft_strjoin.c:21)
-==419149==    by 0x402C7F: var_to_value (var_to_value.c:95)
-==419149==    by 0x402F27: expand_var_tokens (expand_var_tokens.c:27)
-==419149==    by 0x4018CF: tokens_init (split_tokens.c:73)
-==419149==    by 0x4013C0: lexer (lexer.c:11)
-==419149==    by 0x4012AC: waiting_for_input (minishell.c:24)
-==419149==    by 0x401367: main (minishell.c:83)
-==419149== 
-==419149== 16 bytes in 1 blocks are still reachable in loss record 12 of 64
-==419149==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419149==    by 0x4038A5: create_env_struct (start_env_vars.c:63)
-==419149==    by 0x40135A: main (minishell.c:44)
-==419149== 
-==419149== 640 bytes in 1 blocks are still reachable in loss record 28 of 64
-==419149==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419149==    by 0x4038DD: create_env_struct (start_env_vars.c:66)
-==419149==    by 0x40135A: main (minishell.c:44)
-==419149== 
-==419149== 3,797 bytes in 60 blocks are still reachable in loss record 42 of 64
-==419149==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419149==    by 0x40383F: copy_char_matrix (start_env_vars.c:46)
-==419149==    by 0x403903: create_env_struct (start_env_vars.c:67)
-==419149==    by 0x40135A: main (minishell.c:44)
-==419149== 
-==419149== LEAK SUMMARY:
-==419149==    definitely lost: 18 bytes in 8 blocks
-==419149==    indirectly lost: 0 bytes in 0 blocks
-==419149==      possibly lost: 0 bytes in 0 blocks
-==419149==    still reachable: 4,453 bytes in 62 blocks
-==419149==         suppressed: 200,603 bytes in 215 blocks
-==419149== 
-==419149== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
---419149-- 
---419149-- used_suppression:     58 leak readline readline_supression:10 suppressed: 200,603 bytes in 215 blocks
-==419149== 
-==419149== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
-==419142== Syscall param read(buf) points to unaddressable byte(s)
-==419142==    at 0x49BFFD2: read (read.c:26)
-==419142==    by 0x4012F7: waiting_for_input (minishell.c:30)
-==419142==    by 0x401367: main (minishell.c:83)
-==419142==  Address 0x4ad8755 is 0 bytes after a block of size 5 alloc'd
-==419142==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419142==    by 0x4012DF: waiting_for_input (minishell.c:29)
-==419142==    by 0x401367: main (minishell.c:83)
-==419142== 
-==419154== 
-==419154== HEAP SUMMARY:
-==419154==     in use at exit: 209,153 bytes in 294 blocks
-==419154==   total heap usage: 521 allocs, 227 frees, 229,778 bytes allocated
-==419154== 
-==419154== 1 bytes in 1 blocks are definitely lost in loss record 1 of 69
-==419154==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419154==    by 0x4049DD: ft_calloc (ft_calloc.c:19)
-==419154==    by 0x402AA3: var_to_value (var_to_value.c:62)
-==419154==    by 0x402F27: expand_var_tokens (expand_var_tokens.c:27)
-==419154==    by 0x4018CF: tokens_init (split_tokens.c:73)
-==419154==    by 0x4013C0: lexer (lexer.c:11)
-==419154==    by 0x4012AC: waiting_for_input (minishell.c:24)
-==419154==    by 0x401367: main (minishell.c:83)
-==419154== 
-==419154== 5 bytes in 1 blocks are definitely lost in loss record 3 of 69
-==419154==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419154==    by 0x4012DF: waiting_for_input (minishell.c:29)
-==419154==    by 0x401367: main (minishell.c:83)
-==419154== 
-==419154== 12 bytes in 6 blocks are definitely lost in loss record 8 of 69
-==419154==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419154==    by 0x40482D: ft_substr (ft_substr.c:25)
-==419154==    by 0x402C73: var_to_value (var_to_value.c:95)
-==419154==    by 0x402F27: expand_var_tokens (expand_var_tokens.c:27)
-==419154==    by 0x4018CF: tokens_init (split_tokens.c:73)
-==419154==    by 0x4013C0: lexer (lexer.c:11)
-==419154==    by 0x4012AC: waiting_for_input (minishell.c:24)
-==419154==    by 0x401367: main (minishell.c:83)
-==419154== 
-==419154== 16 bytes in 1 blocks are still reachable in loss record 14 of 69
-==419154==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419154==    by 0x4038A5: create_env_struct (start_env_vars.c:63)
-==419154==    by 0x40135A: main (minishell.c:44)
-==419154== 
-==419154== 20 bytes in 5 blocks are definitely lost in loss record 18 of 69
-==419154==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419154==    by 0x404115: ft_strjoin (ft_strjoin.c:21)
-==419154==    by 0x402C7F: var_to_value (var_to_value.c:95)
-==419154==    by 0x402F27: expand_var_tokens (expand_var_tokens.c:27)
-==419154==    by 0x4018CF: tokens_init (split_tokens.c:73)
-==419154==    by 0x4013C0: lexer (lexer.c:11)
-==419154==    by 0x4012AC: waiting_for_input (minishell.c:24)
-==419154==    by 0x401367: main (minishell.c:83)
-==419154== 
-==419154== 640 bytes in 1 blocks are still reachable in loss record 32 of 69
-==419154==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419154==    by 0x4038DD: create_env_struct (start_env_vars.c:66)
-==419154==    by 0x40135A: main (minishell.c:44)
-==419154== 
-==419154== 3,797 bytes in 60 blocks are still reachable in loss record 46 of 69
-==419154==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419154==    by 0x40383F: copy_char_matrix (start_env_vars.c:46)
-==419154==    by 0x403903: create_env_struct (start_env_vars.c:67)
-==419154==    by 0x40135A: main (minishell.c:44)
-==419154== 
-==419154== LEAK SUMMARY:
-==419154==    definitely lost: 38 bytes in 13 blocks
-==419154==    indirectly lost: 0 bytes in 0 blocks
-==419154==      possibly lost: 0 bytes in 0 blocks
-==419154==    still reachable: 4,453 bytes in 62 blocks
-==419154==         suppressed: 204,662 bytes in 219 blocks
-==419154== 
-==419154== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
-==419154== 
-==419154== 1 errors in context 1 of 5:
-==419154== Syscall param read(buf) points to unaddressable byte(s)
-==419154==    at 0x49BFFD2: read (read.c:26)
-==419154==    by 0x4012F7: waiting_for_input (minishell.c:30)
-==419154==    by 0x401367: main (minishell.c:83)
-==419154==  Address 0x4ad8755 is 0 bytes after a block of size 5 alloc'd
-==419154==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419154==    by 0x4012DF: waiting_for_input (minishell.c:29)
-==419154==    by 0x401367: main (minishell.c:83)
-==419154== 
---419154-- 
---419154-- used_suppression:     58 leak readline readline_supression:10 suppressed: 200,605 bytes in 215 blocks
---419154-- used_suppression:      4 leak add_history readline_supression:16 suppressed: 4,057 bytes in 4 blocks
-==419154== 
-==419154== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
-==419142== 
-==419142== Process terminating with default action of signal 1 (SIGHUP)
-==419142==    at 0x4994C3A: wait4 (wait4.c:27)
-==419142==    by 0x4012C1: waiting_for_input (minishell.c:27)
-==419142==    by 0x401367: main (minishell.c:83)
-==419164== 
-==419164== Process terminating with default action of signal 1 (SIGHUP)
-==419164==    at 0x48F53DB: kill (syscall-template.S:78)
-==419164==    by 0x488F7A2: ??? (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
-==419164==    by 0x488F40D: rl_cleanup_after_signal (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
-==419164==    by 0x488F76E: ??? (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
-==419164==    by 0x48924AD: rl_read_key (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
-==419164==    by 0x4877C81: readline_internal_char (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
-==419164==    by 0x48784EC: readline (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.0)
-==419164==    by 0x401255: waiting_for_input (minishell.c:19)
-==419164==    by 0x401367: main (minishell.c:83)
-==419142== 
-==419142== HEAP SUMMARY:
-==419142==     in use at exit: 8,565 bytes in 71 blocks
-==419142==   total heap usage: 72 allocs, 1 frees, 9,589 bytes allocated
-==419142== 
-==419142== 5 bytes in 1 blocks are definitely lost in loss record 1 of 9
-==419142==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419142==    by 0x4012DF: waiting_for_input (minishell.c:29)
-==419142==    by 0x401367: main (minishell.c:83)
-==419142== 
-==419142== 7 bytes in 1 blocks are still reachable in loss record 2 of 9
-==419142==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419142==    by 0x4012DF: waiting_for_input (minishell.c:29)
-==419142==    by 0x401367: main (minishell.c:83)
-==419142== 
-==419142== 16 bytes in 1 blocks are still reachable in loss record 4 of 9
-==419142==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419142==    by 0x4038A5: create_env_struct (start_env_vars.c:63)
-==419142==    by 0x40135A: main (minishell.c:44)
-==419142== 
-==419142== 640 bytes in 1 blocks are still reachable in loss record 7 of 9
-==419142==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419142==    by 0x4038DD: create_env_struct (start_env_vars.c:66)
-==419142==    by 0x40135A: main (minishell.c:44)
-==419142== 
-==419142== 3,797 bytes in 60 blocks are still reachable in loss record 8 of 9
-==419142==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419142==    by 0x40383F: copy_char_matrix (start_env_vars.c:46)
-==419142==    by 0x403903: create_env_struct (start_env_vars.c:67)
-==419142==    by 0x40135A: main (minishell.c:44)
-==419142== 
-==419142== LEAK SUMMARY:
-==419142==    definitely lost: 5 bytes in 1 blocks
-==419142==    indirectly lost: 0 bytes in 0 blocks
-==419142==      possibly lost: 0 bytes in 0 blocks
-==419142==    still reachable: 4,460 bytes in 63 blocks
-==419142==         suppressed: 4,100 bytes in 7 blocks
-==419142== 
-==419142== ERROR SUMMARY: 3 errors from 2 contexts (suppressed: 0 from 0)
-==419142== 
-==419142== 2 errors in context 1 of 2:
-==419142== Syscall param read(buf) points to unaddressable byte(s)
-==419142==    at 0x49BFFD2: read (read.c:26)
-==419142==    by 0x4012F7: waiting_for_input (minishell.c:30)
-==419142==    by 0x401367: main (minishell.c:83)
-==419142==  Address 0x4ad8755 is 0 bytes after a block of size 5 alloc'd
-==419142==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419142==    by 0x4012DF: waiting_for_input (minishell.c:29)
-==419142==    by 0x401367: main (minishell.c:83)
-==419142== 
---419142-- 
---419142-- used_suppression:      4 leak add_history readline_supression:16 suppressed: 4,100 bytes in 7 blocks
-==419142== 
-==419142== ERROR SUMMARY: 3 errors from 2 contexts (suppressed: 0 from 0)
-==419164== 
-==419164== HEAP SUMMARY:
-==419164==     in use at exit: 209,240 bytes in 287 blocks
-==419164==   total heap usage: 501 allocs, 214 frees, 229,706 bytes allocated
-==419164== 
-==419164== 5 bytes in 1 blocks are definitely lost in loss record 2 of 68
-==419164==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419164==    by 0x4012DF: waiting_for_input (minishell.c:29)
-==419164==    by 0x401367: main (minishell.c:83)
-==419164== 
-==419164== 7 bytes in 1 blocks are still reachable in loss record 3 of 68
-==419164==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419164==    by 0x4012DF: waiting_for_input (minishell.c:29)
-==419164==    by 0x401367: main (minishell.c:83)
-==419164== 
-==419164== 16 bytes in 1 blocks are still reachable in loss record 11 of 68
-==419164==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419164==    by 0x4038A5: create_env_struct (start_env_vars.c:63)
-==419164==    by 0x40135A: main (minishell.c:44)
-==419164== 
-==419164== 640 bytes in 1 blocks are still reachable in loss record 31 of 68
-==419164==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419164==    by 0x4038DD: create_env_struct (start_env_vars.c:66)
-==419164==    by 0x40135A: main (minishell.c:44)
-==419164== 
-==419164== 3,797 bytes in 60 blocks are still reachable in loss record 45 of 68
-==419164==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419164==    by 0x40383F: copy_char_matrix (start_env_vars.c:46)
-==419164==    by 0x403903: create_env_struct (start_env_vars.c:67)
-==419164==    by 0x40135A: main (minishell.c:44)
-==419164== 
-==419164== LEAK SUMMARY:
-==419164==    definitely lost: 5 bytes in 1 blocks
-==419164==    indirectly lost: 0 bytes in 0 blocks
-==419164==      possibly lost: 0 bytes in 0 blocks
-==419164==    still reachable: 4,460 bytes in 63 blocks
-==419164==         suppressed: 204,775 bytes in 223 blocks
-==419164== 
-==419164== ERROR SUMMARY: 3 errors from 2 contexts (suppressed: 0 from 0)
-==419164== 
-==419164== 2 errors in context 1 of 2:
-==419164== Syscall param read(buf) points to unaddressable byte(s)
-==419164==    at 0x49BFFD2: read (read.c:26)
-==419164==    by 0x4012F7: waiting_for_input (minishell.c:30)
-==419164==    by 0x401367: main (minishell.c:83)
-==419164==  Address 0x4ad8755 is 0 bytes after a block of size 5 alloc'd
-==419164==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==419164==    by 0x4012DF: waiting_for_input (minishell.c:29)
-==419164==    by 0x401367: main (minishell.c:83)
-==419164== 
---419164-- 
---419164-- used_suppression:     59 leak readline readline_supression:10 suppressed: 200,675 bytes in 216 blocks
---419164-- used_suppression:      4 leak add_history readline_supression:16 suppressed: 4,100 bytes in 7 blocks
-==419164== 
-==419164== ERROR SUMMARY: 3 errors from 2 contexts (suppressed: 0 from 0)
+==569483== Memcheck, a memory error detector
+==569483== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==569483== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==569483== Command: ./minishell
+==569483== Parent PID: 560669
+==569483== 
+==569483== Conditional jump or move depends on uninitialised value(s)
+==569483==    at 0x401495: dcp_cleaner (lexer_utils.c:28)
+==569483==    by 0x401C98: split_quotes_tokens (split_quote_tokens.c:86)
+==569483==    by 0x4017F3: tokens_init (split_tokens.c:69)
+==569483==    by 0x401318: lexer (lexer.c:11)
+==569483==    by 0x40124C: waiting_for_input (minishell.c:58)
+==569483==    by 0x4012AF: main (minishell.c:112)
+==569483== 
+==569483== 
+==569483== HEAP SUMMARY:
+==569483==     in use at exit: 209,123 bytes in 281 blocks
+==569483==   total heap usage: 495 allocs, 214 frees, 229,605 bytes allocated
+==569483== 
+==569483== 16 bytes in 1 blocks are still reachable in loss record 11 of 65
+==569483==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==569483==    by 0x403835: create_env_struct (start_env_vars.c:63)
+==569483==    by 0x4012A2: main (minishell.c:73)
+==569483== 
+==569483== 640 bytes in 1 blocks are still reachable in loss record 28 of 65
+==569483==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==569483==    by 0x40386D: create_env_struct (start_env_vars.c:66)
+==569483==    by 0x4012A2: main (minishell.c:73)
+==569483== 
+==569483== 3,797 bytes in 60 blocks are still reachable in loss record 42 of 65
+==569483==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==569483==    by 0x4037CF: copy_char_matrix (start_env_vars.c:46)
+==569483==    by 0x403893: create_env_struct (start_env_vars.c:67)
+==569483==    by 0x4012A2: main (minishell.c:73)
+==569483== 
+==569483== LEAK SUMMARY:
+==569483==    definitely lost: 0 bytes in 0 blocks
+==569483==    indirectly lost: 0 bytes in 0 blocks
+==569483==      possibly lost: 0 bytes in 0 blocks
+==569483==    still reachable: 4,453 bytes in 62 blocks
+==569483==         suppressed: 204,670 bytes in 219 blocks
+==569483== 
+==569483== Use --track-origins=yes to see where uninitialised values come from
+==569483== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
+==569483== 
+==569483== 1 errors in context 1 of 1:
+==569483== Conditional jump or move depends on uninitialised value(s)
+==569483==    at 0x401495: dcp_cleaner (lexer_utils.c:28)
+==569483==    by 0x401C98: split_quotes_tokens (split_quote_tokens.c:86)
+==569483==    by 0x4017F3: tokens_init (split_tokens.c:69)
+==569483==    by 0x401318: lexer (lexer.c:11)
+==569483==    by 0x40124C: waiting_for_input (minishell.c:58)
+==569483==    by 0x4012AF: main (minishell.c:112)
+==569483== 
+--569483-- 
+--569483-- used_suppression:     58 leak readline readline_supression:10 suppressed: 200,608 bytes in 215 blocks
+--569483-- used_suppression:      4 leak add_history readline_supression:16 suppressed: 4,062 bytes in 4 blocks
+==569483== 
+==569483== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)

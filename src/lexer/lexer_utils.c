@@ -32,7 +32,7 @@ void	dcp_cleaner(char **ptr)
 // type == 1 -> unexpected token
 // type == 2 -> no matching closing quotes
 // type == 3 -> unexpected end of file
-void	syntax_error(int type, char c, t_env *env)
+void	syntax_error(int type, char c)
 {
 	if (type == 1)
 	{
@@ -46,5 +46,4 @@ void	syntax_error(int type, char c, t_env *env)
 		printf("unexpected EOF while looking for matching `%c'\n", c);
 	if (type == 3)
 		printf("syntax error: unexpected end of file\n");
-	waiting_for_input(env);
 }

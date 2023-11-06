@@ -66,16 +66,18 @@ char	**tokens_init(char *input, t_env *env)
 	tmp = ft_strtrim(input, " \a\b\t\n\v\f\r");
 	//free(input);
 	flag = '\0';
-	ptr = split_quotes_tokens(tmp, &flag);
+	ptr = split_quotes_tokens(tmp);
 	free(tmp);
-	if (flag)
-		syntax_error(2, flag, env);
+	if (ptr == NULL)
+		return (NULL);
 	ptr2 = expand_var_tokens(ptr, env);
 	dcp_cleaner(ptr);
 	ptr = split_char_tokens(ptr2, ' ');
 	dcp_cleaner(ptr2);
-	ptr2 = split_inout_tokens(ptr, env);
+	ptr2 = split_inout_tokens(ptr);
 	dcp_cleaner(ptr);
+	if (ptr2 == NULL)
+		return (NULL);
 	ptr = split_char_tokens(ptr2, '|');
 	dcp_cleaner(ptr2);
 	remove_quotes_from_tokens(ptr);

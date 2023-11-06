@@ -1,9 +1,12 @@
 #include "minishell.h"
+#include <readline/history.h>
 #include <readline/rltypedefs.h>
 #include <signal.h>
+#include <stdio.h>
+#include <sys/ioctl.h>
 #include <unistd.h>
 
-void	waiting_for_input(t_env *env)
+/* void	waiting_for_input(t_env *env)
 {
 	char	*rl;
 	int		id;
@@ -16,19 +19,45 @@ void	waiting_for_input(t_env *env)
 		id = fork();
 		if (id == 0)
 		{
+			//open(fd[1]);
 			rl = readline("minishell -> ");
 			len = strlen(rl) + 1;
 			write(fd[1], &len, sizeof(int));
 			write(fd[1], rl, len);
 			printf("rl: %s\n", rl);
 			lexer(rl, env);
+			//close(fd[1]);
 			exit (0);
 		}
-		waitpid(id, NULL, 0);
-		read(fd[0], &len, sizeof(int));
-		rl = malloc(len * sizeof(char));
-		read(fd[0], rl, len * sizeof(int));
+		else
+		{
+			waitpid(id, NULL, 0);
+			read(fd[0], &len, sizeof(int));
+			rl = malloc(len * sizeof(char));
+			read(fd[0], rl, len * sizeof(int));
+			add_history(rl);
+		}
+	}
+} */
+
+void	waiting_for_input(t_env *env)
+{
+	char	*rl;
+	char	**tokens;
+
+	while (1)
+	{
+		rl = readline("minishell -> ");
+		if (rl == NULL)
+		{
+			printf("exit\n");
+			exit (0); //!! Substituir por limpeza de variaveis e apenas depois sair
+		}
 		add_history(rl);
+		printf("rl: %s\n", rl);
+		tokens = lexer(rl, env);
+		if (tokens == NULL)
+			continue;
 	}
 }
 
@@ -39,7 +68,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	r_sig = 0;
-	printf("father pid: %d\n", getpid());
+	//ioctl(STDIN_FILENO, CTRL_D, ...);
 	init_signals();
 	env = create_env_struct(envp);
 	/* add_new_env_var(env, "TEST=24");
