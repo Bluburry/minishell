@@ -1,26 +1,47 @@
 #include "minishell.h"
 
-void	waiting_for_input(t_env *env)
+void	waiting_for_input(t_env *env, t_data *data)
 {
 	char	*rl;
 
-	while (1)
+	while (data->is_exiting == false)
 	{
 		rl = readline("minishell > ");
+		if (!rl)
+		{
+			printf("exit\n");
+			data->is_exiting = true;
+			continue ;
+		}
 		printf("rl: %s\n", rl);
-		lexer(rl, env);
 		add_history(rl);
+		if (lexer(rl, env, data) == NULL)
+			continue ;
+		if (create_tree(data) == false)
+			continue ;
+		if (traverse_tree(data) == false)
+			continue ;
+		dcp_cleaner(data->strlist);
 	}
 }
 
+//need to figure out how to clean t_data data
 int	main(int argc, char **argv, char **envp)
 {
 	t_env		*env;
+	t_data		data;
 
-	(void)argc;
 	(void)argv;
+	if (argc > 1)
+		return (ft_putstr_fd("Algo de errado nao esta certo\n", 2), 1);
 	env = create_env_struct(envp);
-	/* add_new_env_var(env, "TEST=24");
+	data = (t_data){.envp = envp, env};
+	waiting_for_input(env, &data);
+	clear_env_struct(env);
+	rl_clear_history();
+}
+
+/* add_new_env_var(env, "TEST=24");
 	add_new_env_var(env, "TEST2");
 	add_new_env_var(env, "TEST3=");
 	unset_env_var(env, "TEST");
@@ -58,8 +79,3 @@ int	main(int argc, char **argv, char **envp)
 		printf("%s\n", test[i]);
 	}
 	clear_chars(test, env->size); */
-	waiting_for_input(env);
-	clear_env_struct(env);
-	rl_clear_history();
-	return (0);
-}

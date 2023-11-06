@@ -69,12 +69,12 @@ char	**tokens_init(char *input, t_env *env)
 	ptr = split_quotes_tokens(tmp, &flag);
 	free(tmp);
 	if (flag)
-		syntax_error(2, flag, env);
+		return (free(ptr), syntax_error(2, flag), NULL); // needs cleaning, probably
 	ptr2 = expand_var_tokens(ptr, env);
 	dcp_cleaner(ptr);
 	ptr = split_char_tokens(ptr2, ' ');
 	dcp_cleaner(ptr2);
-	ptr2 = split_inout_tokens(ptr, env);
+	ptr2 = split_inout_tokens(ptr);
 	dcp_cleaner(ptr);
 	ptr = split_char_tokens(ptr2, '|');
 	dcp_cleaner(ptr2);
