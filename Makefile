@@ -26,7 +26,6 @@ LIB			=	-lreadline -L. -lft
 # Libs are always after objects in the compilation
 # If you put them before, it won't compile
 
-#Source folders
 # To add a new source folder, add it to DIRS
 DIRS	=	parsing utils lexer struct_handling
 P_DIRS	=	$(addprefix $(SRC_DIR), $(DIRS))
@@ -36,7 +35,8 @@ vpath %.c src $(P_DIRS)
 # To add a new source file, add it to SRCS
 SRCS	=	minishell lexer lexer_utils split_tokens split_quote_tokens split_char_tokens \
 			split_inout_tokens merge_tokens_cleanup space_tokens_cleanup var_to_value \
-			expand_var_tokens echo pwd utils alter_env clear_env find_env_var start_env_vars
+			expand_var_tokens echo pwd utils alter_env clear_env find_env_var start_env_vars \
+      print_env print_export
 OBJS 	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS)))
 
 OBJ_FILES	=	.cache_exists

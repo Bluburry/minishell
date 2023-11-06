@@ -1,74 +1,119 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   var_to_value.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ade-barr <ade-barr@student.42porto.co      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 10:14:01 by ade-barr          #+#    #+#             */
-/*   Updated: 2023/10/25 05:40:24 by ade-barr         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
-//mallocs and stores any valid input after '$' [QUESTION]: where do i free this? To be continued... 
-//int i ---------- index counter to malloc correct size
-//int j ---------- index that starts from 0 again, to copy 'str' into 'word' up to 'i' size
-//char *word ----- string that stores anything after the '$' untill it finds a space (doesnt copy the space)
-static char	*store_word(char *str)
+static int	find_end(char *str)
 {
 	int	i;
-	int	j;
+
+	i = 0;
+	while (!ft_iswhitespace(str[i]) && str[i] != '$'
+		&& str[i] != '|' && str[i] != '"'
+		&& str[i] != '?' && str[i] != ';'
+		&& str[i] != '<' && str[i] != '>'
+		&& str[i] != '\'' && str[i])
+		i++;
+	if (str[i] == '$' || ft_iswhitespace(str[i])
+		|| str[i] != '|' || str[i] != '"'
+		|| str[i] != '?' || str[i] != ';'
+		|| str[i] != '<' || str[i] != '>'
+		|| str[i] != '\'')
+		i--;
+	return (i);
+}
+
+static char	*store_word(char *str)
+{
+	int		i;
+	int		j;
 	char	*word;
 
 	i = 0;
-	while (!ft_iswhitespace(str[i]))
-		i++;
-	i--;
-	word = malloc(sizeof(char) * i);
-	j = -1;
-	while (++j <= i)
+	i = find_end(str);
+	word = ft_calloc(sizeof(char), i + 2);
+	if (!word)
+		return (NULL);
+	j = 0;
+	while (str[j] && j <= i)
+	{
 		word[j] = str[j];
+		j++;
+	}
 	word[j] = '\0';
 	return (word);
 }
 
+static char	*process_var(int *i, char *str, char *temp, t_env *env)
+{
+	char	*word;
+	char	*env_ptr;
+	char	*ret_str;
+
+	ret_str = ft_calloc(sizeof(char), 1);
+	if (!ret_str)
+		return (NULL);
+	if (str[*i + 1] && str[*i + 1] == '?') 
+	{
+		ft_printf("exit status\n");
+		(*i)++;
+	}
+	else if (str[*i + 1] && ft_isalpha(str[*i + 1]))
+	{
+		word = store_word(str + *i + 1);
+		*i += ft_strlen(word);
+		env_ptr = get_env_var(env, word);
+		free(word);
+		if (env_ptr)
+		{
+			ret_str = ft_strjoin(temp, env_ptr);
+			free(temp);
+			return (ret_str);
+		}
+		ret_str = ft_strjoin(temp, "");
+	}
+	else if (str[*i + 1] && ft_isdigit(str[*i + 1]))
+		ft_printf("\n\nsyntax_error_number\n\n");
+	else
+	{
+		ft_printf("syntax_error\n");
+		return (temp);
+	}
+	if (ret_str)
+		return (ret_str);
+	return (ret_str);
+}
+
 char	*var_to_value(char *str, t_env *env)
 {
-	int	i;
-	char	*word;
+	int		i;
 	char	*temp;
 
-	i = -1;
-	temp = calloc(sizeof(char), 1);
-	while (str[++i])
+	i = 0;
+	temp = ft_calloc(sizeof(char), 1);
+	while (str[i])
 	{
-		
-		if (str[i] == '$')
+		if (str[i] && str[i] == '$')
 		{
-			if (str[i + 1] == '?') 
-				ft_printf("exit status\n");
-
-			else if (ft_isdigit(str[i + 1]))
-				ft_printf("\n\nsyntax_error_number\n\n"); //syntax_error('$');
-
-			else if (ft_isalpha(str[i + 1]))
+			if (ft_iswhitespace(str[i + 1]) || !str[i + 1])
+				temp = ft_strjoin(temp, "$");
+			else
+				temp = process_var(&i, str, temp, env);
+			i++;
+		}
+		else if (str[i] == '"' && str[i + 1] != '"')
+		{
+			if (str[i] && str[i] == '$')
 			{
-				word = store_word(str + i + 1); //saves into 'word' whatever comes after '$'
-				i += ft_strlen(word);
-				word = get_env_var(env, word); //searches for a env called 'word' and then replaces it with its value
-				temp = ft_strjoin(temp, word);
+				i++;
+				temp = process_var(&i, str, temp, env);
 			}
-
 			else
 			{
-				ft_printf("\n\nsyntax_error\n\n");
-				return (NULL);
+				temp = ft_strjoin(temp, ft_substr(str, i, 1));
+				i++;
 			}
+
 		}
-		else
-			temp = ft_strjoin(temp, ft_substr(str, i, 1));
+		else if (str[i])
+			temp = ft_strjoin(temp, ft_substr(str, i++, 1));
 	}
 	return (temp);
 }
