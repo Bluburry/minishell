@@ -58,7 +58,7 @@ int	main(int argc, char **argv, char **envp)
 	}
 	clear_chars(test, env->size); */
 
-	//ft_exit(argv[1]);
+	ft_exit(argv);
 	waiting_for_input(env);
 	clear_env_struct(env);
 	return (0);

@@ -57,7 +57,7 @@ void	ft_cd(int argc, char **argv, char **envp);
 void	ft_echo(char **argv);
 void	ft_pwd(char **envp);
 void	ft_env(char **envp);
-int	ft_exit(char *argv);
+void	ft_exit(char **argv);
 
 
 //Lexer functions
