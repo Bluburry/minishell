@@ -6,3 +6,4 @@ minishell
 lib
 .vscode
 .vscode/*
+leaks.log
