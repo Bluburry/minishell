@@ -43,33 +43,31 @@ int	quotes_end(char *input)
 	return (end);
 }
 
-char	check_if_valid(char **ptr, char **tokens)
+char	check_if_valid(char *ptr)
 {
 	char	*str;
 	char	c;
 
-	if (!(*ptr))
+	if (!ptr)
 		return ('\0');
-	str = *ptr;
+	str = ptr;
 	if (*str == '\'' || *str == '\"')
 	{
 		if (*str != str[ft_strlen(str) - 1])
 		{
 			c = *str;
-			free(*ptr);
-			*ptr = NULL;
-			dcp_cleaner(tokens);
 			return (c);
 		}
 	}
 	return ('\0');
 }
 
-char	**split_quotes_tokens(char *input, char *flag)
+char	**split_quotes_tokens(char *input)
 {
 	char	**tokens;
 	char	**ptr;
 	int		end;
+	char	c;
 
 	tokens = malloc((count_tokens_quotes(input) + 1) * sizeof(char *));
 	if (!tokens)
@@ -82,9 +80,15 @@ char	**split_quotes_tokens(char *input, char *flag)
 		if (end != 0)
 		{
 			*ptr = create_token(input, end);
-			*flag = check_if_valid(ptr, tokens);
-			if (*flag != '\0')
-				return (tokens);
+			c = check_if_valid(*ptr);
+			if (c != '\0')
+			{
+				syntax_error(2, c);
+				free(*ptr);
+				*ptr = NULL;
+				dcp_cleaner(tokens);
+				return (NULL);
+			}
 			ptr++;
 		}
 		input += end;

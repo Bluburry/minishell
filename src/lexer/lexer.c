@@ -1,17 +1,17 @@
 #include "minishell.h"
 
-void	lexer(char *input, t_env *env)
+char	**lexer(char *input, t_env *env)
 {
 	char	**tokens;
 	int		i;
 
 	i = -1;
 	if (!input || !(*input))
-		return ;
+		return (NULL);
 	tokens = tokens_init(input, env);
 	printf("\n\ntokens:\n\n");
-	while (tokens[++i])
-		printf("%s\n", tokens[i]);
-	dcp_cleaner(tokens);
-	//!!! return tokens here
+	if (tokens)
+		while (tokens[++i])
+			printf("%s\n", tokens[i]);
+	return (tokens);
 }
