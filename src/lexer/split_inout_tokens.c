@@ -91,7 +91,7 @@ char	**split_inout_tokens(char **input)
 	count = count_inout_tokens(input);
 	if (count == -1)
 		return (NULL);
-	tokens = malloc(( + 1) * sizeof(char *));
+	tokens = malloc((count + 1) * sizeof(char *));
 	if (!tokens)
 		return (0);
 	ptr = tokens;
