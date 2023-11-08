@@ -1,59 +1,40 @@
-==569483== Memcheck, a memory error detector
-==569483== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==569483== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==569483== Command: ./minishell
-==569483== Parent PID: 560669
-==569483== 
-==569483== Conditional jump or move depends on uninitialised value(s)
-==569483==    at 0x401495: dcp_cleaner (lexer_utils.c:28)
-==569483==    by 0x401C98: split_quotes_tokens (split_quote_tokens.c:86)
-==569483==    by 0x4017F3: tokens_init (split_tokens.c:69)
-==569483==    by 0x401318: lexer (lexer.c:11)
-==569483==    by 0x40124C: waiting_for_input (minishell.c:58)
-==569483==    by 0x4012AF: main (minishell.c:112)
-==569483== 
-==569483== 
-==569483== HEAP SUMMARY:
-==569483==     in use at exit: 209,123 bytes in 281 blocks
-==569483==   total heap usage: 495 allocs, 214 frees, 229,605 bytes allocated
-==569483== 
-==569483== 16 bytes in 1 blocks are still reachable in loss record 11 of 65
-==569483==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==569483==    by 0x403835: create_env_struct (start_env_vars.c:63)
-==569483==    by 0x4012A2: main (minishell.c:73)
-==569483== 
-==569483== 640 bytes in 1 blocks are still reachable in loss record 28 of 65
-==569483==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==569483==    by 0x40386D: create_env_struct (start_env_vars.c:66)
-==569483==    by 0x4012A2: main (minishell.c:73)
-==569483== 
-==569483== 3,797 bytes in 60 blocks are still reachable in loss record 42 of 65
-==569483==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==569483==    by 0x4037CF: copy_char_matrix (start_env_vars.c:46)
-==569483==    by 0x403893: create_env_struct (start_env_vars.c:67)
-==569483==    by 0x4012A2: main (minishell.c:73)
-==569483== 
-==569483== LEAK SUMMARY:
-==569483==    definitely lost: 0 bytes in 0 blocks
-==569483==    indirectly lost: 0 bytes in 0 blocks
-==569483==      possibly lost: 0 bytes in 0 blocks
-==569483==    still reachable: 4,453 bytes in 62 blocks
-==569483==         suppressed: 204,670 bytes in 219 blocks
-==569483== 
-==569483== Use --track-origins=yes to see where uninitialised values come from
-==569483== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
-==569483== 
-==569483== 1 errors in context 1 of 1:
-==569483== Conditional jump or move depends on uninitialised value(s)
-==569483==    at 0x401495: dcp_cleaner (lexer_utils.c:28)
-==569483==    by 0x401C98: split_quotes_tokens (split_quote_tokens.c:86)
-==569483==    by 0x4017F3: tokens_init (split_tokens.c:69)
-==569483==    by 0x401318: lexer (lexer.c:11)
-==569483==    by 0x40124C: waiting_for_input (minishell.c:58)
-==569483==    by 0x4012AF: main (minishell.c:112)
-==569483== 
---569483-- 
---569483-- used_suppression:     58 leak readline readline_supression:10 suppressed: 200,608 bytes in 215 blocks
---569483-- used_suppression:      4 leak add_history readline_supression:16 suppressed: 4,062 bytes in 4 blocks
-==569483== 
-==569483== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
+==629809== Memcheck, a memory error detector
+==629809== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==629809== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==629809== Command: ./minishell
+==629809== Parent PID: 625744
+==629809== 
+==629809== 
+==629809== HEAP SUMMARY:
+==629809==     in use at exit: 209,183 bytes in 281 blocks
+==629809==   total heap usage: 504 allocs, 223 frees, 229,883 bytes allocated
+==629809== 
+==629809== 16 bytes in 1 blocks are still reachable in loss record 9 of 65
+==629809==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==629809==    by 0x403845: create_env_struct (start_env_vars.c:63)
+==629809==    by 0x4012A2: main (minishell.c:73)
+==629809== 
+==629809== 640 bytes in 1 blocks are still reachable in loss record 28 of 65
+==629809==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==629809==    by 0x40387D: create_env_struct (start_env_vars.c:66)
+==629809==    by 0x4012A2: main (minishell.c:73)
+==629809== 
+==629809== 3,797 bytes in 60 blocks are still reachable in loss record 42 of 65
+==629809==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==629809==    by 0x4037DF: copy_char_matrix (start_env_vars.c:46)
+==629809==    by 0x4038A3: create_env_struct (start_env_vars.c:67)
+==629809==    by 0x4012A2: main (minishell.c:73)
+==629809== 
+==629809== LEAK SUMMARY:
+==629809==    definitely lost: 0 bytes in 0 blocks
+==629809==    indirectly lost: 0 bytes in 0 blocks
+==629809==      possibly lost: 0 bytes in 0 blocks
+==629809==    still reachable: 4,453 bytes in 62 blocks
+==629809==         suppressed: 204,730 bytes in 219 blocks
+==629809== 
+==629809== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
+--629809-- 
+--629809-- used_suppression:     58 leak readline readline_supression:10 suppressed: 200,638 bytes in 215 blocks
+--629809-- used_suppression:      4 leak add_history readline_supression:16 suppressed: 4,092 bytes in 4 blocks
+==629809== 
+==629809== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

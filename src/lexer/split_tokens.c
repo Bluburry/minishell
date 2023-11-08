@@ -61,11 +61,9 @@ char	**tokens_init(char *input, t_env *env)
 	char	**ptr;
 	char	*tmp;
 	char	**ptr2;
-	char	flag;
 
 	tmp = ft_strtrim(input, " \a\b\t\n\v\f\r");
 	//free(input);
-	flag = '\0';
 	ptr = split_quotes_tokens(tmp);
 	free(tmp);
 	if (ptr == NULL)

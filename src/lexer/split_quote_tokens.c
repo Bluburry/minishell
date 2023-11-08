@@ -43,14 +43,14 @@ int	quotes_end(char *input)
 	return (end);
 }
 
-char	check_if_valid(char **ptr)
+char	check_if_valid(char *ptr)
 {
 	char	*str;
 	char	c;
 
-	if (!(*ptr))
+	if (!ptr)
 		return ('\0');
-	str = *ptr;
+	str = ptr;
 	if (*str == '\'' || *str == '\"')
 	{
 		if (*str != str[ft_strlen(str) - 1])
@@ -80,11 +80,15 @@ char	**split_quotes_tokens(char *input)
 		if (end != 0)
 		{
 			*ptr = create_token(input, end);
-			c = check_if_valid(ptr);
+			c = check_if_valid(*ptr);
 			if (c != '\0')
-{				syntax_error(2, c);
+			{
+				syntax_error(2, c);
+				free(*ptr);
+				*ptr = NULL;
 				dcp_cleaner(tokens);
-				return (NULL);}
+				return (NULL);
+			}
 			ptr++;
 		}
 		input += end;
