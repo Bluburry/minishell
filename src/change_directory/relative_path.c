@@ -19,8 +19,8 @@ char	*complex_path(char *pwd, const char *path, int i, int j)
 	ft_memcpy(str, pwd, i);
 	if (*(path + j))
 	{
-		ft_memcpy(str + i + 1, path + j, ft_strlen(path) - j);
-		str[s + 1] = 0;
+		str[i] = '/';
+		ft_memcpy(str + i + 1, path + j, ft_strlen(path) - j + 1);
 	}
 	else
 		str[s] = 0;
@@ -31,22 +31,41 @@ char	*complex_path(char *pwd, const char *path, int i, int j)
 // to stop copying pwd, and to start copying path
 char	*calc_pwd(char *pwd, const char *path)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
+	int	c;
 
 	i = ft_strlen(pwd) - 1;
 	j = 0;
-	while (*(pwd + i) && *(path + j) && *(path + j + 1) + *(path + j + 2) && \
+	c = 0;
+	while (*(pwd + i) && *(path + j) && \
+		(*(path + j) == '.' || *(path + j) == '/'))
+	{
+		if (*(path + j) == '.')
+			c++;
+		if (c == 2)
+		{
+			c = 0;
+			while (i > 0 && *(pwd + i) != '/')
+				i--;
+			i--;
+		}
+		j++;
+	}
+
+	/* while (*(pwd + i) && *(path + j) && *(path + j + 1) && *(path + j + 2) && \
 		*(path + j) == '.' && *(path + j + 1) == '.' && *(path + j + 2) == '/')
 	{
 		j += 3;
 		while (i > 0 && *(pwd + i) != '/')
 			i--;
 		i--;
-	}
+	} */
+
 	return (complex_path(pwd, path, i + 1, j));
 }
 
+// check for handling ./something relative path
 char	*relative_path(t_env *env, const char *path)
 {
 	char	*str;
@@ -57,6 +76,8 @@ char	*relative_path(t_env *env, const char *path)
 	path_old = get_env_var(env, "PWD");
 	if (*path == '.' && *(path + 1) && *(path + 1) == '.')
 		return (calc_pwd(path_old, path));
+	else if (*path == '~')
+		return (calc_pwd(get_env_var(env, "HOME"), path + 2));
 	s = ft_strlen(path_old);
 	str = (char *) malloc(sizeof(char) * (s + 2));
 	ft_memcpy(str, path_old, s);

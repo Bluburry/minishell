@@ -59,12 +59,34 @@ int	main(int argc, char **argv, char **envp)
 		printf("%s\n", test[i]);
 	}
 	clear_chars(test, env->size); */
+	printf("cd include:\n");
 	cd(env, "include");
-	//cd(env, "../");
-	//cd(env, "./include");
-	//cd(env, "../include");
+	printf("cd ../:\n");
+	cd(env, "../");
+	printf("cd Minishell:\n");
+	cd(env, "Minishell");
+	printf("cd ../include:\n");
+	cd(env, "../include");
+	printf("cd ../minishell:\n");
+	cd(env, "../minishell");
+	printf("cd ./include:\n");
+	cd(env, "./include");
+	printf("cd ../../minishell:\n");
 	cd(env, "../../minishell");
-	//cd(env, "");
+	printf("cd :\n");
+	cd(env, "");
+	printf("cd ~/:\n");
+	cd(env, "~/");
+	printf("cd ~/Desktop:\n");
+	cd(env, "~/Desktop");
+	printf("cd Minishell:\n");
+	cd(env, "Minishell");
+	printf("cd ..:\n");
+	cd(env, "..");
+	printf("cd ~/..:\n");
+	cd(env, "~/..");
+	printf("cd asdasd:\n");
+	cd(env, "asdasd");
 	/* cd(env, "/home/");
 	cd(env, "~/") */
 	//waiting_for_input(env);

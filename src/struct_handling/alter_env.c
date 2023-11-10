@@ -51,7 +51,7 @@ void	resize_env_struct(t_env *env)
 {
 	char	**new_vars;
 	char	**old_vars;
-	
+
 	old_vars = env->vars;
 	env->capacity += 20;
 	new_vars = (char **) malloc(sizeof(char *) * env->capacity);
@@ -67,15 +67,15 @@ void	resize_env_struct(t_env *env)
  */
 int	check_valid_var(const char *str)
 {
-	if (!str || !*str || 
+	if (!str || !*str || \
 		!((*str >= 65 && *str <= 90) ||
-		(*str >= 97 && *str <= 122)))
+			(*str >= 97 && *str <= 122)))
 		return (0);
 	while (*str && *str != '=')
 	{
 		if (!((*str >= 65 && *str <= 90) ||
-			(*str >= 97 && *str <= 122) ||
-			(*str >= 48 && *str <= 57)))
+				(*str >= 97 && *str <= 122) ||
+				(*str >= 48 && *str <= 57)))
 			return (0);
 		str++;
 	}

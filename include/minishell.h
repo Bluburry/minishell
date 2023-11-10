@@ -44,7 +44,6 @@ void  	clear_env_struct(t_env *env);
 void  	resize_env_struct(t_env *env);
 void  	clear_chars(char **str, int size);
 void  	unset_env_var(t_env *env, char *var);
-void	cd(t_env *env, const char *path);
 void  	alter_env_var(t_env *env, const char *new, int i);
 void  	concatenate_matrix(char *str, char **mat, int size);
 void  	copy_char_matrix_ordered(char **mat, char **new_mat, int size);
@@ -80,8 +79,9 @@ int		is_token_end(char c);
 int		move_in_str(char *str, char c);
 
 // Change directory functions
-void	cd(t_env *env, const char *path);
+int		cd(t_env *env, const char *path);
 void	change_pwd(t_env *env, const char *path);
+char	*calc_pwd(char *pwd, const char *path);
 char	*relative_path(t_env *env, const char *path);
 
 #endif
