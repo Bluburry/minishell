@@ -59,6 +59,8 @@ int	main(int argc, char **argv, char **envp)
 		printf("%s\n", test[i]);
 	}
 	clear_chars(test, env->size); */
+	printf("cd Desktop:\n");
+	cd(env, "Desktop");
 	printf("cd include:\n");
 	cd(env, "include");
 	printf("cd ../:\n");
@@ -77,6 +79,8 @@ int	main(int argc, char **argv, char **envp)
 	cd(env, "");
 	printf("cd ~/:\n");
 	cd(env, "~/");
+	printf("cd Desktop:\n");
+	cd(env, "Desktop");
 	printf("cd ~/Desktop:\n");
 	cd(env, "~/Desktop");
 	printf("cd Minishell:\n");

@@ -2,11 +2,19 @@
 
 int	home_dir(t_env *env, const char *path)
 {
+	char	*str;
+	int		ret;
+
 	if (!path || !*path || (*path == '~' && (!*(path + 1) || \
 		(*(path + 1) == '/' && !*(path + 2)))))
 		return (cd(env, get_env_var(env, "HOME")));
 	else if (*path == '~' && *(path + 1) == '/' && *(path + 2))
-		return (cd(env, calc_pwd(get_env_var(env, "HOME"), path + 2)));
+	{
+		str = calc_pwd(get_env_var(env, "HOME"), path + 2);
+		ret = cd(env, str);
+		free(str);
+		return (ret);
+	}
 	return (0);
 }
 
