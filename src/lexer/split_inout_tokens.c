@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int	count_inouts(char *str, char c, t_env *env)
+int	count_inouts(char *str, char c)
 {
 	int	len;
 
@@ -9,7 +9,10 @@ int	count_inouts(char *str, char c, t_env *env)
 	{
 		str += move_in_str(str, c);
 		if (*str == c && *(str + 1) == c)
-			syntax_error(1, c, env);
+		{
+			syntax_error(1, c);
+			return (-1);
+		}
 		if (*(str - 1) == c)
 			len++;
 		if (*(str - 1) == c && *str == c)
@@ -18,7 +21,7 @@ int	count_inouts(char *str, char c, t_env *env)
 	return (len);
 }
 
-int	count_inout_tokens(char **input, t_env *env)
+int	count_inout_tokens(char **input)
 {
 	int		len;
 	int		i;
@@ -36,8 +39,10 @@ int	count_inout_tokens(char **input, t_env *env)
 		{
 			if (*tmp != '<' && *tmp != '>')
 				len++;
-			rtn = count_inouts(tmp, '<', env) + count_inouts(tmp, '>', env);
-			if (rtn)
+			rtn = count_inouts(tmp, '<') + count_inouts(tmp, '>');
+			if (rtn == -1)
+				return (-1);
+			if (rtn > 0)
 				if (tmp[ft_strlen(tmp) - 1] != '<'
 					&& tmp[ft_strlen(tmp) - 1] != '>')
 					len++;
@@ -47,7 +52,7 @@ int	count_inout_tokens(char **input, t_env *env)
 	return (len);
 }
 
-char	**test(char *input, char **ptr)
+char	**tokenize_inout(char *input, char **ptr)
 {
 	int		end;
 	char	*str;
@@ -76,13 +81,17 @@ char	**test(char *input, char **ptr)
 	return (ptr);
 }
 
-char	**split_inout_tokens(char **input, t_env *env)
+char	**split_inout_tokens(char **input)
 {
 	char	**tokens;
 	char	**ptr;
 	int		flag;
+	int		count;
 
-	tokens = malloc((count_inout_tokens(input, env) + 1) * sizeof(char *));
+	count = count_inout_tokens(input);
+	if (count == -1)
+		return (NULL);
+	tokens = malloc((count + 1) * sizeof(char *));
 	if (!tokens)
 		return (0);
 	ptr = tokens;
@@ -91,7 +100,7 @@ char	**split_inout_tokens(char **input, t_env *env)
 		flag = 0;
 		ptr = check_for_quotes(*input, ptr, &flag);
 		if (flag == 0)
-			ptr = test(*input, ptr);
+			ptr = tokenize_inout(*input, ptr);
 		input++;
 	}
 	*ptr = NULL;
