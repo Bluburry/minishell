@@ -1,0 +1,14 @@
+==3068== Memcheck, a memory error detector
+==3068== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3068== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==3068== Command: ./minishell
+==3068== Parent PID: 3050
+==3068== 
+==3068== 
+==3068== HEAP SUMMARY:
+==3068==     in use at exit: 0 bytes in 0 blocks
+==3068==   total heap usage: 139 allocs, 139 frees, 14,734 bytes allocated
+==3068== 
+==3068== All heap blocks were freed -- no leaks are possible
+==3068== 
+==3068== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

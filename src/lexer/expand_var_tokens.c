@@ -23,7 +23,7 @@ char	**expand_var_tokens(char **input, t_env *env)
 	{
 		if (**input == '\'')
 			*ptr = ft_strdup(*input);
-		else 
+		else
 			*ptr = var_to_value(*input, env);
 		ptr++;
 		input++;

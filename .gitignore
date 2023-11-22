@@ -8,3 +8,14 @@ lib
 .vscode/*
 leaks.log
 .cache
+.nfs*
+compile_commands.json
+*.swn
+*.swo
+.vscode
+.vscode/
+.vscode/*
+*.json
+*/.nfs*
+*/*.swn
+*/*.swo

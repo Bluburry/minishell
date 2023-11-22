@@ -1,7 +1,15 @@
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-#include "libft.h"
+# include "libft.h"
+
+typedef enum type_of_path
+{
+	ABSOLUTE,
+	RELATIVE,
+	NO_PATH,
+	INVALID
+}	t_path;
 
 typedef struct s_env
 {
