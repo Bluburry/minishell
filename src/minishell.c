@@ -109,9 +109,17 @@ int	main(int argc, char **argv, char **envp)
 		printf("%s\n", test[i]);
 	}
 	clear_chars(test, env->size); */
-	/*printf("cd Desktop:\n");
-	cd(env, "Desktop");
-	printf("cd include:\n");
+	//char *cwd;
+	//cwd = pwd();
+	//printf("pwd: %s\n", cwd);
+	//free(cwd);
+	//printf("cd Desktop:\n");
+	//printf("cd ~:\n");
+	//cd(env, "~");
+	//cwd = pwd();
+	//printf("pwd: %s\n", cwd);
+	//free(cwd);
+	/*printf("cd include:\n");
 	cd(env, "include");
 	printf("cd ../:\n");
 	cd(env, "../");
@@ -141,8 +149,8 @@ int	main(int argc, char **argv, char **envp)
 	cd(env, "~/..");
 	printf("cd asdasd:\n");
 	cd(env, "asdasd");
-	/* cd(env, "/home/");
-	cd(env, "~/") */
+	cd(env, "/home/");
+	cd(env, "~/")
 	//waiting_for_input(env);*/
 	clear_env_struct(env);
 	rl_clear_history();

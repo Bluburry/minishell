@@ -1,5 +1,14 @@
 #include "minishell.h"
 
+/**
+ * @brief handles receiving a ~ or empty string, 
+ * and sets it to the home directory and appends 
+ * the extra string, then recursively calls cd again
+ * @param env environmental variable structure
+ * @param path path string to cd into
+ * @return returns 0 on error, else it returns 
+ * whatever the return from the recursive cd call was
+*/
 int	home_dir(t_env *env, const char *path)
 {
 	char	*str;
@@ -18,12 +27,13 @@ int	home_dir(t_env *env, const char *path)
 	return (0);
 }
 
-// missing home directory check "~/something"
-// and check if path ends with "/" (need to remove)
-// ^ trying a fix in change_path
-// test with incorrect paths
-// cuidado com o espaços
-// TODO: cuidado com o chdir da erro com "~/.."
+/**
+ * @brief changes the current working directory using chdir
+ * @param env environmental variable structure
+ * @param path path string to cd into
+ * @return returns 1 on success, 0 on error, automatically 
+ * prints an error message
+*/
 int	cd(t_env *env, const char *path)
 {
 	t_path	p;
