@@ -26,10 +26,10 @@
 extern int	r_sig;
 
 void	waiting_for_input(t_env *env);
-void  	pwd(char **envp);
 void  	env(char **envp);
 void  	parser(char *input);
 void  	ft_echo(char **argv);
+char	*pwd();
 
 //Environment variables functions
 int		var_to_print(char *str);
@@ -49,7 +49,7 @@ void  	clear_env_struct(t_env *env);
 void  	resize_env_struct(t_env *env);
 void  	clear_chars(char **str, int size);
 void  	unset_env_var(t_env *env, char *var);
-void  	add_new_env_var(t_env *env, const char *new);
+int  	add_new_env_var(t_env *env, const char *new);
 void  	alter_env_var(t_env *env, const char *new, int i);
 void  	concatenate_matrix(char *str, char **mat, int size);
 void  	copy_char_matrix_ordered(char **mat, char **new_mat, int size);

@@ -1,7 +1,15 @@
 #include "minishell.h"
 
-// needs to handle ".././"
-// adds an extra / when it's only "../"
+/**
+ * @brief takes the indexes for where to stop copying the old pwd
+ * and start copying the new path to create the string that will 
+ * be the new pwd
+ * @param pwd old path
+ * @param path new string to append to old
+ * @param i index to stop copying old path
+ * @param j index to start copying new path
+ * @return new path
+*/
 char	*complex_path(char *pwd, const char *path, int i, int j)
 {
 	int		s;
@@ -27,8 +35,13 @@ char	*complex_path(char *pwd, const char *path, int i, int j)
 	return (str);
 }
 
-// this should give me both the index of where 
-// to stop copying pwd, and to start copying path
+/**
+ * @brief manipulates the previous pwd path to append the new 
+ * path where necessary (for ../something and ~/something)
+ * @param pwd old path
+ * @param path new string to append to old
+ * @return new path string
+*/
 char	*calc_pwd(char *pwd, const char *path)
 {
 	int	i;
@@ -52,20 +65,15 @@ char	*calc_pwd(char *pwd, const char *path)
 		}
 		j++;
 	}
-
-	/* while (*(pwd + i) && *(path + j) && *(path + j + 1) && *(path + j + 2) && \
-		*(path + j) == '.' && *(path + j + 1) == '.' && *(path + j + 2) == '/')
-	{
-		j += 3;
-		while (i > 0 && *(pwd + i) != '/')
-			i--;
-		i--;
-	} */
-
 	return (complex_path(pwd, path, i + 1, j));
 }
 
-// check for handling ./something relative path
+/**
+ * @brief creates a path string from the relative path given
+ * @param env environmental variable structure
+ * @param path path string to cd into
+ * @return new path string
+*/
 char	*relative_path(t_env *env, const char *path)
 {
 	char	*str;
