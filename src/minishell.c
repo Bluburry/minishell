@@ -152,6 +152,23 @@ int	main(int argc, char **argv, char **envp)
 	cd(env, "/home/");
 	cd(env, "~/")
 	//waiting_for_input(env);*/
+	char *test;
+	test = find_exe_path(get_env_var(env, "PATH"), "cat");
+	printf("%s\n", test);
+	free(test);
+	test = find_exe_path(get_env_var(env, "PATH"), "tac");
+	printf("%s\n", test);
+	free(test);
+	test = find_exe_path(get_env_var(env, "PATH"), "tic");
+	printf("%s\n", test);
+	free(test);
+	test = find_exe_path(get_env_var(env, "PATH"), "donkey");
+	if (test == NULL) printf("hi\n");
+	else
+	{
+		printf("%s\n", test);
+		free(test);
+	}
 	clear_env_struct(env);
 	rl_clear_history();
 	return (0);
