@@ -1,14 +1,14 @@
-==8514== Memcheck, a memory error detector
-==8514== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==8514== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==8514== Command: ./minishell
-==8514== Parent PID: 8178
-==8514== 
-==8514== 
-==8514== HEAP SUMMARY:
-==8514==     in use at exit: 0 bytes in 0 blocks
-==8514==   total heap usage: 77 allocs, 77 frees, 5,710 bytes allocated
-==8514== 
-==8514== All heap blocks were freed -- no leaks are possible
-==8514== 
-==8514== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==12153== Memcheck, a memory error detector
+==12153== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==12153== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==12153== Command: ./minishell
+==12153== Parent PID: 12143
+==12153== 
+==12153== 
+==12153== HEAP SUMMARY:
+==12153==     in use at exit: 0 bytes in 0 blocks
+==12153==   total heap usage: 105 allocs, 105 frees, 6,799 bytes allocated
+==12153== 
+==12153== All heap blocks were freed -- no leaks are possible
+==12153== 
+==12153== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -30,6 +30,8 @@ void  	env(char **envp);
 void  	parser(char *input);
 void  	ft_echo(char **argv);
 char	*pwd();
+char	*find_exe_path(const char *path, const char *cmd);
+int		check_path(char *path);
 
 //Environment variables functions
 int		var_to_print(char *str);
