@@ -35,8 +35,14 @@ void	remove_node(t_cmda *ast, uint32_t i);
 // parser/create_comms.c
 bool	create_comm_list(t_data *data);
 
+// parser/insert_redirs.c
+bool	insert_redirs(t_cmda *cmds, char **list, uint32_t n);
+
+// parser/insert_args.c
+bool	insert_name_args(t_cmda *cmds, char **list, uint32_t n);
+
 //parser/traverse_tree.c
-bool	traverse_tree(t_data *data);
+bool	exec_comm_list(t_data *data);
 
 void	waiting_for_input(t_env *env, t_data *data);
 

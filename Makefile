@@ -36,7 +36,7 @@ vpath %.c src $(P_DIRS)
 SRCS	=	minishell lexer lexer_utils split_tokens split_quote_tokens split_char_tokens \
 			split_inout_tokens merge_tokens_cleanup space_tokens_cleanup var_to_value \
 			expand_var_tokens echo pwd utils alter_env clear_env find_env_var start_env_vars \
-    		print_env print_export create_comms cmda cmda2 realloc
+    		print_env print_export create_comms cmda cmda2 realloc insert_args insert_redirs
 OBJS 	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS)))
 
 OBJ_FILES	=	.cache_exists

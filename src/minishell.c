@@ -19,7 +19,7 @@ void	waiting_for_input(t_env *env, t_data *data)
 			continue ;
 		if (create_comm_list(data) == false)
 			continue ;
-		if (traverse_tree(data) == false)
+		if (exec_comm_list(data) == false)
 			continue ;
 		dcp_cleaner(data->strlist);
 	}

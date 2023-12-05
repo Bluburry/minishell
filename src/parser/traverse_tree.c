@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-bool	traverse_tree(t_data *data)
+bool	exec_comm_list(t_data *data)
 {
 	if (data->cmds == NULL)
 		return (false);

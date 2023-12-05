@@ -62,16 +62,17 @@ typedef struct s_pipe
 // functions
 typedef struct s_data
 {
-	int		fd_in;
-	int		ret_status;
-	bool	is_first_pipe;
-	bool	is_final_pipe;
-	bool	is_exiting;
-	t_cmda	*cmds;
-	char	**strlist;
-	char	*path;
-	char	**envp;
-	t_env	*env;
+	int			fd_in;
+	int			ret_status;
+	bool		is_first_pipe;
+	bool		is_final_pipe;
+	bool		is_exiting;
+	t_cmda		*cmds;
+	char		**strlist;
+	char		*path;
+	char		**envp;
+	t_env		*env;
+	uint32_t	pipe_n;
 }	t_data;
 
 #endif
