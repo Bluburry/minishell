@@ -17,7 +17,7 @@ void	waiting_for_input(t_env *env, t_data *data)
 		add_history(rl);
 		if (lexer(rl, env, data) == NULL)
 			continue ;
-		if (create_tree(data) == false)
+		if (create_comm_list(data) == false)
 			continue ;
 		if (traverse_tree(data) == false)
 			continue ;

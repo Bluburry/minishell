@@ -29,7 +29,7 @@ typedef enum e_etok
 	export_b,
 	unset_b,
 	env_b,
-	exit_b, 
+	exit_b,
 }	t_etok;
 
 // a token read by the parser, with the optional path and list of arguments
@@ -41,13 +41,14 @@ typedef struct s_tok
 	char		**arglist;
 }	t_tok;
 
-// the abstract sysntax tree, a dynamically allocated list of tokens
-// which works as a binary tree
-typedef struct s_ast
+// the command array, a dynamically allocated array of tokens in the order
+// they should be executed
+typedef struct s_cmda
 {
-	t_tok		*tokens;
+	t_tok		*tks;
+	uint32_t	size;
 	uint32_t	cap;
-}	t_ast;
+}	t_cmda;
 
 // a struct containing temporary information used when dealing with
 // sequential pipes
@@ -66,7 +67,7 @@ typedef struct s_data
 	bool	is_first_pipe;
 	bool	is_final_pipe;
 	bool	is_exiting;
-	t_ast	*ast;
+	t_cmda	*cmds;
 	char	**strlist;
 	char	*path;
 	char	**envp;

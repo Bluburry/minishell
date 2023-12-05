@@ -3,9 +3,9 @@
 char	**lexer(char *input, t_env *env, t_data *data)
 {
 	char	**tokens;
-	int		i;
+	//int		i;
 
-	i = -1;
+	//i = -1;
 	if (!input || !(*input))
 		return (NULL);
 	tokens = tokens_init(input, env);

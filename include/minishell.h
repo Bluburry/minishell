@@ -25,15 +25,15 @@
 // data_structures/realloc.c
 void	*ft_reallocation(void *ptr, size_t ptrsize, size_t size);
 
-// data_structures/ast.c
-t_ast	*create_ast(t_tok *tokens, uint32_t cap);
+// data_structures/cmda.c
+t_cmda	*create_cmda(uint32_t cap);
 void	clean_token_contents(t_tok *token);
-void	clean_ast(t_ast *ast);
-void	insert_node(t_ast *ast, t_tok tok, uint32_t i);
-void	remove_node(t_ast *ast, uint32_t i);
+void	clean_cmda(t_cmda *ast);
+void	insert_node(t_cmda *ast, t_tok tok, uint32_t i);
+void	remove_node(t_cmda *ast, uint32_t i);
 
-// parser/create_tree.c
-bool	create_tree(t_data *data);
+// parser/create_comms.c
+bool	create_comm_list(t_data *data);
 
 //parser/traverse_tree.c
 bool	traverse_tree(t_data *data);
