@@ -21,7 +21,9 @@ void	unset_env_var(t_env *env, char *var)
 }
 
 /**
- * @brief frees an array of strings with a given size
+ * @brief frees an array of strings with a given size, 
+ * pass -1 if size is to be ignored, the function will then 
+ * free until a null pointer
  * @param str array of strings to free
  * @param size size of array
 */
@@ -30,7 +32,7 @@ void	clear_chars(char **str, int size)
 	int	i;
 
 	i = -1;
-	while (++i < size)
+	while ((size == -1 && *str) || ++i < size)
 	{
 		free(str[i]);
 	}

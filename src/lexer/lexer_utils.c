@@ -47,5 +47,4 @@ void	syntax_error(int type, char c)
 		printf("unexpected EOF while looking for matching `%c'\n", c);
 	if (type == 3)
 		printf("syntax error: unexpected end of file\n");
-	// this cannot call wait for input, only main can call that
 }

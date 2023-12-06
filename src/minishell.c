@@ -1,5 +1,39 @@
 #include "minishell.h"
 
+/* void	waiting_for_input(t_env *env)
+{
+	char	*rl;
+	int		id;
+	int		fd[2];
+	int		len;
+
+	pipe(fd);
+	while (1)
+	{
+		id = fork();
+		if (id == 0)
+		{
+			//open(fd[1]);
+			rl = readline("minishell -> ");
+			len = strlen(rl) + 1;
+			write(fd[1], &len, sizeof(int));
+			write(fd[1], rl, len);
+			printf("rl: %s\n", rl);
+			lexer(rl, env);
+			//close(fd[1]);
+			exit (0);
+		}
+		else
+		{
+			waitpid(id, NULL, 0);
+			read(fd[0], &len, sizeof(int));
+			rl = malloc(len * sizeof(char));
+			read(fd[0], rl, len * sizeof(int));
+			add_history(rl);
+		}
+	}
+} */
+
 void	waiting_for_input(t_env *env, t_data *data)
 {
 	char	*rl;
@@ -34,6 +68,9 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	if (argc > 1)
 		return (ft_putstr_fd("Algo de errado nao esta certo\n", 2), 1);
+	g_sig = 0;
+	//ioctl(STDIN_FILENO, CTRL_D, ...);
+	init_signals();
 	env = create_env_struct(envp);
 	data = (t_data){.envp = envp, env};
 	waiting_for_input(env, &data);
@@ -79,3 +116,67 @@ int	main(int argc, char **argv, char **envp)
 		printf("%s\n", test[i]);
 	}
 	clear_chars(test, env->size); */
+	//char *cwd;
+	//cwd = pwd();
+	//printf("pwd: %s\n", cwd);
+	//free(cwd);
+	//printf("cd Desktop:\n");
+	//printf("cd ~:\n");
+	//cd(env, "~");
+	//cwd = pwd();
+	//printf("pwd: %s\n", cwd);
+	//free(cwd);
+	/*printf("cd include:\n");
+	cd(env, "include");
+	printf("cd ../:\n");
+	cd(env, "../");
+	printf("cd Minishell:\n");
+	cd(env, "Minishell");
+	printf("cd ../include:\n");
+	cd(env, "../include");
+	printf("cd ../minishell:\n");
+	cd(env, "../minishell");
+	printf("cd ./include:\n");
+	cd(env, "./include");
+	printf("cd ../../minishell:\n");
+	cd(env, "../../minishell");
+	printf("cd :\n");
+	cd(env, "");
+	printf("cd ~/:\n");
+	cd(env, "~/");
+	printf("cd Desktop:\n");
+	cd(env, "Desktop");
+	printf("cd ~/Desktop:\n");
+	cd(env, "~/Desktop");
+	printf("cd Minishell:\n");
+	cd(env, "Minishell");
+	printf("cd ..:\n");
+	cd(env, "..");
+	printf("cd ~/..:\n");
+	cd(env, "~/..");
+	printf("cd asdasd:\n");
+	cd(env, "asdasd");
+	cd(env, "/home/");
+	cd(env, "~/")
+	//waiting_for_input(env);*/
+	/*char *test;
+	test = find_exe_path(get_env_var(env, "PATH"), "cat");
+	printf("%s\n", test);
+	free(test);
+	test = find_exe_path(get_env_var(env, "PATH"), "tac");
+	printf("%s\n", test);
+	free(test);
+	test = find_exe_path(get_env_var(env, "PATH"), "tic");
+	printf("%s\n", test);
+	free(test);
+	test = find_exe_path(get_env_var(env, "PATH"), "donkey");
+	if (test == NULL) printf("hi\n");
+	else
+	{
+		printf("%s\n", test);
+		free(test);
+	}
+	clear_env_struct(env);
+	rl_clear_history();
+	return (0);
+}*/

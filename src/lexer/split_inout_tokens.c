@@ -9,7 +9,10 @@ int	count_inouts(char *str, char c)
 	{
 		str += move_in_str(str, c);
 		if (*str == c && *(str + 1) == c)
+		{
 			syntax_error(1, c);
+			return (-1);
+		}
 		if (*(str - 1) == c)
 			len++;
 		if (*(str - 1) == c && *str == c)
@@ -37,7 +40,9 @@ int	count_inout_tokens(char **input)
 			if (*tmp != '<' && *tmp != '>')
 				len++;
 			rtn = count_inouts(tmp, '<') + count_inouts(tmp, '>');
-			if (rtn)
+			if (rtn == -1)
+				return (-1);
+			if (rtn > 0)
 				if (tmp[ft_strlen(tmp) - 1] != '<'
 					&& tmp[ft_strlen(tmp) - 1] != '>')
 					len++;
@@ -47,7 +52,7 @@ int	count_inout_tokens(char **input)
 	return (len);
 }
 
-char	**test(char *input, char **ptr)
+char	**tokenize_inout(char *input, char **ptr)
 {
 	int		end;
 	char	*str;
@@ -81,8 +86,12 @@ char	**split_inout_tokens(char **input)
 	char	**tokens;
 	char	**ptr;
 	int		flag;
+	int		count;
 
-	tokens = malloc((count_inout_tokens(input) + 1) * sizeof(char *));
+	count = count_inout_tokens(input);
+	if (count == -1)
+		return (NULL);
+	tokens = malloc((count + 1) * sizeof(char *));
 	if (!tokens)
 		return (0);
 	ptr = tokens;
@@ -91,7 +100,7 @@ char	**split_inout_tokens(char **input)
 		flag = 0;
 		ptr = check_for_quotes(*input, ptr, &flag);
 		if (flag == 0)
-			ptr = test(*input, ptr);
+			ptr = tokenize_inout(*input, ptr);
 		input++;
 	}
 	*ptr = NULL;

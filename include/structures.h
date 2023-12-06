@@ -5,6 +5,14 @@
 # include <stdbool.h>
 # include <stdint.h>
 
+typedef enum type_of_path
+{
+	ABSOLUTE,
+	RELATIVE,
+	NO_PATH,
+	INVALID
+}	t_path;
+
 typedef struct s_env
 {
 	char	**vars;
