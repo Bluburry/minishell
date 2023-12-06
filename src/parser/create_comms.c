@@ -24,7 +24,7 @@ static uint32_t	list_len(char **list)
 // if you send that with start 6, you'll get -1, since there are no more pipes
 // returns negative if no pipe is found
 // find_strn_to_pipe(&list[i])
-int32_t	find_strn_to_pipe(char **list)
+static int32_t	find_strn_to_pipe(char **list)
 {
 	uint32_t	i;
 
@@ -41,7 +41,7 @@ int32_t	find_strn_to_pipe(char **list)
 // counts the number of pipes that exists in the entire list of strings
 // returns the number of pipes
 // this should probably be saved in data
-uint32_t	count_pipes(char **list)
+static uint32_t	count_pipes(char **list)
 {
 	uint32_t	i;
 	uint32_t	count;

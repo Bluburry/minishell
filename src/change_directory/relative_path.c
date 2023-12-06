@@ -10,7 +10,7 @@
  * @param j index to start copying new path
  * @return new path
 */
-char	*complex_path(char *pwd, const char *path, int i, int j)
+static char	*complex_path(char *pwd, const char *path, int i, int j)
 {
 	int		s;
 	char	*str;

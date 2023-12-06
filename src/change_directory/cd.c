@@ -9,7 +9,7 @@
  * @return returns 0 on error, else it returns 
  * whatever the return from the recursive cd call was
 */
-int	home_dir(t_env *env, const char *path)
+static int	home_dir(t_env *env, const char *path)
 {
 	char	*str;
 	int		ret;

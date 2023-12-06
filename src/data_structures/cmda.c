@@ -45,17 +45,3 @@ void	clean_cmda(t_cmda *cmd_arr)
 	}
 	free(cmd_arr);
 }
-
-// inserts a node with the token tok in the cmda at the position i
-void	insert_node(t_cmda *cmd_arr, t_tok tok, uint32_t i) //kind of useless, delete later
-{
-	if (i >= cmd_arr->cap)
-		cmd_arr = ft_reallocation(cmd_arr, cmd_arr->cap, cmd_arr->cap * 2);
-	cmd_arr->tks[i] = tok;
-}
-
-//removes the node in the position i from the cmda
-void	remove_node(t_cmda *cmd_arr, uint32_t i)
-{
-	clean_token_contents(&cmd_arr->tks[i]);
-}

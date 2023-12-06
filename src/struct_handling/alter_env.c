@@ -65,17 +65,17 @@ void	resize_env_struct(t_env *env)
  * it must start with a letter, and can only contain 
  * numbers and letters
  */
-int	check_valid_var(const char *str)
+static int	check_valid_var(const char *str)
 {
 	if (!str || !*str || \
-		!((*str >= 65 && *str <= 90) ||
-			(*str >= 97 && *str <= 122)))
+		!((*str >= 65 && *str <= 90)
+			|| (*str >= 97 && *str <= 122)))
 		return (0);
 	while (*str && *str != '=')
 	{
-		if (!((*str >= 65 && *str <= 90) ||
-				(*str >= 97 && *str <= 122) ||
-				(*str >= 48 && *str <= 57)))
+		if (!((*str >= 65 && *str <= 90)
+				|| (*str >= 97 && *str <= 122)
+				|| (*str >= 48 && *str <= 57)))
 			return (0);
 		str++;
 	}

@@ -9,7 +9,7 @@
  * @param send index to stop copying path
  * @return path string created
 */
-char	*create_exec_string(const char *path, const char *cmd, int start, int end)
+static char	*create_exec_string(const char *path, const char *cmd, int start, int end)
 {
 	char	*str;
 	size_t	s;
@@ -33,7 +33,7 @@ char	*create_exec_string(const char *path, const char *cmd, int start, int end)
  * @param bs struct stat to use in the stat function
  * @return executable path, or NULL if it no path was found
 */
-char	*handle_exe_stats(const char *path, const char *cmd, struct stat *bs)
+static char	*handle_exe_stats(const char *path, const char *cmd, struct stat *bs)
 {
 	int		i;
 	int		j;
