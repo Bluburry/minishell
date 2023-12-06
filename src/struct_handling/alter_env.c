@@ -51,6 +51,7 @@ void	resize_env_struct(t_env *env)
 {
 	char	**new_vars;
 	char	**old_vars;
+	int		i;
 
 	old_vars = env->vars;
 	env->capacity += 20;
@@ -58,6 +59,9 @@ void	resize_env_struct(t_env *env)
 	env->vars = new_vars;
 	copy_char_matrix(old_vars, env->vars, env->size, -1);
 	clear_chars(old_vars, env->size);
+	i = env->size - 1;
+	while (++i < env->capacity)
+		env->vars[i] = NULL;
 }
 
 /**

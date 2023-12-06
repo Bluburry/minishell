@@ -71,11 +71,15 @@ int	main(int argc, char **argv, char **envp)
 	//ioctl(STDIN_FILENO, CTRL_D, ...);
 	init_signals();
 	env = create_env_struct(envp);
+	//int i = -1;
+	//while (env->vars[++i])
+	//{
+		//printf("%s\n", env->vars[i]);
+	//}
 	/* add_new_env_var(env, "TEST=24");
 	add_new_env_var(env, "TEST2");
 	add_new_env_var(env, "TEST3=");
 	unset_env_var(env, "TEST");
-	int i = -1;
 	while (++i < env->size)
 	{
 		printf("%s\n", env->vars[i]);
@@ -169,6 +173,16 @@ int	main(int argc, char **argv, char **envp)
 		printf("%s\n", test);
 		free(test);
 	}*/
+	char *test = find_exe_path(get_env_var(env, "PATH"), "cat");
+	static char *test2[] = {"cat", "test.txt", NULL};
+	run_exe(test, test2, env);
+	printf("back to minishell\n");
+	free(test);
+	test = find_exe_path(get_env_var(env, "PATH"), "cat");
+	static char *test3[] = {"donkey", "test.txt", NULL};
+	run_exe(test, test3, env);
+	printf("back to minishell\n");
+	free(test);
 	clear_env_struct(env);
 	rl_clear_history();
 	return (0);

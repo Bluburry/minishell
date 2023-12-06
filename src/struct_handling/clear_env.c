@@ -31,10 +31,10 @@ void	clear_chars(char **str, int size)
 {
 	int	i;
 
-	i = -1;
-	while ((size == -1 && *str) || ++i < size)
+	i = 0;
+	while ((size == -1 && str[i]) || i < size)
 	{
-		free(str[i]);
+		free(str[i++]);
 	}
 	free(str);
 }

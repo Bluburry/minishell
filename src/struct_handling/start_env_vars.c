@@ -59,11 +59,15 @@ void	copy_char_matrix(char **mat, char **new_mat, int size, int skip)
 t_env	*create_env_struct(char **envp)
 {
 	t_env	*env;
+	int		i;
 
 	env = (t_env *) malloc(sizeof(t_env));
 	env->size = get_env_start_size(envp);
 	env->capacity = env->size + 20;
 	env->vars = (char **) malloc(sizeof(char *) * env->capacity);
 	copy_char_matrix(envp, env->vars, env->size, -1);
+	i = env->size - 1;
+	while (++i < env->capacity)
+		env->vars[i] = NULL;
 	return (env);
 }
