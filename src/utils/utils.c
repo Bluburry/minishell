@@ -11,7 +11,7 @@ int	check_path(char *path)
 	int			ret;
 
 	bs = (struct stat *) malloc(sizeof(struct stat));
-	if (stat(exec, bs) == -1)
+	if (stat(path, bs) == -1)
 	{
 		printf("Invalid directory.\n");
 		ret = -1;
