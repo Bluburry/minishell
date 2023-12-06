@@ -30,13 +30,6 @@ typedef enum e_etok
 	r_in,
 	r_append,
 	r_heredoc,
-	echo_b,
-	cd_b,
-	pwd_b,
-	export_b,
-	unset_b,
-	env_b,
-	exit_b,
 }	t_etok;
 
 // a token read by the parser, with the optional path and list of arguments

@@ -4,7 +4,7 @@
 // phrase0 | phrase1 | phrase3
 
 // counts the number of items in the string list
-static uint32_t	list_len(char **list)
+uint32_t	list_len(char **list)
 {
 	uint32_t	i;
 

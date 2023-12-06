@@ -98,7 +98,8 @@ char	*var_to_value(char *str, t_env *env);
 
 // ---parser/---
 // parser/create_comms.c
-bool	create_comm_list(t_data *data);
+uint32_t	list_len(char **list);
+bool		create_comm_list(t_data *data);
 
 //parser/exec_comms.c
 bool	exec_comm_list(t_data *data);
