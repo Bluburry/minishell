@@ -17,7 +17,6 @@ typedef enum e_etok
 {
 	none,
 	exec,
-	name,
 	r_pipe,
 	r_out,
 	r_in,
