@@ -175,12 +175,17 @@ int	main(int argc, char **argv, char **envp)
 	}*/
 	char *test = find_exe_path(get_env_var(env, "PATH"), "cat");
 	static char *test2[] = {"cat", "test.txt", NULL};
-	run_exe(test, test2, env);
+	printf("run_exe ret: %d\n", run_exe(test, test2, env));
 	printf("back to minishell\n");
 	free(test);
 	test = find_exe_path(get_env_var(env, "PATH"), "cat");
-	static char *test3[] = {"donkey", "test.txt", NULL};
-	run_exe(test, test3, env);
+	static char *test3[] = {"cat", "test2.txt", NULL};
+	printf("run_exe ret: %d\n", run_exe(test, test3, env));
+	printf("back to minishell\n");
+	free(test);
+	test = find_exe_path(get_env_var(env, "PATH"), "cat");
+	static char *test4[] = {"donkey", "test2.txt", NULL};
+	printf("run_exe ret: %d\n", run_exe(test, test4, env));
 	printf("back to minishell\n");
 	free(test);
 	clear_env_struct(env);
