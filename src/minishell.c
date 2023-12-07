@@ -1,4 +1,6 @@
 #include "minishell.h"
+#include "structures.h"
+#include <stdint.h>
 
 /* void	waiting_for_input(t_env *env)
 {
@@ -34,6 +36,33 @@
 	}
 } */
 
+static void	print_strlist(char **list)
+{
+	uint32_t	i;
+
+	i = 0;
+	while (list[i])
+		printf("%s\n", list[i++]);
+}
+
+static void	print_cmda(t_cmda *cmds)
+{
+	const char	*strs[7] = {"NONE", "EXEC", "PIPE", "OUT", "IN", "APPEND", "HEREDOC"};
+
+	if (!cmds->tks)
+		return ;
+	for (uint32_t i = 0; i < cmds->size; i++)
+	{
+		printf("%d %s : \"%s\"",cmds->tks[i].type, strs[cmds->tks[i].type], cmds->tks[i].path);
+		if (cmds->tks[i].arglist) {
+			printf(" :");
+			for (uint32_t j = 0; cmds->tks[i].arglist[j]; j++)
+				printf(" \"%s\"", cmds->tks[i].arglist[j]);
+		}
+		printf("\n");
+	}
+}
+
 void	waiting_for_input(t_env *env, t_data *data)
 {
 	char	*rl;
@@ -51,8 +80,10 @@ void	waiting_for_input(t_env *env, t_data *data)
 		add_history(rl);
 		if (lexer(rl, env, data) == NULL)
 			continue ;
+		print_strlist(data->strlist);
 		if (create_comm_list(data) == false)
 			continue ;
+		print_cmda(data->cmds);
 		if (exec_comm_list(data) == false)
 			continue ;
 		dcp_cleaner(data->strlist);

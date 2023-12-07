@@ -1,4 +1,5 @@
 #include "minishell.h"
+#include <stdbool.h>
 
 // A prhase is everything between pipes
 // phrase0 | phrase1 | phrase3
@@ -50,42 +51,80 @@ static uint32_t	count_pipes(char **list)
 	count = 0;
 	while (list[i] != NULL)
 	{
-		if (ft_strncmp("|", list[i], 1) == 0)
+		if (ft_strncmp("|", list[i++], 1) == 0)
 			count++;
 	}
 	return (count);
 }
 
-bool	create_comm_list(t_data *data)
+static bool	comm_list_helper(t_data *d, int32_t n, uint32_t st, bool ins_pipe) //I need to properly clean cmds
+{
+	if (insert_redirs(d->cmds, &d->strlist[st], n) == false)
+		return (free(d->cmds), d->cmds = NULL,
+			dcp_cleaner(d->strlist), d->strlist = NULL, false);
+	if (ins_pipe == true)
+		d->cmds->tks[d->cmds->size++] = (t_tok){r_pipe, NULL, NULL};
+	if (insert_name_args(d->cmds, &d->strlist[st], n) == false)
+		return (free(d->cmds), d->cmds = NULL,
+			dcp_cleaner(d->strlist), d->strlist = NULL, false);
+	return (true);
+}
+
+bool	create_comm_list(t_data *d)
 {
 	int32_t		n;
 	uint32_t	st;
 
-	data->cmds = create_cmda(list_len(data->strlist));
-	if (data->cmds == NULL || data->strlist == NULL)
-		return (free(data->cmds), data->cmds = NULL, dcp_cleaner(data->strlist),
-			data->strlist = NULL, false);
-	data->pipe_n = count_pipes(data->strlist);
-	n = find_strn_to_pipe(&data->strlist[0]);
+	d->cmds = create_cmda(list_len(d->strlist));
+	if (d->cmds == NULL || d->strlist == NULL)
+		return (free(d->cmds), d->cmds = NULL, dcp_cleaner(d->strlist),
+			d->strlist = NULL, false);
+	d->pipe_n = count_pipes(d->strlist);
+	n = find_strn_to_pipe(&d->strlist[0]);
 	st = 0;
 	while (n != -1)
 	{
-		if (insert_redirs(data->cmds, &data->strlist[st], n) == false)
-			return (free(data->cmds), data->cmds = NULL,
-				dcp_cleaner(data->strlist), data->strlist = NULL, false);
-		data->cmds->tks[data->cmds->size++] = (t_tok){r_pipe, NULL, NULL};
-		if (insert_name_args(data->cmds, &data->strlist[st], n) == false)
-			return (free(data->cmds), data->cmds = NULL,
-				dcp_cleaner(data->strlist), data->strlist = NULL, false);
+		if (comm_list_helper(d, n, st, true) == false)
+			return (false);
 		st += n + 1;
-		n = find_strn_to_pipe(&data->strlist[st]);
+		n = find_strn_to_pipe(&d->strlist[st]);
 	}
-	n = list_len(data->strlist) - st;
-	if (insert_redirs(data->cmds, &data->strlist[st], n) == false)
-		return (free(data->cmds), data->cmds = NULL,
-			dcp_cleaner(data->strlist), data->strlist = NULL, false);
-	if (insert_name_args(data->cmds, &data->strlist[st], n) == false)
-		return (free(data->cmds), data->cmds = NULL,
-			dcp_cleaner(data->strlist), data->strlist = NULL, false);
+	n = list_len(d->strlist) - st;
+	if (comm_list_helper(d, n, st, false) == false)
+		return (false);
 	return (true);
 }
+
+/* bool	create_comm_list(t_data *d)
+{
+	int32_t		n;
+	uint32_t	st;
+
+	d->cmds = create_cmda(list_len(d->strlist));
+	if (d->cmds == NULL || d->strlist == NULL)
+		return (free(d->cmds), d->cmds = NULL, dcp_cleaner(d->strlist),
+			d->strlist = NULL, false);
+	d->pipe_n = count_pipes(d->strlist);
+	n = find_strn_to_pipe(&d->strlist[0]);
+	st = 0;
+	while (n != -1)
+	{
+		if (insert_redirs(d->cmds, &d->strlist[st], n) == false)
+			return (free(d->cmds), d->cmds = NULL,
+				dcp_cleaner(d->strlist), d->strlist = NULL, false);
+		d->cmds->tks[d->cmds->size++] = (t_tok){r_pipe, NULL, NULL};
+		if (insert_name_args(d->cmds, &d->strlist[st], n) == false)
+			return (free(d->cmds), d->cmds = NULL,
+				dcp_cleaner(d->strlist), d->strlist = NULL, false);
+		st += n + 1;
+		n = find_strn_to_pipe(&d->strlist[st]);
+	}
+	n = list_len(d->strlist) - st;
+	if (insert_redirs(d->cmds, &d->strlist[st], n) == false)
+		return (free(d->cmds), d->cmds = NULL,
+			dcp_cleaner(d->strlist), d->strlist = NULL, false);
+	if (insert_name_args(d->cmds, &d->strlist[st], n) == false)
+		return (free(d->cmds), d->cmds = NULL,
+			dcp_cleaner(d->strlist), d->strlist = NULL, false);
+	return (true);
+} */

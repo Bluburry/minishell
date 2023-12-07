@@ -12,6 +12,7 @@ t_cmda	*create_cmda(uint32_t cap)
 	cmda_arr->tks = malloc(sizeof(t_tok) * cap);
 	if (cmda_arr->tks == NULL)
 		return (free(cmda_arr), NULL);
+	memset(cmda_arr->tks, 0, sizeof(t_tok) * cap);
 	return (cmda_arr);
 }
 

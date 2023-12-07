@@ -1,4 +1,5 @@
 #include "minishell.h"
+#include <stdbool.h>
 
 // counts how many arguments there are in a phrase
 // ignores the first word int the phrase since it's an executable
@@ -28,8 +29,24 @@ static uint32_t	count_args(char **l, uint32_t n)
 		return (count - 1);
 }
 
+// checks to see if the first value passed is a relative or absolute path
+// returns true if it is
+static bool	check_if_pathname(char *str);
+
+// if the first value of a phrase is a relative or absolute path, returns
+// only the filename
+// otherwise does nothing and returns the argument
+static char	*return_filename(char *str)
+{
+	if (check_if_pathname(str) == true)
+	{
+		(void)str;
+	}
+	return (str);
+}
+
 // insert_name_args(cmds, &list[i], n)
-bool	insert_name_args(t_cmda *c, char **l, uint32_t n)
+bool	insert_name_args(t_cmda *c, char **l, uint32_t n) // needs to add the name of the application as the first item in arglist
 {
 	int32_t		i;
 	uint32_t	j;
@@ -38,7 +55,7 @@ bool	insert_name_args(t_cmda *c, char **l, uint32_t n)
 	i = -1;
 	j = 0;
 	path_added = false;
-	c->tks[c->size].arglist = malloc(sizeof(char *) * count_args(l, n) + 1);
+	c->tks[c->size].arglist = malloc(sizeof(char *) * (count_args(l, n) + 1));
 	if (c->tks[c->size].arglist == NULL)
 		return (false);
 	while (++i < (int32_t)n)
@@ -55,5 +72,5 @@ bool	insert_name_args(t_cmda *c, char **l, uint32_t n)
 			c->tks[c->size].arglist[j++] = l[i];
 	}
 	c->tks[c->size++].arglist[j] = NULL;
-	return (true);
+	return (c->tks[c->size - 1].type = exec, true);
 }
