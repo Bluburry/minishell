@@ -23,21 +23,21 @@ typedef struct s_env
 // an enum that decides wether the token is a name or an operator
 typedef enum e_etok
 {
-	none,
-	exec,
+	none, // *
+	exec, // !
 	r_pipe,
 	r_out,
 	r_in,
 	r_append,
 	r_heredoc,
-	echo_b,
-	cd_b,
-	pwd_b,
-	export_b,
-	unset_b,
-	env_b,
-	exit_b,
 }	t_etok;
+/* 	echo_b, // *
+	cd_b, // *
+	pwd_b, //*
+	export_b, //!
+	unset_b, // !
+	env_b, //*
+	exit_b, // ! */
 
 // a token read by the parser, with the optional path and list of arguments
 // used by exec

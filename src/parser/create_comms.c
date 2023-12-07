@@ -4,7 +4,7 @@
 // phrase0 | phrase1 | phrase3
 
 // counts the number of items in the string list
-static uint32_t	list_len(char **list)
+uint32_t	list_len(char **list)
 {
 	uint32_t	i;
 
@@ -50,7 +50,7 @@ static uint32_t	count_pipes(char **list)
 	count = 0;
 	while (list[i] != NULL)
 	{
-		if (ft_strncmp("|", list[i], 1) == 0)
+		if (ft_strncmp("|", list[i++], 1) == 0)
 			count++;
 	}
 	return (count);

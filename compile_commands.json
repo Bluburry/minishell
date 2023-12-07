@@ -13,9 +13,9 @@
       "obj/minishell.o",
       "src/minishell.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell",
-    "file": "/nfs/homes/remarque/minishell/src/minishell.c",
-    "output": "/nfs/homes/remarque/minishell/obj/minishell.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/src/minishell.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/obj/minishell.o"
   },
   {
     "arguments": [
@@ -31,9 +31,9 @@
       "obj/parsing/parser.o",
       "src/parsing/parser.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell",
-    "file": "/nfs/homes/remarque/minishell/src/parsing/parser.c",
-    "output": "/nfs/homes/remarque/minishell/obj/parsing/parser.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/src/parsing/parser.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/obj/parsing/parser.o"
   },
   {
     "arguments": [
@@ -49,9 +49,9 @@
       "obj/parsing/split_quote_tokens.o",
       "src/parsing/split_quote_tokens.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell",
-    "file": "/nfs/homes/remarque/minishell/src/parsing/split_quote_tokens.c",
-    "output": "/nfs/homes/remarque/minishell/obj/parsing/split_quote_tokens.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/src/parsing/split_quote_tokens.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/obj/parsing/split_quote_tokens.o"
   },
   {
     "arguments": [
@@ -67,9 +67,9 @@
       "obj/parsing/split_char_tokens.o",
       "src/parsing/split_char_tokens.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell",
-    "file": "/nfs/homes/remarque/minishell/src/parsing/split_char_tokens.c",
-    "output": "/nfs/homes/remarque/minishell/obj/parsing/split_char_tokens.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/src/parsing/split_char_tokens.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/obj/parsing/split_char_tokens.o"
   },
   {
     "arguments": [
@@ -85,9 +85,9 @@
       "obj/parsing/split_inout_tokens.o",
       "src/parsing/split_inout_tokens.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell",
-    "file": "/nfs/homes/remarque/minishell/src/parsing/split_inout_tokens.c",
-    "output": "/nfs/homes/remarque/minishell/obj/parsing/split_inout_tokens.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/src/parsing/split_inout_tokens.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/obj/parsing/split_inout_tokens.o"
   },
   {
     "arguments": [
@@ -103,9 +103,9 @@
       "obj/parsing/split_space_tokens.o",
       "src/parsing/split_space_tokens.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell",
-    "file": "/nfs/homes/remarque/minishell/src/parsing/split_space_tokens.c",
-    "output": "/nfs/homes/remarque/minishell/obj/parsing/split_space_tokens.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/src/parsing/split_space_tokens.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/obj/parsing/split_space_tokens.o"
   },
   {
     "arguments": [
@@ -121,9 +121,9 @@
       "obj/utils/echo.o",
       "src/utils/echo.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell",
-    "file": "/nfs/homes/remarque/minishell/src/utils/echo.c",
-    "output": "/nfs/homes/remarque/minishell/obj/utils/echo.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/src/utils/echo.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/obj/utils/echo.o"
   },
   {
     "arguments": [
@@ -139,9 +139,9 @@
       "obj/utils/pwd.o",
       "src/utils/pwd.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell",
-    "file": "/nfs/homes/remarque/minishell/src/utils/pwd.c",
-    "output": "/nfs/homes/remarque/minishell/obj/utils/pwd.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/src/utils/pwd.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/obj/utils/pwd.o"
   },
   {
     "arguments": [
@@ -157,9 +157,9 @@
       "obj/utils/utils.o",
       "src/utils/utils.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell",
-    "file": "/nfs/homes/remarque/minishell/src/utils/utils.c",
-    "output": "/nfs/homes/remarque/minishell/obj/utils/utils.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/src/utils/utils.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/obj/utils/utils.o"
   },
   {
     "arguments": [
@@ -175,9 +175,9 @@
       "obj/string/ft_strjoin.o",
       "src/string/ft_strjoin.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strjoin.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strjoin.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strjoin.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strjoin.o"
   },
   {
     "arguments": [
@@ -193,9 +193,9 @@
       "obj/string/ft_striteri.o",
       "src/string/ft_striteri.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_striteri.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_striteri.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_striteri.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_striteri.o"
   },
   {
     "arguments": [
@@ -211,9 +211,9 @@
       "obj/string/ft_strlcat.o",
       "src/string/ft_strlcat.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strlcat.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strlcat.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strlcat.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strlcat.o"
   },
   {
     "arguments": [
@@ -229,9 +229,9 @@
       "obj/string/ft_strnstr.o",
       "src/string/ft_strnstr.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strnstr.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strnstr.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strnstr.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strnstr.o"
   },
   {
     "arguments": [
@@ -247,9 +247,9 @@
       "obj/string/ft_strlcpy.o",
       "src/string/ft_strlcpy.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strlcpy.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strlcpy.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strlcpy.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strlcpy.o"
   },
   {
     "arguments": [
@@ -265,9 +265,9 @@
       "obj/string/ft_strlen.o",
       "src/string/ft_strlen.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strlen.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strlen.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strlen.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strlen.o"
   },
   {
     "arguments": [
@@ -283,9 +283,9 @@
       "obj/string/ft_strdup.o",
       "src/string/ft_strdup.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strdup.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strdup.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strdup.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strdup.o"
   },
   {
     "arguments": [
@@ -301,9 +301,9 @@
       "obj/string/ft_strchr.o",
       "src/string/ft_strchr.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strchr.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strchr.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strchr.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strchr.o"
   },
   {
     "arguments": [
@@ -319,9 +319,9 @@
       "obj/string/ft_strmapi.o",
       "src/string/ft_strmapi.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strmapi.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strmapi.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strmapi.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strmapi.o"
   },
   {
     "arguments": [
@@ -337,9 +337,9 @@
       "obj/string/ft_strncmp.o",
       "src/string/ft_strncmp.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strncmp.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strncmp.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strncmp.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strncmp.o"
   },
   {
     "arguments": [
@@ -355,9 +355,9 @@
       "obj/string/ft_strrchr.o",
       "src/string/ft_strrchr.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strrchr.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strrchr.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strrchr.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strrchr.o"
   },
   {
     "arguments": [
@@ -373,9 +373,9 @@
       "obj/string/ft_split.o",
       "src/string/ft_split.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_split.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_split.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_split.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_split.o"
   },
   {
     "arguments": [
@@ -391,9 +391,9 @@
       "obj/string/ft_strtrim.o",
       "src/string/ft_strtrim.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strtrim.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strtrim.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strtrim.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strtrim.o"
   },
   {
     "arguments": [
@@ -409,9 +409,9 @@
       "obj/string/ft_substr.o",
       "src/string/ft_substr.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_substr.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_substr.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_substr.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_substr.o"
   },
   {
     "arguments": [
@@ -427,9 +427,9 @@
       "obj/string/ft_split_str.o",
       "src/string/ft_split_str.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_split_str.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_split_str.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_split_str.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_split_str.o"
   },
   {
     "arguments": [
@@ -445,9 +445,9 @@
       "obj/string/ft_strdup_sted.o",
       "src/string/ft_strdup_sted.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/string/ft_strdup_sted.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/string/ft_strdup_sted.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/string/ft_strdup_sted.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/string/ft_strdup_sted.o"
   },
   {
     "arguments": [
@@ -463,9 +463,9 @@
       "obj/printing/ft_putchar_fd.o",
       "src/printing/ft_putchar_fd.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/printing/ft_putchar_fd.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/printing/ft_putchar_fd.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/printing/ft_putchar_fd.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/printing/ft_putchar_fd.o"
   },
   {
     "arguments": [
@@ -481,9 +481,9 @@
       "obj/printing/ft_putstr_fd.o",
       "src/printing/ft_putstr_fd.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/printing/ft_putstr_fd.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/printing/ft_putstr_fd.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/printing/ft_putstr_fd.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/printing/ft_putstr_fd.o"
   },
   {
     "arguments": [
@@ -499,9 +499,9 @@
       "obj/printing/ft_putendl_fd.o",
       "src/printing/ft_putendl_fd.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/printing/ft_putendl_fd.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/printing/ft_putendl_fd.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/printing/ft_putendl_fd.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/printing/ft_putendl_fd.o"
   },
   {
     "arguments": [
@@ -517,9 +517,9 @@
       "obj/printing/ft_putnbr_fd.o",
       "src/printing/ft_putnbr_fd.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/printing/ft_putnbr_fd.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/printing/ft_putnbr_fd.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/printing/ft_putnbr_fd.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/printing/ft_putnbr_fd.o"
   },
   {
     "arguments": [
@@ -535,9 +535,9 @@
       "obj/ft_is/ft_isalpha.o",
       "src/ft_is/ft_isalpha.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/ft_is/ft_isalpha.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/ft_is/ft_isalpha.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/ft_is/ft_isalpha.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/ft_is/ft_isalpha.o"
   },
   {
     "arguments": [
@@ -553,9 +553,9 @@
       "obj/ft_is/ft_isascii.o",
       "src/ft_is/ft_isascii.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/ft_is/ft_isascii.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/ft_is/ft_isascii.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/ft_is/ft_isascii.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/ft_is/ft_isascii.o"
   },
   {
     "arguments": [
@@ -571,9 +571,9 @@
       "obj/ft_is/ft_isdigit.o",
       "src/ft_is/ft_isdigit.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/ft_is/ft_isdigit.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/ft_is/ft_isdigit.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/ft_is/ft_isdigit.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/ft_is/ft_isdigit.o"
   },
   {
     "arguments": [
@@ -589,9 +589,9 @@
       "obj/ft_is/ft_isalnum.o",
       "src/ft_is/ft_isalnum.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/ft_is/ft_isalnum.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/ft_is/ft_isalnum.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/ft_is/ft_isalnum.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/ft_is/ft_isalnum.o"
   },
   {
     "arguments": [
@@ -607,9 +607,9 @@
       "obj/ft_is/ft_isprint.o",
       "src/ft_is/ft_isprint.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/ft_is/ft_isprint.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/ft_is/ft_isprint.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/ft_is/ft_isprint.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/ft_is/ft_isprint.o"
   },
   {
     "arguments": [
@@ -625,9 +625,9 @@
       "obj/ft_is/ft_iswhitespace.o",
       "src/ft_is/ft_iswhitespace.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/ft_is/ft_iswhitespace.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/ft_is/ft_iswhitespace.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/ft_is/ft_iswhitespace.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/ft_is/ft_iswhitespace.o"
   },
   {
     "arguments": [
@@ -643,9 +643,9 @@
       "obj/mem/ft_memcmp.o",
       "src/mem/ft_memcmp.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/mem/ft_memcmp.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/mem/ft_memcmp.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/mem/ft_memcmp.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/mem/ft_memcmp.o"
   },
   {
     "arguments": [
@@ -661,9 +661,9 @@
       "obj/mem/ft_calloc.o",
       "src/mem/ft_calloc.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/mem/ft_calloc.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/mem/ft_calloc.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/mem/ft_calloc.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/mem/ft_calloc.o"
   },
   {
     "arguments": [
@@ -679,9 +679,9 @@
       "obj/mem/ft_bzero.o",
       "src/mem/ft_bzero.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/mem/ft_bzero.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/mem/ft_bzero.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/mem/ft_bzero.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/mem/ft_bzero.o"
   },
   {
     "arguments": [
@@ -697,9 +697,9 @@
       "obj/mem/ft_memchr.o",
       "src/mem/ft_memchr.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/mem/ft_memchr.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/mem/ft_memchr.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/mem/ft_memchr.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/mem/ft_memchr.o"
   },
   {
     "arguments": [
@@ -715,9 +715,9 @@
       "obj/mem/ft_memset.o",
       "src/mem/ft_memset.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/mem/ft_memset.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/mem/ft_memset.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/mem/ft_memset.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/mem/ft_memset.o"
   },
   {
     "arguments": [
@@ -733,9 +733,9 @@
       "obj/mem/ft_memcpy.o",
       "src/mem/ft_memcpy.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/mem/ft_memcpy.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/mem/ft_memcpy.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/mem/ft_memcpy.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/mem/ft_memcpy.o"
   },
   {
     "arguments": [
@@ -751,9 +751,9 @@
       "obj/mem/ft_memmove.o",
       "src/mem/ft_memmove.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/mem/ft_memmove.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/mem/ft_memmove.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/mem/ft_memmove.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/mem/ft_memmove.o"
   },
   {
     "arguments": [
@@ -769,9 +769,9 @@
       "obj/conversion/ft_tolower.o",
       "src/conversion/ft_tolower.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/conversion/ft_tolower.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/conversion/ft_tolower.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/conversion/ft_tolower.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/conversion/ft_tolower.o"
   },
   {
     "arguments": [
@@ -787,9 +787,9 @@
       "obj/conversion/ft_toupper.o",
       "src/conversion/ft_toupper.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/conversion/ft_toupper.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/conversion/ft_toupper.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/conversion/ft_toupper.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/conversion/ft_toupper.o"
   },
   {
     "arguments": [
@@ -805,9 +805,9 @@
       "obj/conversion/ft_itoa.o",
       "src/conversion/ft_itoa.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/conversion/ft_itoa.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/conversion/ft_itoa.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/conversion/ft_itoa.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/conversion/ft_itoa.o"
   },
   {
     "arguments": [
@@ -823,9 +823,9 @@
       "obj/conversion/ft_atoi.o",
       "src/conversion/ft_atoi.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/conversion/ft_atoi.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/conversion/ft_atoi.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/conversion/ft_atoi.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/conversion/ft_atoi.o"
   },
   {
     "arguments": [
@@ -841,9 +841,9 @@
       "obj/list/ft_lstiter.o",
       "src/list/ft_lstiter.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/list/ft_lstiter.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/list/ft_lstiter.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/list/ft_lstiter.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/list/ft_lstiter.o"
   },
   {
     "arguments": [
@@ -859,9 +859,9 @@
       "obj/list/ft_lstdelone.o",
       "src/list/ft_lstdelone.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/list/ft_lstdelone.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/list/ft_lstdelone.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/list/ft_lstdelone.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/list/ft_lstdelone.o"
   },
   {
     "arguments": [
@@ -877,9 +877,9 @@
       "obj/list/ft_lstmap.o",
       "src/list/ft_lstmap.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/list/ft_lstmap.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/list/ft_lstmap.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/list/ft_lstmap.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/list/ft_lstmap.o"
   },
   {
     "arguments": [
@@ -895,9 +895,9 @@
       "obj/list/ft_lstadd_back.o",
       "src/list/ft_lstadd_back.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/list/ft_lstadd_back.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/list/ft_lstadd_back.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/list/ft_lstadd_back.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/list/ft_lstadd_back.o"
   },
   {
     "arguments": [
@@ -913,9 +913,9 @@
       "obj/list/ft_lstlast.o",
       "src/list/ft_lstlast.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/list/ft_lstlast.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/list/ft_lstlast.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/list/ft_lstlast.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/list/ft_lstlast.o"
   },
   {
     "arguments": [
@@ -931,9 +931,9 @@
       "obj/list/ft_lstadd_front.o",
       "src/list/ft_lstadd_front.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/list/ft_lstadd_front.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/list/ft_lstadd_front.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/list/ft_lstadd_front.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/list/ft_lstadd_front.o"
   },
   {
     "arguments": [
@@ -949,9 +949,9 @@
       "obj/list/ft_lstclear.o",
       "src/list/ft_lstclear.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/list/ft_lstclear.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/list/ft_lstclear.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/list/ft_lstclear.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/list/ft_lstclear.o"
   },
   {
     "arguments": [
@@ -967,9 +967,9 @@
       "obj/list/ft_lstsize.o",
       "src/list/ft_lstsize.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/list/ft_lstsize.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/list/ft_lstsize.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/list/ft_lstsize.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/list/ft_lstsize.o"
   },
   {
     "arguments": [
@@ -985,9 +985,9 @@
       "obj/list/ft_lstnew.o",
       "src/list/ft_lstnew.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/list/ft_lstnew.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/list/ft_lstnew.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/list/ft_lstnew.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/list/ft_lstnew.o"
   },
   {
     "arguments": [
@@ -1003,9 +1003,9 @@
       "obj/get_next_line/get_next_line.o",
       "src/get_next_line/get_next_line.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/get_next_line/get_next_line.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/get_next_line/get_next_line.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/get_next_line/get_next_line.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/get_next_line/get_next_line.o"
   },
   {
     "arguments": [
@@ -1021,9 +1021,9 @@
       "obj/get_next_line/get_next_line_utils.o",
       "src/get_next_line/get_next_line_utils.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/get_next_line/get_next_line_utils.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/get_next_line/get_next_line_utils.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/get_next_line/get_next_line_utils.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/get_next_line/get_next_line_utils.o"
   },
   {
     "arguments": [
@@ -1039,9 +1039,9 @@
       "obj/get_next_line/ft_gnl.o",
       "src/get_next_line/ft_gnl.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/get_next_line/ft_gnl.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/get_next_line/ft_gnl.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/get_next_line/ft_gnl.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/get_next_line/ft_gnl.o"
   },
   {
     "arguments": [
@@ -1057,9 +1057,9 @@
       "obj/get_next_line/ft_gnl_reset.o",
       "src/get_next_line/ft_gnl_reset.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/get_next_line/ft_gnl_reset.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/get_next_line/ft_gnl_reset.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/get_next_line/ft_gnl_reset.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/get_next_line/ft_gnl_reset.o"
   },
   {
     "arguments": [
@@ -1075,9 +1075,9 @@
       "obj/ft_printf/ft_printf.o",
       "src/ft_printf/ft_printf.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/ft_printf/ft_printf.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/ft_printf/ft_printf.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/ft_printf/ft_printf.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/ft_printf/ft_printf.o"
   },
   {
     "arguments": [
@@ -1093,9 +1093,9 @@
       "obj/ft_printf/ft_printf_utils.o",
       "src/ft_printf/ft_printf_utils.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/ft_printf/ft_printf_utils.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/ft_printf/ft_printf_utils.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/ft_printf/ft_printf_utils.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/ft_printf/ft_printf_utils.o"
   },
   {
     "arguments": [
@@ -1111,9 +1111,9 @@
       "obj/ft_printf/ft_print_number.o",
       "src/ft_printf/ft_print_number.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/ft_printf/ft_print_number.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/ft_printf/ft_print_number.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/ft_printf/ft_print_number.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/ft_printf/ft_print_number.o"
   },
   {
     "arguments": [
@@ -1129,9 +1129,9 @@
       "obj/ft_printf/ft_print_alpha.o",
       "src/ft_printf/ft_print_alpha.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/ft_printf/ft_print_alpha.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/ft_printf/ft_print_alpha.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/ft_printf/ft_print_alpha.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/ft_printf/ft_print_alpha.o"
   },
   {
     "arguments": [
@@ -1147,8 +1147,8 @@
       "obj/ft_printf/ft_print_hex.o",
       "src/ft_printf/ft_print_hex.c"
     ],
-    "directory": "/nfs/homes/remarque/minishell/libft",
-    "file": "/nfs/homes/remarque/minishell/libft/src/ft_printf/ft_print_hex.c",
-    "output": "/nfs/homes/remarque/minishell/libft/obj/ft_printf/ft_print_hex.o"
+    "directory": "/nfs/homes/jecarval/Common Core/minishell/libft",
+    "file": "/nfs/homes/jecarval/Common Core/minishell/libft/src/ft_printf/ft_print_hex.c",
+    "output": "/nfs/homes/jecarval/Common Core/minishell/libft/obj/ft_printf/ft_print_hex.o"
   }
 ]
