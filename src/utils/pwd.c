@@ -6,7 +6,7 @@
  * @return current working directory, needs to be freed 
  * can be NULL if there was an error
 */
-char	*pwd()
+char	*pwd(void)
 {
 	char	*cwd;
 	

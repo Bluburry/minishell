@@ -81,11 +81,14 @@ char	*relative_path(t_env *env, const char *path)
 	char	*path_old;
 	size_t	s;
 
-	path_old = get_env_var(env, "PWD");
+	path_old = pwd();
 	if (*path == '.' && *(path + 1) && *(path + 1) == '.')
-		return (calc_pwd(path_old, path));
+	{
+		str = calc_pwd(path_old, path);
+		return (free(path_old), str);
+	}
 	else if (*path == '~')
-		return (calc_pwd(get_env_var(env, "HOME"), path + 2));
+		return (free(path_old), calc_pwd(get_env_var(env, "HOME"), path + 2));
 	s = ft_strlen(path_old);
 	str = (char *) malloc(sizeof(char) * (s + 2));
 	ft_memcpy(str, path_old, s);
@@ -96,5 +99,5 @@ char	*relative_path(t_env *env, const char *path)
 	else
 		new_path = ft_strjoin(str, path);
 	free(str);
-	return (new_path);
+	return (free(path_old), new_path);
 }

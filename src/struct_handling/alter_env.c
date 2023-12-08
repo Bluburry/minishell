@@ -57,7 +57,7 @@ void	resize_env_struct(t_env *env)
 	env->capacity += 20;
 	new_vars = (char **) malloc(sizeof(char *) * env->capacity);
 	env->vars = new_vars;
-	copy_char_matrix(old_vars, env->vars, env->size, -1);
+	copy_char_matrix(old_vars, env->vars, env->size);
 	clear_chars(old_vars, env->size);
 	i = env->size - 1;
 	while (++i < env->capacity)
@@ -69,18 +69,22 @@ void	resize_env_struct(t_env *env)
  * it must start with a letter, and can only contain 
  * numbers and letters
  */
-int	check_valid_var(const char *str)
+char	*check_valid_var(const char **str)
 {
-	if (!str || !*str || \
-		!((*str >= 65 && *str <= 90) ||
-			(*str >= 97 && *str <= 122)))
-		return (0);
-	while (*str && *str != '=')
+	while (*str)
 	{
-		if (!((*str >= 65 && *str <= 90) ||
-				(*str >= 97 && *str <= 122) ||
-				(*str >= 48 && *str <= 57)))
+		if (!str || !*str || \
+			!((*str >= 65 && *str <= 90) ||
+				(*str >= 97 && *str <= 122)))
 			return (0);
+		while (*str && *str != '=')
+		{
+			if (!((*str >= 65 && *str <= 90) ||
+					(*str >= 97 && *str <= 122) ||
+					(*str >= 48 && *str <= 57)))
+				return (0);
+			str++;
+		}
 		str++;
 	}
 	return (1);
@@ -91,14 +95,17 @@ int	check_valid_var(const char *str)
  * resizing if necessary
  * @param new new string to add
 */
-int	add_new_env_var(t_env *env, const char *new)
+// preciso alterar para considerar varias novas vars ao mesmo tempo, ie: char **
+int	add_new_env_var(t_env *env, const char **new)
 {
 	size_t	s;
+	char	*str;
 	int		i;
 
-	if (!check_valid_var(new))
+	str = check_valid_var(new);
+	if (str)
 	{
-		printf("\nexport: \'%s\': not a valid identifier\n", new);
+		printf("\nexport: \'%s\': not a valid identifier\n", str);
 		return (0);
 	}
 	i = env_already_exists(env, new);

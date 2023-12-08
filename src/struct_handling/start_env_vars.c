@@ -25,28 +25,19 @@ int	get_env_start_size(char **envp)
  * @param mat matrix to copy
  * @param new_mat destination matrix
  * @param size size of matrix to copy
- * @param skip index to skip, -1 if not necessary
 */
-void	copy_char_matrix(char **mat, char **new_mat, int size, int skip)
+void	copy_char_matrix(char **mat, char **new_mat, int size)
 {
 	int		i;
-	int		j;
 	size_t	s;
 
 	i = 0;
-	j = 0;
 	while (i < size)
 	{
-		if (i == skip)
-		{
-			i++;
-			continue ;
-		}
 		s = ft_strlen(mat[i]) + 1;
-		new_mat[j] = (char *) malloc(sizeof(char) * s);
-		ft_memcpy(new_mat[j], mat[i], s);
+		new_mat[i] = (char *) malloc(sizeof(char) * s);
+		ft_memcpy(new_mat[i], mat[i], s);
 		i++;
-		j++;
 	}
 }
 
@@ -65,7 +56,7 @@ t_env	*create_env_struct(char **envp)
 	env->size = get_env_start_size(envp);
 	env->capacity = env->size + 20;
 	env->vars = (char **) malloc(sizeof(char *) * env->capacity);
-	copy_char_matrix(envp, env->vars, env->size, -1);
+	copy_char_matrix(envp, env->vars, env->size);
 	i = env->size - 1;
 	while (++i < env->capacity)
 		env->vars[i] = NULL;
