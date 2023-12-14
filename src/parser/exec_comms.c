@@ -3,24 +3,36 @@
 #include "structures.h"
 #include <curses.h>
 
-void	ft_export(t_env *env)
+void	too_many_args(char * str)
+{
+	printf("minishell: %s: too many arguments\n", str);
+}
+
+void	ft_export(t_env *env, char **arglist)
 {
 	char	**vars;
 	int		i;
 
-	vars = export_string(env);
-	i = 0;
-	while (i < env->size)
-		printf("%s\n", vars[i++]);
-	clear_chars(vars, env->size);
+	if (list_len(arglist) > 1)
+		add_new_env_var(env, arglist); // TIAGO -> alterar esta func para receber char**
+	else
+	{
+		vars = export_string(env);
+		i = 0;
+		while (i < env->size)
+			printf("%s\n", vars[i++]);
+		clear_chars(vars, env->size);
+	}
 }
 
-void	ft_env(t_env *env)
+void	ft_env(t_env *env, char **arglist)
 {	
 	char	**vars;
 	int		size;
 	int		i;
 
+	if (list_len(arglist) > 1)
+		too_many_args("env");
 	vars = env_string(env);
 	i = 0;
 	size = env->size - num_invalid_env_vars(env);
@@ -29,27 +41,36 @@ void	ft_env(t_env *env)
 	clear_chars(vars, size);
 }
 
+void	ft_pwd(void)
+{
+	char	*str;
+
+	str = pwd();
+	printf("%s\n", str);
+	free(str);
+}
+
 static void	execute(t_tok token, t_data *data)
 {
 	if (ft_strncmp(token.path, "echo", 5))
 		ft_echo(token.arglist);
-	else if (ft_strncmp(token.path, "cd", 3))
+	else if (ft_strncmp(token.path, "pwd", 4))
+		ft_pwd();
+	else if (ft_strncmp(token.path, "env", 4))
+		ft_env(data->env, token.arglist);
+	else if (ft_strncmp(token.path, "unset", 6))
+		unset_env_var(data->env, token.arglist); // TIAGO -> alterar esta func para receber char**
+	else if (ft_strncmp(token.path, "export", 8))
+		ft_export(data->env, token.arglist);
+	else if (ft_strncmp(token.path, "cd", 3) || ft_strncmp(token.path, "exit", 5)) // adicionar exit aqui
 	{
 		if (list_len(token.arglist) > 2)
-			printf("minishell: cd: too many arguments\n");
-		else
+			too_many_args(token.arglist[0]);
+		else if (ft_strncmp(token.path, "cd", 3))
 			cd(data->env, token.arglist[1]);
+/* 		else
+		 ft_exit(token.arglist); */
 	}
-	else if (ft_strncmp(token.path, "pwd", 4))
-		pwd();
-	else if (ft_strncmp(token.path, "env", 4))  // ! arguments?
-		ft_env(data->env);
-	/* else if (ft_strncmp(token.path, "exit", 5))
-		ft_exit(data) */
-	else if (ft_strncmp(token.path, "unset", 6)) // ! how does unset behave in bash??
-		unset_env_var(data->env, token.arglist[1]);
-	else if (ft_strncmp(token.path, "export", 8)) // ! how does export behave in bash??
-		ft_export(data->env);
 /* 	else
 	 exec; */
 }
@@ -66,13 +87,3 @@ bool	exec_comm_list(t_data *data)
 		execute(data->cmds->tks[0], data);
 	return (true);
 }
-/* if (data->cdms.tks[0] == exec)
-	test_exec(data->cdms.tks[0]);
-
-
-
-if fr_strncmp(tk->path, "exit") == 0
-	ft_exit()
-	else if fr_strncmp(tk->path, "echo") == 0
-	else
-	exec_executable () */
