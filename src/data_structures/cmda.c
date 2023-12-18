@@ -21,6 +21,8 @@ void	clean_token_contents(t_tok *token)
 {
 	uint32_t	i;
 
+	if (token == NULL)
+		return ;
 	token->type = none;
 	i = 0;
 	if (token->arglist != NULL)
@@ -37,6 +39,8 @@ void	clean_cmda(t_cmda *cmd_arr)
 {
 	uint32_t	i;
 
+	if (cmd_arr == NULL)
+		return ;
 	if (cmd_arr->tks != NULL)
 	{
 		i = 0;

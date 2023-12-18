@@ -69,6 +69,10 @@ void	waiting_for_input(t_env *env, t_data *data)
 
 	while (data->is_exiting == false)
 	{
+		dcp_cleaner(data->strlist);
+		data->strlist = NULL;
+		clean_cmda(data->cmds);
+		data->cmds = NULL;
 		rl = readline("minishell > ");
 		if (!rl)
 		{
@@ -87,6 +91,9 @@ void	waiting_for_input(t_env *env, t_data *data)
 		if (exec_comm_list(data) == false)
 			continue ;
 		dcp_cleaner(data->strlist);
+		data->strlist = NULL;
+		clean_cmda(data->cmds);
+		data->cmds = NULL;
 	}
 }
 

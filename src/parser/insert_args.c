@@ -1,3 +1,4 @@
+#include "libft.h"
 #include "minishell.h"
 #include <stdbool.h>
 
@@ -23,10 +24,7 @@ static uint32_t	count_args(char **l, uint32_t n)
 			count++;
 		i++;
 	}
-	if (count == 0)
-		return (count);
-	else
-		return (count - 1);
+	return (count);
 }
 /* 
 // checks to see if the first value passed is a relative or absolute path
@@ -45,6 +43,21 @@ static char	*return_filename(char *str)
 	return (str);
 } */
 
+//checks if the string passed is a relative path, or an absolute path
+//and if so, takes only the last part after the last /
+char	*check_if_path(char *str)
+{
+	char	*sub_str;
+
+	sub_str = ft_strrchr(str, '/');
+	if (sub_str == NULL)
+		return (ft_strdup(str));
+	sub_str++;
+	if (sub_str[0] == '\0')
+		return (NULL);
+	return (ft_strdup(sub_str));
+}
+
 // insert_name_args(cmds, &list[i], n)
 bool	insert_name_args(t_cmda *c, char **l, uint32_t n) // needs to add the name of the application as the first item in arglist
 {
@@ -55,7 +68,7 @@ bool	insert_name_args(t_cmda *c, char **l, uint32_t n) // needs to add the name 
 	i = -1;
 	j = 0;
 	path_added = false;
-	c->tks[c->size].arglist = malloc(sizeof(char *) * (count_args(l, n) + 1));
+	c->tks[c->size].arglist = malloc(sizeof(char *) * (count_args(l, n) + 1)); // need to see if it`s allocating the right size
 	if (c->tks[c->size].arglist == NULL)
 		return (false);
 	while (++i < (int32_t)n)
@@ -66,10 +79,11 @@ bool	insert_name_args(t_cmda *c, char **l, uint32_t n) // needs to add the name 
 		else if (path_added == false)
 		{
 			path_added = true;
-			c->tks[c->size].path = l[i];
+			c->tks[c->size].path = ft_strdup(l[i]);
+			c->tks[c->size].arglist[j++] = check_if_path(l[i]); // needs to check when check_if_path returns NULL
 		}
 		else
-			c->tks[c->size].arglist[j++] = l[i];
+			c->tks[c->size].arglist[j++] = ft_strdup(l[i]);
 	}
 	c->tks[c->size++].arglist[j] = NULL;
 	return (c->tks[c->size - 1].type = exec, true);

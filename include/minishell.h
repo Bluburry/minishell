@@ -39,7 +39,7 @@ char	*relative_path(t_env *env, const char *path);
 // data_structures/cmda.c
 t_cmda	*create_cmda(uint32_t cap);
 void	clean_token_contents(t_tok *token);
-void	clean_cmda(t_cmda *ast);
+void	clean_cmda(t_cmda *cmda);
 
 // data_structures/realloc.c
 void	*ft_reallocation(void *ptr, size_t ptrsize, size_t size);
