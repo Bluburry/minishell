@@ -32,6 +32,14 @@ typedef enum e_etok
 	r_heredoc,
 }	t_etok;
 
+// an enum that determines what part of the pipe execution it is
+typedef enum e_pstate
+{
+	p_first,
+	p_middle,
+	p_last,
+}	t_pstate;
+
 // a token read by the parser, with the optional path and list of arguments
 // used by exec
 typedef struct s_tok
@@ -64,8 +72,7 @@ typedef struct s_data
 {
 	int			fd_in;
 	int			ret_status;
-	bool		is_first_pipe;
-	bool		is_final_pipe;
+	t_pstate	pipe_state;
 	bool		is_exiting;
 	t_cmda		*cmds;
 	char		**strlist;
