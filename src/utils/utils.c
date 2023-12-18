@@ -23,3 +23,27 @@ int	check_path(char *path)
 	free(bs);
 	return (ret);
 }
+
+bool	is_metachar(char c)
+{
+	if (c == '|' || c == '&' || c == ';' || c == '(' || c == ')' || c == '<'
+		|| c == '>')
+		return (true);
+	return (false);
+}
+
+bool	is_name(char *str)
+{
+	size_t		size;
+
+	if (str == NULL)
+		return (false);
+	size = ft_strlen(str);
+	if (size == 1)
+		if (is_metachar(str[0]))
+			return (false);
+	if (size == 2)
+		if (is_metachar(str[0]) && is_metachar(str[1]))
+			return (false);
+	return (true);
+}

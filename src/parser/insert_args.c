@@ -28,7 +28,7 @@ static uint32_t	count_args(char **l, uint32_t n)
 	else
 		return (count - 1);
 }
-
+/* 
 // checks to see if the first value passed is a relative or absolute path
 // returns true if it is
 static bool	check_if_pathname(char *str);
@@ -43,7 +43,7 @@ static char	*return_filename(char *str)
 		(void)str;
 	}
 	return (str);
-}
+} */
 
 // insert_name_args(cmds, &list[i], n)
 bool	insert_name_args(t_cmda *c, char **l, uint32_t n) // needs to add the name of the application as the first item in arglist

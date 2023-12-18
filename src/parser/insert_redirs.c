@@ -5,7 +5,7 @@
 static inline bool	helper2_redirs(t_cmda *cmds, char **list, uint32_t	*i,
 	t_etok type)
 {
-	if (list[*i + 1] != NULL)
+	if (is_name(list[*i + 1]))
 	{
 		cmds->tks[cmds->size++] = (t_tok){type, list[++(*i)], NULL};
 		return (true);

@@ -165,5 +165,7 @@ void	sig_handler(int sig, siginfo_t *info, void *ucontent);
 
 // utils/utils.c
 int		check_path(char *path);
+bool	is_metachar(char c);
+bool	is_name(char *str);
 
 #endif
