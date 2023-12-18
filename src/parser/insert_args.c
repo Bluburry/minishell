@@ -1,6 +1,4 @@
-#include "libft.h"
 #include "minishell.h"
-#include <stdbool.h>
 
 // counts how many arguments there are in a phrase
 // ignores the first word int the phrase since it's an executable
@@ -59,7 +57,7 @@ char	*check_if_path(char *str)
 }
 
 // insert_name_args(cmds, &list[i], n)
-bool	insert_name_args(t_cmda *c, char **l, uint32_t n) // needs to add the name of the application as the first item in arglist
+bool	insert_name_args(t_cmda *c, char **l, uint32_t n)
 {
 	int32_t		i;
 	uint32_t	j;

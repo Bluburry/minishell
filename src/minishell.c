@@ -42,7 +42,11 @@ static void	print_strlist(char **list)
 
 	i = 0;
 	while (list[i])
+	{
+		if (list[i][0] == 17)
+			printf("NEXT HAD QUOTES\n");
 		printf("%s\n", list[i++]);
+	}
 }
 
 static void	print_cmda(t_cmda *cmds)

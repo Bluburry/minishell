@@ -1,5 +1,9 @@
+#include "libft.h"
 #include "minishell.h"
+#include "structures.h"
 #include <stdbool.h>
+#include <stdint.h>
+#include <sys/types.h>
 
 // A prhase is everything between pipes
 // phrase0 | phrase1 | phrase3
@@ -70,11 +74,28 @@ static bool	comm_list_helper(t_data *d, int32_t n, uint32_t st, bool ins_pipe) /
 	return (true);
 }
 
+#define ERR_PIPE "Syntax Error: Illegal pipe usage\n"
+
+bool	pipe_checker(t_data	*d)
+{
+	uint32_t	len;
+	if(d->strlist == NULL)
+		return (printf("Empty  list of strings.\n"), false);
+	if(ft_strncmp("|", d->strlist[0], 1) == 0)
+		return (printf(ERR_PIPE) ,false);
+	len = list_len(d->strlist);
+	if(ft_strncmp("|", d->strlist[len - 1], 1) == 0)
+		return (printf(ERR_PIPE) ,false);
+	return (true);
+}
+
 bool	create_comm_list(t_data *d)
 {
 	int32_t		n;
 	uint32_t	st;
 
+	if (pipe_checker(d) == false)
+		return (dcp_cleaner(d->strlist), d->strlist = NULL, false);
 	d->cmds = create_cmda(list_len(d->strlist));
 	if (d->cmds == NULL || d->strlist == NULL)
 		return (free(d->cmds), d->cmds = NULL, dcp_cleaner(d->strlist),
