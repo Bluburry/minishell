@@ -1,5 +1,17 @@
 #include "minishell.h"
 
+void	alter_paths(t_env *env, char *new_path, char *old_path)
+{
+	int	i;
+
+	i = index_of_str(env, "PWD");
+	replace_env_var(env, new_path, i);
+	i = index_of_str(env, "OLDPWD");
+	replace_env_var(env, old_path, i);
+	free(old_path);
+	free(new_path);
+}
+
 /**
  * @brief changes the current pwd and old pwd in the
  * environmental structure
@@ -25,10 +37,7 @@ void	change_pwd(t_env *env, const char *path)
 	old_path = (char *) malloc(sizeof(char) * (s + 7));
 	ft_memcpy(old_path, "OLDPWD=", 7);
 	ft_memcpy(old_path + 7, path_old, s);
-	add_new_env_var(env, new_path);
-	add_new_env_var(env, old_path);
-	free(old_path);
-	free(new_path);
+	alter_paths(env, new_path, old_path);
 }
 
 /**
@@ -43,7 +52,6 @@ void	change_pwd(t_env *env, const char *path)
 int	home_dir(t_env *env, const char *path)
 {
 	char	*str;
-
 	int		ret;
 
 	if (!path || !*path || (*path == '~' && (!*(path + 1) || \
@@ -67,22 +75,13 @@ int	home_dir(t_env *env, const char *path)
 */
 int	cd(t_env *env, const char *path)
 {
-	t_path	p;
 	char	*str;
 
-	p = RELATIVE;
 	if (!path || !*path || *path == '~')
 		return (home_dir(env, path));
 	else if (chdir(path) != 0)
 		return (perror("cd error"), 0);
-	else if (*path == '/')
-		p = ABSOLUTE;
-	if (p != 1)
-		return (change_pwd(env, path), 1);
-	else
-	{
-		str = relative_path(env, path);
-		change_pwd(env, str);
-		return (free (str), 1);
-	}
+	str = pwd();
+	change_pwd(env, str);
+	return (free (str), 1);
 }

@@ -71,59 +71,58 @@ int	main(int argc, char **argv, char **envp)
 	//ioctl(STDIN_FILENO, CTRL_D, ...);
 	init_signals();
 	env = create_env_struct(envp);
-	//int i = -1;
-	//while (env->vars[++i])
-	//{
-		//printf("%s\n", env->vars[i]);
-	//}
-	/* add_new_env_var(env, "TEST=24");
-	add_new_env_var(env, "TEST2");
-	add_new_env_var(env, "TEST3=");
-	unset_env_var(env, "TEST");
-	while (++i < env->size)
-	{
+	int i = -1;
+	while (env->vars[++i])
 		printf("%s\n", env->vars[i]);
-	}
+	static char *test24[] = {"batata1", "bata2", "bata3", "test", "TEST2=test2?", "asd=asd1", "asd2=asd3", "TEST=42", "LAST_TEST=last_test", NULL};
+	/*alter_env_var(env, {"TEST=24", NULL});
+	alter_env_var(env, "TEST2");
+	alter_env_var(env, "TEST3=");
+	alter_env_var(env, "1asd2");
+	unset_env_var(env, "TEST");*/
+	alter_env_var(env, test24);
+	i = -1;
+	while (++i < env->size)
+		printf("%s\n", env->vars[i]);
+	unset_env_var(env, test24);
+	i = -1;
+	while (++i < env->size)
+		printf("%s\n", env->vars[i]);
 	printf("\n\nSearch LANG: %s\n", get_env_var(env, "LANG"));
 	printf("\n\nSearch PWD: %s\n", get_env_var(env, "PWD"));
 	printf("\n\nSearch LS_COLORS: %s\n", get_env_var(env, "LS_COLORS"));
 	printf("\n\nSearch LSCOLORS: %s\n", get_env_var(env, "LSCOLORS"));
 	printf("\n\nSearch MAKEFLAGS: %s\n", get_env_var(env, "MAKEFLAGS"));
 	printf("\n\nSearch SHLVL: %s\n", get_env_var(env, "SHLVL"));
-	printf("\n\nSearch TEST: %s\n", get_env_var(env, "TEST"));
-	add_new_env_var(env, "TEST=42");
+	/* printf("\n\nSearch TEST: %s\n", get_env_var(env, "TEST"));
 	printf("\n\nSearch TEST: %s\n", get_env_var(env, "TEST"));
 	printf("\n\nSearch TEST2: %s\n", get_env_var(env, "TEST2"));
 	printf("\n\nSearch TEST3: %s\n", get_env_var(env, "TEST3"));
-	add_new_env_var(env, "TEST4=169");
-	char **test = env_string(env);
-	printf("\n\ntest env_string:\n");
+	alter_env_var(env, "TEST4=169"); */
+	char **teste = env_string(env);
+	printf("\n\nteste env_string:\n");
 	i = -1;
 	int n = num_invalid_env_vars(env);
 	while (++i < env->size - n)
-	{
-		printf("%s\n", test[i]);
-	}
-	clear_chars(test, env->size - n); 
+		printf("%s\n", teste[i]);
+	clear_chars(teste, env->size - n); 
 	printf("\n\ntest export_string:\n");
-	test = export_string(env);
+	teste = export_string(env);
 	i = -1;
 	while (++i < env->size)
-	{
-		printf("%s\n", test[i]);
-	}
-	clear_chars(test, env->size); */
-	//char *cwd;
-	//cwd = pwd();
-	//printf("pwd: %s\n", cwd);
-	//free(cwd);
-	//printf("cd Desktop:\n");
-	//printf("cd ~:\n");
-	//cd(env, "~");
-	//cwd = pwd();
-	//printf("pwd: %s\n", cwd);
-	//free(cwd);
-	/*printf("cd include:\n");
+		printf("%s\n", teste[i]);
+	clear_chars(teste, env->size);
+	char *cwd = NULL;
+	cwd = pwd();
+	printf("pwd: %s\n", cwd);
+	free(cwd);
+	printf("cd Desktop:\n");
+	printf("cd ~:\n");
+	cd(env, "~");
+	cwd = pwd();
+	printf("pwd: %s\n", cwd);
+	free(cwd);
+	printf("cd include:\n");
 	cd(env, "include");
 	printf("cd ../:\n");
 	cd(env, "../");
@@ -154,38 +153,38 @@ int	main(int argc, char **argv, char **envp)
 	printf("cd asdasd:\n");
 	cd(env, "asdasd");
 	cd(env, "/home/");
-	cd(env, "~/")
-	//waiting_for_input(env);*/
-	/*char *test;
-	test = find_exe_path(get_env_var(env, "PATH"), "cat");
+	cd(env, "~/");
+	//waiting_for_input(env);
+	char *test;
+	test = find_exe_path(env, "cat");
 	printf("%s\n", test);
 	free(test);
-	test = find_exe_path(get_env_var(env, "PATH"), "tac");
+	test = find_exe_path(env, "tac");
 	printf("%s\n", test);
 	free(test);
-	test = find_exe_path(get_env_var(env, "PATH"), "tic");
+	test = find_exe_path(env, "tic");
 	printf("%s\n", test);
 	free(test);
-	test = find_exe_path(get_env_var(env, "PATH"), "donkey");
+	test = find_exe_path(env, "donkey");
 	if (test == NULL) printf("hi\n");
 	else
 	{
 		printf("%s\n", test);
 		free(test);
-	}*/
-	char *test = find_exe_path(get_env_var(env, "PATH"), "cat");
+	}
+	test = find_exe_path(env, "cat");
 	static char *test2[] = {"cat", "test.txt", NULL};
-	printf("run_exe ret: %d\n", run_exe(test, test2, env));
+	printf("run_exe ret: %d\n", run_exe(test, test2));
 	printf("back to minishell\n");
 	free(test);
-	test = find_exe_path(get_env_var(env, "PATH"), "cat");
+	test = find_exe_path(env, "cat");
 	static char *test3[] = {"cat", "test2.txt", NULL};
-	printf("run_exe ret: %d\n", run_exe(test, test3, env));
+	printf("run_exe ret: %d\n", run_exe(test, test3));
 	printf("back to minishell\n");
 	free(test);
-	test = find_exe_path(get_env_var(env, "PATH"), "cat");
+	test = find_exe_path(env, "cat");
 	static char *test4[] = {"donkey", "test2.txt", NULL};
-	printf("run_exe ret: %d\n", run_exe(test, test4, env));
+	printf("run_exe ret: %d\n", run_exe(test, test4));
 	printf("back to minishell\n");
 	free(test);
 	clear_env_struct(env);

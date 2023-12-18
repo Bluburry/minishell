@@ -25,7 +25,7 @@ char	*complex_path(char *pwd, const char *path, int i, int j)
 	}
 	str = (char *) malloc(sizeof(char) * (s + 2));
 	ft_memcpy(str, pwd, i);
-	if (*(path + j))
+	if (path[j])
 	{
 		str[i] = '/';
 		ft_memcpy(str + i + 1, path + j, ft_strlen(path) - j + 1);
@@ -51,15 +51,14 @@ char	*calc_pwd(char *pwd, const char *path)
 	i = ft_strlen(pwd) - 1;
 	j = 0;
 	c = 0;
-	while (*(pwd + i) && *(path + j) && \
-		(*(path + j) == '.' || *(path + j) == '/'))
+	while (i > 0 && pwd[i] && path[j] && (path[j] == '.' || path[j] == '/'))
 	{
-		if (*(path + j) == '.')
+		if (path[j] == '.')
 			c++;
 		if (c == 2)
 		{
 			c = 0;
-			while (i > 0 && *(pwd + i) != '/')
+			while (i > 0 && pwd[i] != '/')
 				i--;
 			i--;
 		}

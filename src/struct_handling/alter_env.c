@@ -7,7 +7,7 @@
  * @param new string to copy
  * @param i index of string to replace
 */
-void	alter_env_var(t_env *env, const char *new, int i)
+void	replace_env_var(t_env *env, const char *new, int i)
 {
 	int	s;
 
@@ -18,45 +18,18 @@ void	alter_env_var(t_env *env, const char *new, int i)
 }
 
 /**
- * @brief checks if a string already exists in the environmental variables 
- * by comparing it up to '=' with the already existing ones
- * @param env structure that hold the environmental variables
- * @param new string to find
- * @return returns 0 if the new variable doesn't already exists, otherwise 
- * return the index in the array where it is stored
-*/
-int	env_already_exists(t_env *env, const char *new)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < env->size)
-	{
-		j = 0;
-		while (env->vars[i][j] && env->vars[i][j] == new[j] \
-			&& env->vars[i][j] != '=' && new[j] != '=')
-			j++;
-		if (env->vars[i][j] == '=' && new[j] == '=')
-			return (i);
-	}
-	return (-1);
-}
-
-/**
  * @brief resize the char matrix in the env structure
  * @param env structure
+ * @param inc size to increment
 */
-void	resize_env_struct(t_env *env)
+void	resize_env_struct(t_env *env, int inc)
 {
-	char	**new_vars;
 	char	**old_vars;
 	int		i;
 
 	old_vars = env->vars;
-	env->capacity += 20;
-	new_vars = (char **) malloc(sizeof(char *) * env->capacity);
-	env->vars = new_vars;
+	env->capacity += inc;
+	env->vars = (char **) malloc(sizeof(char *) * env->capacity);
 	copy_char_matrix(old_vars, env->vars, env->size);
 	clear_chars(old_vars, env->size);
 	i = env->size - 1;
@@ -65,27 +38,68 @@ void	resize_env_struct(t_env *env)
 }
 
 /**
- * @brief checks if a new env var is valid, 
- * it must start with a letter, and can only contain 
- * numbers and letters
- */
-char	*check_valid_var(const char **str)
+ * @brief compares all the established environmental variables with 
+ * the new strings, if they're equal then the old env var is altered 
+ * otherwise the new var is added
+ * @param env environment structure
+ * @param new strings to add/alter
+*/
+void	env_var_checkup(t_env *env, char **new)
 {
-	while (*str)
+	int		i;
+	int		j;
+	int		t;
+	size_t	s;
+
+	i = -1;
+	t = env->size;
+	while (new[++i])
 	{
-		if (!str || !*str || \
-			!((*str >= 65 && *str <= 90) ||
-				(*str >= 97 && *str <= 122)))
-			return (0);
-		while (*str && *str != '=')
+		j = -1;
+		while (++j < t)
 		{
-			if (!((*str >= 65 && *str <= 90) ||
-					(*str >= 97 && *str <= 122) ||
-					(*str >= 48 && *str <= 57)))
-				return (0);
-			str++;
+			if (ft_strchrstr(new[i], '=', env->vars[j]))
+			{
+				replace_env_var(env, new[i], j);
+				break ;
+			}
 		}
-		str++;
+		if (j < t)
+			continue ;
+		s = ft_strlen(new[i]) + 1;
+		env->vars[env->size] = (char *) malloc(sizeof(char) * s);
+		ft_memcpy(env->vars[env->size], new[i], s);
+		env->size++;
+	}
+}
+
+/**
+ * @brief checks if the new env var is valid, they must start 
+ * with a letter, and can only contain numbers and letters
+ * @return 1 if the string is valid, 0 otherwise, printing
+ * a message displaying the incorrect string
+ */
+int	check_valid_var(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !((str[i] >= 65 && str[i] <= 90) || \
+		(str[i] >= 97 && str[i] <= 122)))
+	{
+		printf("\nexport: \'%s\': not a valid identifier\n", str);
+		return (0);
+	}
+	while (str[i] && str[i] != '=')
+	{
+		if (!((str[i] >= 'A' && str[i] <= 'Z') || \
+			(str[i] >= 'a' && str[i] <= 'z') || \
+			(str[i] >= '0' && str[i] <= '9') || str[i] == '_'))
+		{
+			printf("\nexport: \'%s\': not a valid identifier\n", str);
+			return (0);
+		}
+		i++;
 	}
 	return (1);
 }
@@ -95,30 +109,20 @@ char	*check_valid_var(const char **str)
  * resizing if necessary
  * @param new new string to add
 */
-// preciso alterar para considerar varias novas vars ao mesmo tempo, ie: char **
-int	add_new_env_var(t_env *env, const char **new)
+int	alter_env_var(t_env *env, char **new)
 {
-	size_t	s;
-	char	*str;
-	int		i;
+	int		s;
 
-	str = check_valid_var(new);
-	if (str)
+	s = -1;
+	while (new[++s])
+		if (!check_valid_var(new[s]))
+			return (0);
+	if (env->size + s >= env->capacity)
 	{
-		printf("\nexport: \'%s\': not a valid identifier\n", str);
-		return (0);
+		if (s < 20)
+			s = 20;
+		resize_env_struct(env, s);
 	}
-	i = env_already_exists(env, new);
-	if (i >= 0)
-	{
-		alter_env_var(env, new, i);
-		return (1);
-	}
-	if (env->size == env->capacity)
-		resize_env_struct(env);
-	s = ft_strlen(new) + 1;
-	env->vars[env->size] = (char *) malloc(sizeof(char *) * s);
-	ft_memcpy(env->vars[env->size], new, s);
-	env->size++;
+	env_var_checkup(env, new);
 	return (1);
 }

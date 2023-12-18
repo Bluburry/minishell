@@ -1,55 +1,34 @@
 #include "minishell.h"
 
-void	copy_char_matrix_skip(char **mat, char **new_mat, char **skip)
-{
-	int		i;
-	int		j;
-	int		k;
-	size_t	s;
-
-	i = 0;
-	j = 0;
-	while (i < env->size)
-	{
-		k = 0;
-		while (skip[k] != NULL)
-		{
-			if (ft_strchrstr(mat[i], '=', skip[k]))
-			{
-				i++;
-				continue;
-			}
-		}
-		s = ft_strlen(mat[i]) + 1;
-		new_mat[j] = (char *) malloc(sizeof(char) * s);
-		ft_memcpy(new_mat[j], mat[i], s);
-		i++;
-		j++;
-	}
-}
-
 /**
  * @brief removes an environmental variable from the strucutre
  * @param env structure
- * @param var variable to remove
+ * @param var variables to remove
 */
-// preciso alterar para considerar varias novas vars ao mesmo tempo, ie: char **
 void	unset_env_var(t_env *env, char **var)
 {
 	int		i;
-	char	**temp_var;
+	int		j;
+	char	*tmp;
 
-	temp_var = env->vars;
-	env->vars = (char **) malloc(sizeof(char *) * env->capacity);
-	copy_char_matrix(temp_var, env->vars, skip);
-	clear_chars(temp_var, env->size);
-	i = 0;
-	while (vars[i] != NULL)
-		i++;
-	env->size -= i;
-	i = env->size;
-	while (i < env->capacity)
-		env->vars[i++] = NULL;
+	i = -1;
+	while (var[++i])
+	{
+		j = -1;
+		while (++j < env->size)
+		{
+			if (ft_strchrstr(env->vars[j], '=', var[i]))
+			{
+				free(env->vars[j]);
+				env->vars[j] = NULL;
+				env->size--;
+				tmp = env->vars[env->size];
+				env->vars[env->size] = env->vars[j];
+				env->vars[j] = tmp;
+				break ;
+			}
+		}
+	}
 }
 
 /**

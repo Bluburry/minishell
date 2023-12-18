@@ -48,7 +48,7 @@ int	check_file_executable(struct stat *bs, char *exec)
  * @param bs struct stat to use in the stat function
  * @return executable path, or NULL if it no path was found
 */
-char	*handle_exe_stats(const char *path, const char *cmd, struct stat *bs)
+char	*handle_exe_stats(const char *path, char *cmd, struct stat *bs)
 {
 	int		i;
 	int		j;
@@ -80,12 +80,13 @@ char	*handle_exe_stats(const char *path, const char *cmd, struct stat *bs)
  * @param cmd executable to find
  * @return executable path string that needs to be freed or NULL if not found
 */
-char	*find_exe_path(t_env *env, const char *cmd)
+char	*find_exe_path(t_env *env, char *cmd)
 {
 	struct stat	*bs;
 	char		*str;
+	size_t		s;
 
-	if (cmd == NULL || path == NULL)
+	if (cmd == NULL)
 		return (NULL);
 	str = NULL;
 	bs = (struct stat *) malloc(sizeof(struct stat));
