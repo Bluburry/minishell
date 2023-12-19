@@ -51,7 +51,7 @@ void	env_var_checkup(t_env *env, char **new)
 	int		t;
 	size_t	s;
 
-	i = -1;
+	i = 0;
 	t = env->size;
 	while (new[++i])
 	{
@@ -113,7 +113,7 @@ int	alter_env_var(t_env *env, char **new)
 {
 	int		s;
 
-	s = -1;
+	s = 0;
 	while (new[++s])
 		if (!check_valid_var(new[s]))
 			return (0);

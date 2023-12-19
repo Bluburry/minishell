@@ -11,7 +11,7 @@ void	unset_env_var(t_env *env, char **var)
 	int		j;
 	char	*tmp;
 
-	i = -1;
+	i = 0;
 	while (var[++i])
 	{
 		j = -1;
