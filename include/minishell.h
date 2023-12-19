@@ -22,16 +22,30 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+//# define CTRL_D __IOR(4, 4, int)
+
+
+extern int	r_sig;
+
 extern int	g_sig;
+
+
+void	waiting_for_input(t_env *env, t_data *data);
+void  	env(char **envp);
+void  	parser(char *input);
+void  	ft_echo(char **argv);
+char	*pwd(void);
+int		run_exe(char *path, char **args);
 
 // ---change_directory---
 // change_directory/cd.c
 int		cd(t_env *env, const char *path);
-
-// change_directory/change_path.c
+void	alter_paths(t_env *env, char *new_path, char *old_path);
+int		home_dir(t_env *env, const char *path);
 void	change_pwd(t_env *env, const char *path);
 
 // change_directory/relative_path.c
+char	*complex_path(char *pwd, const char *path, int i, int j);
 char	*calc_pwd(char *pwd, const char *path);
 char	*relative_path(t_env *env, const char *path);
 
@@ -50,13 +64,20 @@ int		count_tokens(char **input);
 char	**expand_var_tokens(char **input, t_env *env);
 
 // lexer/lexer_utils.c
+//Signal functions
+void	sig_handler(int sig, siginfo_t *info, void *ucontent);
+void	init_signals(void);
+void	init_child_signals(void);
+void	sig_handler_child(int sig, siginfo_t *info, void *ucontent);
+
+
+//Lexer functions
+// lexer/lexer.c
+char	**lexer(char *input, t_env *env, t_data *data);
 void	syntax_error(int type, char c);
 void	dcp_cleaner(char **ptr);
 char	**check_for_quotes(char *input, char **ptr, int *flag);
 int		is_space(char c);
-
-// lexer/lexer.c
-char	**lexer(char *input, t_env *env, t_data *data);
 
 // lexer/merge_tokens_cleanup.c
 char	**merge_tokens_cleanup(char **input);
@@ -114,15 +135,18 @@ bool	insert_redirs(t_cmda *cmds, char **list, uint32_t n);
 bool	exec_pipe(t_data *d);
 
 // ---struct_handling/---
+//Environment variables functions
+double	total_size(char **mat, int size);
+void  	concatenate_matrix(char *str, char **mat, int size);
+
 // struct_handling/alter_env.c
-void	alter_env_var(t_env *env, const char *new, int i);
-int		env_already_exists(t_env *env, const char *new);
-void	resize_env_struct(t_env *env);
-int		add_new_env_var(t_env *env, const char *new);
+int  	alter_env_var(t_env *env, char **new);
+void  	resize_env_struct(t_env *env, int inc);
+void  	replace_env_var(t_env *env, const char *new, int i);
 
 // struct_handling/clear_env.c
-void	unset_env_var(t_env *env, char *var);
-void	clear_chars(char **str, int size);
+void	unset_env_var(t_env *env, char **var);
+void  	clear_chars(char **str, int size);
 void	clear_env_struct(t_env *env);
 
 // struct_handling/find_env_var.c
@@ -145,8 +169,8 @@ void	copy_char_matrix_ordered(char **mat, char **new_mat, int size);
 char	**export_string(t_env *env);
 
 // struct_handling/start_env_vars.c
+void  	copy_char_matrix(char **mat, char **new_mat, int size);
 int		get_env_start_size(char **envp);
-void	copy_char_matrix(char **mat, char **new_mat, int size, int skip);
 t_env	*create_env_struct(char **envp);
 
 // ---utils/---
@@ -155,9 +179,6 @@ void	ft_echo(char **argv);
 
 // utils/env.c
 void	env(char **envp);
-
-// utils/find_exe.c
-char	*find_exe_path(const char *path, const char *cmd);
 
 // utils/pwd.c
 char	*pwd(void);
@@ -171,5 +192,11 @@ int		check_path(char *path);
 bool	is_metachar(char c);
 bool	is_name(char *str);
 char	*remc(char *str);
+
+// utils/find_exe.c
+char	*create_exec_string(const char *path, const char *cmd, int start, int end);
+int		check_file_executable(struct stat *bs, char *exec);
+char	*handle_exe_stats(const char *path, char *cmd, struct stat *bs);
+char	*find_exe_path(t_env *env, char *cmd);
 
 #endif

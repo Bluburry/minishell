@@ -3,21 +3,32 @@
 /**
  * @brief removes an environmental variable from the strucutre
  * @param env structure
- * @param var variable to remove
+ * @param var variables to remove
 */
-void	unset_env_var(t_env *env, char *var)
+void	unset_env_var(t_env *env, char **var)
 {
 	int		i;
-	char	**temp_var;
+	int		j;
+	char	*tmp;
 
-	i = index_of_str(env, var);
-	if (i >= env->size)
-		return ;
-	temp_var = env->vars;
-	env->vars = (char **) malloc(sizeof(char *) * env->capacity);
-	copy_char_matrix(temp_var, env->vars, env->size, i);
-	clear_chars(temp_var, env->size);
-	env->size--;
+	i = -1;
+	while (var[++i])
+	{
+		j = -1;
+		while (++j < env->size)
+		{
+			if (ft_strchrstr(env->vars[j], '=', var[i]))
+			{
+				free(env->vars[j]);
+				env->vars[j] = NULL;
+				env->size--;
+				tmp = env->vars[env->size];
+				env->vars[env->size] = env->vars[j];
+				env->vars[j] = tmp;
+				break ;
+			}
+		}
+	}
 }
 
 /**
@@ -31,10 +42,10 @@ void	clear_chars(char **str, int size)
 {
 	int	i;
 
-	i = -1;
-	while ((size == -1 && *str) || ++i < size)
+	i = 0;
+	while ((size == -1 && str[i]) || i < size)
 	{
-		free(str[i]);
+		free(str[i++]);
 	}
 	free(str);
 }

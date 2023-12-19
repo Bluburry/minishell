@@ -9,7 +9,7 @@
 char	*pwd(void)
 {
 	char	*cwd;
-	
+
 	cwd = NULL;
 	cwd = getcwd(cwd, PATH_MAX);
 	return (cwd);
