@@ -1,7 +1,4 @@
 #include "minishell.h"
-#include "structures.h"
-#include <stdint.h>
-#include <unistd.h>
 
 /* void	waiting_for_input(t_env *env)
 {
@@ -85,7 +82,7 @@ static void	reset_singleton(t_data *d)
 	d->curr_pipe = 0;
 }
 
-void	waiting_for_input(t_env *env, t_data *data)
+static void	waiting_for_input(t_env *env, t_data *data)
 {
 	char	*rl;
 

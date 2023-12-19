@@ -22,20 +22,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-//# define CTRL_D __IOR(4, 4, int)
-
-
-extern int	r_sig;
-
 extern int	g_sig;
-
-
-void	waiting_for_input(t_env *env, t_data *data);
-void  	env(char **envp);
-void  	parser(char *input);
-void  	ft_echo(char **argv);
-char	*pwd(void);
-int		run_exe(char *path, char **args);
 
 // ---change_directory---
 // change_directory/cd.c
@@ -69,7 +56,6 @@ void	sig_handler(int sig, siginfo_t *info, void *ucontent);
 void	init_signals(void);
 void	init_child_signals(void);
 void	sig_handler_child(int sig, siginfo_t *info, void *ucontent);
-
 
 //Lexer functions
 // lexer/lexer.c
@@ -137,16 +123,16 @@ bool	exec_pipe(t_data *d);
 // ---struct_handling/---
 //Environment variables functions
 double	total_size(char **mat, int size);
-void  	concatenate_matrix(char *str, char **mat, int size);
+void	concatenate_matrix(char *str, char **mat, int size);
 
 // struct_handling/alter_env.c
-int  	alter_env_var(t_env *env, char **new);
-void  	resize_env_struct(t_env *env, int inc);
-void  	replace_env_var(t_env *env, const char *new, int i);
+int		alter_env_var(t_env *env, char **new);
+void	resize_env_struct(t_env *env, int inc);
+void	replace_env_var(t_env *env, const char *new, int i);
 
 // struct_handling/clear_env.c
 void	unset_env_var(t_env *env, char **var);
-void  	clear_chars(char **str, int size);
+void	clear_chars(char **str, int size);
 void	clear_env_struct(t_env *env);
 
 // struct_handling/find_env_var.c
@@ -169,7 +155,7 @@ void	copy_char_matrix_ordered(char **mat, char **new_mat, int size);
 char	**export_string(t_env *env);
 
 // struct_handling/start_env_vars.c
-void  	copy_char_matrix(char **mat, char **new_mat, int size);
+void	copy_char_matrix(char **mat, char **new_mat, int size);
 int		get_env_start_size(char **envp);
 t_env	*create_env_struct(char **envp);
 
@@ -183,6 +169,9 @@ void	env(char **envp);
 // utils/pwd.c
 char	*pwd(void);
 
+// utils/pwd.c
+int		run_exe(char *path, char **args);
+
 // utils/signal_handler.c
 void	init_signals(void);
 void	sig_handler(int sig, siginfo_t *info, void *ucontent);
@@ -194,7 +183,8 @@ bool	is_name(char *str);
 char	*remc(char *str);
 
 // utils/find_exe.c
-char	*create_exec_string(const char *path, const char *cmd, int start, int end);
+char	*create_exec_string(const char *path, const char *cmd,
+			int start, int end);
 int		check_file_executable(struct stat *bs, char *exec);
 char	*handle_exe_stats(const char *path, char *cmd, struct stat *bs);
 char	*find_exe_path(t_env *env, char *cmd);

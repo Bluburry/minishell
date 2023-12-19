@@ -52,21 +52,21 @@ void	ft_pwd(void)
 
 static void	execute(t_tok token, t_data *data)
 {
-	if (!ft_strncmp(token.path, "echo", 5))
+	if (ft_strncmp(token.path, "echo", 5) == 0)
 		ft_echo(token.arglist);
-	else if (!ft_strncmp(token.path, "pwd", 4))
+	else if (ft_strncmp(token.path, "pwd", 4) == 0)
 		ft_pwd();
-	else if (!ft_strncmp(token.path, "env", 4))
+	else if (ft_strncmp(token.path, "env", 4) == 0)
 		ft_env(data->env, token.arglist);
-	else if (!ft_strncmp(token.path, "unset", 6))
+	else if (ft_strncmp(token.path, "unset", 6) == 0)
 		unset_env_var(data->env, token.arglist);
-	else if (!ft_strncmp(token.path, "export", 8))
+	else if (ft_strncmp(token.path, "export", 8) == 0)
 		ft_export(data->env, token.arglist);
-	else if (!ft_strncmp(token.path, "cd", 3) || !ft_strncmp(token.path, "exit", 5)) // adicionar exit aqui
+	else if (ft_strncmp(token.path, "cd", 3) == 0 || ft_strncmp(token.path, "exit", 5) == 0) // adicionar exit aqui
 	{
 		if (list_len(token.arglist) > 2)
 			too_many_args(token.arglist[0]);
-		else if (!ft_strncmp(token.path, "cd", 3))
+		else if (ft_strncmp(token.path, "cd", 3) == 0)
 			cd(data->env, token.arglist[1]);
 /* 		else
 			ft_exit(token.arglist); */
@@ -85,5 +85,7 @@ bool	exec_comm_list(t_data *data)
 		return (false);
 	if (data->cmds->tks[0].type == exec)
 		execute(data->cmds->tks[0], data);
+	if (data->cmds->tks[0].type == r_pipe)
+		exec_pipe(data);
 	return (true);
 }
