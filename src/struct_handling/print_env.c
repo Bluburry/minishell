@@ -51,7 +51,8 @@ char	**env_string(t_env *env)
 	char	**ret;
 
 	n = num_invalid_env_vars(env);
-	ret = (char **) malloc(sizeof(char*) * (env->size - n));
+	ret = (char **) malloc(sizeof(char*) * (env->size - n + 1));
 	copy_char_to_env(env->vars, ret, env->size);
+	ret[env->size - n] = NULL;
 	return (ret);
 }

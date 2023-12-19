@@ -10,7 +10,7 @@
  * @param j index to start copying new path
  * @return new path
 */
-static char	*complex_path(char *pwd, const char *path, int i, int j)
+char	*complex_path(char *pwd, const char *path, int i, int j)
 {
 	int		s;
 	char	*str;
@@ -25,7 +25,7 @@ static char	*complex_path(char *pwd, const char *path, int i, int j)
 	}
 	str = (char *) malloc(sizeof(char) * (s + 2));
 	ft_memcpy(str, pwd, i);
-	if (*(path + j))
+	if (path[j])
 	{
 		str[i] = '/';
 		ft_memcpy(str + i + 1, path + j, ft_strlen(path) - j + 1);
@@ -51,15 +51,14 @@ char	*calc_pwd(char *pwd, const char *path)
 	i = ft_strlen(pwd) - 1;
 	j = 0;
 	c = 0;
-	while (*(pwd + i) && *(path + j) && \
-		(*(path + j) == '.' || *(path + j) == '/'))
+	while (i > 0 && pwd[i] && path[j] && (path[j] == '.' || path[j] == '/'))
 	{
-		if (*(path + j) == '.')
+		if (path[j] == '.')
 			c++;
 		if (c == 2)
 		{
 			c = 0;
-			while (i > 0 && *(pwd + i) != '/')
+			while (i > 0 && pwd[i] != '/')
 				i--;
 			i--;
 		}
@@ -81,11 +80,14 @@ char	*relative_path(t_env *env, const char *path)
 	char	*path_old;
 	size_t	s;
 
-	path_old = get_env_var(env, "PWD");
+	path_old = pwd();
 	if (*path == '.' && *(path + 1) && *(path + 1) == '.')
-		return (calc_pwd(path_old, path));
+	{
+		str = calc_pwd(path_old, path);
+		return (free(path_old), str);
+	}
 	else if (*path == '~')
-		return (calc_pwd(get_env_var(env, "HOME"), path + 2));
+		return (free(path_old), calc_pwd(get_env_var(env, "HOME"), path + 2));
 	s = ft_strlen(path_old);
 	str = (char *) malloc(sizeof(char) * (s + 2));
 	ft_memcpy(str, path_old, s);
@@ -96,5 +98,5 @@ char	*relative_path(t_env *env, const char *path)
 	else
 		new_path = ft_strjoin(str, path);
 	free(str);
-	return (new_path);
+	return (free(path_old), new_path);
 }

@@ -1,0 +1,427 @@
+[0;92mMinishell compiled![0;39m
+valgrind --leak-check=full -s --show-leak-kinds=all --suppressions=readline_supression --log-file=leaks.log ./minishell
+LANGUAGE=en_US
+USER=bluburry
+XDG_SEAT=seat0
+XDG_SESSION_TYPE=x11
+SHLVL=1
+LD_LIBRARY_PATH=/usr/lib/debug
+OLDPWD=/media/bluburry/BIG SPEED/Programming/Code/minishell
+LESS=-R
+HOME=/home/bluburry
+DESKTOP_SESSION=cinnamon
+LSCOLORS=Gxfxcxdxbxegedabagacad
+ZSH=/home/bluburry/.oh-my-zsh
+HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+GTK_MODULES=gail:atk-bridge
+PAGER=less
+LC_MONETARY=pt_PT.UTF-8
+MAKEFLAGS=
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
+COLORTERM=truecolor
+MAKE_TERMERR=/dev/pts/1
+MANDATORY_PATH=/usr/share/gconf/cinnamon.mandatory.path
+QT_QPA_PLATFORMTHEME=qt5ct
+INFOPATH=/home/linuxbrew/.linuxbrew/share/info:
+LOGNAME=bluburry
+DESKTOP_AUTOSTART_ID=1064239e9be9ce5d41170291110741687100000015620037
+_=/usr/bin/make
+DEFAULTS_PATH=/usr/share/gconf/cinnamon.default.path
+XDG_SESSION_CLASS=user
+GTK_OVERLAY_SCROLLING=1
+TERM=xterm-256color
+XDG_SESSION_ID=c2
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/bluburry/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/bluburry/.local/share/JetBrains/Toolbox/scripts
+GDM_LANG=en_US
+GTK3_MODULES=xapp-gtk3-module
+SESSION_MANAGER=local/bluburry:@/tmp/.ICE-unix/1562,unix/bluburry:/tmp/.ICE-unix/1562
+HOMEBREW_CELLAR=/home/linuxbrew/.linuxbrew/Cellar
+LC_ADDRESS=pt_PT.UTF-8
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+XDG_RUNTIME_DIR=/run/user/1000
+MAKELEVEL=1
+GLIBCPP_FORCE_NEW=1
+DISPLAY=:0
+LANG=en_US.UTF-8
+TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+LC_TELEPHONE=pt_PT.UTF-8
+XDG_CURRENT_DESKTOP=X-Cinnamon
+XAUTHORITY=/home/bluburry/.Xauthority
+XDG_SESSION_DESKTOP=cinnamon
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/bluburry
+LC_NAME=pt_PT.UTF-8
+TERMINATOR_UUID=urn:uuid:e9b781b1-2fc3-4ea5-b188-d5dc21bdee93
+SHELL=/usr/bin/zsh
+QT_ACCESSIBILITY=1
+GDMSESSION=cinnamon
+LC_MEASUREMENT=pt_PT.UTF-8
+GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+LC_IDENTIFICATION=pt_PT.UTF-8
+XDG_VTNR=7
+PWD=/media/bluburry/BIG SPEED/Programming/Code/minishell
+XDG_DATA_DIRS=/usr/share/cinnamon:/usr/share/gnome:/home/bluburry/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+XDG_CONFIG_DIRS=/etc/xdg/xdg-cinnamon:/etc/xdg
+LC_NUMERIC=pt_PT.UTF-8
+HOMEBREW_REPOSITORY=/home/linuxbrew/.linuxbrew/Homebrew
+MFLAGS=
+LC_PAPER=pt_PT.UTF-8
+MANPATH=/home/linuxbrew/.linuxbrew/share/man:
+VTE_VERSION=6800
+GLIBCXX_FORCE_NEW=1
+LD_PRELOAD=/usr/libexec/valgrind/vgpreload_core-amd64-linux.so:/usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+LANGUAGE=en_US
+USER=bluburry
+XDG_SEAT=seat0
+XDG_SESSION_TYPE=x11
+SHLVL=1
+LD_LIBRARY_PATH=/usr/lib/debug
+OLDPWD=/media/bluburry/BIG SPEED/Programming/Code/minishell
+LESS=-R
+HOME=/home/bluburry
+DESKTOP_SESSION=cinnamon
+LSCOLORS=Gxfxcxdxbxegedabagacad
+ZSH=/home/bluburry/.oh-my-zsh
+HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+GTK_MODULES=gail:atk-bridge
+PAGER=less
+LC_MONETARY=pt_PT.UTF-8
+MAKEFLAGS=
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
+COLORTERM=truecolor
+MAKE_TERMERR=/dev/pts/1
+MANDATORY_PATH=/usr/share/gconf/cinnamon.mandatory.path
+QT_QPA_PLATFORMTHEME=qt5ct
+INFOPATH=/home/linuxbrew/.linuxbrew/share/info:
+LOGNAME=bluburry
+DESKTOP_AUTOSTART_ID=1064239e9be9ce5d41170291110741687100000015620037
+_=/usr/bin/make
+DEFAULTS_PATH=/usr/share/gconf/cinnamon.default.path
+XDG_SESSION_CLASS=user
+GTK_OVERLAY_SCROLLING=1
+TERM=xterm-256color
+XDG_SESSION_ID=c2
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/bluburry/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/bluburry/.local/share/JetBrains/Toolbox/scripts
+GDM_LANG=en_US
+GTK3_MODULES=xapp-gtk3-module
+SESSION_MANAGER=local/bluburry:@/tmp/.ICE-unix/1562,unix/bluburry:/tmp/.ICE-unix/1562
+HOMEBREW_CELLAR=/home/linuxbrew/.linuxbrew/Cellar
+LC_ADDRESS=pt_PT.UTF-8
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+XDG_RUNTIME_DIR=/run/user/1000
+MAKELEVEL=1
+GLIBCPP_FORCE_NEW=1
+DISPLAY=:0
+LANG=en_US.UTF-8
+TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+LC_TELEPHONE=pt_PT.UTF-8
+XDG_CURRENT_DESKTOP=X-Cinnamon
+XAUTHORITY=/home/bluburry/.Xauthority
+XDG_SESSION_DESKTOP=cinnamon
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/bluburry
+LC_NAME=pt_PT.UTF-8
+TERMINATOR_UUID=urn:uuid:e9b781b1-2fc3-4ea5-b188-d5dc21bdee93
+SHELL=/usr/bin/zsh
+QT_ACCESSIBILITY=1
+GDMSESSION=cinnamon
+LC_MEASUREMENT=pt_PT.UTF-8
+GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+LC_IDENTIFICATION=pt_PT.UTF-8
+XDG_VTNR=7
+PWD=/media/bluburry/BIG SPEED/Programming/Code/minishell
+XDG_DATA_DIRS=/usr/share/cinnamon:/usr/share/gnome:/home/bluburry/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+XDG_CONFIG_DIRS=/etc/xdg/xdg-cinnamon:/etc/xdg
+LC_NUMERIC=pt_PT.UTF-8
+HOMEBREW_REPOSITORY=/home/linuxbrew/.linuxbrew/Homebrew
+MFLAGS=
+LC_PAPER=pt_PT.UTF-8
+MANPATH=/home/linuxbrew/.linuxbrew/share/man:
+VTE_VERSION=6800
+GLIBCXX_FORCE_NEW=1
+LD_PRELOAD=/usr/libexec/valgrind/vgpreload_core-amd64-linux.so:/usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+batata1
+bata2
+bata3
+test
+TEST2=test2?
+asd=asd1
+asd2=asd3
+TEST=42
+LAST_TEST=last_test
+LANGUAGE=en_US
+USER=bluburry
+XDG_SEAT=seat0
+XDG_SESSION_TYPE=x11
+SHLVL=1
+LD_LIBRARY_PATH=/usr/lib/debug
+OLDPWD=/media/bluburry/BIG SPEED/Programming/Code/minishell
+LESS=-R
+HOME=/home/bluburry
+DESKTOP_SESSION=cinnamon
+LSCOLORS=Gxfxcxdxbxegedabagacad
+ZSH=/home/bluburry/.oh-my-zsh
+HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+GTK_MODULES=gail:atk-bridge
+PAGER=less
+LC_MONETARY=pt_PT.UTF-8
+MAKEFLAGS=
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
+COLORTERM=truecolor
+MAKE_TERMERR=/dev/pts/1
+MANDATORY_PATH=/usr/share/gconf/cinnamon.mandatory.path
+QT_QPA_PLATFORMTHEME=qt5ct
+INFOPATH=/home/linuxbrew/.linuxbrew/share/info:
+LOGNAME=bluburry
+DESKTOP_AUTOSTART_ID=1064239e9be9ce5d41170291110741687100000015620037
+_=/usr/bin/make
+DEFAULTS_PATH=/usr/share/gconf/cinnamon.default.path
+XDG_SESSION_CLASS=user
+GTK_OVERLAY_SCROLLING=1
+TERM=xterm-256color
+XDG_SESSION_ID=c2
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/bluburry/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/bluburry/.local/share/JetBrains/Toolbox/scripts
+GDM_LANG=en_US
+GTK3_MODULES=xapp-gtk3-module
+SESSION_MANAGER=local/bluburry:@/tmp/.ICE-unix/1562,unix/bluburry:/tmp/.ICE-unix/1562
+HOMEBREW_CELLAR=/home/linuxbrew/.linuxbrew/Cellar
+LC_ADDRESS=pt_PT.UTF-8
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+XDG_RUNTIME_DIR=/run/user/1000
+MAKELEVEL=1
+GLIBCPP_FORCE_NEW=1
+DISPLAY=:0
+LANG=en_US.UTF-8
+TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+LC_TELEPHONE=pt_PT.UTF-8
+XDG_CURRENT_DESKTOP=X-Cinnamon
+XAUTHORITY=/home/bluburry/.Xauthority
+XDG_SESSION_DESKTOP=cinnamon
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/bluburry
+LC_NAME=pt_PT.UTF-8
+TERMINATOR_UUID=urn:uuid:e9b781b1-2fc3-4ea5-b188-d5dc21bdee93
+SHELL=/usr/bin/zsh
+QT_ACCESSIBILITY=1
+GDMSESSION=cinnamon
+LC_MEASUREMENT=pt_PT.UTF-8
+GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+LC_IDENTIFICATION=pt_PT.UTF-8
+XDG_VTNR=7
+PWD=/media/bluburry/BIG SPEED/Programming/Code/minishell
+XDG_DATA_DIRS=/usr/share/cinnamon:/usr/share/gnome:/home/bluburry/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+XDG_CONFIG_DIRS=/etc/xdg/xdg-cinnamon:/etc/xdg
+LC_NUMERIC=pt_PT.UTF-8
+HOMEBREW_REPOSITORY=/home/linuxbrew/.linuxbrew/Homebrew
+MFLAGS=
+LC_PAPER=pt_PT.UTF-8
+MANPATH=/home/linuxbrew/.linuxbrew/share/man:
+VTE_VERSION=6800
+GLIBCXX_FORCE_NEW=1
+LD_PRELOAD=/usr/libexec/valgrind/vgpreload_core-amd64-linux.so:/usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+
+
+Search LANG: en_US.UTF-8
+
+
+Search PWD: /media/bluburry/BIG SPEED/Programming/Code/minishell
+
+
+Search LS_COLORS: rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+
+
+Search LSCOLORS: Gxfxcxdxbxegedabagacad
+
+
+Search MAKEFLAGS: (null)
+
+
+Search SHLVL: 1
+
+
+teste env_string:
+LANGUAGE=en_US
+USER=bluburry
+XDG_SEAT=seat0
+XDG_SESSION_TYPE=x11
+SHLVL=1
+LD_LIBRARY_PATH=/usr/lib/debug
+OLDPWD=/media/bluburry/BIG SPEED/Programming/Code/minishell
+LESS=-R
+HOME=/home/bluburry
+DESKTOP_SESSION=cinnamon
+LSCOLORS=Gxfxcxdxbxegedabagacad
+ZSH=/home/bluburry/.oh-my-zsh
+HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+GTK_MODULES=gail:atk-bridge
+PAGER=less
+LC_MONETARY=pt_PT.UTF-8
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+TERMINATOR_DBUS_NAME=net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
+COLORTERM=truecolor
+MAKE_TERMERR=/dev/pts/1
+MANDATORY_PATH=/usr/share/gconf/cinnamon.mandatory.path
+QT_QPA_PLATFORMTHEME=qt5ct
+INFOPATH=/home/linuxbrew/.linuxbrew/share/info:
+LOGNAME=bluburry
+DESKTOP_AUTOSTART_ID=1064239e9be9ce5d41170291110741687100000015620037
+_=/usr/bin/make
+DEFAULTS_PATH=/usr/share/gconf/cinnamon.default.path
+XDG_SESSION_CLASS=user
+GTK_OVERLAY_SCROLLING=1
+TERM=xterm-256color
+XDG_SESSION_ID=c2
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/bluburry/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/bluburry/.local/share/JetBrains/Toolbox/scripts
+GDM_LANG=en_US
+GTK3_MODULES=xapp-gtk3-module
+SESSION_MANAGER=local/bluburry:@/tmp/.ICE-unix/1562,unix/bluburry:/tmp/.ICE-unix/1562
+HOMEBREW_CELLAR=/home/linuxbrew/.linuxbrew/Cellar
+LC_ADDRESS=pt_PT.UTF-8
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+XDG_RUNTIME_DIR=/run/user/1000
+MAKELEVEL=1
+GLIBCPP_FORCE_NEW=1
+DISPLAY=:0
+LANG=en_US.UTF-8
+TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+LC_TELEPHONE=pt_PT.UTF-8
+XDG_CURRENT_DESKTOP=X-Cinnamon
+XAUTHORITY=/home/bluburry/.Xauthority
+XDG_SESSION_DESKTOP=cinnamon
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/bluburry
+LC_NAME=pt_PT.UTF-8
+TERMINATOR_UUID=urn:uuid:e9b781b1-2fc3-4ea5-b188-d5dc21bdee93
+SHELL=/usr/bin/zsh
+QT_ACCESSIBILITY=1
+GDMSESSION=cinnamon
+LC_MEASUREMENT=pt_PT.UTF-8
+GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+LC_IDENTIFICATION=pt_PT.UTF-8
+XDG_VTNR=7
+PWD=/media/bluburry/BIG SPEED/Programming/Code/minishell
+XDG_DATA_DIRS=/usr/share/cinnamon:/usr/share/gnome:/home/bluburry/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+XDG_CONFIG_DIRS=/etc/xdg/xdg-cinnamon:/etc/xdg
+LC_NUMERIC=pt_PT.UTF-8
+HOMEBREW_REPOSITORY=/home/linuxbrew/.linuxbrew/Homebrew
+LC_PAPER=pt_PT.UTF-8
+MANPATH=/home/linuxbrew/.linuxbrew/share/man:
+VTE_VERSION=6800
+GLIBCXX_FORCE_NEW=1
+LD_PRELOAD=/usr/libexec/valgrind/vgpreload_core-amd64-linux.so:/usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+
+
+test export_string:
+declare -x COLORTERM="truecolor"
+declare -x DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+declare -x DEFAULTS_PATH="/usr/share/gconf/cinnamon.default.path"
+declare -x DESKTOP_AUTOSTART_ID="1064239e9be9ce5d41170291110741687100000015620037"
+declare -x DESKTOP_SESSION="cinnamon"
+declare -x DISPLAY=":0"
+declare -x GDMSESSION="cinnamon"
+declare -x GDM_LANG="en_US"
+declare -x GLIBCPP_FORCE_NEW="1"
+declare -x GLIBCXX_FORCE_NEW="1"
+declare -x GNOME_DESKTOP_SESSION_ID="this-is-deprecated"
+declare -x GPG_AGENT_INFO="/run/user/1000/gnupg/S.gpg-agent:0:1"
+declare -x GTK3_MODULES="xapp-gtk3-module"
+declare -x GTK_MODULES="gail:atk-bridge"
+declare -x GTK_OVERLAY_SCROLLING="1"
+declare -x HOME="/home/bluburry"
+declare -x HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
+declare -x HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+declare -x HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
+declare -x INFOPATH="/home/linuxbrew/.linuxbrew/share/info:"
+declare -x LANG="en_US.UTF-8"
+declare -x LANGUAGE="en_US"
+declare -x LC_ADDRESS="pt_PT.UTF-8"
+declare -x LC_IDENTIFICATION="pt_PT.UTF-8"
+declare -x LC_MEASUREMENT="pt_PT.UTF-8"
+declare -x LC_MONETARY="pt_PT.UTF-8"
+declare -x LC_NAME="pt_PT.UTF-8"
+declare -x LC_NUMERIC="pt_PT.UTF-8"
+declare -x LC_PAPER="pt_PT.UTF-8"
+declare -x LC_TELEPHONE="pt_PT.UTF-8"
+declare -x LD_LIBRARY_PATH="/usr/lib/debug"
+declare -x LD_PRELOAD="/usr/libexec/valgrind/vgpreload_core-amd64-linux.so:/usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so"
+declare -x LESS="-R"
+declare -x LOGNAME="bluburry"
+declare -x LSCOLORS="Gxfxcxdxbxegedabagacad"
+declare -x LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:"
+declare -x MAKEFLAGS=""
+declare -x MAKELEVEL="1"
+declare -x MAKE_TERMERR="/dev/pts/1"
+declare -x MANDATORY_PATH="/usr/share/gconf/cinnamon.mandatory.path"
+declare -x MANPATH="/home/linuxbrew/.linuxbrew/share/man:"
+declare -x MFLAGS=""
+declare -x OLDPWD="/media/bluburry/BIG SPEED/Programming/Code/minishell"
+declare -x PAGER="less"
+declare -x PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/bluburry/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/bluburry/.local/share/JetBrains/Toolbox/scripts"
+declare -x PWD="/media/bluburry/BIG SPEED/Programming/Code/minishell"
+declare -x QT_ACCESSIBILITY="1"
+declare -x QT_QPA_PLATFORMTHEME="qt5ct"
+declare -x SESSION_MANAGER="local/bluburry:@/tmp/.ICE-unix/1562,unix/bluburry:/tmp/.ICE-unix/1562"
+declare -x SHELL="/usr/bin/zsh"
+declare -x SHLVL="1"
+declare -x TERM="xterm-256color"
+declare -x TERMINATOR_DBUS_NAME="net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873"
+declare -x TERMINATOR_DBUS_PATH="/net/tenshu/Terminator2"
+declare -x TERMINATOR_UUID="urn:uuid:e9b781b1-2fc3-4ea5-b188-d5dc21bdee93"
+declare -x USER="bluburry"
+declare -x VTE_VERSION="6800"
+declare -x XAUTHORITY="/home/bluburry/.Xauthority"
+declare -x XDG_CONFIG_DIRS="/etc/xdg/xdg-cinnamon:/etc/xdg"
+declare -x XDG_CURRENT_DESKTOP="X-Cinnamon"
+declare -x XDG_DATA_DIRS="/usr/share/cinnamon:/usr/share/gnome:/home/bluburry/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share"
+declare -x XDG_GREETER_DATA_DIR="/var/lib/lightdm-data/bluburry"
+declare -x XDG_RUNTIME_DIR="/run/user/1000"
+declare -x XDG_SEAT="seat0"
+declare -x XDG_SEAT_PATH="/org/freedesktop/DisplayManager/Seat0"
+declare -x XDG_SESSION_CLASS="user"
+declare -x XDG_SESSION_DESKTOP="cinnamon"
+declare -x XDG_SESSION_ID="c2"
+declare -x XDG_SESSION_PATH="/org/freedesktop/DisplayManager/Session0"
+declare -x XDG_SESSION_TYPE="x11"
+declare -x XDG_VTNR="7"
+declare -x ZSH="/home/bluburry/.oh-my-zsh"
+declare -x _="/usr/bin/make"
+pwd: /media/bluburry/BIG SPEED/Programming/Code/minishell
+cd Desktop:
+cd ~:
+pwd: /home/bluburry
+cd include:
+cd ../:
+cd Minishell:
+cd ../include:
+cd ../minishell:
+cd ./include:
+cd ../../minishell:
+cd :
+cd ~/:
+cd Desktop:
+cd ~/Desktop:
+cd Minishell:
+cd ..:
+cd ~/..:
+cd asdasd:
+/usr/bin/cat
+/usr/bin/tac
+/usr/bin/tic
+hi
+run_exe ret: 0
+back to minishell
+run_exe ret: 0
+back to minishell
+run_exe ret: 0
+back to minishell

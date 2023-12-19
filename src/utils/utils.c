@@ -20,8 +20,7 @@ int	check_path(char *path)
 		ret = 0;
 	if (ret != -1 && S_ISREG(bs->st_mode))
 		ret = 1;
-	free(bs);
-	return (ret);
+	return (free(bs), ret);
 }
 
 bool	is_metachar(char c)
