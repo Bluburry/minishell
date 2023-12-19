@@ -1,7 +1,8 @@
 #include "minishell.h"
 
 /**
- * @brief return what is left of the string after fiding the char passed as parameter
+ * @brief return what is left of the string after fiding 
+ * the char passed as parameter
  * @param str string to search
  * @param c char to find
  * @return string after char c
@@ -16,7 +17,7 @@ char	*str_after_char(char *str, char c)
 }
 
 /**
- * @brief matches 2 strings until it finds a specific char in the first one
+ * @brief matches 2 strings until it finds a specific char
  * @param str string to search
  * @param c char to stop search
  * @param str_find string that it will try to find in str
@@ -24,14 +25,15 @@ char	*str_after_char(char *str, char c)
 */
 int	ft_strchrstr(const char *str, char c, const char *str_find)
 {
-	if (!*str_find)
+	if (!str_find || !str || !*str_find || !*str)
 		return (0);
-	while (*str && *str != c && *str == *str_find)
+	while (*str && *str_find && *str != c && \
+		*str_find != c && *str == *str_find)
 	{
 		str++;
 		str_find++;
 	}
-	if (!*str_find && *str == c)
+	if ((!*str_find || *str_find == c) && (*str == c || !*str))
 		return (1);
 	return (0);
 }
