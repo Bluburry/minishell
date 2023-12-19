@@ -113,7 +113,7 @@ int	alter_env_var(t_env *env, char **new)
 {
 	int		s;
 
-	s = -1;
+	s = -1; // Deve comecar a 0 talvez? nome do executavel esta a ser utilizado como variavel
 	while (new[++s])
 		if (!check_valid_var(new[s]))
 			return (0);

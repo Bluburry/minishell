@@ -23,8 +23,8 @@ typedef struct s_env
 // an enum that decides wether the token is a name or an operator
 typedef enum e_etok
 {
-	none,
-	exec,
+	none, // *
+	exec, // !
 	r_pipe,
 	r_out,
 	r_in,
