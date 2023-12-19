@@ -47,3 +47,13 @@ bool	is_name(char *str)
 			return (false);
 	return (true);
 }
+
+//removes the initial character if it`s character \31
+//character \31 is inserted inside strings as the first character
+//when that string token originates within quotes
+char	*remc(char *str)
+{
+	if (str[0] == 31)
+		return (str + 1);
+	return (str);
+}

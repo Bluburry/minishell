@@ -4,6 +4,7 @@
 # include "libft.h"
 # include <stdbool.h>
 # include <stdint.h>
+#include <sys/types.h>
 
 typedef enum type_of_path
 {
@@ -80,6 +81,9 @@ typedef struct s_data
 	char		**envp;
 	t_env		*env;
 	uint32_t	pipe_n;
+	uint32_t	curr_pipe;
+	int			stdin;
+	int			stdout;
 }	t_data;
 
 #endif

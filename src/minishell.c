@@ -1,6 +1,7 @@
 #include "minishell.h"
 #include "structures.h"
 #include <stdint.h>
+#include <unistd.h>
 
 /* void	waiting_for_input(t_env *env)
 {
@@ -43,7 +44,7 @@ static void	print_strlist(char **list)
 	i = 0;
 	while (list[i])
 	{
-		if (list[i][0] == 17)
+		if (list[i][0] == 31)
 			printf("NEXT HAD QUOTES\n");
 		printf("%s\n", list[i++]);
 	}
@@ -67,24 +68,38 @@ static void	print_cmda(t_cmda *cmds)
 	}
 }
 
+static void	reset_singleton(t_data *d)
+{
+	if (d->fd_in != -1)
+		close(d->fd_in);
+	d->fd_in = -1;
+	dup2(d->stdin, 0);
+	dup2(d->stdout, 1);
+	d->ret_status = 0;
+	d->pipe_state = p_first;
+	dcp_cleaner(d->strlist);
+	d->strlist = NULL;
+	clean_cmda(d->cmds);
+	d->cmds = NULL;
+	d->pipe_n = 0;
+	d->curr_pipe = 0;
+}
+
 void	waiting_for_input(t_env *env, t_data *data)
 {
 	char	*rl;
 
 	while (data->is_exiting == false)
 	{
-		dcp_cleaner(data->strlist);
-		data->strlist = NULL;
-		clean_cmda(data->cmds);
-		data->cmds = NULL;
-		rl = readline("minishell > ");
+		reset_singleton(data);
+		rl = readline("minishell $> ");
 		if (!rl)
 		{
 			printf("exit\n");
 			data->is_exiting = true;
 			continue ;
 		}
-		printf("rl: %s\n", rl);
+		//printf("rl: %s\n", rl);
 		add_history(rl);
 		if (lexer(rl, env, data) == NULL)
 			continue ;
@@ -94,11 +109,8 @@ void	waiting_for_input(t_env *env, t_data *data)
 		print_cmda(data->cmds);
 		if (exec_comm_list(data) == false)
 			continue ;
-		dcp_cleaner(data->strlist);
-		data->strlist = NULL;
-		clean_cmda(data->cmds);
-		data->cmds = NULL;
 	}
+	reset_singleton(data);
 }
 
 //need to figure out how to clean t_data data
@@ -114,8 +126,10 @@ int	main(int argc, char **argv, char **envp)
 	//ioctl(STDIN_FILENO, CTRL_D, ...);
 	init_signals();
 	env = create_env_struct(envp);
-	data = (t_data){.envp = envp, env};
+	data = (t_data){-1, .envp = envp, env, .stdin = dup(0), dup(1)};
 	waiting_for_input(env, &data);
+	close(data.stdin);
+	close(data.stdout);
 	clear_env_struct(env);
 	rl_clear_history();
 }

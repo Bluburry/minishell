@@ -48,6 +48,7 @@ void	remove_quotes_from_tokens(char **input)
 		{
 			tmp = ft_strdup(*input);
 			c = **input;
+			*tmp = 31;
 			free(*input);
 			*input = ft_strtrim(tmp, &c);
 			free(tmp);

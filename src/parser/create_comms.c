@@ -1,9 +1,4 @@
-#include "libft.h"
 #include "minishell.h"
-#include "structures.h"
-#include <stdbool.h>
-#include <stdint.h>
-#include <sys/types.h>
 
 // A prhase is everything between pipes
 // phrase0 | phrase1 | phrase3

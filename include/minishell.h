@@ -167,5 +167,6 @@ void	sig_handler(int sig, siginfo_t *info, void *ucontent);
 int		check_path(char *path);
 bool	is_metachar(char c);
 bool	is_name(char *str);
+char	*remc(char *str);
 
 #endif

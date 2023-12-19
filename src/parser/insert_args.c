@@ -43,7 +43,7 @@ static char	*return_filename(char *str)
 
 //checks if the string passed is a relative path, or an absolute path
 //and if so, takes only the last part after the last /
-char	*check_if_path(char *str)
+static char	*check_if_path(char *str)
 {
 	char	*sub_str;
 
@@ -77,11 +77,11 @@ bool	insert_name_args(t_cmda *c, char **l, uint32_t n)
 		else if (path_added == false)
 		{
 			path_added = true;
-			c->tks[c->size].path = ft_strdup(l[i]);
-			c->tks[c->size].arglist[j++] = check_if_path(l[i]); // needs to check when check_if_path returns NULL
+			c->tks[c->size].path = ft_strdup(remc(l[i]));
+			c->tks[c->size].arglist[j++] = check_if_path((remc(l[i]))); // needs to check when check_if_path returns NULL
 		}
 		else
-			c->tks[c->size].arglist[j++] = ft_strdup(l[i]);
+			c->tks[c->size].arglist[j++] = ft_strdup(remc(l[i]));
 	}
 	c->tks[c->size++].arglist[j] = NULL;
 	return (c->tks[c->size - 1].type = exec, true);
