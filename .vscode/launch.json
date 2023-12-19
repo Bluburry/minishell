@@ -1,0 +1,40 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+		"type": "cppdbg",
+		"request": "launch",
+		"name": "test 42",
+		"program": "/usr/bin/valgrind",
+		"args": ["/nfs/homes/remarque/minishell/minishell"],
+		"cwd": "/nfs/homes/remarque/minishell",
+		},
+		{
+			"type": "cppdbg",
+			"request": "launch",
+			"name": "test 42 sanitize",
+			"program": "/nfs/homes/remarque/minishell/minishell",
+			"args": [],
+			"cwd": "/nfs/homes/remarque/minishell",
+		},
+		{
+			"type": "cppdbg",
+			"request": "launch",
+			"name": "test home",
+			"program": "/nfs/homes/remarque/minishell/minishell",
+			"args": [],
+			"cwd": "/nfs/homes/remarque/minishell",
+		},
+		{
+			"type": "cppdbg",
+			"request": "launch",
+			"name": "function test home",
+			"program": "/nfs/homes/remarque/minishell/src/parsing/a.out",
+			"args": [],
+			"cwd": "/nfs/homes/remarque/minishell/src/parsing",
+		},
+	]
+}

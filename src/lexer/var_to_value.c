@@ -110,7 +110,6 @@ char	*var_to_value(char *str, t_env *env)
 				temp = ft_strjoin(temp, ft_substr(str, i, 1));
 				i++;
 			}
-
 		}
 		else if (str[i])
 			temp = ft_strjoin(temp, ft_substr(str, i++, 1));

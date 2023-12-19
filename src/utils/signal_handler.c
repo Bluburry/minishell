@@ -1,9 +1,6 @@
 #include "minishell.h"
-#include <readline/readline.h>
-#include <signal.h>
-#include <unistd.h>
 
-int	r_sig;
+int	g_sig;
 
 /* void	init_child_signals(void)
 {

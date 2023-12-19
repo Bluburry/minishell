@@ -29,6 +29,7 @@ void	dcp_cleaner(char **ptr)
 		free(ptr[i++]);
 	free(ptr);
 }
+
 // type == 1 -> unexpected token
 // type == 2 -> no matching closing quotes
 // type == 3 -> unexpected end of file

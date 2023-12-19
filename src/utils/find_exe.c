@@ -67,7 +67,7 @@ char	*handle_exe_stats(const char *path, char *cmd, struct stat *bs)
 			if (path[j] != 0)
 				i++;
 			free(exec);
-			continue;
+			continue ;
 		}
 		return (free(bs), exec);
 	}

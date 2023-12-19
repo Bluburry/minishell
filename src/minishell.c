@@ -1,10 +1,6 @@
 #include "minishell.h"
-#include <readline/history.h>
-#include <readline/rltypedefs.h>
-#include <signal.h>
-#include <stdio.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
+#include "structures.h"
+#include <stdint.h>
 
 /* void	waiting_for_input(t_env *env)
 {
@@ -40,46 +36,99 @@
 	}
 } */
 
-void	waiting_for_input(t_env *env)
+static void	print_strlist(char **list)
 {
-	char	*rl;
-	char	**tokens;
+	uint32_t	i;
 
-	while (1)
+	i = 0;
+	while (list[i])
+		printf("%s\n", list[i++]);
+}
+
+static void	print_cmda(t_cmda *cmds)
+{
+	const char	*strs[7] = {"NONE", "EXEC", "PIPE", "OUT", "IN", "APPEND", "HEREDOC"};
+
+	if (!cmds->tks)
+		return ;
+	for (uint32_t i = 0; i < cmds->size; i++)
 	{
-		rl = readline("minishell -> ");
-		if (rl == NULL)
-		{
-			printf("exit\n");
-			exit (0); //!! Substituir por limpeza de variaveis e apenas depois sair
+		printf("%d %s : \"%s\"",cmds->tks[i].type, strs[cmds->tks[i].type], cmds->tks[i].path);
+		if (cmds->tks[i].arglist) {
+			printf(" :");
+			for (uint32_t j = 0; cmds->tks[i].arglist[j]; j++)
+				printf(" \"%s\"", cmds->tks[i].arglist[j]);
 		}
-		add_history(rl);
-		printf("rl: %s\n", rl);
-		tokens = lexer(rl, env);
-		if (tokens == NULL)
-			continue;
+		printf("\n");
 	}
 }
 
+void	waiting_for_input(t_env *env, t_data *data)
+{
+	char	*rl;
+
+	while (data->is_exiting == false)
+	{
+		dcp_cleaner(data->strlist);
+		data->strlist = NULL;
+		clean_cmda(data->cmds);
+		data->cmds = NULL;
+		rl = readline("minishell > ");
+		if (!rl)
+		{
+			printf("exit\n");
+			data->is_exiting = true;
+			continue ;
+		}
+		printf("rl: %s\n", rl);
+		add_history(rl);
+		if (lexer(rl, env, data) == NULL)
+			continue ;
+		print_strlist(data->strlist);
+		if (create_comm_list(data) == false)
+			continue ;
+		print_cmda(data->cmds);
+		if (exec_comm_list(data) == false)
+			continue ;
+		dcp_cleaner(data->strlist);
+		data->strlist = NULL;
+		clean_cmda(data->cmds);
+		data->cmds = NULL;
+	}
+}
+
+//need to figure out how to clean t_data data
 int	main(int argc, char **argv, char **envp)
 {
-	t_env	*env;
+	t_env		*env;
+	t_data		data;
 
-	(void)argc;
 	(void)argv;
-	r_sig = 0;
+	if (argc > 1)
+		return (ft_putstr_fd("Algo de errado nao esta certo\n", 2), 1);
+	g_sig = 0;
 	//ioctl(STDIN_FILENO, CTRL_D, ...);
 	init_signals();
 	env = create_env_struct(envp);
+	data = (t_data){.envp = envp, env};
+	waiting_for_input(env, &data);
+	clear_env_struct(env);
+	rl_clear_history();
+}
+
+/* add_new_env_var(env, "TEST=24");
+	add_new_env_var(env, "TEST2");
+	add_new_env_var(env, "TEST3=");
+	unset_env_var(env, "TEST");
 	int i = -1;
 	while (env->vars[++i])
 		printf("%s\n", env->vars[i]);
 	static char *test24[] = {"batata1", "bata2", "bata3", "test", "TEST2=test2?", "asd=asd1", "asd2=asd3", "TEST=42", "LAST_TEST=last_test", NULL};
-	/*alter_env_var(env, {"TEST=24", NULL});
+	alter_env_var(env, {"TEST=24", NULL});
 	alter_env_var(env, "TEST2");
 	alter_env_var(env, "TEST3=");
 	alter_env_var(env, "1asd2");
-	unset_env_var(env, "TEST");*/
+	unset_env_var(env, "TEST");
 	alter_env_var(env, test24);
 	i = -1;
 	while (++i < env->size)
@@ -94,11 +143,11 @@ int	main(int argc, char **argv, char **envp)
 	printf("\n\nSearch LSCOLORS: %s\n", get_env_var(env, "LSCOLORS"));
 	printf("\n\nSearch MAKEFLAGS: %s\n", get_env_var(env, "MAKEFLAGS"));
 	printf("\n\nSearch SHLVL: %s\n", get_env_var(env, "SHLVL"));
-	/* printf("\n\nSearch TEST: %s\n", get_env_var(env, "TEST"));
+	printf("\n\nSearch TEST: %s\n", get_env_var(env, "TEST"));
 	printf("\n\nSearch TEST: %s\n", get_env_var(env, "TEST"));
 	printf("\n\nSearch TEST2: %s\n", get_env_var(env, "TEST2"));
 	printf("\n\nSearch TEST3: %s\n", get_env_var(env, "TEST3"));
-	alter_env_var(env, "TEST4=169"); */
+	alter_env_var(env, "TEST4=169");
 	char **teste = env_string(env);
 	printf("\n\nteste env_string:\n");
 	i = -1;
@@ -190,4 +239,4 @@ int	main(int argc, char **argv, char **envp)
 	clear_env_struct(env);
 	rl_clear_history();
 	return (0);
-}
+}*/
