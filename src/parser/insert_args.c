@@ -57,8 +57,8 @@ static char	*check_if_path(char *str)
 }
 
 // insert_name_args(cmds, &list[i], n)
-bool	insert_name_args(t_cmda *c, char **l, uint32_t n)
-{
+bool	insert_name_args(t_cmda *c, char **l, uint32_t n) // needs to handle the case where there are no args to add
+{// when you only have redirs, like in > out | > out
 	int32_t		i;
 	uint32_t	j;
 	bool		path_added;

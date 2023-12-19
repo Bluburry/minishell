@@ -1,6 +1,14 @@
 #include "minishell.h"
-#include "structures.h"
-#include <stdbool.h>
+
+static inline void	redir_pipe_helper(t_data *d, int in, int out, int prev)
+{
+	dup2(out, STDOUT_FILENO);
+	close(out);
+	dup2(in, STDIN_FILENO);
+	close(in);
+	if (d->pipe_state != p_last)
+		d->fd_in = prev;
+}
 
 bool	redir_pipe(t_data *d)
 {
@@ -27,12 +35,7 @@ bool	redir_pipe(t_data *d)
 		in = d->fd_in;
 		out = fd[1];
 	}
-	dup2(out, STDOUT_FILENO);
-	close(out);
-	dup2(in, STDIN_FILENO);
-	close(in);
-	if (d->pipe_state != p_last)
-		d->fd_in = fd[0];
+	redir_pipe_helper(d, in, out, fd[0]);
 	return (true);
 }
 

@@ -110,6 +110,9 @@ bool	insert_name_args(t_cmda *cmds, char **list, uint32_t n);
 // parser/insert_redirs.c
 bool	insert_redirs(t_cmda *cmds, char **list, uint32_t n);
 
+// parser/pipe.c
+bool	exec_pipe(t_data *d);
+
 // ---struct_handling/---
 // struct_handling/alter_env.c
 void	alter_env_var(t_env *env, const char *new, int i);

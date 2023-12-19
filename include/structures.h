@@ -4,7 +4,6 @@
 # include "libft.h"
 # include <stdbool.h>
 # include <stdint.h>
-#include <sys/types.h>
 
 typedef enum type_of_path
 {
