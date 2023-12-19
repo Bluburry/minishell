@@ -3,7 +3,7 @@
 #include "structures.h"
 #include <curses.h>
 
-void	too_many_args(char * str)
+void	too_many_args(char *str)
 {
 	printf("minishell: %s: too many arguments\n", str);
 }
@@ -14,7 +14,7 @@ void	ft_export(t_env *env, char **arglist)
 	int		i;
 
 	if (list_len(arglist) > 1)
-		add_new_env_var(env, arglist); // TIAGO -> alterar esta func para receber char**
+		alter_env_var(env, arglist);
 	else
 	{
 		vars = export_string(env);
@@ -52,27 +52,27 @@ void	ft_pwd(void)
 
 static void	execute(t_tok token, t_data *data)
 {
-	if (ft_strncmp(token.path, "echo", 5))
+	if (!ft_strncmp(token.path, "echo", 5))
 		ft_echo(token.arglist);
-	else if (ft_strncmp(token.path, "pwd", 4))
+	else if (!ft_strncmp(token.path, "pwd", 4))
 		ft_pwd();
-	else if (ft_strncmp(token.path, "env", 4))
+	else if (!ft_strncmp(token.path, "env", 4))
 		ft_env(data->env, token.arglist);
-	else if (ft_strncmp(token.path, "unset", 6))
-		unset_env_var(data->env, token.arglist); // TIAGO -> alterar esta func para receber char**
-	else if (ft_strncmp(token.path, "export", 8))
+	else if (!ft_strncmp(token.path, "unset", 6))
+		unset_env_var(data->env, token.arglist);
+	else if (!ft_strncmp(token.path, "export", 8))
 		ft_export(data->env, token.arglist);
-	else if (ft_strncmp(token.path, "cd", 3) || ft_strncmp(token.path, "exit", 5)) // adicionar exit aqui
+	else if (!ft_strncmp(token.path, "cd", 3) || !ft_strncmp(token.path, "exit", 5)) // adicionar exit aqui
 	{
 		if (list_len(token.arglist) > 2)
 			too_many_args(token.arglist[0]);
-		else if (ft_strncmp(token.path, "cd", 3))
+		else if (!ft_strncmp(token.path, "cd", 3))
 			cd(data->env, token.arglist[1]);
 /* 		else
-		 ft_exit(token.arglist); */
+			ft_exit(token.arglist); */
 	}
-/* 	else
-	 exec; */
+	else
+		run_exe(token.path, token.arglist);
 }
 
 bool	exec_comm_list(t_data *data)
