@@ -1,5 +1,16 @@
 #include "minishell.h"
 
+void	find_exe(t_tok token, t_data *data)
+{
+	char	*path;
+
+	path = find_exe_path(data->env, token.path);
+	if (path)
+		run_exe(path, token.arglist, data->env);
+	else
+		printf("%s: command not found\n", token.arglist[0]);
+}
+
 int	run_exe(char *path, char **args, t_env *env)
 {
 	pid_t	pid;

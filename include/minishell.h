@@ -35,7 +35,8 @@ void	env(char **envp);
 void	parser(char *input);
 void	ft_echo(char **argv);
 char	*pwd(void);
-int		run_exe(char *path, char **args, t_env *env);
+void	find_exe(t_tok token, t_data *data);
+int		run_exe(char *path, char **args);
 
 // ---change_directory---
 // change_directory/cd.c
@@ -129,15 +130,15 @@ bool	insert_redirs(t_cmda *cmds, char **list, uint32_t n);
 // ---struct_handling/---
 //Environment variables functions
 double	total_size(char **mat, int size);
-void  	concatenate_matrix(char *str, char **mat, int size);
+void	concatenate_matrix(char *str, char **mat, int size);
 
 // struct_handling/alter_env.c
-int  	alter_env_var(t_env *env, char **new);
-void  	replace_env_var(t_env *env, const char *new, int i);
+int		alter_env_var(t_env *env, char **new);
+void	replace_env_var(t_env *env, const char *new, int i);
 
 // struct_handling/clear_env.c
 void	unset_env_var(t_env *env, char **var);
-void  	clear_chars(char **str, int size);
+void	clear_chars(char **str, int size);
 void	clear_env_struct(t_env *env);
 
 // struct_handling/find_env_var.c
@@ -154,7 +155,7 @@ char	**env_string(t_env *env);
 char	**export_string(t_env *env);
 
 // struct_handling/start_env_vars.c
-void  	copy_char_matrix(char **mat, char **new_mat, int size);
+void	copy_char_matrix(char **mat, char **new_mat, int size);
 int		get_env_size(char **envp);
 t_env	*create_env_struct(char **envp);
 
