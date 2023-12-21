@@ -1,4 +1,6 @@
 #include "minishell.h"
+#include "structures.h"
+#include <stdbool.h>
 
 // counts how many arguments there are in a phrase
 // ignores the first word int the phrase since it's an executable
@@ -66,6 +68,7 @@ bool	insert_name_args(t_cmda *c, char **l, uint32_t n) // needs to handle the ca
 	i = -1;
 	j = 0;
 	path_added = false;
+	printf("Count Args: %d\n", count_args(l, n));
 	c->tks[c->size].arglist = malloc(sizeof(char *) * (count_args(l, n) + 1)); // need to see if it`s allocating the right size
 	if (c->tks[c->size].arglist == NULL)
 		return (false);
