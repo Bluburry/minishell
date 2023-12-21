@@ -127,7 +127,9 @@ int	main(int argc, char **argv, char **envp)
 	int i = -1;
 	while (env->vars[++i])
 		printf("%s\n", env->vars[i]);
-	static char *test24[] = {"batata1", "bata2", "bata3", "test", "TEST2=test2?", "asd=asd1", "asd2=asd3", "TEST=42", "LAST_TEST=last_test", NULL};
+	static char *test24[] = {"batata1", "bata2", \
+		"bata3", "test", "TEST2=test2?", "asd=asd1", \
+		"asd2=asd3", "TEST=42", "LAST_TEST=last_test", NULL};
 	alter_env_var(env, {"TEST=24", NULL});
 	alter_env_var(env, "TEST2");
 	alter_env_var(env, "TEST3=");
@@ -240,6 +242,60 @@ int	main(int argc, char **argv, char **envp)
 	printf("run_exe ret: %d\n", run_exe(test, test4));
 	printf("back to minishell\n");
 	free(test);
+	printf("testing ../test.o, must work\n");
+	char *str = find_exe_path(env, "../test.o");
+	if (str) {
+		printf("%s\n", str);
+		printf("run_exe ret: %d\n", run_exe(str, NULL, env));
+		free(str);
+	}
+	else printf("str is null\n");
+	printf("testing ./test.o, must work\n");
+	str = find_exe_path(env, "./test.o");
+	if (str) {
+		printf("%s\n", str);
+		printf("run_exe ret: %d\n", run_exe(str, NULL, env));
+		free(str);
+	}
+	else printf("str is null\n");
+	printf("testing include/test.o, must work\n");
+	str = find_exe_path(env, "include/test.o");
+	if (str) {
+		printf("%s\n", str);
+		printf("run_exe ret: %d\n", run_exe(str, NULL, env));
+		free(str);
+	}
+	else printf("str is null\n");
+	printf("testing src/test.o, must not work\n");
+	str = find_exe_path(env, "src/test.o");
+	if (str) {
+		printf("%s\n", str);
+		printf("run_exe ret: %d\n", run_exe(str, NULL, env));
+		free(str);
+	}
+	else printf("str is null\n");
+	printf("testing ls, must work\n");
+	str = find_exe_path(env, "ls");
+	if (str) {
+		printf("%s\n", str);
+		printf("run_exe ret: %d\n", run_exe(str, NULL, env));
+		free(str);
+	}
+	else printf("str is null\n");
+	printf("testing /usr/bin/ls, must work\n");
+	str = find_exe_path(env, "/usr/bin/ls");
+	if (str) {
+		printf("%s\n", str);
+		printf("run_exe ret: %d\n", run_exe(str, NULL, env));
+		free(str);
+	}
+	else printf("str is null\n");
+	static char *test[] = {"cat", "test.txt", NULL};
+	static char *test2[] = {"cat", "test2.txt", NULL};
+	str = find_exe_path(env, "cat");
+	printf("run_exe ret: %d\n", run_exe(str, test, env));
+	printf("run_exe ret: %d\n", run_exe(str, test2, env));
+	free(str);
 	clear_env_struct(env);
 	rl_clear_history();
 	return (0);

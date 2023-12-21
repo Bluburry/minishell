@@ -22,7 +22,7 @@ int	num_invalid_env_vars(t_env *env)
 	return (n);
 }
 
-void	copy_char_to_env(char **mat, char **new_mat, int size)
+static void	copy_char_to_env(char **mat, char **new_mat, int size)
 {
 	int		i;
 	int		j;
@@ -51,7 +51,7 @@ char	**env_string(t_env *env)
 	char	**ret;
 
 	n = num_invalid_env_vars(env);
-	ret = (char **) malloc(sizeof(char*) * (env->size - n + 1));
+	ret = (char **) malloc(sizeof(char *) * (env->size - n + 1));
 	copy_char_to_env(env->vars, ret, env->size);
 	ret[env->size - n] = NULL;
 	return (ret);

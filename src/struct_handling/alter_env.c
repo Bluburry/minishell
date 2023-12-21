@@ -22,7 +22,7 @@ void	replace_env_var(t_env *env, const char *new, int i)
  * @param env structure
  * @param inc size to increment
 */
-void	resize_env_struct(t_env *env, int inc)
+static void	resize_env_struct(t_env *env, int inc)
 {
 	char	**old_vars;
 	int		i;
@@ -44,7 +44,7 @@ void	resize_env_struct(t_env *env, int inc)
  * @param env environment structure
  * @param new strings to add/alter
 */
-void	env_var_checkup(t_env *env, char **new)
+static void	env_var_checkup(t_env *env, char **new)
 {
 	int		i;
 	int		j;
@@ -79,7 +79,7 @@ void	env_var_checkup(t_env *env, char **new)
  * @return 1 if the string is valid, 0 otherwise, printing
  * a message displaying the incorrect string
  */
-int	check_valid_var(char *str)
+static int	check_valid_var(char *str)
 {
 	int	i;
 

@@ -9,7 +9,8 @@
  * @param send index to stop copying path
  * @return path string created
 */
-char	*create_exec_string(const char *path, const char *cmd, int start, int end)
+static char	*create_exec_string(const char *path, \
+	const char *cmd, int start, int end)
 {
 	char	*str;
 	size_t	s;
@@ -28,27 +29,29 @@ char	*create_exec_string(const char *path, const char *cmd, int start, int end)
  * @brief simple function that checks if a file exists and, if so, 
  * it it's an executable. Differs from check_path by requiring that 
  * struct stat has already been created and is passed as a parameter
- * @param bs struct stat to use in stat function
  * @param exec path to executable
  * @return 0 if it doesn't exist of is not an executable, 0 if executable
 */
-int	check_file_executable(struct stat *bs, char *exec)
+static int	check_file_executable(char *exec)
 {
-	if (stat(exec, bs) == -1 || !S_ISREG(bs->st_mode) || !(bs->st_mode & S_IXUSR))
+	struct stat	bs;
+
+	if (stat(exec, &bs) == -1 || !S_ISREG(bs.st_mode) || \
+		!(bs.st_mode & S_IXUSR))
 		return (0);
 	return (1);
 }
 
 /**
- * @brief checks the various paths in the PATH env var, appends cmd to the various paths, 
- * and uses the stat function to determine if it's a viable path, and then if it's an
- * executable file
+ * @brief checks the various paths in the PATH env var, 
+ * appends cmd to the various paths, and uses the 
+ * stat function to determine if it's a viable path, and 
+ * then if it's an executable file
  * @param path environmental variable of PATH
  * @param cmd executable to find
- * @param bs struct stat to use in the stat function
  * @return executable path, or NULL if it no path was found
 */
-char	*handle_exe_stats(const char *path, char *cmd, struct stat *bs)
+static char	*handle_exe_stats(const char *path, char *cmd)
 {
 	int		i;
 	int		j;
@@ -61,7 +64,7 @@ char	*handle_exe_stats(const char *path, char *cmd, struct stat *bs)
 		while (path[j] != 0 && path[j] != ':')
 			j++;
 		exec = create_exec_string(path, cmd, i, j);
-		if (!check_file_executable(bs, exec))
+		if (!check_file_executable(exec))
 		{
 			i = j;
 			if (path[j] != 0)
@@ -69,9 +72,9 @@ char	*handle_exe_stats(const char *path, char *cmd, struct stat *bs)
 			free(exec);
 			continue ;
 		}
-		return (free(bs), exec);
+		return (exec);
 	}
-	return (free(bs), NULL);
+	return (NULL);
 }
 
 /**
@@ -82,28 +85,21 @@ char	*handle_exe_stats(const char *path, char *cmd, struct stat *bs)
 */
 char	*find_exe_path(t_env *env, char *cmd)
 {
-	struct stat	*bs;
 	char		*str;
 	size_t		s;
 
 	if (cmd == NULL)
 		return (NULL);
 	str = NULL;
-	bs = (struct stat *) malloc(sizeof(struct stat));
 	if (*cmd == '/')
 	{
 		s = ft_strlen(cmd) + 1;
 		str = (char *) malloc (sizeof(char) * s);
 		ft_memcpy(str, cmd, s);
 	}
-	else if (*cmd == '.' || *cmd == '~')
+	else
 		str = relative_path(env, cmd);
-	if (!str)
-		return (handle_exe_stats(get_env_var(env, "PATH"), cmd, bs));
-	else if (!check_file_executable(bs, str))
-	{
-		free(str);
-		return (free(bs), NULL);
-	}
-	return (free(bs), str);
+	if (!check_file_executable(str))
+		return (free(str), handle_exe_stats(get_env_var(env, "PATH"), cmd));
+	return (str);
 }

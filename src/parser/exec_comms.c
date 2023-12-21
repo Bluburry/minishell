@@ -26,7 +26,7 @@ void	ft_export(t_env *env, char **arglist)
 }
 
 void	ft_env(t_env *env, char **arglist)
-{	
+{
 	char	**vars;
 	int		size;
 	int		i;
@@ -72,7 +72,7 @@ static void	execute(t_tok token, t_data *data)
 			ft_exit(token.arglist); */
 	}
 	else
-		run_exe(token.path, token.arglist);
+		run_exe(token.path, token.arglist, data->env);
 }
 
 bool	exec_comm_list(t_data *data)

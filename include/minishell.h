@@ -31,22 +31,17 @@ extern int	g_sig;
 
 
 void	waiting_for_input(t_env *env, t_data *data);
-void  	env(char **envp);
-void  	parser(char *input);
-void  	ft_echo(char **argv);
+void	env(char **envp);
+void	parser(char *input);
+void	ft_echo(char **argv);
 char	*pwd(void);
 int		run_exe(char *path, char **args, t_env *env);
 
 // ---change_directory---
 // change_directory/cd.c
 int		cd(t_env *env, const char *path);
-void	alter_paths(t_env *env, char *new_path, char *old_path);
-int		home_dir(t_env *env, const char *path);
-void	change_pwd(t_env *env, const char *path);
 
 // change_directory/relative_path.c
-char	*complex_path(char *pwd, const char *path, int i, int j);
-char	*calc_pwd(char *pwd, const char *path);
 char	*relative_path(t_env *env, const char *path);
 
 // ---data_structures/---
@@ -138,7 +133,6 @@ void  	concatenate_matrix(char *str, char **mat, int size);
 
 // struct_handling/alter_env.c
 int  	alter_env_var(t_env *env, char **new);
-void  	resize_env_struct(t_env *env, int inc);
 void  	replace_env_var(t_env *env, const char *new, int i);
 
 // struct_handling/clear_env.c
@@ -147,7 +141,6 @@ void  	clear_chars(char **str, int size);
 void	clear_env_struct(t_env *env);
 
 // struct_handling/find_env_var.c
-char	*str_after_char(char *str, char c);
 int		ft_strchrstr(const char *str, char c, const char *str_find);
 int		index_of_str(t_env *env, const char *str);
 char	*get_env_var(t_env *env, const char *str);
@@ -155,19 +148,14 @@ char	*get_env_var(t_env *env, const char *str);
 // struct_handling/print_env.c
 int		var_to_print(char *str);
 int		num_invalid_env_vars(t_env *env);
-void	copy_char_to_env(char **mat, char **new_mat, int size);
 char	**env_string(t_env *env);
 
 // struct_handling/print_export.c
-int		str_cmp(const char *str1, const char *str2);
-int		ordered_index(char **strs, int size, int prev);
-void	memcpy_export(char *dest, char *src, int n);
-void	copy_char_matrix_ordered(char **mat, char **new_mat, int size);
 char	**export_string(t_env *env);
 
 // struct_handling/start_env_vars.c
 void  	copy_char_matrix(char **mat, char **new_mat, int size);
-int		get_env_start_size(char **envp);
+int		get_env_size(char **envp);
 t_env	*create_env_struct(char **envp);
 
 // ---utils/---
@@ -190,9 +178,6 @@ bool	is_metachar(char c);
 bool	is_name(char *str);
 
 // utils/find_exe.c
-char	*create_exec_string(const char *path, const char *cmd, int start, int end);
-int		check_file_executable(struct stat *bs, char *exec);
-char	*handle_exe_stats(const char *path, char *cmd, struct stat *bs);
 char	*find_exe_path(t_env *env, char *cmd);
 
 #endif
