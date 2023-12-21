@@ -83,13 +83,11 @@ bool	exec_comm_list(t_data *data)
 	i = 0;
 	while (i < data->cmds->size)
 	{
-		/* 	if (data->cmds->tks[0].type == exit_b)
-			data->is_exiting = true; */
 		if (data->cmds->tks[i].type == none)
 			return (false);
-		if (data->cmds->tks[i].type == exec)
+		else if (data->cmds->tks[i].type == exec)
 			execute(data->cmds->tks[i], data);
-		if (data->cmds->tks[i].type == r_pipe)
+		else if (data->cmds->tks[i].type == r_pipe)
 			exec_pipe(data);
 		i++;
 	}
