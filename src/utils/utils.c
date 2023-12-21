@@ -7,20 +7,19 @@
  */
 int	check_path(char *path)
 {
-	struct stat	*bs;
+	struct stat	bs;
 	int			ret;
 
-	bs = (struct stat *) malloc(sizeof(struct stat));
-	if (stat(path, bs) == -1)
+	if (stat(path, &bs) == -1)
 	{
 		printf("Invalid directory.\n");
 		ret = -1;
-	} 
+	}
 	else
 		ret = 0;
-	if (ret != -1 && S_ISREG(bs->st_mode))
+	if (ret != -1 && S_ISREG(bs.st_mode))
 		ret = 1;
-	return (free(bs), ret);
+	return (ret);
 }
 
 bool	is_metachar(char c)

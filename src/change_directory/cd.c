@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	alter_paths(t_env *env, char *new_path, char *old_path)
+static void	alter_paths(t_env *env, char *new_path, char *old_path)
 {
 	int	i;
 
@@ -18,7 +18,7 @@ void	alter_paths(t_env *env, char *new_path, char *old_path)
  * @param env environmental variable structure
  * @param path path string to cd into
 */
-void	change_pwd(t_env *env, const char *path)
+static void	change_pwd(t_env *env, const char *path)
 {
 	char	*new_path;
 	char	*old_path;
@@ -49,7 +49,7 @@ void	change_pwd(t_env *env, const char *path)
  * @return returns 0 on error, else it returns 
  * whatever the return from the recursive cd call was
 */
-int	home_dir(t_env *env, const char *path)
+static int	home_dir(t_env *env, const char *path)
 {
 	char	*str;
 	int		ret;

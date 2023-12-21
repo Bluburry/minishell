@@ -81,7 +81,7 @@ static void	execute(t_tok token, t_data *data)
 			ft_exit(token.arglist); */
 	}
 	else
-		find_exe(token, data);
+		run_exe(token.path, token.arglist, data->env);
 }
 
 bool	exec_comm_list(t_data *data)
