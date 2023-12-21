@@ -59,17 +59,19 @@ static char	*check_if_path(char *str)
 }
 
 // insert_name_args(cmds, &list[i], n)
-bool	insert_name_args(t_cmda *c, char **l, uint32_t n) // needs to handle the case where there are no args to add
-{// when you only have redirs, like in > out | > out
+bool	insert_name_args(t_cmda *c, char **l, uint32_t n)
+{
 	int32_t		i;
 	uint32_t	j;
 	bool		path_added;
 
 	i = -1;
-	j = 0;
 	path_added = false;
-	printf("Count Args: %d\n", count_args(l, n));
-	c->tks[c->size].arglist = malloc(sizeof(char *) * (count_args(l, n) + 1)); // need to see if it`s allocating the right size
+	j = count_args(l, n);
+	if (j == 0)
+		return (true);
+	c->tks[c->size].arglist = malloc(sizeof(char *) * (j + 1)); // need to see if it`s allocating the right size
+	j = 0;
 	if (c->tks[c->size].arglist == NULL)
 		return (false);
 	while (++i < (int32_t)n)
