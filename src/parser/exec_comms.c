@@ -2,6 +2,8 @@
 #include "minishell.h"
 #include "structures.h"
 #include <curses.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 void	too_many_args(char *str)
 {
@@ -26,7 +28,7 @@ void	ft_export(t_env *env, char **arglist)
 }
 
 void	ft_env(t_env *env, char **arglist)
-{	
+{
 	char	**vars;
 	int		size;
 	int		i;
@@ -50,6 +52,12 @@ void	ft_pwd(void)
 	free(str);
 }
 
+void	ft_test()
+{
+	while (1)
+		continue ;
+}
+
 static void	execute(t_tok token, t_data *data)
 {
 	if (!ft_strncmp(token.path, "echo", 5))
@@ -62,7 +70,8 @@ static void	execute(t_tok token, t_data *data)
 		unset_env_var(data->env, token.arglist);
 	else if (!ft_strncmp(token.path, "export", 8))
 		ft_export(data->env, token.arglist);
-	else if (!ft_strncmp(token.path, "cd", 3) || !ft_strncmp(token.path, "exit", 5)) // adicionar exit aqui
+	else if (!ft_strncmp(token.path, "cd", 3)
+		|| !ft_strncmp(token.path, "exit", 5))
 	{
 		if (list_len(token.arglist) > 2)
 			too_many_args(token.arglist[0]);
@@ -72,18 +81,26 @@ static void	execute(t_tok token, t_data *data)
 			ft_exit(token.arglist); */
 	}
 	else
-		run_exe(token.path, token.arglist);
+		find_exe(token, data);
 }
 
 bool	exec_comm_list(t_data *data)
 {
+	int	i;
+
 	if (data->cmds == NULL)
 		return (false);
-/* 	if (data->cmds->tks[0].type == exit_b)
-		data->is_exiting = true; */
-	if (data->cmds->tks[0].type == none)
-		return (false);
-	if (data->cmds->tks[0].type == exec)
-		execute(data->cmds->tks[0], data);
+	i = -1;
+	while (++i < (int)data->cmds->size)
+	{
+	/* 	if (data->cmds->tks[i].type == exit_b)
+			data->is_exiting = true; */
+		if (data->cmds->tks[i].type == none)
+			return (false);
+		if (data->cmds->tks[i].type == exec)
+			execute(data->cmds->tks[0], data);
+/* 		if (data->cmds->tks[i].type == r_pipe)
+			exec_pipe(data); */
+	}
 	return (true);
 }
