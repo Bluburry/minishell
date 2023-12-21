@@ -43,7 +43,7 @@ bool	exec_pipe(t_data *d)
 {
 	if (d->curr_pipe == 0)
 		d->pipe_state = p_first;
-	else if (d->curr_pipe == d->pipe_n - 1)
+	else if (d->curr_pipe == d->pipe_n)
 		d->pipe_state = p_last;
 	else
 		d->pipe_state = p_middle;
