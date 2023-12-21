@@ -100,13 +100,13 @@ bool	create_comm_list(t_data *d)
 	st = 0;
 	while (n != -1)
 	{
-		if (comm_list_helper(d, n, st, true) == false)
+		if (comm_list_helper(d, n, st, d->pipe_n) == false)
 			return (false);
 		st += n + 1;
 		n = find_strn_to_pipe(&d->strlist[st]);
 	}
 	n = list_len(d->strlist) - st;
-	if (comm_list_helper(d, n, st, false) == false)
+	if (comm_list_helper(d, n, st, d->pipe_n) == false)
 		return (false);
 	return (true);
 }
