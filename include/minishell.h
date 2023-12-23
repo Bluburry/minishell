@@ -36,7 +36,7 @@ void	parser(char *input);
 void	ft_echo(char **argv);
 char	*pwd(void);
 void	find_exe(t_tok token, t_data *data);
-int		run_exe(char *path, char **args);
+int		run_exe(char *path, char **args, t_env *env);
 
 // ---change_directory---
 // change_directory/cd.c
