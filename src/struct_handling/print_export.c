@@ -1,23 +1,23 @@
 #include "minishell.h"
 
-int	str_cmp(const char *str1, const char *str2)
+static int	str_cmp(const char *str1, const char *str2)
 {
 	while (*str1 && *str2)
 	{
 		if (*str1 != *str2)
-			return ((int) (*str1 - *str2));
+			return ((int)(*str1 - *str2));
 		str1++;
 		str2++;
 	}
 	if (!*str1 && !*str2)
 		return (0);
 	else if (!*str1)
-		return ((int) (*str2) * -1);
+		return ((int)(*str2 * -1));
 	else
-		return ((int) (*str1));
+		return ((int)(*str1));
 }
 
-int	ordered_index(char **strs, int size, int prev)
+static int	ordered_index(char **strs, int size, int prev)
 {
 	int		index;
 	int		i;
@@ -37,7 +37,7 @@ int	ordered_index(char **strs, int size, int prev)
 	return (index);
 }
 
-void	memcpy_export(char *dest, char *src, int n)
+static void	memcpy_export(char *dest, char *src, int n)
 {
 	int	i;
 	int	j;
@@ -64,7 +64,7 @@ void	memcpy_export(char *dest, char *src, int n)
 		dest[j] = '\0';
 }
 
-void	copy_char_matrix_ordered(char **mat, char **new_mat, int size)
+static void	copy_char_matrix_ordered(char **mat, char **new_mat, int size)
 {
 	int		i;
 	int		j;

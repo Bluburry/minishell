@@ -10,7 +10,7 @@
  * @param j index to start copying new path
  * @return new path
 */
-char	*complex_path(char *pwd, const char *path, int i, int j)
+static char	*complex_path(char *pwd, const char *path, int i, int j)
 {
 	int		s;
 	char	*str;
@@ -42,7 +42,7 @@ char	*complex_path(char *pwd, const char *path, int i, int j)
  * @param path new string to append to old
  * @return new path string
 */
-char	*calc_pwd(char *pwd, const char *path)
+static char	*calc_pwd(char *pwd, const char *path)
 {
 	int	i;
 	int	j;
@@ -97,6 +97,5 @@ char	*relative_path(t_env *env, const char *path)
 		new_path = ft_strjoin(str, path + 2);
 	else
 		new_path = ft_strjoin(str, path);
-	free(str);
-	return (free(path_old), new_path);
+	return (free(path_old), free(str), new_path);
 }

@@ -2,10 +2,10 @@
 
 /**
  * @brief counts how many environmental variables there are
- * @param envp char** argument passed to main
+ * @param env char** that contain environment variables
  * @return number of environmental variables
 */
-int	get_env_start_size(char **envp)
+int	get_env_size(char **envp)
 {
 	int	size;
 
@@ -53,7 +53,7 @@ t_env	*create_env_struct(char **envp)
 	int		i;
 
 	env = (t_env *) malloc(sizeof(t_env));
-	env->size = get_env_start_size(envp);
+	env->size = get_env_size(envp);
 	env->capacity = env->size + 20;
 	env->vars = (char **) malloc(sizeof(char *) * env->capacity);
 	copy_char_matrix(envp, env->vars, env->size);

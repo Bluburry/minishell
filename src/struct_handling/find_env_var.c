@@ -7,7 +7,7 @@
  * @param c char to find
  * @return string after char c
 */
-char	*str_after_char(char *str, char c)
+static char	*str_after_char(char *str, char c)
 {
 	while (*str && *str != c)
 		str++;
