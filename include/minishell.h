@@ -158,14 +158,17 @@ t_env	*create_env_struct(char **envp);
 // utils/echo.c
 void	ft_echo(char **argv);
 
+// utils/find_exe.c
+char	*find_exe_path(t_env *env, char *cmd);
+
 // utils/env.c
 void	env(char **envp);
 
 // utils/pwd.c
 char	*pwd(void);
 
-// utils/pwd.c
-int		run_exe(char *path, char **args);
+// utils/run_exe.c
+int		run_exe(char *path, char **args, t_env *env);
 
 // utils/signal_handler.c
 void	set_signals_base(void);
@@ -176,8 +179,5 @@ int		check_path(char *path);
 bool	is_metachar(char c);
 bool	is_name(char *str);
 char	*remc(char *str);
-
-// utils/find_exe.c
-char	*find_exe_path(t_env *env, char *cmd);
 
 #endif

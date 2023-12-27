@@ -5,36 +5,35 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-		"type": "cppdbg",
-		"request": "launch",
-		"name": "test 42",
-		"program": "/usr/bin/valgrind",
-		"args": ["/nfs/homes/remarque/minishell/minishell"],
-		"cwd": "/nfs/homes/remarque/minishell",
+			"type": "cppdbg",
+			"request": "launch",
+			"name": "minishell",
+			"program": "/home/ren/minishell/minishell",
+			"args": [],
+			"cwd": "/home/ren/minishell",
 		},
 		{
 			"type": "cppdbg",
 			"request": "launch",
-			"name": "test 42 sanitize",
-			"program": "/nfs/homes/remarque/minishell/minishell",
+			"name": "follow child",
+			"program": "/home/ren/minishell/minishell",
 			"args": [],
-			"cwd": "/nfs/homes/remarque/minishell",
-		},
-		{
-			"type": "cppdbg",
-			"request": "launch",
-			"name": "test home",
-			"program": "/nfs/homes/remarque/minishell/minishell",
-			"args": [],
-			"cwd": "/nfs/homes/remarque/minishell",
-		},
-		{
-			"type": "cppdbg",
-			"request": "launch",
-			"name": "function test home",
-			"program": "/nfs/homes/remarque/minishell/src/parsing/a.out",
-			"args": [],
-			"cwd": "/nfs/homes/remarque/minishell/src/parsing",
-		},
+			"cwd": "/home/ren/minishell",
+			"setupCommands": [
+				{
+					"description": "Enable funcy printing to gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				},
+				{   "description":"In this mode GDB will be attached to both processes after a call to fork() or vfork().",
+					"text": "-gdb-set detach-on-fork off",
+					"ignoreFailures": true
+				},
+				{   "description": "The new process is debugged after a fork. The parent process runs unimpeded.",
+					"text": "-gdb-set follow-fork-mode child",
+					"ignoreFailures": true
+				}
+			]
+		}
 	]
 }

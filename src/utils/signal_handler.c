@@ -39,8 +39,8 @@ void	set_signals_base(void)
 {
 	struct sigaction sa;
 
-	sa.sa_flags = SA_SIGINFO;
-	sa.sa_sigaction = sig_handler_interrupt;
+	sa = (struct sigaction){.sa_flags = SA_SIGINFO,
+		.sa_sigaction = sig_handler_interrupt};
 	sigaction(SIGINT, &sa, NULL);
 	signal(SIGQUIT, SIG_IGN);
 }

@@ -82,27 +82,25 @@ static void	execute(t_tok token, t_data *data)
 bool	exec_comm_list(t_data *data)
 {
 	int		i;
-	pid_t	pid;
-	int		status;
+	//pid_t	pid;
+	//int		status;
 
 	if (data->cmds == NULL)
 		return (false);
 	i = -1;
-	pid = fork();
-	if (pid == 0)
-	{
+	//pid = fork();
+	//if (pid == 0)
+	//{
 		while (++i < (int)data->cmds->size)
 		{
-		/* 	if (data->cmds->tks[i].type == exit_b)
-				data->is_exiting = true; */
 			if (data->cmds->tks[i].type == none)
 				return (false);
-			if (data->cmds->tks[i].type == exec)
-				execute(data->cmds->tks[0], data);
-	 		if (data->cmds->tks[i].type == r_pipe)
+			else if (data->cmds->tks[i].type == exec)
+				execute(data->cmds->tks[i], data);
+			else if (data->cmds->tks[i].type == r_pipe)
 				exec_pipe(data);
 		}
-	}
-	waitpid(pid, &status, 0);
+	//}
+	//waitpid(pid, &status, 0);
 	return (true);
 }

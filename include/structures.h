@@ -76,7 +76,6 @@ typedef struct s_data
 	bool		is_exiting;
 	t_cmda		*cmds;
 	char		**strlist;
-	char		*path;
 	char		**envp;
 	t_env		*env;
 	uint32_t	pipe_n;

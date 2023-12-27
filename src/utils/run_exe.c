@@ -1,5 +1,4 @@
 #include "minishell.h"
-#include <bits/types/siginfo_t.h>
 
 void	find_exe(t_tok token, t_data *data)
 {

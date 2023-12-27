@@ -1,0 +1,141 @@
+Kill the program being debugged? (y or n) [answered Y; input not from terminal]
+[Inferior 1 (process 39884) killed]
+The program '/home/ren/minishell/minishell' has exited with code 0 (0x00000000).
+=thread-group-added,id="i1"
+GNU gdb (Ubuntu 12.1-0ubuntu1~22.04) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+Warning: Debuggee TargetArchitecture not detected, assuming x86_64.
+=cmd-param-changed,param="pagination",value="off"
+Stopped due to shared library event (no libraries added or removed)
+Loaded '/lib64/ld-linux-x86-64.so.2'. Symbols loaded.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffdc48, envp=0x7fffffffdc58) at src/minishell.c:115
+115	{
+Loaded '/lib/x86_64-linux-gnu/libreadline.so.8'. Symbols loaded.
+Loaded '/lib/x86_64-linux-gnu/libc.so.6'. Symbols loaded.
+Loaded '/lib/x86_64-linux-gnu/libtinfo.so.6'. Symbols loaded.
+
+Breakpoint 2, exec_comm_list (data=0x7fffffffdad0) at src/parser/exec_comms.c:88
+88		if (data->cmds == NULL)
+Execute debugger commands using "-exec <command>", for example "-exec info registers" will list registers in use (when GDB is the debugger)
+-exec info proc
+process 40098
+cmdline = '/home/ren/minishell/minishell'
+cwd = '/home/ren/minishell'
+exe = '/home/ren/minishell/minishell'
+-exec shell ls -l /proc/40098/fd
+total 0
+lrwx------ 1 ren ren 64 Dec 27 23:41 0 -> /dev/pts/6
+lrwx------ 1 ren ren 64 Dec 27 23:41 1 -> /dev/pts/6
+lr-x------ 1 ren ren 64 Dec 27 23:41 103 -> /usr/share/code/v8_context_snapshot.bin
+lrwx------ 1 ren ren 64 Dec 27 23:41 2 -> /dev/pts/6
+lrwx------ 1 ren ren 64 Dec 27 23:41 3 -> /dev/pts/6
+l-wx------ 1 ren ren 64 Dec 27 23:41 37 -> /home/ren/.config/Code/logs/20231227T135318/ptyhost.log
+lr-x------ 1 ren ren 64 Dec 27 23:41 38 -> /usr/share/code/resources/app/node_modules.asar
+lrwx------ 1 ren ren 64 Dec 27 23:41 39 -> /dev/ptmx
+lrwx------ 1 ren ren 64 Dec 27 23:41 4 -> /dev/pts/6
+-exec shell lsof -p 40098
+COMMAND     PID USER   FD   TYPE DEVICE SIZE/OFF    NODE NAME
+minishell 40098  ren  cwd    DIR  259,9     4096 1573424 /home/ren/minishell
+minishell 40098  ren  rtd    DIR  259,9     4096       2 /
+minishell 40098  ren  txt    REG  259,9   131592 1618937 /home/ren/minishell/minishell
+minishell 40098  ren  mem    REG  259,9  5716576  919023 /usr/lib/locale/locale-archive
+minishell 40098  ren  mem    REG  259,9  2216304  917874 /usr/lib/x86_64-linux-gnu/libc.so.6
+minishell 40098  ren  mem    REG  259,9   200136  920546 /usr/lib/x86_64-linux-gnu/libtinfo.so.6.3
+minishell 40098  ren  mem    REG  259,9   335936  943513 /usr/lib/x86_64-linux-gnu/libreadline.so.8.1
+minishell 40098  ren  mem    REG  259,9    27002  933815 /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+minishell 40098  ren  mem    REG  259,9   240936  917867 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+minishell 40098  ren    0u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    1u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    2u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    3u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    4u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren   37w   REG  259,9        0 1840126 /home/ren/.config/Code/logs/20231227T135318/ptyhost.log
+minishell 40098  ren   38r   REG  259,9 12249786  960554 /usr/share/code/resources/app/node_modules.asar
+minishell 40098  ren   39u   CHR    5,2      0t0      89 /dev/ptmx
+minishell 40098  ren  103r   REG  259,9   578186  960715 /usr/share/code/v8_context_snapshot.bin
+-exec shell ls -l /proc/40098/fd
+total 0
+lrwx------ 1 ren ren 64 Dec 27 23:41 0 -> /dev/pts/6
+l-wx------ 1 ren ren 64 Dec 27 23:41 1 -> pipe:[188474]
+lr-x------ 1 ren ren 64 Dec 27 23:41 103 -> /usr/share/code/v8_context_snapshot.bin
+lrwx------ 1 ren ren 64 Dec 27 23:41 2 -> /dev/pts/6
+lrwx------ 1 ren ren 64 Dec 27 23:41 3 -> /dev/pts/6
+l-wx------ 1 ren ren 64 Dec 27 23:41 37 -> /home/ren/.config/Code/logs/20231227T135318/ptyhost.log
+lr-x------ 1 ren ren 64 Dec 27 23:41 38 -> /usr/share/code/resources/app/node_modules.asar
+lrwx------ 1 ren ren 64 Dec 27 23:41 39 -> /dev/ptmx
+lrwx------ 1 ren ren 64 Dec 27 23:41 4 -> /dev/pts/6
+lr-x------ 1 ren ren 64 Dec 27 23:41 5 -> pipe:[188474]
+l-wx------ 1 ren ren 64 Dec 27 23:41 6 -> pipe:[188474]
+-exec shell lsof -p 40098
+COMMAND     PID USER   FD   TYPE DEVICE SIZE/OFF    NODE NAME
+minishell 40098  ren  cwd    DIR  259,9     4096 1573424 /home/ren/minishell
+minishell 40098  ren  rtd    DIR  259,9     4096       2 /
+minishell 40098  ren  txt    REG  259,9   131592 1618937 /home/ren/minishell/minishell
+minishell 40098  ren  mem    REG  259,9  5716576  919023 /usr/lib/locale/locale-archive
+minishell 40098  ren  mem    REG  259,9  2216304  917874 /usr/lib/x86_64-linux-gnu/libc.so.6
+minishell 40098  ren  mem    REG  259,9   200136  920546 /usr/lib/x86_64-linux-gnu/libtinfo.so.6.3
+minishell 40098  ren  mem    REG  259,9   335936  943513 /usr/lib/x86_64-linux-gnu/libreadline.so.8.1
+minishell 40098  ren  mem    REG  259,9    27002  933815 /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+minishell 40098  ren  mem    REG  259,9   240936  917867 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+minishell 40098  ren    0u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    1w  FIFO   0,13      0t0  188474 pipe
+minishell 40098  ren    2u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    3u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    4u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    5r  FIFO   0,13      0t0  188474 pipe
+minishell 40098  ren    6w  FIFO   0,13      0t0  188474 pipe
+minishell 40098  ren   37w   REG  259,9        0 1840126 /home/ren/.config/Code/logs/20231227T135318/ptyhost.log
+minishell 40098  ren   38r   REG  259,9 12249786  960554 /usr/share/code/resources/app/node_modules.asar
+minishell 40098  ren   39u   CHR    5,2      0t0      89 /dev/ptmx
+minishell 40098  ren  103r   REG  259,9   578186  960715 /usr/share/code/v8_context_snapshot.bin
+-exec shell ls -l /proc/40098/fd
+total 0
+lr-x------ 1 ren ren 64 Dec 27 23:41 0 -> pipe:[188474]
+lrwx------ 1 ren ren 64 Dec 27 23:41 1 -> /dev/pts/6
+lr-x------ 1 ren ren 64 Dec 27 23:41 103 -> /usr/share/code/v8_context_snapshot.bin
+lrwx------ 1 ren ren 64 Dec 27 23:41 2 -> /dev/pts/6
+lrwx------ 1 ren ren 64 Dec 27 23:41 3 -> /dev/pts/6
+l-wx------ 1 ren ren 64 Dec 27 23:41 37 -> /home/ren/.config/Code/logs/20231227T135318/ptyhost.log
+lr-x------ 1 ren ren 64 Dec 27 23:41 38 -> /usr/share/code/resources/app/node_modules.asar
+lrwx------ 1 ren ren 64 Dec 27 23:41 39 -> /dev/ptmx
+lrwx------ 1 ren ren 64 Dec 27 23:41 4 -> /dev/pts/6
+lr-x------ 1 ren ren 64 Dec 27 23:41 5 -> pipe:[188474]
+l-wx------ 1 ren ren 64 Dec 27 23:41 6 -> pipe:[188474]
+-exec shell lsof -p 40098
+COMMAND     PID USER   FD   TYPE DEVICE SIZE/OFF    NODE NAME
+minishell 40098  ren  cwd    DIR  259,9     4096 1573424 /home/ren/minishell
+minishell 40098  ren  rtd    DIR  259,9     4096       2 /
+minishell 40098  ren  txt    REG  259,9   131592 1618937 /home/ren/minishell/minishell
+minishell 40098  ren  mem    REG  259,9  5716576  919023 /usr/lib/locale/locale-archive
+minishell 40098  ren  mem    REG  259,9  2216304  917874 /usr/lib/x86_64-linux-gnu/libc.so.6
+minishell 40098  ren  mem    REG  259,9   200136  920546 /usr/lib/x86_64-linux-gnu/libtinfo.so.6.3
+minishell 40098  ren  mem    REG  259,9   335936  943513 /usr/lib/x86_64-linux-gnu/libreadline.so.8.1
+minishell 40098  ren  mem    REG  259,9    27002  933815 /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+minishell 40098  ren  mem    REG  259,9   240936  917867 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+minishell 40098  ren    0r  FIFO   0,13      0t0  188474 pipe
+minishell 40098  ren    1u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    2u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    3u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    4u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    5r  FIFO   0,13      0t0  188474 pipe
+minishell 40098  ren    6w  FIFO   0,13      0t0  188474 pipe
+minishell 40098  ren   37w   REG  259,9        0 1840126 /home/ren/.config/Code/logs/20231227T135318/ptyhost.log
+minishell 40098  ren   38r   REG  259,9 12249786  960554 /usr/share/code/resources/app/node_modules.asar
+minishell 40098  ren   39u   CHR    5,2      0t0      89 /dev/ptmx
+minishell 40098  ren  103r   REG  259,9   578186  960715 /usr/share/code/v8_context_snapshot.bin
