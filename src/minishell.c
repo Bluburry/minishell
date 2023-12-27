@@ -121,7 +121,7 @@ int	main(int argc, char **argv, char **envp)
 		return (ft_putstr_fd("Algo de errado nao esta certo\n", 2), 1);
 	g_sig = 0;
 	//ioctl(STDIN_FILENO, CTRL_D, ...);
-	init_signals();
+	set_signals_base();
 	env = create_env_struct(envp);
 	data = (t_data){-1, .envp = envp, env, .stdin = dup(0), dup(1)};
 	waiting_for_input(env, &data);

@@ -1,9 +1,4 @@
-#include "libft.h"
 #include "minishell.h"
-#include "structures.h"
-#include <curses.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 
 void	too_many_args(char *str)
 {
@@ -86,21 +81,28 @@ static void	execute(t_tok token, t_data *data)
 
 bool	exec_comm_list(t_data *data)
 {
-	int	i;
+	int		i;
+	pid_t	pid;
+	int		status;
 
 	if (data->cmds == NULL)
 		return (false);
 	i = -1;
-	while (++i < (int)data->cmds->size)
+	pid = fork();
+	if (pid == 0)
 	{
-	/* 	if (data->cmds->tks[i].type == exit_b)
-			data->is_exiting = true; */
-		if (data->cmds->tks[i].type == none)
-			return (false);
-		if (data->cmds->tks[i].type == exec)
-			execute(data->cmds->tks[0], data);
-		if (data->cmds->tks[i].type == r_pipe)
-			exec_pipe(data);
+		while (++i < (int)data->cmds->size)
+		{
+		/* 	if (data->cmds->tks[i].type == exit_b)
+				data->is_exiting = true; */
+			if (data->cmds->tks[i].type == none)
+				return (false);
+			if (data->cmds->tks[i].type == exec)
+				execute(data->cmds->tks[0], data);
+	 		if (data->cmds->tks[i].type == r_pipe)
+				exec_pipe(data);
+		}
 	}
+	waitpid(pid, &status, 0);
 	return (true);
 }

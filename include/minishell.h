@@ -47,10 +47,11 @@ char	**expand_var_tokens(char **input, t_env *env);
 
 // lexer/lexer_utils.c
 //Signal functions
-void	sig_handler(int sig, siginfo_t *info, void *ucontent);
-void	init_signals(void);
+void	sig_handler_interrupt(int sig, siginfo_t *info, void *ucontext);
+void	sig_handler_fork(int sig);
+void	set_signals_base(void);
+void	set_signals_fork(void);
 void	init_child_signals(void);
-void	sig_handler_child(int sig, siginfo_t *info, void *ucontent);
 
 //Lexer functions
 // lexer/lexer.c
@@ -101,7 +102,7 @@ char	*var_to_value(char *str, t_env *env);
 // ---parser/---
 // parser/create_comms.c
 uint32_t	list_len(char **list);
-bool		create_comm_list(t_data *data);
+bool	create_comm_list(t_data *data);
 
 //parser/exec_comms.c
 bool	exec_comm_list(t_data *data);
@@ -114,6 +115,12 @@ bool	insert_redirs(t_cmda *cmds, char **list, uint32_t n);
 
 // parser/pipe.c
 bool	exec_pipe(t_data *d);
+
+// ---redirect/---
+//redirect/redirection.c
+int		redir_appd(char *path);
+int		redir_trunc(char *path);
+int		redir_in(char *path);
 
 // ---struct_handling/---
 //Environment variables functions
@@ -161,8 +168,8 @@ char	*pwd(void);
 int		run_exe(char *path, char **args);
 
 // utils/signal_handler.c
-void	init_signals(void);
-void	sig_handler(int sig, siginfo_t *info, void *ucontent);
+void	set_signals_base(void);
+void	sig_handler_interrupt(int sig, siginfo_t *info, void *ucontext);
 
 // utils/utils.c
 int		check_path(char *path);
