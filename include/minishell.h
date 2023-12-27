@@ -61,11 +61,11 @@ char	**expand_var_tokens(char **input, t_env *env);
 
 // lexer/lexer_utils.c
 //Signal functions
-void	sig_handler(int sig, siginfo_t *info, void *ucontent);
-void	init_signals(void);
+void	sig_handler_interrupt(int sig, siginfo_t *info, void *ucontext);
+void	sig_handler_fork(int sig);
+void	set_signals_base(void);
+void	set_signals_fork(void);
 void	init_child_signals(void);
-void	sig_handler_child(int sig, siginfo_t *info, void *ucontent);
-
 
 //Lexer functions
 // lexer/lexer.c
@@ -176,8 +176,8 @@ void	env(char **envp);
 char	*pwd(void);
 
 // utils/signal_handler.c
-void	init_signals(void);
-void	sig_handler(int sig, siginfo_t *info, void *ucontent);
+void	set_signals_base(void);
+void	sig_handler_interrupt(int sig, siginfo_t *info, void *ucontext);
 
 // utils/utils.c
 int		check_path(char *path);
