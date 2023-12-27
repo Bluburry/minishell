@@ -116,7 +116,7 @@ char	*var_to_value(char *str, t_env *env);
 // ---parser/---
 // parser/create_comms.c
 uint32_t	list_len(char **list);
-bool		create_comm_list(t_data *data);
+bool	create_comm_list(t_data *data);
 
 //parser/exec_comms.c
 bool	exec_comm_list(t_data *data);
@@ -126,6 +126,12 @@ bool	insert_name_args(t_cmda *cmds, char **list, uint32_t n);
 
 // parser/insert_redirs.c
 bool	insert_redirs(t_cmda *cmds, char **list, uint32_t n);
+
+// ---redirect/---
+//redirect/redirection.c
+int		redir_appd(char *path);
+int		redir_trunc(char *path);
+int		redir_in(char *path);
 
 // ---struct_handling/---
 //Environment variables functions
