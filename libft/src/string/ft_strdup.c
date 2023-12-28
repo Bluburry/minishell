@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque <remarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: remarque < remarque@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 18:52:20 by remarque          #+#    #+#             */
-/*   Updated: 2023/04/17 19:53:26 by remarque         ###   ########.fr       */
+/*   Updated: 2023/12/28 15:53:49 by remarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static char	*ft_strcpy(char *dest, const char *src)
 	size_t	i;
 
 	i = 0;
+	if (dest == NULL || src == NULL)
+		return (NULL);
 	while (src[i] != '\0')
 	{
 		dest[i] = src[i];

@@ -59,7 +59,7 @@ static char	*check_if_path(char *str)
 }
 
 // insert_name_args(cmds, &list[i], n)
-bool	insert_name_args(t_cmda *c, char **l, uint32_t n)
+bool	insert_name_args(t_cmda *c, char **l, uint32_t n, t_env *env)
 {
 	int32_t		i;
 	uint32_t	j;
@@ -82,12 +82,14 @@ bool	insert_name_args(t_cmda *c, char **l, uint32_t n)
 		else if (path_added == false)
 		{
 			path_added = true;
-			c->tks[c->size].path = ft_strdup(remc(l[i]));
+			c->tks[c->size].path = ft_strdup(find_exe_path(env, remc(l[i])));
+			if (c->tks[c->size].path == NULL)
+				return(printf("%s is not a valid executable\n", check_if_path((remc(l[i])))), false);
 			c->tks[c->size].arglist[j++] = check_if_path((remc(l[i]))); // needs to check when check_if_path returns NULL
 		}
 		else
 			c->tks[c->size].arglist[j++] = ft_strdup(remc(l[i]));
 	}
 	c->tks[c->size++].arglist[j] = NULL;
-	return (c->tks[c->size - 1].type = exec, true);
+	return (c->tks[c->size - 1].type = exec, true); //true if no errors   c->tks[c->size - 1].path != NULL
 }
