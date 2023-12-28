@@ -42,7 +42,7 @@ OBJS 	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS)))
 
 OBJ_FILES	=	.cache_exists
 
-all:	$(NAME)
+all:	$(NAME) sup_file
 
 $(NAME):	compile
 	@echo "$(GREEN)Minishell compiled!$(DEF_COLOR)"
@@ -72,12 +72,14 @@ fclean:	clean
 	@echo "$(CYAN)Minishell file cleaned!$(DEF_COLOR)"
 	@$(RM) libft.a
 	@echo "$(CYAN)Root libft library file cleaned!$(DEF_COLOR)"
+	@$(RM) sup
+	@echo "$(CYAN)Valgrind suppression file for readline cleaned!$(DEF_COLOR)"
 
 re:	fclean all
 	@echo "$(GREEN)Cleaned and rebuilt everything for Minishell!$(DEF_COLOR)"
 
 debug:	override CFLAGS := -fsanitize=address -static-libsan $(CFLAGS)
-debug:	compile
+debug:	compile sup_file
 	@echo "$(GREEN)Minishell compiled in debug mode!$(DEF_COLOR)"
 # if stack traces look weird, add -fno-omit-frame-pointer -O1
 # statically link with libasan with -static-libasan
@@ -92,5 +94,31 @@ leaks: ./minishell
 #	$(CC) -nostartfiles -fPIC $(CFLAGS) $(INCLUDE) $(SRCS)
 #	gcc -nostartfiles -shared -o libft.so $(OBJS)
 
-.PHONY:	all clean fclean re debug rebug compile leaks
+.PHONY:	all clean fclean re debug rebug compile leaks sup_file
 
+define SUP_BODY
+{
+   name
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   obj:*/libreadline.so.*
+   ...
+}
+{
+    leak readline
+    Memcheck:Leak
+    ...
+    fun:readline
+}
+{
+    leak add_history
+    Memcheck:Leak
+    ...
+    fun:add_history
+}
+endef
+
+sup_file:
+	$(file > sup,$(SUP_BODY))
+	@echo "$(MAGENTA)Created suppression file to use with valgrind --supressions=sup$(DEF_COLOR)"
