@@ -139,3 +139,26 @@ minishell 40098  ren   37w   REG  259,9        0 1840126 /home/ren/.config/Code/
 minishell 40098  ren   38r   REG  259,9 12249786  960554 /usr/share/code/resources/app/node_modules.asar
 minishell 40098  ren   39u   CHR    5,2      0t0      89 /dev/ptmx
 minishell 40098  ren  103r   REG  259,9   578186  960715 /usr/share/code/v8_context_snapshot.bin
+
+--before--
+minishell 40098  ren    0u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    1u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    2u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    3u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    4u   CHR  136,6      0t0       9 /dev/pts/6
+--first pipe--
+minishell 40098  ren    0u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    1w  FIFO   0,13      0t0  188474 pipe
+minishell 40098  ren    2u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    3u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    4u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    5r  FIFO   0,13      0t0  188474 pipe
+minishell 40098  ren    6w  FIFO   0,13      0t0  188474 pipe
+--second pipe--
+minishell 40098  ren    0r  FIFO   0,13      0t0  188474 pipe
+minishell 40098  ren    1u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    2u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    3u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    4u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40098  ren    5r  FIFO   0,13      0t0  188474 pipe
+minishell 40098  ren    6w  FIFO   0,13      0t0  188474 pipe

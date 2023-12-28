@@ -144,3 +144,28 @@ minishell 40463  ren   37w   REG  259,9        0 1840126 /home/ren/.config/Code/
 minishell 40463  ren   38r   REG  259,9 12249786  960554 /usr/share/code/resources/app/node_modules.asar
 minishell 40463  ren   39u   CHR    5,2      0t0      89 /dev/ptmx
 minishell 40463  ren  103r   REG  259,9   578186  960715 /usr/share/code/v8_context_snapshot.bin
+
+--before--
+minishell 40463  ren    0u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40463  ren    1u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40463  ren    2u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40463  ren    3u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40463  ren    4u   CHR  136,6      0t0       9 /dev/pts/6
+--first pipe--
+minishell 40463  ren    0u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40463  ren    1w  FIFO   0,13      0t0  187723 pipe
+minishell 40463  ren    2u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40463  ren    3u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40463  ren    4u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40463  ren    5r  FIFO   0,13      0t0  187723 pipe
+minishell 40463  ren    6w  FIFO   0,13      0t0  187723 pipe
+--second pipe--
+minishell 40463  ren    0r  FIFO   0,13      0t0  187723 pipe
+minishell 40463  ren    1w  FIFO   0,13      0t0  190498 pipe
+minishell 40463  ren    2u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40463  ren    3u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40463  ren    4u   CHR  136,6      0t0       9 /dev/pts/6
+minishell 40463  ren    5r  FIFO   0,13      0t0  187723 pipe
+minishell 40463  ren    6w  FIFO   0,13      0t0  187723 pipe
+minishell 40463  ren    7r  FIFO   0,13      0t0  190498 pipe
+minishell 40463  ren    8w  FIFO   0,13      0t0  190498 pipe

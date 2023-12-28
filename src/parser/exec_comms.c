@@ -53,7 +53,7 @@ void	ft_test()
 		continue ;
 }
 
-static void	execute(t_tok token, t_data *data)
+static void	execute(t_tok token, t_data *data, int i)
 {
 	if (ft_strncmp(token.path, "echo", 5) == 0)
 		ft_echo(token.arglist);
@@ -76,7 +76,7 @@ static void	execute(t_tok token, t_data *data)
 			ft_exit(token.arglist); */
 	}
 	else
-		run_exe(token.path, token.arglist, data->env);
+		run_exe(token.path, token.arglist, data->env, i == (int)data->cmds->size - 1);
 }
 
 bool	exec_comm_list(t_data *data)
@@ -96,7 +96,7 @@ bool	exec_comm_list(t_data *data)
 			if (data->cmds->tks[i].type == none)
 				return (false);
 			else if (data->cmds->tks[i].type == exec)
-				execute(data->cmds->tks[i], data);
+				execute(data->cmds->tks[i], data, i);
 			else if (data->cmds->tks[i].type == r_pipe)
 				exec_pipe(data);
 		}

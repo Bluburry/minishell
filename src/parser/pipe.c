@@ -1,14 +1,13 @@
 #include "minishell.h"
-#include "structures.h"
 
 static inline void	redir_pipe_helper(t_data *d, int in, int out, int prev)
 {
 	dup2(out, STDOUT_FILENO);
-	//if (out != STDOUT_FILENO) //need to figure out how to close these safely without accidentally closing
-	//	close(out);             // d->stdin and d->stdout
+	if (out != STDOUT_FILENO && out != d->stdout)
+		close(out);
 	dup2(in, STDIN_FILENO);
-	//if (in != STDIN_FILENO)
-	//	close(in);
+	if (in != STDIN_FILENO && in != d->stdin)
+		close(in);
 	if (d->pipe_state != p_last)
 		d->fd_in = prev;
 }
