@@ -53,44 +53,45 @@ void	ft_test()
 		continue ;
 }
 
-static void	execute(t_tok token, t_data *data, int i)
+static void	execute(t_tok tk, t_data *d, uint32_t i)
 {
-	if (ft_strncmp(token.path, "echo", 5) == 0)
-		ft_echo(token.arglist);
-	else if (ft_strncmp(token.path, "pwd", 4) == 0)
+	if (ft_strncmp(tk.path, "echo", 5) == 0)
+		ft_echo(tk.arglist);
+	else if (ft_strncmp(tk.path, "pwd", 4) == 0)
 		ft_pwd();
-	else if (ft_strncmp(token.path, "env", 4) == 0)
-		ft_env(data->env, token.arglist);
-	else if (ft_strncmp(token.path, "unset", 6) == 0)
-		unset_env_var(data->env, token.arglist);
-	else if (ft_strncmp(token.path, "export", 8) == 0)
-		ft_export(data->env, token.arglist);
-	else if (!ft_strncmp(token.path, "cd", 3)
-		|| !ft_strncmp(token.path, "exit", 5))
+	else if (ft_strncmp(tk.path, "env", 4) == 0)
+		ft_env(d->env, tk.arglist);
+	else if (ft_strncmp(tk.path, "unset", 6) == 0)
+		unset_env_var(d->env, tk.arglist);
+	else if (ft_strncmp(tk.path, "export", 8) == 0)
+		ft_export(d->env, tk.arglist);
+	else if (!ft_strncmp(tk.path, "cd", 3)
+		|| !ft_strncmp(tk.path, "exit", 5))
 	{
-		if (list_len(token.arglist) > 2)
-			too_many_args(token.arglist[0]);
-		else if (ft_strncmp(token.path, "cd", 3) == 0)
-			cd(data->env, token.arglist[1]);
+		if (list_len(tk.arglist) > 2)
+			too_many_args(tk.arglist[0]);
+		else if (ft_strncmp(tk.path, "cd", 3) == 0)
+			cd(d->env, tk.arglist[1]);
 /* 		else
 			ft_exit(token.arglist); */
 	}
 	else
-		run_exe(token.path, token.arglist, data->env, i == (int)data->cmds->size - 1);
+		d->ret_status = run_exe(tk.path, tk.arglist, d->env,
+				i == d->cmds->size - 1);
 }
 
 bool	exec_comm_list(t_data *data)
 {
 	int		i;
-	//pid_t	pid;
-	//int		status;
+	pid_t	pid;
+	int		status;
 
 	if (data->cmds == NULL)
 		return (false);
 	i = -1;
-	//pid = fork();
-	//if (pid == 0)
-	//{
+	pid = fork();
+	if (pid == 0)
+	{
 		while (++i < (int)data->cmds->size)
 		{
 			if (data->cmds->tks[i].type == none)
@@ -100,7 +101,7 @@ bool	exec_comm_list(t_data *data)
 			else if (data->cmds->tks[i].type == r_pipe)
 				exec_pipe(data);
 		}
-	//}
-	//waitpid(pid, &status, 0);
+	}
+	waitpid(pid, &status, 0);
 	return (true);
 }
