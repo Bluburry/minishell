@@ -8,9 +8,9 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"name": "minishell",
-			"program": "/home/ren/minishell/minishell",
+			"program": "/home/jess/42/minishell/minishell",
 			"args": [],
-			"cwd": "/home/ren/minishell",
+			"cwd": "/home/jess/42/minishell",
 		},
 		{
 			"type": "cppdbg",
