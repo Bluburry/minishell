@@ -65,16 +65,10 @@ static void	execute(t_tok tk, t_data *d, uint32_t i)
 		unset_env_var(d->env, tk.arglist);
 	else if (ft_strncmp(tk.path, "export", 8) == 0)
 		ft_export(d->env, tk.arglist);
-	else if (!ft_strncmp(tk.path, "cd", 3)
-		|| !ft_strncmp(tk.path, "exit", 5))
-	{
-		if (list_len(tk.arglist) > 2)
-			too_many_args(tk.arglist[0]);
-		else if (ft_strncmp(tk.path, "cd", 3) == 0)
+	else if (ft_strncmp(tk.path, "exit", 5) == 0)
+		ft_exit(d, tk.arglist);
+	else if (ft_strncmp(tk.path, "cd", 3) == 0)
 			cd(d->env, tk.arglist[1]);
-/* 		else
-			ft_exit(token.arglist); */
-	}
 	else
 		d->ret_status = run_exe(tk.path, tk.arglist, d->env,
 				i == d->cmds->size - 1);
@@ -83,25 +77,18 @@ static void	execute(t_tok tk, t_data *d, uint32_t i)
 bool	exec_comm_list(t_data *data)
 {
 	int		i;
-	pid_t	pid;
-	int		status;
 
 	if (data->cmds == NULL)
 		return (false);
 	i = -1;
-	pid = fork();
-	if (pid == 0)
+	while (++i < (int)data->cmds->size)
 	{
-		while (++i < (int)data->cmds->size)
-		{
-			if (data->cmds->tks[i].type == none)
-				return (false);
-			else if (data->cmds->tks[i].type == exec)
-				execute(data->cmds->tks[i], data, i);
-			else if (data->cmds->tks[i].type == r_pipe)
-				exec_pipe(data);
-		}
+		if (data->cmds->tks[i].type == none)
+			return (false);
+		else if (data->cmds->tks[i].type == exec)
+			execute(data->cmds->tks[i], data, i);
+		else if (data->cmds->tks[i].type == r_pipe)
+			exec_pipe(data);
 	}
-	waitpid(pid, &status, 0);
 	return (true);
 }

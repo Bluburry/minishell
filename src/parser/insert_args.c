@@ -58,6 +58,19 @@ static char	*check_if_path(char *str)
 	return (ft_strdup(sub_str));
 }
 
+static char	*path_or_builtin(t_env *env, char *str)
+{
+	if (ft_strncmp(str, "echo", 5) == 0
+		|| ft_strncmp(str, "pwd", 4) == 0
+		|| ft_strncmp(str, "env", 4) == 0
+		|| ft_strncmp(str, "unset", 6) == 0
+		|| ft_strncmp(str, "export", 8) == 0
+		|| ft_strncmp(str, "exit", 5) == 0
+		|| ft_strncmp(str, "cd", 3) == 0)
+		return (str);
+	return (find_exe_path(env, str));
+}
+
 // insert_name_args(cmds, &list[i], n)
 bool	insert_name_args(t_cmda *c, char **l, uint32_t n, t_env *env)
 {
@@ -82,7 +95,7 @@ bool	insert_name_args(t_cmda *c, char **l, uint32_t n, t_env *env)
 		else if (path_added == false)
 		{
 			path_added = true;
-			c->tks[c->size].path = ft_strdup(find_exe_path(env, remc(l[i])));
+			c->tks[c->size].path = ft_strdup(path_or_builtin(env, remc(l[i])));
 			if (c->tks[c->size].path == NULL)
 				return(printf("%s is not a valid executable\n", check_if_path((remc(l[i])))), false);
 			c->tks[c->size].arglist[j++] = check_if_path((remc(l[i]))); // needs to check when check_if_path returns NULL

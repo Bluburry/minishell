@@ -158,6 +158,9 @@ t_env	*create_env_struct(char **envp);
 // utils/echo.c
 void	ft_echo(char **argv);
 
+// utils/exit.c
+bool	ft_exit(t_data *d, char **list);
+
 // utils/find_exe.c
 char	*find_exe_path(t_env *env, char *cmd);
 
