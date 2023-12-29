@@ -20,13 +20,13 @@ int	run_exe(char *path, char **args, t_env *env, bool is_last)
 		return (0);
 	status = 0;
 	pid = fork();
-	set_signals_fork();
 	if (!pid)
 	{
+		set_signals_fork();
 		execve(path, args, env->vars);
 	}
+	set_signals_base();
 	if (is_last)
 		waitpid(pid, &status, 0);
-	set_signals_base();
 	return (!WEXITSTATUS(status));
 }
