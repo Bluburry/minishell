@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var_to_value.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: remarque <remarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:01 by ade-barr          #+#    #+#             */
-/*   Updated: 2023/12/29 13:28:20 by jecarval         ###   ########.fr       */
+/*   Updated: 2024/01/02 15:26:16 by remarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static int	find_word_end(char *str)
 
 static char	*store_word(char *str)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*word;
 
 	i = 0;
