@@ -16,17 +16,7 @@ static inline bool	helper2_redirs(t_cmda *cmds, char **list, uint32_t	*i,
 
 static inline bool	helper1_redirs(t_cmda *cmds, char **list, uint32_t	*i)
 {
-	if (ft_strncmp(">", list[*i], 1) == 0)
-	{
-		if (helper2_redirs(cmds, list, i, r_out) == false)
-			return (false);
-	}
-	else if (ft_strncmp("<", list[*i], 1) == 0)
-	{
-		if (helper2_redirs(cmds, list, i, r_in) == false)
-			return (false);
-	}
-	else if (ft_strncmp(">>", list[*i], 2) == 0)
+	if (ft_strncmp(">>", list[*i], 2) == 0)
 	{
 		if (helper2_redirs(cmds, list, i, r_append) == false)
 			return (false);
@@ -34,6 +24,16 @@ static inline bool	helper1_redirs(t_cmda *cmds, char **list, uint32_t	*i)
 	else if (ft_strncmp("<<", list[*i], 2) == 0)
 	{
 		if (helper2_redirs(cmds, list, i, r_heredoc) == false)
+			return (false);
+	}
+	else if (ft_strncmp(">", list[*i], 1) == 0)
+	{
+		if (helper2_redirs(cmds, list, i, r_out) == false)
+			return (false);
+	}
+	else if (ft_strncmp("<", list[*i], 1) == 0)
+	{
+		if (helper2_redirs(cmds, list, i, r_in) == false)
 			return (false);
 	}
 	return (true);

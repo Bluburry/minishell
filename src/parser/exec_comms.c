@@ -63,7 +63,7 @@ static void	execute(t_tok tk, t_data *d, uint32_t i)
 	else if (ft_strncmp(tk.path, "exit", 5) == 0)
 		ft_exit(d, tk.arglist);
 	else if (ft_strncmp(tk.path, "cd", 3) == 0)
-			cd(d->env, tk.arglist[1]);
+		cd(d->env, tk.arglist);
 	else
 		d->ret_status = run_exe(tk.path, tk.arglist, d->env,
 				i == d->cmds->size - 1);
