@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	ft_export(t_env *env, char **arglist)
+int	ft_export(t_env *env, char **arglist)
 {
 	char	**vars;
 	int		i;
@@ -15,6 +15,7 @@ void	ft_export(t_env *env, char **arglist)
 			printf("%s\n", vars[i++]);
 		clear_chars(vars, env->size);
 	}
+	return (1);
 }
 
 int	ft_env(t_env *env, char **arglist)
