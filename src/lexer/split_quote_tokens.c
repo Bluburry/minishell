@@ -82,19 +82,13 @@ char	**split_quotes_tokens(char *input)
 			*ptr = create_token(input, end);
 			c = check_if_valid(*ptr);
 			if (c != '\0')
-			{
-				syntax_error(2, c);
-				free(*ptr);
-				*ptr = NULL;
-				dcp_cleaner(tokens);
-				return (NULL);
-			}
+				return (syntax_error(2, c), free(*ptr), *ptr = NULL,
+					dcp_cleaner(tokens), NULL);
 			ptr++;
 		}
 		input += end;
 	}
-	*ptr = NULL;
-	return (tokens);
+	return (*ptr = NULL, tokens);
 }
 
 /* 			if (**ptr)

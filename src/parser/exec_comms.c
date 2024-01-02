@@ -42,12 +42,6 @@ void	ft_pwd(void)
 	free(str);
 }
 
-void	ft_test()
-{
-	while (1)
-		continue ;
-}
-
 static void	execute(t_tok tk, t_data *d, uint32_t i)
 {
 	if (ft_strncmp(tk.path, "echo", 5) == 0)

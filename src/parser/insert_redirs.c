@@ -2,12 +2,12 @@
 
 #define ERR_REDIR "Syntax Error: No file for redirection\n"
 
-static inline bool	helper2_redirs(t_cmda *cmds, char **list, uint32_t	*i,
+static inline bool	helper2_redirs(t_cmda *c, char **l, uint32_t	*i,
 	t_etok type)
 {
-	if (is_name(list[*i + 1]))
+	if (is_name(l[*i + 1]))
 	{
-		cmds->tks[cmds->size++] = (t_tok){type, ft_strdup(remc(list[++(*i)])), NULL};
+		c->tks[c->size++] = (t_tok){type, ft_strdup(remc(l[++(*i)])), NULL};
 		return (true);
 	}
 	else

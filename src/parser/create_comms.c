@@ -3,19 +3,6 @@
 // A prhase is everything between pipes
 // phrase0 | phrase1 | phrase3
 
-// counts the number of items in the string list
-uint32_t	list_len(char **list)
-{
-	uint32_t	i;
-
-	if (list == NULL)
-		return (0);
-	i = 0;
-	while (list[i] != NULL)
-		i++;
-	return (i);
-}
-
 // returns the size n of items in the substring until the pipe
 // e.g. $> ex arg > out arg2 | arg
 // if you send that with a start of 0, it'll return 5, as there are
@@ -56,7 +43,7 @@ static uint32_t	count_pipes(char **list)
 	return (count);
 }
 
-static bool	comm_list_helper(t_data *d, int32_t n, uint32_t st, bool ins_pipe) //I need to properly clean cmds
+static bool	comm_list_helper(t_data *d, int32_t n, uint32_t st, bool ins_pipe)
 {
 	if (insert_redirs(d->cmds, &d->strlist[st], n) == false)
 		return (free(d->cmds), d->cmds = NULL,
@@ -74,13 +61,14 @@ static bool	comm_list_helper(t_data *d, int32_t n, uint32_t st, bool ins_pipe) /
 bool	pipe_checker(t_data	*d)
 {
 	uint32_t	len;
-	if(d->strlist == NULL)
+
+	if (d->strlist == NULL)
 		return (printf("Empty  list of strings.\n"), false);
-	if(ft_strncmp("|", d->strlist[0], 1) == 0)
-		return (printf(ERR_PIPE) ,false);
+	if (ft_strncmp("|", d->strlist[0], 1) == 0)
+		return (printf(ERR_PIPE), false);
 	len = list_len(d->strlist);
-	if(ft_strncmp("|", d->strlist[len - 1], 1) == 0)
-		return (printf(ERR_PIPE) ,false);
+	if (ft_strncmp("|", d->strlist[len - 1], 1) == 0)
+		return (printf(ERR_PIPE), false);
 	return (true);
 }
 
