@@ -37,7 +37,7 @@ void	sig_handler_fork(int sig)
 
 void	set_signals_base(void)
 {
-	struct sigaction sa;
+	struct sigaction	sa;
 
 	sa = (struct sigaction){.sa_flags = SA_SIGINFO,
 		.sa_sigaction = sig_handler_interrupt};
@@ -50,8 +50,6 @@ void	set_signals_fork(void)
 	signal(SIGINT, sig_handler_fork);
 	signal(SIGQUIT, sig_handler_fork);
 }
-
-
 
 /* void	sig_handler_child(int sig, siginfo_t *info, void *ucontent)
 {

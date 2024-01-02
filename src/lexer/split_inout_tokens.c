@@ -23,13 +23,11 @@ int	count_inouts(char *str, char c)
 
 int	count_inout_tokens(char **input)
 {
-	int		len;
-	int		i;
 	char	*tmp;
 	int		rtn;
 
-	len = 0;
-	i = -1;
+	auto int len = 0;
+	auto int i = -1;
 	while (input[++i])
 	{
 		tmp = input[i];

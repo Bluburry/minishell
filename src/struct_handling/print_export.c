@@ -82,7 +82,7 @@ static void	copy_char_matrix_ordered(char **mat, char **new_mat, int size)
 			z += 2;
 		new_mat[j] = (char *) malloc(sizeof(char) * (z));
 		ft_memcpy(new_mat[j], "declare -x ", EXTRA_SIZE_EXPORT);
-		memcpy_export(new_mat[j]+EXTRA_SIZE_EXPORT, mat[i], s);
+		memcpy_export(new_mat[j] + EXTRA_SIZE_EXPORT, mat[i], s);
 	}
 }
 

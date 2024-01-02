@@ -122,10 +122,6 @@ int			redir_trunc(char *path);
 int			redir_in(char *path);
 
 // ---struct_handling/---
-//Environment variables functions
-double		total_size(char **mat, int size);
-void		concatenate_matrix(char *str, char **mat, int size);
-
 // struct_handling/alter_env.c
 int			alter_env_var(t_env *env, char **new);
 void		replace_env_var(t_env *env, const char *new, int i);
