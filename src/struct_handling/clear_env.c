@@ -5,7 +5,7 @@
  * @param env structure
  * @param var variables to remove
 */
-void	unset_env_var(t_env *env, char **var)
+int	unset_env_var(t_env *env, char **var)
 {
 	int		i;
 	int		j;
@@ -29,6 +29,7 @@ void	unset_env_var(t_env *env, char **var)
 			}
 		}
 	}
+	return (0);
 }
 
 /**

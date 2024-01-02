@@ -128,7 +128,7 @@ int			alter_env_var(t_env *env, char **new);
 void		replace_env_var(t_env *env, const char *new, int i);
 
 // struct_handling/clear_env.c
-void		unset_env_var(t_env *env, char **var);
+int			unset_env_var(t_env *env, char **var);
 void		clear_chars(char **str, int size);
 void		clear_env_struct(t_env *env);
 

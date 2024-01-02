@@ -17,29 +17,34 @@ void	ft_export(t_env *env, char **arglist)
 	}
 }
 
-void	ft_env(t_env *env, char **arglist)
+int	ft_env(t_env *env, char **arglist)
 {
 	char	**vars;
 	int		size;
 	int		i;
 
 	if (list_len(arglist) > 1)
+	{
 		printf("minishell: env: too many arguments\n");
+		return (1);
+	}
 	vars = env_string(env);
 	i = 0;
 	size = env->size - num_invalid_env_vars(env);
 	while (i < size)
 		printf("%s\n", vars[i++]);
 	clear_chars(vars, size);
+	return (0);
 }
 
-void	ft_pwd(void)
+int	ft_pwd(void)
 {
 	char	*str;
 
 	str = pwd();
 	printf("%s\n", str);
 	free(str);
+	return (0);
 }
 
 static void	execute(t_tok tk, t_data *d, uint32_t i)

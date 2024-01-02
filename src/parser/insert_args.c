@@ -86,7 +86,7 @@ bool	insert_name_args(t_cmda *c, char **l, uint32_t n, t_env *env)
 			c->tks[c->size].path = ft_strdup(path_or_builtin(env, remc(l[i])));
 			if (c->tks[c->size].path == NULL)
 				return (printf(ESTR, check_if_path((remc(l[i])))), false);
-			c->tks[c->size].arglist[j++] = check_if_path((remc(l[i]))); 
+			c->tks[c->size].arglist[j++] = check_if_path((remc(l[i])));
 		}
 		else
 			c->tks[c->size].arglist[j++] = ft_strdup(remc(l[i]));
