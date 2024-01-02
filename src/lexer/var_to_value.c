@@ -1,39 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   var_to_value.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/17 10:14:01 by ade-barr          #+#    #+#             */
+/*   Updated: 2023/12/29 13:28:20 by jecarval         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-static int	find_end(char *str)
+static int	find_word_end(char *str)
 {
 	int	i;
+	int	count;
 
 	i = 0;
-	while (!ft_iswhitespace(str[i]) && str[i] != '$'
-		&& str[i] != '|' && str[i] != '"'
-		&& str[i] != '?' && str[i] != ';'
-		&& str[i] != '<' && str[i] != '>'
-		&& str[i] != '\'' && str[i])
+	count = 0;
+	while (str[i] && !ft_iswhitespace(str[i]))
+	{
+		if (str[i] == '$')
+			count++;
+		if (count == 2 || str[i] == '\\')
+			break ;
 		i++;
-	if (str[i] == '$' || ft_iswhitespace(str[i])
-		|| str[i] != '|' || str[i] != '"'
-		|| str[i] != '?' || str[i] != ';'
-		|| str[i] != '<' || str[i] != '>'
-		|| str[i] != '\'')
-		i--;
+	}
+	if (str[i - 1] && str[i - 1] == '$')
+		i++;
 	return (i);
 }
 
 static char	*store_word(char *str)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 	char	*word;
 
 	i = 0;
-	i = find_end(str);
-	word = ft_calloc(sizeof(char), i + 2);
-	if (!word)
-		return (NULL);
+	i = find_word_end((str + i));
+	word = malloc(sizeof(char) * i + 2);
 	j = 0;
-	while (str[j] && j <= i)
+	str++;
+	while (str[j] && j <= i && !ft_iswhitespace(str[j]))
 	{
+		if (str[j] == '"' || str[j] == '$' || str[j] == '\\')
+			break ;
 		word[j] = str[j];
 		j++;
 	}
@@ -41,78 +54,49 @@ static char	*store_word(char *str)
 	return (word);
 }
 
-static char	*process_var(int *i, char *str, char *temp, t_env *env)
+static char	*process_var(char *str, char *ret_str, t_env *env)
 {
-	char	*word;
-	char	*env_ptr;
-	char	*ret_str;
-
-	ret_str = ft_calloc(sizeof(char), 1);
-	if (!ret_str)
+	if (str[1] && str[1] == '?')
+		ret_str = ft_strjoin(ret_str, "EXIT_STATUS");
+	else if (str[1] && str[1] == '$')
+		ret_str = ft_strjoin(ret_str, "PRINT_PID");
+	else if (str[1] && !ft_isalpha(str[1]))
+	{
+		ft_printf("Syntax_error\n");
 		return (NULL);
-	if (str[*i + 1] && str[*i + 1] == '?') 
-	{
-		ft_printf("exit status\n");
-		(*i)++;
 	}
-	else if (str[*i + 1] && ft_isalpha(str[*i + 1]))
-	{
-		word = store_word(str + *i + 1);
-		*i += ft_strlen(word);
-		env_ptr = get_env_var(env, word);
-		free(word);
-		if (env_ptr)
-		{
-			ret_str = ft_strjoin(temp, env_ptr);
-			free(temp);
-			return (ret_str);
-		}
-		ret_str = ft_strjoin(temp, "");
-	}
-	else if (str[*i + 1] && ft_isdigit(str[*i + 1]))
-		ft_printf("\n\nsyntax_error_number\n\n");
-	else
-	{
-		ft_printf("syntax_error\n");
-		return (temp);
-	}
-	if (ret_str)
-		return (ret_str);
+	else if (str[1] && str[1] == ' ')
+		ret_str = ft_strjoin(ret_str, ft_substr(str, 0, 1));
+	else if (get_env_var(env, store_word(str)))
+		ret_str = ft_strjoin(ret_str, get_env_var(env, store_word(str)));
 	return (ret_str);
 }
 
 char	*var_to_value(char *str, t_env *env)
 {
-	int		i;
-	char	*temp;
+	char	*ret_str;
 
-	i = 0;
-	temp = ft_calloc(sizeof(char), 1);
-	while (str[i])
+	ret_str = ft_calloc(sizeof(char), 1);
+	while (str[0])
 	{
-		if (str[i] && str[i] == '$')
+		if (str[0] && str[0] == '$')
 		{
-			if (ft_iswhitespace(str[i + 1]) || !str[i + 1])
-				temp = ft_strjoin(temp, "$");
-			else
-				temp = process_var(&i, str, temp, env);
-			i++;
-		}
-		else if (str[i] == '"' && str[i + 1] != '"')
-		{
-			if (str[i] && str[i] == '$')
+			if (!ft_iswhitespace(str[1]) && str[1])
 			{
-				i++;
-				temp = process_var(&i, str, temp, env);
+				ret_str = process_var(str, ret_str, env);
+				str += find_word_end(str);
 			}
 			else
 			{
-				temp = ft_strjoin(temp, ft_substr(str, i, 1));
-				i++;
+				ret_str = ft_strjoin(ret_str, ft_substr(str, 0, 1));
+				str++;
 			}
 		}
-		else if (str[i])
-			temp = ft_strjoin(temp, ft_substr(str, i++, 1));
+		else
+		{
+			ret_str = ft_strjoin(ret_str, ft_substr(str, 0, 1));
+			str++;
+		}
 	}
-	return (temp);
+	return (ret_str);
 }
