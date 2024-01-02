@@ -55,3 +55,16 @@ char	*remc(char *str)
 		return (str + 1);
 	return (str);
 }
+
+// counts the number of items in the string list
+uint32_t	list_len(char **list)
+{
+	uint32_t	i;
+
+	if (list == NULL)
+		return (0);
+	i = 0;
+	while (list[i] != NULL)
+		i++;
+	return (i);
+}

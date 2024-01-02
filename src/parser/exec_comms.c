@@ -1,10 +1,5 @@
 #include "minishell.h"
 
-void	too_many_args(char *str)
-{
-	printf("minishell: %s: too many arguments\n", str);
-}
-
 void	ft_export(t_env *env, char **arglist)
 {
 	char	**vars;
@@ -29,7 +24,7 @@ void	ft_env(t_env *env, char **arglist)
 	int		i;
 
 	if (list_len(arglist) > 1)
-		too_many_args("env");
+		printf("minishell: env: too many arguments\n");
 	vars = env_string(env);
 	i = 0;
 	size = env->size - num_invalid_env_vars(env);
@@ -47,12 +42,6 @@ void	ft_pwd(void)
 	free(str);
 }
 
-void	ft_test()
-{
-	while (1)
-		continue ;
-}
-
 static void	execute(t_tok tk, t_data *d, uint32_t i)
 {
 	if (ft_strncmp(tk.path, "echo", 5) == 0)
@@ -68,7 +57,7 @@ static void	execute(t_tok tk, t_data *d, uint32_t i)
 	else if (ft_strncmp(tk.path, "exit", 5) == 0)
 		ft_exit(d, tk.arglist);
 	else if (ft_strncmp(tk.path, "cd", 3) == 0)
-			cd(d->env, tk.arglist[1]);
+		cd(d->env, tk.arglist[1]);
 	else
 		d->ret_status = run_exe(tk.path, tk.arglist, d->env,
 				i == d->cmds->size - 1);
