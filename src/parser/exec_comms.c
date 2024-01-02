@@ -78,6 +78,14 @@ bool	exec_comm_list(t_data *data)
 			execute(data->cmds->tks[i], data, i);
 		else if (data->cmds->tks[i].type == r_pipe)
 			exec_pipe(data);
+		else if (data->cmds->tks[i].type == r_out)
+			redir_trunc(data->cmds->tks[i].path);
+		else if (data->cmds->tks[i].type == r_in)
+			redir_in(data->cmds->tks[i].path);
+		else if (data->cmds->tks[i].type == r_append)
+			redir_appd(data->cmds->tks[i].path);
+		else if (data->cmds->tks[i].type == r_heredoc)
+			redir_heredoc(data->cmds->tks[i].path);
 	}
 	return (true);
 }

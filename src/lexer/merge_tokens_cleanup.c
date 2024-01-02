@@ -59,30 +59,30 @@ int	count_merge_tokens(char **input)
 	return (str);
 } */
 
-char	**merge_tokens_cleanup(char **input)
+char	**merge_tokens_cleanup(char **s)
 {
-	char	**tokens;
-	char	**ptr;
-
-	tokens = malloc((count_merge_tokens(input) + 1) * sizeof(char *));
+	auto char **tokens = malloc((count_merge_tokens(s) + 1) * sizeof(char *));
 	if (!tokens)
 		return (0);
-	ptr = tokens;
-	while (*input)
+	auto char **ptr = tokens;
+	while (*s)
 	{
-		if (is_space(**input))
-			input++;
-		if (is_operator(**input, "<>|") || !(*(input + 1)) || (*(input + 1)
-				&& (is_space(**(input + 1))
-					|| is_operator(**(input + 1), "<>|\0"))))
-			*ptr = ft_strdup(*input);
+		if (is_space(**s))
+		{
+			s++;
+			continue ;
+		}
+		if (is_operator(**s, "<>|") || !(*(s + 1)) || (*(s + 1)
+				&& (is_space(**(s + 1))
+					|| is_operator(**(s + 1), "<>|\0"))))
+			*ptr = ft_strdup(*s);
 		else
 		{
-			*ptr = ft_strjoin(*input, *(input + 1));
-			input++;
+			*ptr = ft_strjoin(*s, *(s + 1));
+			s++;
 		}
 		ptr++;
-		input++;
+		s++;
 	}
 	*ptr = NULL;
 	return (tokens);
