@@ -8,3 +8,5 @@ lib
 .vscode/*
 **/.cache/
 sup
+leaks.log
+
