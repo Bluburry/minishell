@@ -109,6 +109,9 @@ bool		exec_comm_list(t_data *data);
 // parser/insert_args.c
 bool		insert_name_args(t_cmda *c, char **l, uint32_t n, t_env *env);
 
+// parser/insert_args2.c
+uint32_t	count_args(char **l, uint32_t n);
+
 // parser/insert_redirs.c
 bool		insert_redirs(t_cmda *cmds, char **list, uint32_t n);
 
