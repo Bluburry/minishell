@@ -67,7 +67,6 @@ int	redir_heredoc(char *stop)
 		str = readline("> ");
 		if (!strcmp(str, stop))
 			break ;
-		printf("%s\n", str);
 		ft_putstr_fd(str, fl);
 	}
 	if (g_sig != SIGINT)
