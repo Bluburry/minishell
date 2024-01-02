@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	ft_echo(char **argv)
+int	ft_echo(char **argv)
 {
 	int	i;
 	int	n;
@@ -8,7 +8,7 @@ void	ft_echo(char **argv)
 	if (!argv[1])
 	{
 		printf("\n");
-		return ;
+		return (0);
 	}
 	n = ft_strncmp(argv[1], "-n", 2);
 	if (n == 0)
@@ -23,6 +23,7 @@ void	ft_echo(char **argv)
 	}
 	if (n != 0)
 		printf("\n");
+	return (0);
 }
 
 /* int	main(int argc, char **argv)

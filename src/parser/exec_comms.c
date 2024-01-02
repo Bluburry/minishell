@@ -45,19 +45,19 @@ void	ft_pwd(void)
 static void	execute(t_tok tk, t_data *d, uint32_t i)
 {
 	if (ft_strncmp(tk.path, "echo", 5) == 0)
-		ft_echo(tk.arglist);
+		d->ret_status = ft_echo(tk.arglist);
 	else if (ft_strncmp(tk.path, "pwd", 4) == 0)
-		ft_pwd();
+		d->ret_status = ft_pwd();
 	else if (ft_strncmp(tk.path, "env", 4) == 0)
-		ft_env(d->env, tk.arglist);
+		d->ret_status = ft_env(d->env, tk.arglist);
 	else if (ft_strncmp(tk.path, "unset", 6) == 0)
-		unset_env_var(d->env, tk.arglist);
+		d->ret_status = unset_env_var(d->env, tk.arglist);
 	else if (ft_strncmp(tk.path, "export", 8) == 0)
-		ft_export(d->env, tk.arglist);
+		d->ret_status = ft_export(d->env, tk.arglist);
 	else if (ft_strncmp(tk.path, "exit", 5) == 0)
-		ft_exit(d, tk.arglist);
+		d->ret_status = ft_exit(d, tk.arglist);
 	else if (ft_strncmp(tk.path, "cd", 3) == 0)
-		cd(d->env, tk.arglist);
+		d->ret_status = cd(d->env, tk.arglist);
 	else
 		d->ret_status = run_exe(tk.path, tk.arglist, d->env,
 				i == d->cmds->size - 1);

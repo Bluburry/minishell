@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var_to_value.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque <remarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:01 by ade-barr          #+#    #+#             */
-/*   Updated: 2024/01/02 15:26:16 by remarque         ###   ########.fr       */
+/*   Updated: 2024/01/02 15:44:48 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ static char	*store_word(char *str)
 	return (word);
 }
 
-static char	*process_var(char *str, char *ret_str, t_env *env)
+static char	*process_var(char *str, char *ret_str, t_env *env, t_data *data)
 {
 	if (str[1] && str[1] == '?')
-		ret_str = ft_strjoin(ret_str, "EXIT_STATUS");
+		ret_str = ft_strjoin(ret_str, ft_itoa(data->ret_status));
 	else if (str[1] && str[1] == '$')
 		ret_str = ft_strjoin(ret_str, "PRINT_PID");
 	else if (str[1] && !ft_isalpha(str[1]))
 	{
-		ft_printf("Syntax_error\n");
+		ft_printf("Syntax error\n");
 		return (NULL);
 	}
 	else if (str[1] && str[1] == ' ')
@@ -72,7 +72,7 @@ static char	*process_var(char *str, char *ret_str, t_env *env)
 	return (ret_str);
 }
 
-char	*var_to_value(char *str, t_env *env)
+char	*var_to_value(char *str, t_env *env, t_data *data)
 {
 	char	*ret_str;
 
@@ -83,7 +83,7 @@ char	*var_to_value(char *str, t_env *env)
 		{
 			if (!ft_iswhitespace(str[1]) && str[1])
 			{
-				ret_str = process_var(str, ret_str, env);
+				ret_str = process_var(str, ret_str, env, data);
 				str += find_word_end(str);
 			}
 			else

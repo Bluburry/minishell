@@ -6,7 +6,7 @@ char	**lexer(char *input, t_env *env, t_data *data)
 
 	if (!input || !(*input))
 		return (NULL);
-	tokens = tokens_init(input, env);
+	tokens = tokens_init(input, env, data);
 	data->strlist = tokens;
 	return (tokens);
 }

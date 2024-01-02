@@ -10,7 +10,7 @@ int	count_tokens(char **input)
 	return (i);
 }
 
-char	**expand_var_tokens(char **input, t_env *env)
+char	**expand_var_tokens(char **input, t_env *env, t_data *data)
 {
 	char	**tokens;
 	char	**ptr;
@@ -24,7 +24,7 @@ char	**expand_var_tokens(char **input, t_env *env)
 		if (**input == '\'')
 			*ptr = ft_strdup(*input);
 		else
-			*ptr = var_to_value(*input, env);
+			*ptr = var_to_value(*input, env, data);
 		ptr++;
 		input++;
 	}
