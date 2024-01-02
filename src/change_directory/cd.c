@@ -52,26 +52,22 @@ static void	change_pwd(t_env *env, const char *path)
 static int	home_dir(t_env *env, char **path)
 {
 	char	*str;
+	char	*str2;
 	size_t	s;
 
-	if (!path[1] || !path[1][0] || (path[1][0] == '~' && \
-		(!path[1][1] || (path[1][1] == '/' && !path[1][2]))))
+	if (!path[1][1])
 	{
-		str = get_env_var(env, "HOME");
-		free(path[1]);
-		s = ft_strlen(str) + 1;
-		path[1] = (char *) malloc(sizeof(char) * s);
-		ft_memcpy(path[1], str, s);
-		return (cd(env, path));
+		str2 = get_env_var(env, "HOME");
+		s = ft_strlen(str2) + 1;
+		str = (char *) malloc(sizeof(char) * s);
+		ft_memcpy(str, str2, s);
 	}
-	else if (path[1][0] == '~' && path[1][1] == '/' && path[1][2])
-	{
+	else
 		str = relative_path(env, path[1]);
-		free(path[1]);
-		path[1] = str;
-		return (cd(env, path));
-	}
-	return (0);
+	if (chdir(str) != 0)
+		return (perror("cd error"), 0);
+	change_pwd(env, str);
+	return (free(str), 1);
 }
 
 /**
@@ -89,12 +85,13 @@ int	cd(t_env *env, char **path)
 	i = 0;
 	while (path[i])
 		i++;
-	if (i > 3)
-	{
+	if (i < 2)
+		printf("minishell: cd: too few arguments\n");
+	else if (i > 3)
 		printf("minishell: cd: too many arguments\n");
+	if (i != 2)
 		return (0);
-	}
-	if (!path[1] || !*path[1] || *path[1] == '~')
+	if (*path[1] == '~')
 		return (home_dir(env, path));
 	else if (chdir(path[1]) != 0)
 		return (perror("cd error"), 0);
