@@ -27,17 +27,17 @@ static uint32_t	count_args(char **l, uint32_t n)
 
 //checks if the string passed is a relative path, or an absolute path
 //and if so, takes only the last part after the last /
-static char	*check_if_path(char *str)
+static char	*chk_path(char *str)
 {
 	char	*sub_str;
 
 	sub_str = ft_strrchr(str, '/');
 	if (sub_str == NULL)
-		return (ft_strdup(str));
+		return (str);
 	sub_str++;
 	if (sub_str[0] == '\0')
 		return (NULL);
-	return (ft_strdup(sub_str));
+	return (sub_str);
 }
 
 static char	*path_or_builtin(t_env *env, char *str)
@@ -85,8 +85,8 @@ bool	insert_name_args(t_cmda *c, char **l, uint32_t n, t_env *env)
 			path_added = true;
 			c->tks[c->size].path = ft_strdup(path_or_builtin(env, remc(l[i])));
 			if (c->tks[c->size].path == NULL)
-				return (printf(ESTR, check_if_path((remc(l[i])))), false);
-			c->tks[c->size].arglist[j++] = check_if_path((remc(l[i]))); 
+				return (printf(ESTR, chk_path((remc(l[i])))), false);
+			c->tks[c->size].arglist[j++] = ft_strdup(chk_path((remc(l[i]))));
 		}
 		else
 			c->tks[c->size].arglist[j++] = ft_strdup(remc(l[i]));

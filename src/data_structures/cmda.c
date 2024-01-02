@@ -45,7 +45,10 @@ void	clean_cmda(t_cmda *cmd_arr)
 	{
 		i = 0;
 		while (i < cmd_arr->cap)
-			clean_token_contents(&cmd_arr->tks[i++]);
+		{
+			clean_token_contents(&cmd_arr->tks[i]);
+			i++;
+		}
 		free(cmd_arr->tks);
 	}
 	free(cmd_arr);

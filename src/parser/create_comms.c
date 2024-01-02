@@ -64,6 +64,8 @@ bool	pipe_checker(t_data	*d)
 
 	if (d->strlist == NULL)
 		return (printf("Empty  list of strings.\n"), false);
+	if (d->strlist[0] == NULL)
+		return (false);
 	if (ft_strncmp("|", d->strlist[0], 1) == 0)
 		return (printf(ERR_PIPE), false);
 	len = list_len(d->strlist);
@@ -81,7 +83,7 @@ bool	create_comm_list(t_data *d)
 		return (dcp_cleaner(d->strlist), d->strlist = NULL, false);
 	d->cmds = create_cmda(list_len(d->strlist));
 	if (d->cmds == NULL || d->strlist == NULL)
-		return (free(d->cmds), d->cmds = NULL, dcp_cleaner(d->strlist),
+		return (clean_cmda(d->cmds), d->cmds = NULL, dcp_cleaner(d->strlist),
 			d->strlist = NULL, false);
 	d->pipe_n = count_pipes(d->strlist);
 	n = find_strn_to_pipe(&d->strlist[0]);

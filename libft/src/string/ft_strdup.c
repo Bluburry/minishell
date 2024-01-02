@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque < remarque@student.42porto.com    +#+  +:+       +#+        */
+/*   By: remarque <remarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 18:52:20 by remarque          #+#    #+#             */
-/*   Updated: 2023/12/28 15:53:49 by remarque         ###   ########.fr       */
+/*   Updated: 2024/01/02 16:47:24 by remarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ char	*ft_strdup(const char *s)
 {
 	char	*str;
 
+	if (!s)
+		return (NULL);
 	str = malloc((ft_strlen(s) + 1) * sizeof(char));
 	if (!str)
-		return (0);
+		return (NULL);
 	return (ft_strcpy(str, s));
 }
 
