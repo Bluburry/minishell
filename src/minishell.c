@@ -34,7 +34,7 @@
 	}
 } */
 
-static void	print_strlist(char **list)
+/* static void	print_strlist(char **list)
 {
 	uint32_t	i;
 
@@ -45,7 +45,7 @@ static void	print_strlist(char **list)
 			printf("NEXT HAD QUOTES\n");
 		printf("%s\n", list[i++]);
 	}
-}
+} */
 
 static void	print_cmda(t_cmda *cmds)
 {
@@ -72,7 +72,7 @@ static void	reset_singleton(t_data *d)
 	d->fd_in = -1;
 	dup2(d->stdin, 0);
 	dup2(d->stdout, 1);
-	d->ret_status = 0;
+	//d->ret_status = 0;
 	d->pipe_state = p_first;
 	dcp_cleaner(d->strlist);
 	d->strlist = NULL;
@@ -93,6 +93,7 @@ static void	waiting_for_input(t_env *env, t_data *data)
 		if (!rl)
 		{
 			printf("exit\n");
+			data->ret_status = 0;
 			data->is_exiting = true;
 			continue ;
 		}
@@ -100,7 +101,7 @@ static void	waiting_for_input(t_env *env, t_data *data)
 		add_history(rl);
 		if (lexer(rl, env, data) == NULL)
 			continue ;
-		print_strlist(data->strlist);
+		//print_strlist(data->strlist);
 		if (create_comm_list(data) == false)
 			continue ;
 		print_cmda(data->cmds);
@@ -129,6 +130,7 @@ int	main(int argc, char **argv, char **envp)
 	close(data.stdout);
 	clear_env_struct(env);
 	rl_clear_history();
+	exit(data.ret_status);
 }
 
 /* add_new_env_var(env, "TEST=24");

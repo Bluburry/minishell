@@ -109,7 +109,7 @@ bool	exec_comm_list(t_data *data);
 
 
 // parser/insert_args.c
-bool	insert_name_args(t_cmda *cmds, char **list, uint32_t n);
+bool	insert_name_args(t_cmda *c, char **l, uint32_t n, t_env *env);
 
 // parser/insert_redirs.c
 bool	insert_redirs(t_cmda *cmds, char **list, uint32_t n);
@@ -160,6 +160,9 @@ t_env	*create_env_struct(char **envp);
 // ---utils/---
 // utils/echo.c
 void	ft_echo(char **argv);
+
+// utils/exit.c
+bool	ft_exit(t_data *d, char **list);
 
 // utils/find_exe.c
 char	*find_exe_path(t_env *env, char *cmd);
