@@ -49,19 +49,27 @@ static void	change_pwd(t_env *env, const char *path)
  * @return returns 0 on error, else it returns 
  * whatever the return from the recursive cd call was
 */
-static int	home_dir(t_env *env, const char *path)
+static int	home_dir(t_env *env, char **path)
 {
 	char	*str;
-	int		ret;
+	size_t	s;
 
-	if (!path || !*path || (*path == '~' && (!*(path + 1) || \
-		(*(path + 1) == '/' && !*(path + 2)))))
-		return (cd(env, get_env_var(env, "HOME")));
-	else if (*path == '~' && *(path + 1) == '/' && *(path + 2))
+	if (!path[1] || !path[1][0] || (path[1][0] == '~' && \
+		(!path[1][1] || (path[1][1] == '/' && !path[1][2]))))
 	{
-		str = relative_path(env, path);
-		ret = cd(env, str);
-		return (free(str), ret);
+		str = get_env_var(env, "HOME");
+		free(path[1]);
+		s = ft_strlen(str) + 1;
+		path[1] = (char *) malloc(sizeof(char) * s);
+		ft_memcpy(path[1], str, s);
+		return (cd(env, path));
+	}
+	else if (path[1][0] == '~' && path[1][1] == '/' && path[1][2])
+	{
+		str = relative_path(env, path[1]);
+		free(path[1]);
+		path[1] = str;
+		return (cd(env, path));
 	}
 	return (0);
 }
@@ -73,15 +81,24 @@ static int	home_dir(t_env *env, const char *path)
  * @return returns 1 on success, 0 on error, automatically 
  * prints an error message
 */
-int	cd(t_env *env, const char *path)
+int	cd(t_env *env, char **path)
 {
 	char	*str;
+	int		i;
 
-	if (!path || !*path || *path == '~')
+	i = 0;
+	while (path[i])
+		i++;
+	if (i > 3)
+	{
+		printf("minishell: cd: too many arguments\n");
+		return (0);
+	}
+	if (!path[1] || !*path[1] || *path[1] == '~')
 		return (home_dir(env, path));
-	else if (chdir(path) != 0)
+	else if (chdir(path[1]) != 0)
 		return (perror("cd error"), 0);
 	str = pwd();
 	change_pwd(env, str);
-	return (free (str), 1);
+	return (free(str), 1);
 }
