@@ -1,10 +1,5 @@
 #include "minishell.h"
 
-void	too_many_args(char *str)
-{
-	printf("minishell: %s: too many arguments\n", str);
-}
-
 void	ft_export(t_env *env, char **arglist)
 {
 	char	**vars;
@@ -29,7 +24,7 @@ void	ft_env(t_env *env, char **arglist)
 	int		i;
 
 	if (list_len(arglist) > 1)
-		too_many_args("env");
+		printf("minishell: env: too many arguments\n");
 	vars = env_string(env);
 	i = 0;
 	size = env->size - num_invalid_env_vars(env);
@@ -67,14 +62,7 @@ static void	execute(t_tok tk, t_data *d, uint32_t i)
 		ft_export(d->env, tk.arglist);
 	else if (!ft_strncmp(tk.path, "cd", 3)
 		|| !ft_strncmp(tk.path, "exit", 5))
-	{
-		if (list_len(tk.arglist) > 2)
-			too_many_args(tk.arglist[0]);
-		else if (ft_strncmp(tk.path, "cd", 3) == 0)
-			cd(d->env, tk.arglist[1]);
-/* 		else
-			ft_exit(token.arglist); */
-	}
+		cd(d->env, tk.arglist);
 	else
 		d->ret_status = run_exe(tk.path, tk.arglist, d->env,
 				i == d->cmds->size - 1);
@@ -100,6 +88,14 @@ bool	exec_comm_list(t_data *data)
 				execute(data->cmds->tks[i], data, i);
 			else if (data->cmds->tks[i].type == r_pipe)
 				exec_pipe(data);
+			else if (data->cmds->tks[i].type == r_out)
+				redir_trunc(data->cmds->tks[i].path);
+			else if (data->cmds->tks[i].type == r_in)
+				redir_in(data->cmds->tks[i].path);
+			else if (data->cmds->tks[i].type == r_append)
+				redir_appd(data->cmds->tks[i].path);
+			else if (data->cmds->tks[i].type == r_heredoc)
+				redir_heredoc(data->cmds->tks[i].path);
 		}
 	}
 	waitpid(pid, &status, 0);

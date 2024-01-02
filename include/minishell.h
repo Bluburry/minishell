@@ -26,7 +26,7 @@ extern int	g_sig;
 
 // ---change_directory---
 // change_directory/cd.c
-int		cd(t_env *env, const char *path);
+int		cd(t_env *env, char **path);
 
 // change_directory/relative_path.c
 char	*relative_path(t_env *env, const char *path);
@@ -107,6 +107,7 @@ bool	create_comm_list(t_data *data);
 //parser/exec_comms.c
 bool	exec_comm_list(t_data *data);
 
+
 // parser/insert_args.c
 bool	insert_name_args(t_cmda *cmds, char **list, uint32_t n);
 
@@ -121,6 +122,8 @@ bool	exec_pipe(t_data *d);
 int		redir_appd(char *path);
 int		redir_trunc(char *path);
 int		redir_in(char *path);
+int		redir_heredoc(char *stop);
+
 
 // ---struct_handling/---
 //Environment variables functions

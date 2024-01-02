@@ -52,7 +52,7 @@ FTPRINTF_DIR	=	ft_printf/
 STRING		=	ft_strjoin ft_striteri ft_strlcat ft_strnstr ft_strlcpy\
 				ft_strlen ft_strdup ft_strchr ft_strmapi ft_strncmp\
 				ft_strrchr ft_split ft_strtrim ft_substr ft_split_str\
-				ft_strdup_sted
+				ft_strdup_sted ft_strcmp
 PRINTING	=	ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd
 FT_IS		=	ft_isalpha ft_isascii ft_isdigit ft_isalnum ft_isprint ft_iswhitespace
 MEM			=	ft_memcmp ft_calloc ft_bzero ft_memchr ft_memset\

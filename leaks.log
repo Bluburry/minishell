@@ -1,0 +1,7 @@
+==16898== Memcheck, a memory error detector
+==16898== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==16898== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==16898== Command: ./minishell
+==16898== Parent PID: 16892
+==16898== 
+==16898== FATAL: can't open suppressions file "readline_supression"
