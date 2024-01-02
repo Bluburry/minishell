@@ -36,7 +36,6 @@ static inline bool	helper1_redirs(t_cmda *cmds, char **list, uint32_t	*i)
 		if (helper2_redirs(cmds, list, i, r_in) == false)
 			return (false);
 	}
-	
 	return (true);
 }
 
