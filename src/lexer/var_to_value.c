@@ -6,7 +6,7 @@
 /*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:01 by ade-barr          #+#    #+#             */
-/*   Updated: 2024/01/02 15:44:48 by jecarval         ###   ########.fr       */
+/*   Updated: 2024/01/02 16:47:24 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,14 @@ static char	*store_word(char *str)
 
 static char	*process_var(char *str, char *ret_str, t_env *env, t_data *data)
 {
+	char *ret_val;
+
 	if (str[1] && str[1] == '?')
-		ret_str = ft_strjoin(ret_str, ft_itoa(data->ret_status));
+	{
+		ret_val =ft_itoa(data->ret_status);
+		ret_str = ft_strjoin(ret_str, ret_val);
+		free(ret_val);
+	}
 	else if (str[1] && str[1] == '$')
 		ret_str = ft_strjoin(ret_str, "PRINT_PID");
 	else if (str[1] && !ft_isalpha(str[1]))

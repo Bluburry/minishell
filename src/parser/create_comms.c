@@ -64,6 +64,8 @@ bool	pipe_checker(t_data	*d)
 
 	if (d->strlist == NULL)
 		return (printf("Empty  list of strings.\n"), false);
+	if (d->strlist[0] == NULL)
+		return (false);
 	if (ft_strncmp("|", d->strlist[0], 1) == 0)
 		return (printf(ERR_PIPE), false);
 	len = list_len(d->strlist);

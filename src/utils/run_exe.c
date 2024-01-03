@@ -17,5 +17,5 @@ int	run_exe(char *path, char **args, t_env *env, bool is_last)
 	if (is_last)
 		waitpid(pid, &status, 0);
 	set_signals_base();
-	return (!WEXITSTATUS(status));
+	return (WEXITSTATUS(status));
 }
