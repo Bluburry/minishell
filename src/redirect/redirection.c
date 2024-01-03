@@ -33,7 +33,6 @@ int	redir_trunc(char *path)
 int	redir_in(char *path)
 {
 	int		file;
-	char	c;
 
 	file = open(path, O_RDONLY, 0666);
 	if (file == -1)
@@ -42,8 +41,6 @@ int	redir_in(char *path)
 		return (0);
 	}
 	dup2(file, STDIN_FILENO);
-	while (read(STDIN_FILENO, &c, 1) > 0)
-		write(STDOUT_FILENO, &c, 1);
 	close(file);
 	return (1);
 }
@@ -54,7 +51,7 @@ int	redir_heredoc(char *stop)
 	char	*str;
 
 	str = pwd();
-	fl = open(str, O_TMPFILE | O_RDWR, 0600);
+	fl = open(str, O_TMPFILE | O_RDWR, 0666);
 	free(str);
 	if (fl == -1)
 	{

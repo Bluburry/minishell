@@ -25,7 +25,7 @@ static char	*path_or_builtin(t_env *env, char *str)
 		|| ft_strncmp(str, "export", 8) == 0
 		|| ft_strncmp(str, "exit", 5) == 0
 		|| ft_strncmp(str, "cd", 3) == 0)
-		return (str);
+		return (ft_strdup(str));
 	return (find_exe_path(env, str));
 }
 
@@ -67,7 +67,7 @@ bool	insert_name_args(t_cmda *c, char **l, uint32_t n, t_env *env)
 		else if (path_added == false)
 		{
 			path_added = true;
-			c->tks[c->size].path = ft_strdup(path_or_builtin(env, remc(l[i])));
+			c->tks[c->size].path = path_or_builtin(env, remc(l[i]));
 			if (c->tks[c->size].path == NULL)
 				return (ret_stuff(c, j, l[i]));
 			c->tks[c->size].arglist[j++] = ft_strdup(chk_path((remc(l[i]))));
