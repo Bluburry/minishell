@@ -43,7 +43,7 @@ void		*ft_reallocation(void *ptr, size_t ptrsize, size_t size);
 // ---lexer/---
 // lexer/expand_var_tokens.c
 int			count_tokens(char **input);
-char		**expand_var_tokens(char **input, t_env *env);
+char		**expand_var_tokens(char **input, t_env *env, t_data *data);
 
 // lexer/lexer_utils.c
 //Signal functions
@@ -90,14 +90,14 @@ int			quotes_end(char *input);
 int			count_tokens_quotes(char *input);
 
 // lexer/split_tokens.c
-char		**tokens_init(char *input, t_env *env);
+char		**tokens_init(char *input, t_env *env, t_data *data);
 void		remove_quotes_from_tokens(char **input);
 char		*create_token(const char *str, size_t len);
 int			move_in_str(char *str, char c);
 int			is_token_end(char c);
 
 // lexer/var_to_value.c
-char		*var_to_value(char *str, t_env *env);
+char		*var_to_value(char *str, t_env *env, t_data *data);
 
 // ---parser/---
 // parser/create_comms.c
@@ -131,7 +131,7 @@ int			alter_env_var(t_env *env, char **new);
 void		replace_env_var(t_env *env, const char *new, int i);
 
 // struct_handling/clear_env.c
-void		unset_env_var(t_env *env, char **var);
+int			unset_env_var(t_env *env, char **var);
 void		clear_chars(char **str, int size);
 void		clear_env_struct(t_env *env);
 
@@ -155,7 +155,7 @@ t_env		*create_env_struct(char **envp);
 
 // ---utils/---
 // utils/echo.c
-void		ft_echo(char **argv);
+int		ft_echo(char **argv);
 
 // utils/exit.c
 bool		ft_exit(t_data *d, char **list);

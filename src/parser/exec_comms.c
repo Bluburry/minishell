@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	ft_export(t_env *env, char **arglist)
+int	ft_export(t_env *env, char **arglist)
 {
 	char	**vars;
 	int		i;
@@ -15,49 +15,55 @@ void	ft_export(t_env *env, char **arglist)
 			printf("%s\n", vars[i++]);
 		clear_chars(vars, env->size);
 	}
+	return (1);
 }
 
-void	ft_env(t_env *env, char **arglist)
+int	ft_env(t_env *env, char **arglist)
 {
 	char	**vars;
 	int		size;
 	int		i;
 
 	if (list_len(arglist) > 1)
+	{
 		printf("minishell: env: too many arguments\n");
+		return (1);
+	}
 	vars = env_string(env);
 	i = 0;
 	size = env->size - num_invalid_env_vars(env);
 	while (i < size)
 		printf("%s\n", vars[i++]);
 	clear_chars(vars, size);
+	return (0);
 }
 
-void	ft_pwd(void)
+int	ft_pwd(void)
 {
 	char	*str;
 
 	str = pwd();
 	printf("%s\n", str);
 	free(str);
+	return (0);
 }
 
 static void	execute(t_tok tk, t_data *d, uint32_t i)
 {
 	if (ft_strncmp(tk.path, "echo", 5) == 0)
-		ft_echo(tk.arglist);
+		d->ret_status = ft_echo(tk.arglist);
 	else if (ft_strncmp(tk.path, "pwd", 4) == 0)
-		ft_pwd();
+		d->ret_status = ft_pwd();
 	else if (ft_strncmp(tk.path, "env", 4) == 0)
-		ft_env(d->env, tk.arglist);
+		d->ret_status = ft_env(d->env, tk.arglist);
 	else if (ft_strncmp(tk.path, "unset", 6) == 0)
-		unset_env_var(d->env, tk.arglist);
+		d->ret_status = unset_env_var(d->env, tk.arglist);
 	else if (ft_strncmp(tk.path, "export", 8) == 0)
-		ft_export(d->env, tk.arglist);
+		d->ret_status = ft_export(d->env, tk.arglist);
 	else if (ft_strncmp(tk.path, "exit", 5) == 0)
-		ft_exit(d, tk.arglist);
+		d->ret_status = ft_exit(d, tk.arglist);
 	else if (ft_strncmp(tk.path, "cd", 3) == 0)
-		cd(d->env, tk.arglist);
+		d->ret_status = cd(d->env, tk.arglist);
 	else
 		d->ret_status = run_exe(tk.path, tk.arglist, d->env,
 				i == d->cmds->size - 1);

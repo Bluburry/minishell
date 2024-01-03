@@ -21,7 +21,7 @@ CC			=	cc
 RM			=	rm -f
 CFLAGS		=	-g -Wall -Werror -Wextra -I $(INCLUDE)
 VG			=	valgrind --leak-check=full -s --show-leak-kinds=all \
-				--suppressions=readline_supression --log-file=leaks.log
+				--suppressions=sup --log-file=leaks.log
 LIB			=	-lreadline -L. -lft
 # Libs are always after objects in the compilation
 # If you put them before, it won't compile

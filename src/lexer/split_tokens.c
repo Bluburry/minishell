@@ -57,7 +57,7 @@ void	remove_quotes_from_tokens(char **input)
 	}
 }
 
-char	**tokens_init(char *input, t_env *env)
+char	**tokens_init(char *input, t_env *env, t_data *data)
 {
 	char	**ptr;
 	char	*tmp;
@@ -68,7 +68,7 @@ char	**tokens_init(char *input, t_env *env)
 	free(tmp);
 	if (ptr == NULL)
 		return (NULL);
-	ptr2 = expand_var_tokens(ptr, env);
+	ptr2 = expand_var_tokens(ptr, env, data);
 	dcp_cleaner(ptr);
 	ptr = split_char_tokens(ptr2, ' ');
 	dcp_cleaner(ptr2);

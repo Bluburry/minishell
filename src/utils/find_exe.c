@@ -57,6 +57,8 @@ static char	*handle_exe_stats(const char *path, char *cmd)
 	int		j;
 	char	*exec;
 
+	if (!path || !*path)
+		return (NULL);
 	i = 0;
 	while (path[i] != 0)
 	{
