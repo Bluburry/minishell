@@ -5,6 +5,7 @@ t_cmda	*create_cmda(uint32_t cap)
 {
 	t_cmda	*cmda_arr;
 
+	cap += 2;
 	cmda_arr = malloc(sizeof(t_cmda));
 	if (cmda_arr == NULL)
 		return (NULL);
