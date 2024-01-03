@@ -170,7 +170,7 @@ void		env(char **envp);
 char		*pwd(void);
 
 // utils/run_exe.c
-int			run_exe(char *path, char **args, t_env *env, bool is_last);
+int			run_exe(char *path, char **args, t_env *env);
 
 // utils/signal_handler.c
 void		set_signals_base(void);
