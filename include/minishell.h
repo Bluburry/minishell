@@ -123,7 +123,7 @@ bool		exec_pipe(t_data *d);
 int			redir_appd(char *path);
 int			redir_trunc(char *path);
 int			redir_in(char *path);
-int			redir_heredoc(char *stop);
+int			redir_heredoc(char *stop, t_data *d);
 
 // ---struct_handling/---
 // struct_handling/alter_env.c

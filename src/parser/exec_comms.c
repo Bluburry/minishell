@@ -88,7 +88,7 @@ bool	exec_comm_list(t_data *data)
 		else if (data->cmds->tks[i].type == r_append)
 			redir_appd(data->cmds->tks[i].path);
 		else if (data->cmds->tks[i].type == r_heredoc)
-			redir_heredoc(data->cmds->tks[i].path);
+			redir_heredoc(data->cmds->tks[i].path, data);
 	}
 	while (wait(&status) > 0)
 		continue ;

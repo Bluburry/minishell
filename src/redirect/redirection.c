@@ -1,4 +1,6 @@
 #include "minishell.h"
+#include <readline/readline.h>
+#include <unistd.h>
 
 int	redir_appd(char *path)
 {
@@ -45,7 +47,7 @@ int	redir_in(char *path)
 	return (1);
 }
 
-int	redir_heredoc(char *stop)
+int	redir_heredoc(char *stop, t_data *d)
 {
 	int		fl;
 	char	*str;
@@ -53,10 +55,11 @@ int	redir_heredoc(char *stop)
 	fl = open("/tmp/MS_HEREDOC", O_WRONLY | O_TRUNC | O_CREAT, 0666);
 	if (fl == -1)
 		return (printf("Error opening temp file.\n"), 0);
+	dup2(d->stdin, STDIN_FILENO);
 	while (g_sig != SIGINT)
 	{
 		str = readline("∙ ");
-		if (!strcmp(str, stop))
+		if (!ft_strcmp(str, stop))
 			break ;
 		ft_putstr_fd(str, fl);
 		ft_putstr_fd("\n", fl);
