@@ -155,7 +155,7 @@ t_env		*create_env_struct(char **envp);
 
 // ---utils/---
 // utils/echo.c
-int		ft_echo(char **argv);
+int			ft_echo(char **argv);
 
 // utils/exit.c
 bool		ft_exit(t_data *d, char **list);
