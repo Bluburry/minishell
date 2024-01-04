@@ -62,7 +62,7 @@ static void	waiting_for_input(t_env *env, t_data *data)
 		rl = readline("minishell $> ");
 		if (!rl)
 		{
-			printf("exi>t\n");
+			printf("exit\n");
 			data->ret_status = 0;
 			data->is_exiting = true;
 			continue ;

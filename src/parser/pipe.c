@@ -2,7 +2,7 @@
 
 static inline void	redir_pipe_helper(t_data *d, int in, int out, int prev)
 {
-	dup2(out, STDOUT_FILENO);
+	dup2(out, STDOUT_FILENO);//this line
 	if (out != STDOUT_FILENO && out != d->stdout)
 		close(out);
 	dup2(in, STDIN_FILENO);
