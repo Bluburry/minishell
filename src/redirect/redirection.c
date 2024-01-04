@@ -1,6 +1,4 @@
 #include "minishell.h"
-#include <readline/readline.h>
-#include <unistd.h>
 
 int	redir_appd(char *path)
 {
@@ -59,7 +57,7 @@ int	redir_heredoc(char *stop, t_data *d)
 	while (g_sig != SIGINT)
 	{
 		str = readline("∙ ");
-		if (!ft_strcmp(str, stop))
+		if (str == NULL || !ft_strcmp(str, stop))
 			break ;
 		ft_putstr_fd(str, fl);
 		ft_putstr_fd("\n", fl);
