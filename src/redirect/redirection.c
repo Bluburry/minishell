@@ -1,5 +1,6 @@
 #include "libft.h"
 #include "minishell.h"
+#include <unistd.h>
 
 int	redir_appd(char *path)
 {
@@ -51,18 +52,14 @@ int	redir_in(char *path)
 
 int	redir_heredoc(char *stop, t_data *d)
 {
-	auto int fl = open(PTH, O_WRONLY | O_TRUNC | O_CREAT, 0666);
+	auto int fl = open(PTH, O_WRONLY | O_TRUNC | O_CREAT, 0666), t = dup(1);
 	auto char *str = NULL;
 	if (fl == -1)
 		return (printf("Error opening temp file.\n"), 0);
+	dup2(d->stdout, STDOUT_FILENO);
 	dup2(d->stdin, STDIN_FILENO);
 	while (g_sig != SIGINT)
 	{
-		//printf("∙ ");
-		//str = ft_gnl_reset(fl, false);
-		//auto char *temp = ft_strrchr(str, '\n');
-		//if (temp != NULL)
-		//	*temp = '\0';
 		str = readline("∙ ");
 		if (str == NULL)
 		{
@@ -76,10 +73,16 @@ int	redir_heredoc(char *stop, t_data *d)
 		free(str);
 	}
 	free(str);
-	//ft_gnl_reset(fl, true);
 	close(fl);
 	fl = open(PTH, O_RDONLY, 0);
 	if (fl == -1)
 		return (printf("Error opening temp file.\n"), 0);
-	return (unlink(PTH), dup2(fl, STDIN_FILENO), close(fl), 1);
+	return (unlink(PTH), dup2(t, 1), close(t), dup2(fl, 0), close(fl), 1);
 }
+
+		//printf("∙ ");
+		//str = ft_gnl_reset(fl, false);
+		//auto char *temp = ft_strrchr(str, '\n');
+		//if (temp != NULL)
+		//	*temp = '\0';
+			//ft_gnl_reset(fl, true);
