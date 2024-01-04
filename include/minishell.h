@@ -123,7 +123,7 @@ bool		exec_pipe(t_data *d);
 int			redir_appd(char *path);
 int			redir_trunc(char *path);
 int			redir_in(char *path);
-int			redir_heredoc(char *stop);
+int			redir_heredoc(char *stop, t_data *d);
 
 // ---struct_handling/---
 // struct_handling/alter_env.c
@@ -170,7 +170,7 @@ void		env(char **envp);
 char		*pwd(void);
 
 // utils/run_exe.c
-int			run_exe(char *path, char **args, t_env *env, bool is_last);
+int			run_exe(char *path, char **args, t_env *env);
 
 // utils/signal_handler.c
 void		set_signals_base(void);

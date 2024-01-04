@@ -45,11 +45,11 @@ static uint32_t	count_pipes(char **list)
 
 static bool	comm_list_helper(t_data *d, int32_t n, uint32_t st, bool ins_pipe)
 {
+	if (ins_pipe == true)
+		d->cmds->tks[d->cmds->size++] = (t_tok){r_pipe, NULL, NULL};
 	if (insert_redirs(d->cmds, &d->strlist[st], n) == false)
 		return (clean_cmda(d->cmds), d->cmds = NULL,
 			dcp_cleaner(d->strlist), d->strlist = NULL, false);
-	if (ins_pipe == true)
-		d->cmds->tks[d->cmds->size++] = (t_tok){r_pipe, NULL, NULL};
 	if (insert_name_args(d->cmds, &d->strlist[st], n, d->env) == false)
 		return (d->ret_status = 127, clean_cmda(d->cmds), d->cmds = NULL,
 			dcp_cleaner(d->strlist), d->strlist = NULL, false);

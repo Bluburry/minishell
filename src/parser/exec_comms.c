@@ -48,7 +48,7 @@ int	ft_pwd(void)
 	return (0);
 }
 
-static void	execute(t_tok tk, t_data *d, uint32_t i)
+static void	execute(t_tok tk, t_data *d)
 {
 	if (ft_strncmp(tk.path, "echo", 5) == 0)
 		d->ret_status = ft_echo(tk.arglist);
@@ -65,23 +65,20 @@ static void	execute(t_tok tk, t_data *d, uint32_t i)
 	else if (ft_strncmp(tk.path, "cd", 3) == 0)
 		d->ret_status = cd(d->env, tk.arglist);
 	else
-		d->ret_status = run_exe(tk.path, tk.arglist, d->env,
-				i == d->cmds->size - 1);
+		d->ret_status = run_exe(tk.path, tk.arglist, d->env);
 }
 
 bool	exec_comm_list(t_data *data)
 {
-	int		i;
-
+	auto int i = -1, status;
 	if (data->cmds == NULL)
 		return (false);
-	i = -1;
 	while (++i < (int)data->cmds->size)
 	{
 		if (data->cmds->tks[i].type == none)
 			return (false);
 		else if (data->cmds->tks[i].type == exec)
-			execute(data->cmds->tks[i], data, i);
+			execute(data->cmds->tks[i], data);
 		else if (data->cmds->tks[i].type == r_pipe)
 			exec_pipe(data);
 		else if (data->cmds->tks[i].type == r_out)
@@ -91,7 +88,9 @@ bool	exec_comm_list(t_data *data)
 		else if (data->cmds->tks[i].type == r_append)
 			redir_appd(data->cmds->tks[i].path);
 		else if (data->cmds->tks[i].type == r_heredoc)
-			redir_heredoc(data->cmds->tks[i].path);
+			redir_heredoc(data->cmds->tks[i].path, data);
 	}
+	while (wait(&status) > 0)
+		continue ;
 	return (true);
 }

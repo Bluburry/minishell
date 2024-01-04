@@ -122,4 +122,4 @@ endef
 
 sup_file:
 	$(file > sup,$(SUP_BODY))
-	@echo "$(MAGENTA)Created suppression file to use with valgrind --supressions=sup$(DEF_COLOR)"
+	@echo "$(MAGENTA)Created suppression file to use with valgrind --suppressions=sup$(DEF_COLOR)"
