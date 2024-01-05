@@ -1,108 +1,111 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   var_to_value.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 10:14:01 by ade-barr          #+#    #+#             */
-/*   Updated: 2024/01/02 16:47:24 by jecarval         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
-static int	find_word_end(char *str)
+// 0 = leave as is
+// 1 = expand
+// 2 = $?
+// 3 = remove $ and following char (ex: echo $1)
+static int	valid_expand(char *str, int pos)
 {
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i] && !ft_iswhitespace(str[i]))
-	{
-		if (str[i] == '$')
-			count++;
-		if (count == 2 || str[i] == '\\')
-			break ;
-		i++;
-	}
-	if (str[i - 1] && str[i - 1] == '$')
-		i++;
-	return (i);
+	if (str[pos - 1] && str[pos - 1] == '\'')
+		return (0);
+	else if (str[pos + 1] && str[pos + 1] == '?')
+		return (2);
+	else if (str[pos + 1] && ft_isdigit(str[pos + 1]))
+		return (3);
+	else if (str[pos + 1] && ft_isalpha(str[pos + 1]))
+		return (1);
+	return (0);
 }
 
-static char	*store_word(char *str)
+static char	*fng_env_var(char *str, t_env *env)
 {
+	char	*env_str;
+	char	*new_str;
 	int		i;
-	int		j;
-	char	*word;
 
 	i = 0;
-	i = find_word_end((str + i));
-	word = malloc(sizeof(char) * i + 2);
-	j = 0;
-	str++;
-	while (str[j] && j <= i && !ft_iswhitespace(str[j]))
-	{
-		if (str[j] == '"' || str[j] == '$' || str[j] == '\\')
-			break ;
-		word[j] = str[j];
-		j++;
-	}
-	word[j] = '\0';
-	return (word);
+	while (str[i] && (ft_isalpha(str[i]) || ft_isdigit(str[i])))
+		i++;
+	new_str = (char *) malloc(sizeof(char) * i + 1);
+	ft_memcpy(new_str, str, i);
+	new_str[i] = 0;
+	env_str = get_env_var(env, new_str);
+	return (free(new_str), env_str);
 }
 
-static char	*process_var(char *str, char *ret_str, t_env *env, t_data *data)
+// only possible options here are 3 (remove $ and following char) 
+// and 1 (expand), the latter can happen where there is no 
+// environmental variable with that name (ex: echo $PAT!H)
+static char	*new_str_skip(char *str, int *pos, int option)
 {
-	char *ret_val;
+	auto size_t s = ft_strlen(str);
+	auto char *new_str = (char *) malloc(sizeof(char) * (s));
+	auto int i = *pos + 1;
+	ft_memcpy(new_str, str, *pos);
+	if (option == 3)
+	{
+		if (!str[*pos + 2])
+		{
+			new_str[s - 2] = 0;
+			*pos = i - 3;
+			return (free(str), new_str);
+		}
+		ft_memcpy(new_str + *pos, str + *pos + 2, s - *pos - 2);
+		new_str[s - 2] = 0;
+		*pos = i - 2;
+		return (free(str), new_str);
+	}
+	while (str[i] && (ft_isalpha(str[i]) || ft_isdigit(str[i])))
+		i++;
+	ft_memcpy(new_str + *pos, str + i, s - i);
+	new_str[s - (i - *pos)] = 0;
+	*pos = *pos - 1;
+	if (str[i])
+		*pos = i - (i - *pos);
+	return (free(str), new_str);
+}
 
-	if (str[1] && str[1] == '?')
-	{
-		ret_val =ft_itoa(data->ret_status);
-		ret_str = ft_strjoin(ret_str, ret_val);
-		free(ret_val);
-	}
-	else if (str[1] && str[1] == '$')
-		ret_str = ft_strjoin(ret_str, "PRINT_PID");
-	else if (str[1] && !ft_isalpha(str[1]))
-	{
-		ft_printf("Syntax error\n");
-		return (NULL);
-	}
-	else if (str[1] && str[1] == ' ')
-		ret_str = ft_strjoin(ret_str, ft_substr(str, 0, 1));
-	else if (get_env_var(env, store_word(str)))
-		ret_str = ft_strjoin(ret_str, get_env_var(env, store_word(str)));
-	return (ret_str);
+// so as not to go over chars in the new string that i don't need to
+// the address of i is passed and altered according to the size of append
+// (or close enough at least)
+static char	*new_str_vtv(char *str, char *appnd, int *pos, int option)
+{
+	auto size_t s = ft_strlen(str), t = ft_strlen(appnd);
+	auto int i = *pos + 1;
+	auto char *ret_str;
+	if (appnd == NULL)
+		return (new_str_skip(str, pos, option));
+	while (str[i] && (ft_isalpha(str[i]) || ft_isdigit(str[i])))
+		i++;
+	if (option == 2)
+		i = *pos + 2;
+	ret_str = (char *) malloc(sizeof(char) * (s + t - (i - *pos) + 1));
+	ft_memcpy(ret_str, str, *pos);
+	ft_memcpy(ret_str + *pos, appnd, t);
+	ft_memcpy(ret_str + *pos + t, str + i, s - i + 1);
+	i = *pos + t - 1;
+	*pos = i;
+	return (free(appnd), free(str), ret_str);
 }
 
 char	*var_to_value(char *str, t_env *env, t_data *data)
 {
-	char	*ret_str;
-
-	ret_str = ft_calloc(sizeof(char), 1);
-	while (str[0])
+	auto int i = -1, op = 0;
+	auto char *new_str = ft_strdup(str), *change;
+	while (new_str[++i])
 	{
-		if (str[0] && str[0] == '$')
-		{
-			if (!ft_iswhitespace(str[1]) && str[1])
-			{
-				ret_str = process_var(str, ret_str, env, data);
-				str += find_word_end(str);
-			}
-			else
-			{
-				ret_str = ft_strjoin(ret_str, ft_substr(str, 0, 1));
-				str++;
-			}
-		}
+		if (new_str[i] == '$')
+			op = valid_expand(new_str, i);
 		else
-		{
-			ret_str = ft_strjoin(ret_str, ft_substr(str, 0, 1));
-			str++;
-		}
+			continue ;
+		if (op == 1)
+			change = ft_strdup(fng_env_var(new_str + i + 1, env));
+		else if (op == 2)
+			change = ft_itoa(data->ret_status);
+		else if (op == 3)
+			change = NULL;
+		if (op)
+			new_str = new_str_vtv(new_str, change, &i, op);
 	}
-	return (ret_str);
+	return (new_str);
 }
