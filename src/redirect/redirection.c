@@ -1,6 +1,4 @@
-#include "libft.h"
 #include "minishell.h"
-#include <unistd.h>
 
 int	redir_appd(char *path)
 {
@@ -47,6 +45,12 @@ int	redir_in(char *path)
 	return (1);
 }
 
+static inline void	ft_putstrnl_fd(char *s, int fd)
+{
+	ft_putstr_fd(s, fd);
+	ft_putstr_fd("\n", fd);
+}
+
 #define PTH "/tmp/MS_HEREDOC"
 #define ERR_STR "Warning: heredoc delimited by end of file instead of %s\n"
 
@@ -68,8 +72,7 @@ int	redir_heredoc(char *stop, t_data *d)
 		}
 		else if (!ft_strcmp(str, stop))
 			break ;
-		ft_putstr_fd(str, fl);
-		ft_putstr_fd("\n", fl);
+		ft_putstrnl_fd(str, fl);
 		free(str);
 	}
 	free(str);
@@ -79,10 +82,3 @@ int	redir_heredoc(char *stop, t_data *d)
 		return (printf("Error opening temp file.\n"), 0);
 	return (unlink(PTH), dup2(t, 1), close(t), dup2(fl, 0), close(fl), 1);
 }
-
-		//printf("∙ ");
-		//str = ft_gnl_reset(fl, false);
-		//auto char *temp = ft_strrchr(str, '\n');
-		//if (temp != NULL)
-		//	*temp = '\0';
-			//ft_gnl_reset(fl, true);
