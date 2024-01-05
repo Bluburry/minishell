@@ -11,90 +11,92 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <stddef.h>
 
-static int	find_word_end(char *str)
+// 0 = leave as is
+// 1 = expand
+// 2 = $?
+// 3 = remove $
+static int	valid_expand(char *str, int pos)
 {
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (str[i] == '$')
-			count++;
-		if (count == 2 || str[i] == '|' || !(ft_isalnum(str[i]) || str[i] == '_' || str[i] == '$'))
-			break ;
-		i++;
-	}
-	if (str[i - 1] && str[i - 1] == '$')
-		i++;
-	return (i);
+	if (((str[pos - 1] && str[pos - 1] == '\'')) || \
+		((str[pos + 1] && ft_iswhitespace(str[pos + 1]))) || \
+		!str[pos + 1] || str[pos + 1] == '$')
+		return (0);
+	else if (str[pos + 1] && str[pos + 1] == '?')
+		return (2);
+	else if (str[pos + 1] && !ft_isalpha(str[pos + 1]))
+		return (3);
+	// if (ft_isdigit(str[pos + 1]) || str[pos + 1] == '"' || str[pos + 1] == '\'')
+		// return (3);
+	// pos++;
+	// while (str[pos] && !ft_iswhitespace(str[pos]))
+	// {
+		// if
+	// }
+	return (1);
 }
 
-static char	*store_word(char *str)
+static char	*fng_env_var(char *str, t_env *env)
 {
+	char	*env_str;
+	char	*helper;
 	int		i;
-	char	*word;
 
 	i = 0;
-	i = find_word_end((str));
-	word = ft_substr(str, 1 , i - 1);
-	return (word);
+	// while (str[i] && !ft_iswhitespace(str[i]) && 
+		// str[i] != '\'' && str[i] != '"')
+	while (str[i] && (ft_isalpha(str[i]) || ft_isdigit(str[i])))
+		i++;
+	helper = (char *) malloc(sizeof(char) * i + 1);
+	ft_memcpy(helper, str, i);
+	helper[i] = 0;
+	env_str = get_env_var(env, helper);
+	return (free(helper), env_str);
 }
 
-static char	*process_var(char *str, char *ret_str, t_env *env, t_data *data)
+static char	*new_str_vtv(char *str, char *appnd)
 {
-	char	*ret_val;
-	char	*word;
-
-	word = store_word(str);
-	if (str[1] && str[1] == '?')
-	{
-		ret_val = ft_itoa(data->ret_status);
-		ret_str = ft_strjoin(ret_str, ret_val);
-		free(ret_val);
-	}
-	else if (str[1] && str[1] == ' ')
-		ret_str = ft_strjoin(ret_str, ft_substr(str, 0, 1));
-	else if (get_env_var(env, word))
-		ret_str = ft_strjoin(ret_str, get_env_var(env, word));
-	free(word);
-	return (ret_str);
+	auto size_t s = ft_strlen(str), t = ft_strlen(appnd);
+	auto int i = 0, j;
+	auto char *ret_str;
+	if (appnd == NULL)
+		return (ft_strdup(str));
+	while (str[i] && str[i] != '$')
+		i++;
+	while (str[i] && str[i] == '$')
+		i++;
+	j = i;
+	// while (str[j] && !ft_iswhitespace(str[j]) && 
+		// str[j] != '\'' && str[j] != '"')
+	while (str[j] && (ft_isalpha(str[j]) || ft_isdigit(str[j])))
+		j++;
+	ret_str = (char *) malloc(sizeof(char) * (s + t - (j - i) + 1));
+	ft_memcpy(ret_str, str, i);
+	ft_memcpy(ret_str + i, appnd, t);
+	ft_memcpy(ret_str + i + t, str + j, s - j + 1);
+	return (free(appnd), ret_str);
 }
 
 char	*var_to_value(char *str, t_env *env, t_data *data)
 {
-	auto char *ret_str = ft_calloc(sizeof(char), 1), *tmp_str, *tmp_ret;
-	while (str[0])
-	{
-		if (str[0] && str[0] == '$')
-		{
-			if (str[1] && (str[1] == '?' || ft_isalpha(str[1]) ))
-			{
-				tmp_ret = ret_str;
-				ret_str = process_var(str, tmp_ret, env, data);
-				str += find_word_end(str);
-			}
-			else
-			{
-				tmp_str = ft_substr(str, 0, 1);
-				tmp_ret = ret_str;
-				ret_str = ft_strjoin(tmp_ret, tmp_str);
-				free(tmp_ret);
-				free(tmp_str);
-				str++;
-			}
-		}
-		else
-		{
-			tmp_str = ft_substr(str, 0, 1);
-			tmp_ret = ret_str;
-			ret_str = ft_strjoin(tmp_ret, tmp_str);
-			free(tmp_ret);
-			free(tmp_str);
-			str++;
-		}
-	}
-	return (ret_str);
+	auto int i = -1, op = 0;
+	auto char *helper, *helper2;
+	while (str[++i] && op == 0)
+		if (str[i] == '$')
+			op = valid_expand(str, i);
+	if (!str[i] || (str[i] && op == 0))
+		return (ft_strdup(str));
+	if (op == 2)
+		helper = ft_itoa(data->ret_status);
+	else
+		helper = ft_strdup(fng_env_var(str + i, env));
+	helper = new_str_vtv(str, helper);
+	i = 0;
+	while (helper[i] && helper[i] != '$')
+		i++;
+	if (!helper[i] || op == 0)
+		return (helper);
+	helper2 = var_to_value(helper, env, data);
+	return (free(helper), helper2);
 }
