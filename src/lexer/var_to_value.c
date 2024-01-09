@@ -6,7 +6,7 @@
 // 3 = remove $ and following char (ex: echo $1)
 static int	valid_expand(char *str, int pos)
 {
-	if (str[pos - 1] && str[pos - 1] == '\'')
+	if (pos - 1 >= 0 && str[pos - 1] && str[pos - 1] == '\'')
 		return (0);
 	else if (str[pos + 1] && str[pos + 1] == '?')
 		return (2);
@@ -83,6 +83,7 @@ static char	*new_str_vtv(char *str, char *appnd, int *pos, int option)
 	ft_memcpy(ret_str, str, *pos);
 	ft_memcpy(ret_str + *pos, appnd, t);
 	ft_memcpy(ret_str + *pos + t, str + i, s - i + 1);
+	ret_str[s + t - (i - *pos)] = 0;
 	i = *pos + t - 1;
 	*pos = i;
 	return (free(appnd), free(str), ret_str);
@@ -106,6 +107,8 @@ char	*var_to_value(char *str, t_env *env, t_data *data)
 			change = NULL;
 		if (op)
 			new_str = new_str_vtv(new_str, change, &i, op);
+		if (i < 0 || i >= (int) ft_strlen(new_str))
+			i = 0;
 	}
 	return (new_str);
 }

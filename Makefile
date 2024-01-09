@@ -21,7 +21,7 @@ CC			=	cc
 RM			=	rm -f
 CFLAGS		=	-g -Wall -Werror -Wextra -I $(INCLUDE)
 VG			=	valgrind --leak-check=full -s --show-leak-kinds=all \
-				--suppressions=sup --log-file=leaks.log
+				--suppressions=sup --track-origins=yes#--log-file=leaks.log
 LIB			=	-lreadline -L. -lft
 # Libs are always after objects in the compilation
 # If you put them before, it won't compile
@@ -79,7 +79,7 @@ fclean:	clean
 re:	fclean all
 	@echo "$(GREEN)Cleaned and rebuilt everything for Minishell!$(DEF_COLOR)"
 
-debug:	override CFLAGS := -fsanitize=address -static-libasan $(CFLAGS)
+debug:	override CFLAGS := -fsanitize=address -static-libsan $(CFLAGS)
 debug:	compile sup_file
 	@echo "$(GREEN)Minishell compiled in debug mode!$(DEF_COLOR)"
 # if stack traces look weird, add -fno-omit-frame-pointer -O1

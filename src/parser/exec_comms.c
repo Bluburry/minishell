@@ -1,4 +1,5 @@
 #include "minishell.h"
+#include <stdlib.h>
 
 int	ft_export(t_env *env, char **arglist)
 {
@@ -65,7 +66,7 @@ static void	execute(t_tok tk, t_data *d)
 	else if (ft_strncmp(tk.path, "cd", 3) == 0)
 		d->ret_status = cd(d->env, tk.arglist);
 	else
-		d->ret_status = run_exe(tk.path, tk.arglist, d->env);
+		run_exe(tk.path, tk.arglist, d->env);
 }
 
 bool	exec_comm_list(t_data *data)
@@ -93,5 +94,6 @@ bool	exec_comm_list(t_data *data)
 	}
 	while (wait(&status) > 0)
 		continue ;
+	data->ret_status = WEXITSTATUS(status);
 	return (true);
 }

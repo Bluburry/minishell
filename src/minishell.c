@@ -96,5 +96,5 @@ int	main(int argc, char **argv, char **envp)
 	close(data.stdout);
 	clear_env_struct(env);
 	rl_clear_history();
-	exit(data.ret_status);
+	return (0);
 }
