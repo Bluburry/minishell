@@ -79,9 +79,7 @@ bool	exec_comm_list(t_data *data)
 		return (false);
 	while (++i < (int)data->cmds->size)
 	{
-		if (data->cmds->tks[i].type == none)
-			return (false);
-		else if (data->cmds->tks[i].type == exec)
+		if (data->cmds->tks[i].type == exec)
 			execute(data->cmds->tks[i], data);
 		else if (data->cmds->tks[i].type == r_pipe)
 			exec_pipe(data);
