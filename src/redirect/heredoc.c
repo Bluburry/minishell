@@ -50,6 +50,7 @@ int	redir_heredoc(char *stop, t_data *d)
 	auto int t = dup(1);
 	dup2(d->stdout, STDOUT_FILENO);
 	dup2(d->stdin, STDIN_FILENO);
+	g_sig = -1;
 	set_signals_heredoc();
 	auto int ret = create_file(stop);
 	set_signals_base();
