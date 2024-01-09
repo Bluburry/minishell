@@ -87,7 +87,7 @@ int	cd(t_env *env, char **path)
 		i++;
 	if (i < 2)
 		printf("minishell: cd: too few arguments\n");
-	else if (i > 3)
+	else if (i >= 3)
 		printf("minishell: cd: too many arguments\n");
 	if (i != 2)
 		return (0);
