@@ -58,14 +58,6 @@ typedef struct s_cmda
 	uint32_t	cap;
 }	t_cmda;
 
-// a struct containing temporary information used when dealing with
-// sequential pipes
-typedef struct s_pipe
-{
-	int		prevfd;
-	int		ret_status;
-}	t_pipe;
-
 // a singleton struct meant to carry global state data across many
 // functions
 typedef struct s_data
@@ -82,6 +74,7 @@ typedef struct s_data
 	uint32_t	curr_pipe;
 	int			stdin;
 	int			stdout;
+	bool		has_executed;
 }	t_data;
 
 #endif

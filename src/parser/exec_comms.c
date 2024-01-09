@@ -66,12 +66,15 @@ static void	execute(t_tok tk, t_data *d)
 	else if (ft_strncmp(tk.path, "cd", 3) == 0)
 		d->ret_status = cd(d->env, tk.arglist);
 	else
+	{
 		run_exe(tk.path, tk.arglist, d->env);
+		d->has_executed = true;
+	}
 }
 
 bool	exec_comm_list(t_data *data)
 {
-	auto int i = -1, status;
+	auto int i = -1, status = 0;
 	if (data->cmds == NULL)
 		return (false);
 	while (++i < (int)data->cmds->size)
@@ -94,6 +97,7 @@ bool	exec_comm_list(t_data *data)
 	}
 	while (wait(&status) > 0)
 		continue ;
-	data->ret_status = WEXITSTATUS(status);
+	if (data->has_executed == true)
+		data->ret_status = WEXITSTATUS(status);
 	return (true);
 }

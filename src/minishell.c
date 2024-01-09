@@ -47,6 +47,7 @@ static void	reset_singleton(t_data *d)
 	d->cmds = NULL;
 	d->pipe_n = 0;
 	d->curr_pipe = 0;
+	d->has_executed = false;
 }
 
 //printf("rl: %s\n", rl);
@@ -96,5 +97,5 @@ int	main(int argc, char **argv, char **envp)
 	close(data.stdout);
 	clear_env_struct(env);
 	rl_clear_history();
-	return (0);
+	return (data.ret_status);
 }
