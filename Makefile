@@ -38,7 +38,7 @@ SRCS	=	minishell lexer lexer_utils split_tokens split_quote_tokens split_char_to
 			expand_var_tokens echo pwd utils alter_env clear_env find_env_var start_env_vars \
     		print_env print_export cd relative_path signal_handler find_exe run_exe \
 			create_comms cmda realloc insert_args insert_args2 insert_redirs exec_comms \
-			redirection pipe exit
+			redirection heredoc pipe exit
 OBJS 	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS)))
 
 OBJ_FILES	=	.cache_exists

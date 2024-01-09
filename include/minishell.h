@@ -49,9 +49,7 @@ char		**expand_var_tokens(char **input, t_env *env, t_data *data);
 //Signal functions
 void		sig_handler_interrupt(int sig, siginfo_t *info, void *ucontext);
 void		sig_handler_fork(int sig);
-void		sig_handler_heredoc(int sig);
 void		set_signals_base(void);
-void		set_signals_heredoc(void);
 void		set_signals_fork(void);
 void		init_child_signals(void);
 
@@ -121,11 +119,13 @@ bool		insert_redirs(t_cmda *cmds, char **list, uint32_t n);
 bool		exec_pipe(t_data *d);
 
 // ---redirect/---
+//redirect/heredoc.c
+int			redir_heredoc(char *stop, t_data *d);
+
 //redirect/redirection.c
 int			redir_appd(char *path);
 int			redir_trunc(char *path);
 int			redir_in(char *path);
-int			redir_heredoc(char *stop, t_data *d);
 
 // ---struct_handling/---
 // struct_handling/alter_env.c

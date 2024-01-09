@@ -1,6 +1,4 @@
 #include "minishell.h"
-#include <signal.h>
-#include <unistd.h>
 
 int	g_sig;
 
@@ -28,14 +26,6 @@ void	sig_handler_interrupt(int sig, siginfo_t *info, void *ucontext)
 	}
 }
 
-void	sig_handler_heredoc(int sig)
-{
-	close(STDIN_FILENO);
-	printf("\n");
-	g_sig = sig;
-
-}
-
 void	sig_handler_fork(int sig)
 {
 	if (sig == SIGQUIT)
@@ -53,11 +43,6 @@ void	set_signals_base(void)
 		.sa_sigaction = sig_handler_interrupt};
 	sigaction(SIGINT, &sa, NULL);
 	signal(SIGQUIT, SIG_IGN);
-}
-
-void	set_signals_heredoc(void)
-{
-	signal(SIGINT, sig_handler_heredoc);
 }
 
 void	set_signals_fork(void)
