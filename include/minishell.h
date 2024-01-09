@@ -49,7 +49,9 @@ char		**expand_var_tokens(char **input, t_env *env, t_data *data);
 //Signal functions
 void		sig_handler_interrupt(int sig, siginfo_t *info, void *ucontext);
 void		sig_handler_fork(int sig);
+void		sig_handler_heredoc(int sig);
 void		set_signals_base(void);
+void		set_signals_heredoc(void);
 void		set_signals_fork(void);
 void		init_child_signals(void);
 

@@ -1,4 +1,5 @@
 #include "minishell.h"
+#include <signal.h>
 
 int	redir_appd(char *path)
 {
@@ -62,9 +63,13 @@ int	redir_heredoc(char *stop, t_data *d)
 		return (printf("Error opening temp file.\n"), 0);
 	dup2(d->stdout, STDOUT_FILENO);
 	dup2(d->stdin, STDIN_FILENO);
+	g_sig = -1;
+	set_signals_heredoc();
 	while (g_sig != SIGINT)
 	{
 		str = readline("∙ ");
+		if ( g_sig == SIGINT)
+			return FALSE;
 		if (str == NULL)
 		{
 			printf(ERR_STR, stop);
