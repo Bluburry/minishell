@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque <remarque@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:39:38 by remarque          #+#    #+#             */
-/*   Updated: 2024/01/10 14:39:39 by remarque         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:47:32 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

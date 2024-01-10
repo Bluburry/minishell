@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_var_tokens.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque <remarque@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:40:07 by remarque          #+#    #+#             */
-/*   Updated: 2024/01/10 14:40:08 by remarque         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:48:03 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

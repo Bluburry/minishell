@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque <remarque@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:41:54 by remarque          #+#    #+#             */
-/*   Updated: 2024/01/10 14:41:55 by remarque         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:50:12 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

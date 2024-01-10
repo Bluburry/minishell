@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque <remarque@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:42:02 by remarque          #+#    #+#             */
-/*   Updated: 2024/01/10 14:42:02 by remarque         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:50:20 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argv;
 	if (argc > 1)
-		return (ft_putstr_fd("Algo de errado nao esta certo\n", 2), 1);
+		return (ft_putstr_fd("Minishell does not accept arguments.\n", 2), 1);
 	g_sig = 0;
 	set_signals_base();
 	env = create_env_struct(envp);

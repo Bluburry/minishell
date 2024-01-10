@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_env_var.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque <remarque@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:41:24 by remarque          #+#    #+#             */
-/*   Updated: 2024/01/10 14:41:25 by remarque         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:49:49 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

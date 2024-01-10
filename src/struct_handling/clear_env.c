@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clear_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque <remarque@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:41:21 by remarque          #+#    #+#             */
-/*   Updated: 2024/01/10 14:41:22 by remarque         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:49:52 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

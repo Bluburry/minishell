@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque <remarque@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:40:10 by remarque          #+#    #+#             */
-/*   Updated: 2024/01/10 14:40:11 by remarque         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:48:16 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

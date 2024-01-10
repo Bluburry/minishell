@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_comms.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque <remarque@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:40:48 by remarque          #+#    #+#             */
-/*   Updated: 2024/01/10 14:40:49 by remarque         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:49:36 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

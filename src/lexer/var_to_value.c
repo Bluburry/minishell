@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var_to_value.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque <remarque@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jecarval <jecarval@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:40:40 by remarque          #+#    #+#             */
-/*   Updated: 2024/01/10 14:40:41 by remarque         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:48:50 by jecarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
