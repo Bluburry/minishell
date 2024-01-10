@@ -28,10 +28,7 @@ void	sig_handler_interrupt(int sig, siginfo_t *info, void *ucontext)
 
 void	sig_handler_fork(int sig)
 {
-	if (sig == SIGQUIT)
-	{
-		write(1, "Quit (core dumped)\n", 19);
-	}
+	(void)sig;
 	exit (0);
 }
 
