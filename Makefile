@@ -20,8 +20,7 @@ LIBR		=	ranlib
 CC			=	cc
 RM			=	rm -f
 CFLAGS		=	-g -Wall -Werror -Wextra -I $(INCLUDE)
-VG			=	valgrind --leak-check=full -s --show-leak-kinds=all \
-				--suppressions=sup --track-origins=yes#--log-file=leaks.log
+VG			=	valgrind --leak-check=full --suppressions=sup --track-origins=yes#--log-file=leaks.log
 LIB			=	-lreadline -L. -lft
 # Libs are always after objects in the compilation
 # If you put them before, it won't compile
