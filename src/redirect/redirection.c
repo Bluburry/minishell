@@ -1,5 +1,4 @@
 #include "minishell.h"
-#include <signal.h>
 
 int	redir_appd(char *path)
 {

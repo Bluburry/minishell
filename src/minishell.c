@@ -1,38 +1,5 @@
 #include "minishell.h"
 
-/* static void	print_strlist(char **list)
-{
-	uint32_t	i;
-
-	i = 0;
-	while (list[i])
-	{
-		if (list[i][0] == 31)
-			printf("NEXT HAD QUOTES\n");
-		printf("%s\n", list[i++]);
-	}
-} */
-
-/* static void	print_cmda(t_cmda *cmds)
-{
-	const char	*strs[7] = {"NONE", "EXEC", "PIPE", "OUT",
-		"IN", "APPEND", "HEREDOC"};
-
-	if (!cmds->tks)
-		return ;
-	for (uint32_t i = 0; i < cmds->size; i++)
-	{
-		printf("%d %s : \"%s\"",cmds->tks[i].type,
-			strs[cmds->tks[i].type], cmds->tks[i].path);
-		if (cmds->tks[i].arglist) {
-			printf(" :");
-			for (uint32_t j = 0; cmds->tks[i].arglist[j]; j++)
-				printf(" \"%s\"", cmds->tks[i].arglist[j]);
-		}
-		printf("\n");
-	}
-} */
-
 static void	reset_singleton(t_data *d)
 {
 	if (d->fd_in != -1)
@@ -50,9 +17,6 @@ static void	reset_singleton(t_data *d)
 	d->has_executed = false;
 }
 
-//printf("rl: %s\n", rl);
-//print_strlist(data->strlist);
-//print_cmda(data->cmds);
 static void	waiting_for_input(t_env *env, t_data *data)
 {
 	char	*rl;
@@ -79,7 +43,6 @@ static void	waiting_for_input(t_env *env, t_data *data)
 	reset_singleton(data);
 }
 
-//need to figure out how to clean t_data data
 int	main(int argc, char **argv, char **envp)
 {
 	t_env		*env;

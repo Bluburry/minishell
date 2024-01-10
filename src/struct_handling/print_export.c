@@ -1,5 +1,7 @@
 #include "minishell.h"
 
+#define EXTRA_SIZE_EXPORT 11
+
 static int	str_cmp(const char *str1, const char *str2)
 {
 	while (*str1 && *str2)

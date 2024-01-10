@@ -1,5 +1,4 @@
 #include "minishell.h"
-#include <stdlib.h>
 
 int	ft_export(t_env *env, char **arglist)
 {

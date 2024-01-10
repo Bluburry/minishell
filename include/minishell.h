@@ -1,9 +1,7 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
-# define _GNU_SOURCE
 
 # include "libft.h"
-# include "macros.h"
 # include "structures.h"
 # include <stdint.h>
 # include <term.h>

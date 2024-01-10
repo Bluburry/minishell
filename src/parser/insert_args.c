@@ -1,4 +1,3 @@
-#include "libft.h"
 #include "minishell.h"
 
 //checks if the string passed is a relative path, or an absolute path
