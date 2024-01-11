@@ -78,8 +78,10 @@ char	**tokens_init(char *input, t_env *env, t_data *data)
 		return (NULL);
 	ptr = split_char_tokens(ptr2, '|');
 	dcp_cleaner(ptr2);
-	remove_quotes_from_tokens(ptr);
-	ptr2 = merge_tokens_cleanup(ptr);
+	ptr2 = split_char_tokens(ptr, '\t');
 	dcp_cleaner(ptr);
-	return (ptr2);
+	remove_quotes_from_tokens(ptr2);
+	ptr = merge_tokens_cleanup(ptr2);
+	dcp_cleaner(ptr2);
+	return (ptr);
 }
