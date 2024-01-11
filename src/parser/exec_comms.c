@@ -73,7 +73,7 @@ static void	execute(t_tok tk, t_data *d)
 	else if (ft_strncmp(tk.path, "export", 8) == 0)
 		d->ret_status = ft_export(d->env, tk.arglist);
 	else if (ft_strncmp(tk.path, "exit", 5) == 0)
-		d->ret_status = ft_exit(d, tk.arglist);
+		ft_exit(d, tk.arglist);
 	else if (ft_strncmp(tk.path, "cd", 3) == 0)
 		d->ret_status = cd(d->env, tk.arglist);
 	else
