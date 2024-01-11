@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   heredoc.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpinto-e <tpinto-e@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/11 20:43:21 by tpinto-e          #+#    #+#             */
+/*   Updated: 2024/01/11 20:43:22 by tpinto-e         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 #define PTH "/tmp/MS_HEREDOC"
 #define ERR_STR "Warning: heredoc delimited by end of file instead of %s\n"

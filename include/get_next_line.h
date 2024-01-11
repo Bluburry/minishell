@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: remarque < remarque@student.42porto.com    +#+  +:+       +#+        */
+/*   By: tpinto-e <tpinto-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 19:16:00 by remarque          #+#    #+#             */
-/*   Updated: 2023/10/04 16:39:44 by remarque         ###   ########.fr       */
+/*   Created: 2024/01/11 20:41:44 by tpinto-e          #+#    #+#             */
+/*   Updated: 2024/01/11 20:41:45 by tpinto-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
