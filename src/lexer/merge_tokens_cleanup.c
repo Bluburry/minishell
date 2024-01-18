@@ -25,15 +25,13 @@ int	count_merge_tokens(char **input)
 	int		len;
 	int		i;
 	int		flag;
-	char	*tmp;
 
 	flag = 0;
 	len = 0;
 	i = -1;
 	while (input[++i])
 	{
-		tmp = input[i];
-		if ((is_space(*tmp)) || is_operator(*tmp, "<>|"))
+		if ((is_space(*input[i])) || is_operator(*input[i], "<>|"))
 		{
 			len++;
 			flag = 0;
@@ -84,9 +82,9 @@ char	**merge_tokens_cleanup(char **s)
 			s++;
 			continue ;
 		}
-		if (is_operator(**s, "<>|") || !(*(s + 1)) || (*(s + 1)
-				&& (is_space(**(s + 1))
-					|| is_operator(**(s + 1), "<>|\0"))))
+		if (is_operator(**s, "<>|") || !(*(s + 1)) || \
+			(*(s + 1) && (is_space(**(s + 1)) || \
+			is_operator(**(s + 1), "<>|\0"))))
 			*ptr = ft_strdup(*s);
 		else
 		{

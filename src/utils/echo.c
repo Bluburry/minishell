@@ -12,6 +12,20 @@
 
 #include "minishell.h"
 
+static int	echo_op_check(char **argv)
+{
+	int	i;
+
+	if (ft_strncmp(argv[1], "-n", 2) != 0)
+		return (1);
+	i = 1;
+	while (argv[1][i] == 'n')
+		i++;
+	if (!argv[1][i])
+		return (0);
+	return (1);
+}
+
 int	ft_echo(char **argv)
 {
 	int	i;
@@ -22,7 +36,7 @@ int	ft_echo(char **argv)
 		printf("\n");
 		return (0);
 	}
-	n = ft_strncmp(argv[1], "-n", 2);
+	n = echo_op_check(argv);
 	if (n == 0)
 		i = 2;
 	else

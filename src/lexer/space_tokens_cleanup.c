@@ -41,15 +41,12 @@ int	count_space_tokens(char **input)
 
 char	**space_tokens_cleanup(char **input)
 {
-	char	**tokens;
-	char	**ptr;
-	int		flag;
-
-	tokens = malloc((count_space_tokens(input) + 1) * sizeof(char *));
+	auto int flag = count_space_tokens(input) + 1;
+	auto char **tokens = tokens = malloc(flag * sizeof(char *));
 	if (!tokens)
 		return (0);
-	ptr = tokens;
-	flag = 0;
+	auto char **ptr = tokens;
+	/* flag = 0;
 	while (*input)
 	{
 		if (!(is_space(**input)) || flag == 0)
@@ -62,6 +59,21 @@ char	**space_tokens_cleanup(char **input)
 		else
 			flag = 0;
 		input++;
+	} */
+	auto int i = 0, j = 0;
+	while (input[i])
+	{
+		if (!(is_space(input[i][j])))
+		{
+			*ptr = ft_strdup(&input[i][j]);
+			ptr++;
+			i++;
+			j = 0;
+		}
+		else if (input[i][j + 1])
+			j++;
+		else
+			i++;
 	}
 	*ptr = NULL;
 	return (tokens);

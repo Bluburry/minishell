@@ -73,6 +73,7 @@ static bool	comm_list_helper(t_data *d, int32_t n, uint32_t st, bool ins_pipe)
 bool	pipe_checker(t_data	*d)
 {
 	uint32_t	len;
+	uint32_t	i;
 
 	if (d->strlist == NULL)
 		return (printf("Empty  list of strings.\n"), false);
@@ -83,6 +84,13 @@ bool	pipe_checker(t_data	*d)
 	len = list_len(d->strlist);
 	if (ft_strncmp("|", d->strlist[len - 1], 1) == 0)
 		return (printf(ERR_PIPE), false);
+	i = 0;
+	while (++i < len)
+	{
+		if (ft_strncmp("|", d->strlist[i - 1], 1) == 0 && \
+			(ft_strncmp("|", d->strlist[i], 1) == 0))
+			return (printf(ERR_PIPE), false);
+	}
 	return (true);
 }
 
