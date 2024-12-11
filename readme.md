@@ -1,6 +1,6 @@
 ## Minishell 42 Project
 
-A simplified shell created in C developed in collaboration with @ren-neto, @JessicaCC-gd, and @Sheepcoat
+A simplified shell created in C.
 
 ### Compilation and running
 
